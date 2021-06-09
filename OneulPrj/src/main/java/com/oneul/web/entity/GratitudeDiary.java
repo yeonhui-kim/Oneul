@@ -12,6 +12,22 @@ public class GratitudeDiary {
 	private Integer memberId;
 	private Integer emotionId;
 	
+	public GratitudeDiary() {
+		
+	}
+	
+	public GratitudeDiary(Integer id, String content, String image, Boolean pub, Date regDate, Integer memberId,
+			Integer emotionId) {
+		super();
+		this.id = id;
+		this.content = content;
+		this.image = image;
+		this.pub = pub;
+		this.regDate = regDate;
+		this.memberId = memberId;
+		this.emotionId = emotionId;
+	}
+	
 	public Integer getId() {
 		return id;
 	}
@@ -73,6 +89,8 @@ public class GratitudeDiary {
 		return "GratitudeDiary [id=" + id + ", content=" + content + ", image=" + image + ", pub=" + pub + ", regDate="
 				+ regDate + ", memberId=" + memberId + ", emotionId=" + emotionId + "]";
 	}
+
+	
 	
 	
 	
