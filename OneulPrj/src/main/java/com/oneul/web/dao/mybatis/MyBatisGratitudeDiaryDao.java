@@ -1,47 +1,51 @@
-package com.oneul.web.dao.mybatis;
-
-import java.util.List;
-
-import com.oneul.web.dao.GratitudeDiaryDao;
-import com.oneul.web.entity.GratitudeDiary;
-
-public class MyBatisGratitudeDiaryDao implements GratitudeDiaryDao {
-
-	@Override
-	public GratitudeDiary get(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<GratitudeDiary> getList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<GratitudeDiary> getList(int offset, int size) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int insert(GratitudeDiary gratitudeDiary) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int update(GratitudeDiary gratitudeDiary) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int delete(int id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	
-}
+//package com.oneul.web.dao.mybatis;
+//
+//import java.util.List;
+//
+//import org.apache.ibatis.session.SqlSession;
+//
+//import com.oneul.web.dao.GratitudeDiaryDao;
+//import com.oneul.web.entity.GratitudeDiary;
+//
+//public class MyBatisGratitudeDiaryDao implements GratitudeDiaryDao {
+//
+//	private SqlSession SqlSession;
+//	private GratitudeDiaryDao mapper;
+//	
+//	public MyBatisGratitudeDiaryDao(SqlSession sqlSession) {
+//		this.SqlSession = sqlSession;
+//		mapper = SqlSession.getMapper(GratitudeDiaryDao.class);
+//	}
+//	
+//	@Override
+//	public GratitudeDiary get(int id) {
+//		return mapper.get(id);
+//	}
+//
+//	@Override
+//	public List<GratitudeDiary> getList() {
+//		return getList();
+//	}
+//
+//	@Override
+//	public List<GratitudeDiary> getList(int offset, int size) {
+//		return getList(offset, size);
+//	}
+//
+//	@Override
+//	public int insert(GratitudeDiary gratitudeDiary) {
+//		return mapper.insert(gratitudeDiary);
+//	}
+//
+//	@Override
+//	public int update(GratitudeDiary gratitudeDiary) {
+//		return mapper.update(gratitudeDiary);
+//	}
+//
+//	@Override
+//	public int delete(int id) {
+//		return mapper.delete(id);
+//	}
+//
+//	
+//}

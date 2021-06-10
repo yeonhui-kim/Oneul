@@ -5,5 +5,14 @@
 
 <mapper namespace="com.oneul.web.dao.GratitudeDiaryDao">
 
+	<insert id="insert" parameterType="com.oneul.web.entity.GratitudeDiary">
+   		insert into GratitudeDiary(content, image, pub, memberId, emotionId)
+   		value(#{content},#{image},#{pub},#{memberId},#{emotionId})
+   	</insert>
+   	
+   	<delete id="delete" parameterType="int">
+   		delete from GratitudeDiary where id=#{id}
+   	</delete>
+
 
 </mapper>
