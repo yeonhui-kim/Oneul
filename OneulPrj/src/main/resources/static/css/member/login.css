@@ -29,7 +29,7 @@ ul,ol{
 }
 
 body{
-    font-family: "°íµñ", Arial, Helvetica, sans-serif;
+    font-family: "ê³ ë”•", Arial, Helvetica, sans-serif;
     font-size: 11px;
     color:var(--color-basic);
 }
@@ -91,3 +91,10 @@ a{
   tr{
     border: 1px solid #ddd;
   }
+
+/* ---- main style ------------------------------------------------ */
+
+.login-box{
+    display: flex;
+    flex-direction: column;
+}

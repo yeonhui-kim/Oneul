@@ -11,7 +11,7 @@ import com.oneul.web.entity.FreeDiary;
 import com.oneul.web.service.FreeDiaryService;
 
 @Controller
-@RequestMapping("/diary/freediary/list")
+@RequestMapping("/diary/freediary/")
 public class FreeDiaryController {
 	
 	@Autowired
