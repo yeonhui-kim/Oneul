@@ -24,6 +24,9 @@ public class Member {
 		this.image = image;
 		this.introduction = introduction;
 	}
+	public Member() {
+		// TODO Auto-generated constructor stub
+	}
 	public Integer getId() {
 		return id;
 	}

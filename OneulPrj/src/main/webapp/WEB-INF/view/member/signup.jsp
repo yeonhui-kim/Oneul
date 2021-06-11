@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     <main>
         <div class="signup-box">
-            <form class="signup-form">
+            <form class="signup-form" action="reg" method="post">
                 <ul>
                     <li>
                         <input type="text" name="username" placeholder="아이디"/>
@@ -24,6 +24,7 @@
                     </li>
                     <li>
                         <input type="submit" value="회원가입">
+                        <a href="login">취소</a>
                     </li>
                 </ul>
             </form>
