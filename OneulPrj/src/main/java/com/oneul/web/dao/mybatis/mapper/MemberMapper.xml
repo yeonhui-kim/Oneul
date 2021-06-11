@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="com.oneul.web.dao.MemberDao">
-	<insert id="memberinsert" parameterType="com.oneul.web.entity.Member">
+	<insert id="insert" parameterType="com.oneul.web.entity.Member">
 		insert into Member (userId, password, name, email, birthday)
 		 VALUES (#{userId}, #{password}, #{name}, #{email}, #{birthday})
 	</insert>
