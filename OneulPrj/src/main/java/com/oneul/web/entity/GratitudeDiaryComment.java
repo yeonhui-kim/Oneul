@@ -1,5 +1,7 @@
 package com.oneul.web.entity;
 
+import java.util.List;
+
 public class GratitudeDiaryComment {
 	private Integer id;
 	private String regDate;
@@ -7,13 +9,14 @@ public class GratitudeDiaryComment {
 	private Integer memberId;
 	private Integer gratitudeDiaryId;
 	private Integer commentId;
-	
+	private List<GratitudeDiaryComment> list;
+
 	public GratitudeDiaryComment() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public GratitudeDiaryComment(Integer id, String regDate, String content, Integer memberId, Integer gratitudeDiaryId,
-			Integer commentId) {
+			Integer commentId, List<GratitudeDiaryComment> list) {
 		super();
 		this.id = id;
 		this.regDate = regDate;
@@ -21,6 +24,7 @@ public class GratitudeDiaryComment {
 		this.memberId = memberId;
 		this.gratitudeDiaryId = gratitudeDiaryId;
 		this.commentId = commentId;
+		this.list = list;
 	}
 
 	public Integer getId() {
@@ -55,11 +59,11 @@ public class GratitudeDiaryComment {
 		this.memberId = memberId;
 	}
 
-	public Integer getgratitudeDiaryId() {
+	public Integer getGratitudeDiaryId() {
 		return gratitudeDiaryId;
 	}
 
-	public void setgratitudeDiaryId(Integer gratitudeDiaryId) {
+	public void setGratitudeDiaryId(Integer gratitudeDiaryId) {
 		this.gratitudeDiaryId = gratitudeDiaryId;
 	}
 
@@ -71,11 +75,22 @@ public class GratitudeDiaryComment {
 		this.commentId = commentId;
 	}
 
+	public List<GratitudeDiaryComment> getList() {
+		return list;
+	}
+
+	public void setList(List<GratitudeDiaryComment> list) {
+		this.list = list;
+	}
+
 	@Override
 	public String toString() {
-		return "FutureDiaryComment [id=" + id + ", regDate=" + regDate + ", content=" + content + ", memberId="
-				+ memberId + ", gratitudeDiaryId=" + gratitudeDiaryId + ", commentId=" + commentId + "]";
+		return "GratitudeDiaryComment [id=" + id + ", regDate=" + regDate + ", content=" + content + ", memberId="
+				+ memberId + ", gratitudeDiaryId=" + gratitudeDiaryId + ", commentId=" + commentId + ", list=" + list
+				+ "]";
 	}
+	
+	
 	
 	
 }

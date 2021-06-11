@@ -1,26 +1,30 @@
 package com.oneul.web.entity;
 
+import java.util.List;
+
 public class FutureDiaryComment {
 	private Integer id;
 	private String regDate;
 	private String content;
 	private Integer memberId;
-	private Integer freeDiaryId;
+	private Integer futureDiaryId;
 	private Integer commentId;
+	private List<FutureDiaryComment> list;
 	
 	public FutureDiaryComment() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public FutureDiaryComment(Integer id, String regDate, String content, Integer memberId, Integer freeDiaryId,
-			Integer commentId) {
+	public FutureDiaryComment(Integer id, String regDate, String content, Integer memberId, Integer futureDiaryId,
+			Integer commentId, List<FutureDiaryComment> list) {
 		super();
 		this.id = id;
 		this.regDate = regDate;
 		this.content = content;
 		this.memberId = memberId;
-		this.freeDiaryId = freeDiaryId;
+		this.futureDiaryId = futureDiaryId;
 		this.commentId = commentId;
+		this.list = list;
 	}
 
 	public Integer getId() {
@@ -55,12 +59,12 @@ public class FutureDiaryComment {
 		this.memberId = memberId;
 	}
 
-	public Integer getfreeDiaryId() {
-		return freeDiaryId;
+	public Integer getFutureDiaryId() {
+		return futureDiaryId;
 	}
 
-	public void setfreeDiaryId(Integer freeDiaryId) {
-		this.freeDiaryId = freeDiaryId;
+	public void setFutureDiaryId(Integer futureDiaryId) {
+		this.futureDiaryId = futureDiaryId;
 	}
 
 	public Integer getCommentId() {
@@ -71,11 +75,20 @@ public class FutureDiaryComment {
 		this.commentId = commentId;
 	}
 
+	public List<FutureDiaryComment> getList() {
+		return list;
+	}
+
+	public void setList(List<FutureDiaryComment> list) {
+		this.list = list;
+	}
+
 	@Override
 	public String toString() {
 		return "FutureDiaryComment [id=" + id + ", regDate=" + regDate + ", content=" + content + ", memberId="
-				+ memberId + ", freeDiaryId=" + freeDiaryId + ", commentId=" + commentId + "]";
+				+ memberId + ", futureDiaryId=" + futureDiaryId + ", commentId=" + commentId + ", list=" + list + "]";
 	}
+	
 	
 	
 }
