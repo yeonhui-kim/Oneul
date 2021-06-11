@@ -11,42 +11,20 @@
 		<h3>Test table</h3>
 		<table>
 			<tr>
-				<th>table head</th>
-				<th>table head</th>
-				<th>table head</th>
-				<th>table head</th>
+				<th>번호</th>
+				<th>내용</th>
+				<th>작성자</th>
+				<th>작성일</th>
 			</tr>
+			<c:forEach var="n" items="${list}" varStatus="st">
 			<tr>
-				<td>table data</td>
-				<td>table data</td>
-				<td>table data</td>
-				<td>table data</td>
+				<td>${n.id}</td>
+				<td>${n.content}</td>
+				<td>${n.memberId}</td>
+				<td><fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd"/></td>
 			</tr>
-			<tr>
-				<td>table data</td>
-				<td>table data</td>
-				<td>table data</td>
-				<td>table data</td>
-			</tr>
-			<tr>
-				<td>table data</td>
-				<td>table data</td>
-				<td>table data</td>
-				<td>table data</td>
-			</tr>
+			</c:forEach> 
 
-			<tr>
-				<td>table data</td>
-				<td>table data</td>
-				<td>table data</td>
-				<td>table data</td>
-			</tr>
-			<tr>
-				<td>table data</td>
-				<td>table data</td>
-				<td>table data</td>
-				<td>table data</td>
-			</tr>
 		</table>
 	</section>
 </main>
