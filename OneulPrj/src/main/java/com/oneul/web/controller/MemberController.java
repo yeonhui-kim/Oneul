@@ -44,7 +44,7 @@ public class MemberController {
 		service.insert(member);
 		
 		return "redirect:login";
-		
+		//헬로
 	}
 	
 }
