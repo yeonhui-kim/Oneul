@@ -14,14 +14,14 @@ import com.oneul.web.service.FreeDiaryService;
 @RequestMapping("/diary/freediary/")
 public class FreeDiaryController {
 	
-//	@Autowired
-//	private FreeDiaryService service;
+	@Autowired
+	private FreeDiaryService service;
 	
 	@RequestMapping("list")
-	public String list() {
+	public String list(Model model) {
 		
-//		List<FreeDiary> list = service.getList(1,null,null);
-//		model.addAttribute("list",list);
+		List<FreeDiary> list = service.getList(1,null,null);
+		model.addAttribute("list",list);
 		
 		return "diary.freediary.list";
 	}
