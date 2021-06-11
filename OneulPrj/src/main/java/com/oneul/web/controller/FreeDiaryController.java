@@ -11,17 +11,17 @@ import com.oneul.web.entity.FreeDiary;
 import com.oneul.web.service.FreeDiaryService;
 
 @Controller
-@RequestMapping("/diary/freediary/list")
+@RequestMapping("/diary/freediary/")
 public class FreeDiaryController {
 	
-	@Autowired
-	private FreeDiaryService service;
+//	@Autowired
+//	private FreeDiaryService service;
 	
 	@RequestMapping("list")
-	public String list(Model model) {
+	public String list() {
 		
-		List<FreeDiary> list = service.getList(1,null,null);
-		model.addAttribute("list",list);
+//		List<FreeDiary> list = service.getList(1,null,null);
+//		model.addAttribute("list",list);
 		
 		return "diary.freediary.list";
 	}
