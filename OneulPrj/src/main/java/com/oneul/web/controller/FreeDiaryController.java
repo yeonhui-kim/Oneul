@@ -20,7 +20,7 @@ public class FreeDiaryController {
 	@RequestMapping("list")
 	public String list(Model model) {
 		
-		List<FreeDiary> list = service.getList(1,null,null);
+		List<FreeDiary> list = service.getList();
 		model.addAttribute("list",list);
 		
 		return "diary.freediary.list";

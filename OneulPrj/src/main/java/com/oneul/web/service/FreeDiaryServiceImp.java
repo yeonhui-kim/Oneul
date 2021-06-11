@@ -22,42 +22,8 @@ public class FreeDiaryServiceImp implements FreeDiaryService {
 	@Override
 	public List<FreeDiary> getList() {
 		
-		List<FreeDiary> list = getList(1,null,null);
+		List<FreeDiary> list = dao.getList();
 		return list;
-	}
-
-	@Override
-	public List<FreeDiary> getList(int page) {
-		
-		List<FreeDiary> list = getList(page,null,null);
-		return list;
-	}
-
-	@Override
-	public List<FreeDiary> getList(int page, String field, String query) {
-		int offset = (page-1)*10;
-		int size =10;
-		
-		List<FreeDiary> list = dao.getList(offset,size,field,query);
-		return list;
-	}
-
-	@Override
-	public int insert(FreeDiary freeDiary) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int update(FreeDiary freeDiary) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int delete(int id) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 }

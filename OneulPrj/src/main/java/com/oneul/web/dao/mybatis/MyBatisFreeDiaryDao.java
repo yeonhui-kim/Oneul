@@ -12,6 +12,12 @@ public class MyBatisFreeDiaryDao implements FreeDiaryDao {
 	
 	private SqlSession sqlSession;
 	private FreeDiaryDao mapper;
+	
+	public MyBatisFreeDiaryDao(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+		mapper = sqlSession.getMapper(FreeDiaryDao.class);
+
+	}
 
 	@Override
 	public FreeDiary get(int id) {
@@ -19,52 +25,8 @@ public class MyBatisFreeDiaryDao implements FreeDiaryDao {
 	}
 
 	@Override
-	public int getCount(String field, String query) {
-		return mapper.getCount(field, query);
-	}
-
-	@Override
-	public int insert(FreeDiary freeDiary) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int update(FreeDiary freeDiary) {
-		int result = 0;
-		
-		result = mapper.update(freeDiary);
-				
-		return result;
-	}
-
-	@Override
-	public int delete(int id) {
-		return mapper.delete(id);
-	}
-
-	@Override
 	public List<FreeDiary> getList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<FreeDiary> getList(int offset, int size) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<FreeDiary> getListIn(int[] ids) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<FreeDiary> getList(int offset, int size, String field, String query) {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.getList();
 	}
 
 
