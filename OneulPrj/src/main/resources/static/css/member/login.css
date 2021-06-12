@@ -93,8 +93,70 @@ a{
   }
 
 /* ---- main style ------------------------------------------------ */
+main{
+  height: 87%;
+  display: flex;
+  align-items: center;
+}
 
 .login-box{
-    display: flex;
-    flex-direction: column;
+  background-color: #d0eaff;
+  border-radius: 10%;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  height: 60%;
+  width: 70%;
+    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+    
 }
+
+  .login-form{
+    height: 90%;
+    width: 80%;
+  }
+  
+    .login-title{
+      color: rgb(114, 114, 114);
+      text-align: center;
+      font-size: x-large;
+    }
+
+    .login-form ul{
+      height: 70%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+      .login-form ul li{
+        height: 70%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        
+      }
+
+        .login-form ul li input{
+          height: 55%;
+          width: 100%;
+          
+          border-style: none;
+          border-radius: 8px;
+        }
+
+          .btn-submit{
+            background-color: rgb(61, 203, 228);
+            color: beige;
+            font-weight: bold;
+          }
+  
+  .login-option{
+    height: 10%;
+  }
+
