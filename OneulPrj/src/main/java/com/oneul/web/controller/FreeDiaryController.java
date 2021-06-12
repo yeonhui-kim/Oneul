@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -53,7 +54,21 @@ public class FreeDiaryController {
 		service.insert(freeDiary);
 		
 		return "redirect:list";
-		//헬로
+	}
+	
+	@RequestMapping("detail")
+	public String detail(int id,Model model) {
+		
+		FreeDiary freeDiary = service.get(id);
+		model.addAttribute("freeDiary",freeDiary);
+		
+		return "diary.freediary.detail";
+	}
+	
+	@RequestMapping("del")
+	public String delete(int id) {
+		service.delete(id);
+		return "redirect:list";
 	}
 	
 }
