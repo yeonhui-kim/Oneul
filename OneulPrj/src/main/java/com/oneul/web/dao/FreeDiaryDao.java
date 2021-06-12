@@ -8,6 +8,10 @@ import com.oneul.web.entity.FutureDiary;
 
 public interface FreeDiaryDao {
 	FreeDiary get(int id);	
-	List<FreeDiary> getList(); // 필터링, 정렬, 페이징, 집계	
+	List<FreeDiary> getList();
+	
+	int insert(FreeDiary freeDiary);
+	int update(FreeDiary freeDiary);
+	int delete(int id);
 
 }

@@ -28,6 +28,25 @@ public class MyBatisFreeDiaryDao implements FreeDiaryDao {
 		return mapper.getList();
 	}
 
+	@Override
+	public int insert(FreeDiary freeDiary) {
+
+		return mapper.insert(freeDiary);
+	}
+
+	@Override
+	public int update(FreeDiary freeDiary) {
+		int result = 0;
+		result = mapper.update(freeDiary);
+		return result;
+	}
+
+	@Override
+	public int delete(int id) {
+		
+		return mapper.delete(id);
+	}
+
 
 
 }

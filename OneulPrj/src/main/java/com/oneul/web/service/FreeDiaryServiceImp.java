@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.oneul.web.dao.FreeDiaryDao;
 import com.oneul.web.entity.FreeDiary;
+import com.oneul.web.entity.Member;
 @Service
 public class FreeDiaryServiceImp implements FreeDiaryService {
 	
@@ -24,6 +25,24 @@ public class FreeDiaryServiceImp implements FreeDiaryService {
 		
 		List<FreeDiary> list = dao.getList();
 		return list;
+	}
+
+	@Override
+	public int insert(FreeDiary freeDiary) {
+
+		return dao.insert(freeDiary);
+	}
+
+	@Override
+	public int update(FreeDiary freeDiary) {
+
+		return dao.update(freeDiary);
+	}
+
+	@Override
+	public int delete(int id) {
+
+		return dao.delete(id);
 	}
 
 }
