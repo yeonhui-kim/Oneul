@@ -3,6 +3,7 @@
     <main>
         <div class="login-box">
             <form class="login-form">
+                <h2 class="login-title">로그인</h2>
                 <ul>
                     <li>
                         <input type="text" name="username" placeholder="ID"/>
@@ -11,7 +12,7 @@
                         <input type="password" name="password" placeholder="Password"/>
                     </li>
                     <li>
-                        <input type="submit" value="LOGIN">
+                        <input class="btn-submit" type="submit" value="LOGIN">
                     </li>
                 </ul>
             </form>
