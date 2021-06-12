@@ -10,13 +10,12 @@ import com.oneul.web.entity.FreeDiary;
 @Repository
 public class MyBatisFreeDiaryDao implements FreeDiaryDao {
 	
-	private SqlSession sqlSession;
-	private FreeDiaryDao mapper;
+	private SqlSession sqlSession;//연결
+	private FreeDiaryDao mapper;//freeDiaryDao객체
 	
 	public MyBatisFreeDiaryDao(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 		mapper = sqlSession.getMapper(FreeDiaryDao.class);
-
 	}
 
 	@Override
