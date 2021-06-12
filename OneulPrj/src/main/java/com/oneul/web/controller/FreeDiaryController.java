@@ -52,7 +52,7 @@ public class FreeDiaryController {
 		
 		service.insert(freeDiary);
 		
-		return "redirect:login";
+		return "redirect:list";
 		//헬로
 	}
 	

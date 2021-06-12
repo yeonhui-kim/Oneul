@@ -19,7 +19,7 @@
 			<c:forEach var="n" items="${list}" varStatus="st">
 				<tr>
 					<td>${n.id}</td>
-					<td>${n.content}</td>
+					<td><a href="detail?id=${n.id}">${n.content}</a></td>
 					<td>${n.memberId}</td>
 					<td><fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd" /></td>
 				</tr>

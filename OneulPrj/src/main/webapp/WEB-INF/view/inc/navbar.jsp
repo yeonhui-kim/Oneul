@@ -4,7 +4,7 @@
    	<div class="navbar">
         <a href="">Feed</a>
         <a href="">My Diary</a>
-        <a href="">Write</a>
+        <a href="/diary/reg">Write</a>
         <a href="">Calendar</a>
         <a href="">My Page</a>
     </div>
