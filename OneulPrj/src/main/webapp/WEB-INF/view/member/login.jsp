@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     <main>
         <div class="login-box">
-            <form class="login-form">
+            <form class="login-form" method="post">
                 <h2 class="login-title">로그인</h2>
                 <ul>
                     <li>

@@ -27,6 +27,12 @@ public class MemberController {
 		return "member.signup";		
 	}
 	
+	@RequestMapping("logintest")
+	public String logintest() {
+		return "member.logintest";		
+	}
+	
+	
 	@PostMapping("reg")
 	public String reg(String username,
 						String password,
