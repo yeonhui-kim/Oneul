@@ -28,8 +28,8 @@
 		parameterType="com.oneul.web.entity.FreeDiary">
 		update FreeDiary
 		<set>
+			<if test="emotionId != null">emotionId = #{emotionId},</if>
 			<if test="content != null">content = #{content},</if>
-			<if test="files != null">files = #{files},</if>
 			<if test="pub != null">pub = #{pub}</if>
 		</set>
 		where id=#{id}

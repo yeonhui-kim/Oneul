@@ -30,27 +30,16 @@ public class FreeDiaryController {
 		return "diary.freediary.list";
 	}
 	
-	@RequestMapping("reg")
+	@GetMapping("reg")
 	public String reg(Model model) {
-		
-//		List<FreeDiary> list = service.getList();
-//		model.addAttribute("list",list);
 		
 		return "diary.freediary.reg";
 	}
 	
 	@PostMapping("reg")
-	public String reg(String content,
-						String image,
-						Boolean pub,
-						String emotionId) {
-		
-		FreeDiary freeDiary = new FreeDiary();
-		freeDiary.setContent(content);
-		freeDiary.setImage(image);
+	public String reg(FreeDiary freeDiary) {
 		freeDiary.setPub(true);
-		freeDiary.setMemberId(4);
-		
+		freeDiary.setMemberId(4);		
 		service.insert(freeDiary);
 		
 		return "redirect:list";
@@ -69,6 +58,21 @@ public class FreeDiaryController {
 	public String delete(int id) {
 		service.delete(id);
 		return "redirect:list";
+	}
+	
+	@GetMapping("edit")
+	public String edit(int id,Model model) {
+		
+		FreeDiary freeDiary = service.get(id);
+		model.addAttribute("freeDiary",freeDiary);
+		
+		return "diary.freediary.edit";
+	}
+	
+	@PostMapping("edit")
+	public String edit(FreeDiary freeDiary) {
+		service.update(freeDiary);
+		return "redirect:detail?id="+freeDiary.getId();
 	}
 	
 }
