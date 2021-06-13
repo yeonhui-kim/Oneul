@@ -13,13 +13,14 @@ import com.oneul.web.entity.FreeDiaryComment;
 @Repository
 public class MyBatisFreeDiaryCommentDao implements FreeDiaryCommentDao {
 
-	
+	private SqlSession sqlSession;
 	private FreeDiaryCommentDao mapper;
 	
 	
 	@Autowired
 	public MyBatisFreeDiaryCommentDao(SqlSession sqlSession) {
-		this.mapper = sqlSession.getMapper(FreeDiaryCommentDao.class);
+		this.sqlSession = sqlSession;
+		mapper = sqlSession.getMapper(FreeDiaryCommentDao.class);
 	}
 	
 	

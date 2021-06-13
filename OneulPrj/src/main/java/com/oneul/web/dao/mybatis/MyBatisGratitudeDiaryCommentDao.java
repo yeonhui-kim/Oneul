@@ -13,13 +13,15 @@ import com.oneul.web.entity.GratitudeDiaryComment;
 @Repository
 public class MyBatisGratitudeDiaryCommentDao implements GratitudeDiaryCommentDao {
 
-	
+	private SqlSession sqlSession;
+
 	private GratitudeDiaryCommentDao mapper;
 	
 	
 	@Autowired
 	public MyBatisGratitudeDiaryCommentDao(SqlSession sqlSession) {
-		this.mapper = sqlSession.getMapper(GratitudeDiaryCommentDao.class);
+		this.sqlSession = sqlSession;
+		mapper = sqlSession.getMapper(GratitudeDiaryCommentDao.class);
 	}
 	
 	

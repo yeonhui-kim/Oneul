@@ -13,12 +13,14 @@ import com.oneul.web.entity.FutureDiaryComment;
 @Repository
 public class MyBatisFutureDiaryCommentDao implements FutureDiaryCommentDao {
 
-	
+	private SqlSession sqlSession;
+
 	private FutureDiaryCommentDao mapper;
 	
 	
 	@Autowired
 	public MyBatisFutureDiaryCommentDao(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
 		this.mapper = sqlSession.getMapper(FutureDiaryCommentDao.class);
 	}
 	
