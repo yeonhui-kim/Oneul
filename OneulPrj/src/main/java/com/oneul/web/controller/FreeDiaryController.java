@@ -12,18 +12,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.oneul.web.entity.FreeDiary;
 import com.oneul.web.entity.Member;
+import com.oneul.web.service.FreeDiaryCommentServiceImp;
 import com.oneul.web.service.FreeDiaryService;
 
 @Controller
 @RequestMapping("/diary/freediary/")
 public class FreeDiaryController {
 	
+
 	@Autowired
 	private FreeDiaryService service;
 	
 	@RequestMapping("list")
 	public String list(Model model) {
-		
 		List<FreeDiary> list = service.getList();
 		model.addAttribute("list",list);
 		

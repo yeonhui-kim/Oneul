@@ -27,7 +27,8 @@ public class GratitudeDiaryCommentServiceImp implements GratitudeDiaryCommentSer
 		List<GratitudeDiaryComment> list;
 		list = dao.getMainList(gratitudeDiaryId);
 		for(GratitudeDiaryComment n : list) {
-			n.setList(dao.getSubList(n.getGratitudeDiaryId()));
+			if(n.getCommentId() == null)
+			n.setList(dao.getSubList(n.getId()));
 			
 		}
 		

@@ -27,7 +27,8 @@ public class FreeDiaryCommentServiceImp implements FreeDiaryCommentService {
 		List<FreeDiaryComment> list;
 		list = dao.getMainList(freeDiaryId);
 		for(FreeDiaryComment n : list) {
-			n.setList(dao.getSubList(n.getFreeDiaryId()));
+			if(n.getCommentId() == null)
+				n.setList(dao.getSubList(n.getId()));
 			
 		}
 		

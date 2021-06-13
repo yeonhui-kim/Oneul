@@ -27,7 +27,8 @@ public class FutureDiaryCommentServiceImp implements FutureDiaryCommentService {
 		List<FutureDiaryComment> list;
 		list = dao.getMainList(futureDiaryId);
 		for(FutureDiaryComment n : list) {
-			n.setList(dao.getSubList(n.getFutureDiaryId()));
+			if(n.getCommentId() == null)
+				n.setList(dao.getSubList(n.getId()));
 			
 		}
 		
