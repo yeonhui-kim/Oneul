@@ -2,11 +2,12 @@ package com.oneul.web.entity;
 
 import java.sql.Date;
 
-public class Oneline24 {
+public class Oneline {
 	private Integer id;
 	private String content;
 	private Integer memberId;
 	private Date regDate;
+	
 	public Integer getId() {
 		return id;
 	}
