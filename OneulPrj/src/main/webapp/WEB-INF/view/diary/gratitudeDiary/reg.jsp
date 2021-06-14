@@ -10,14 +10,6 @@
 				<td colspan="3">감정이모티콘뷰</td>
 			</tr>
 			<tr>
-				<th>질문선택</th>
-				<td colspan="3">질문선택지</td>
-			</tr>
-			<tr>
-				<th>첨부파일</th>
-				<td colspan="3"><input type="file" name="f"></td>
-			</tr>
-			<tr>
 				<th>공개선택</th>
 				<td colspan="3">공개 / 비공개</td>
 			</tr>
@@ -38,6 +30,5 @@
 			<input type="submit" value="저장"> <a href="list">취소</a>
 		</div>
 	</form>
-	</section>
 
 </main>

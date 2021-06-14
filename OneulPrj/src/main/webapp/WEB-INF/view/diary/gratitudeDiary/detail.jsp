@@ -12,14 +12,6 @@
 				<td colspan="3">감정이모티콘뷰</td>
 			</tr>
 			<tr>
-				<th>질문선택</th>
-				<td colspan="3">질문선택지</td>
-			</tr>
-			<tr>
-				<th>첨부파일</th>
-				<td colspan="3"><input type="file" name="f"></td>
-			</tr>
-			<tr>
 				<th>작성일</th>
 				<td colspan="3"><fmt:formatDate value="${gratitudeDiary.regDate}" pattern="yyyy-MM-dd a hh:mm:ss" /></td>
 			</tr>
