@@ -27,11 +27,10 @@ public class GratitudeDiaryServiceImp implements GratitudeDiaryService {
 
 	@Override
 	public List<GratitudeDiary> getList(int page) {
-		int offset = 0;
-		int size = 0;
+		int offset = (page-1)*10;
+		int size = 10;
 		
-		List<GratitudeDiary> list = dao.getList(offset, size);
-		return list;
+		return dao.getList(offset, size);
 	}
 
 	@Override

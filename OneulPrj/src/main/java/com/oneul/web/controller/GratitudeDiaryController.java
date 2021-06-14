@@ -25,19 +25,26 @@ public class GratitudeDiaryController {
 		List<GratitudeDiary> list = service.getList();
 		model.addAttribute("list",list);
 		
-		return "diary.gratitudeDiary.list";
+		return "diary/gratitudeDiary/list";
 	}
 	
 	@GetMapping("reg")
 	public String reg(Model model) {
 		
-		return "diary.gratitudeDiary.reg";
+		return "diary/gratitudeDiary/reg";
 	}
 	
 	@PostMapping("reg")
-	public String reg(GratitudeDiary gratitudeDiary) {
+	public String reg(String content1, String content2, String content3, Boolean pub, Integer emotionId ) {
+		GratitudeDiary gratitudeDiary = new GratitudeDiary();
+		
+		gratitudeDiary.setContent1(content1);
+		gratitudeDiary.setContent2(content2);
+		gratitudeDiary.setContent3(content3);
 		gratitudeDiary.setPub(true);
-		gratitudeDiary.setMemberId(4);		
+		gratitudeDiary.setMemberId(4);
+		gratitudeDiary.setEmotionId(emotionId);
+		
 		service.insert(gratitudeDiary);
 		
 		return "redirect:list";
@@ -49,7 +56,7 @@ public class GratitudeDiaryController {
 		GratitudeDiary gratitudeDiary = service.get(id);
 		model.addAttribute("gratitudeDiary",gratitudeDiary);
 		
-		return "diary.gratitudeDiary.detail";
+		return "diary/gratitudeDiary/detail";
 	}
 	
 	@RequestMapping("del")
@@ -64,7 +71,7 @@ public class GratitudeDiaryController {
 		GratitudeDiary gratitudeDiary = service.get(id);
 		model.addAttribute("gratitudeDiary",gratitudeDiary);
 		
-		return "diary.gratitudeDiary.edit";
+		return "diary/gratitudeDiary/edit";
 	}
 	
 	@PostMapping("edit")
