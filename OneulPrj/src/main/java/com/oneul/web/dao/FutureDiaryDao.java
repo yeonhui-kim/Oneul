@@ -11,13 +11,10 @@ public interface FutureDiaryDao {
 	//List<Notice> getList();//여러개줘. 필터링,정렬,페이징,집계 등 인자들
 	List<FutureDiary> getList();
 	List<FutureDiary> getList(int offset, int size);
-	 
-	
+
 	int insert(FutureDiary futureDiary);
 	int update(FutureDiary futureDiary);
 	int delete(int id);
-	//int hitUp
-	//int likeUp
-	//int getCount(String field, String query);
+	
 	
 }

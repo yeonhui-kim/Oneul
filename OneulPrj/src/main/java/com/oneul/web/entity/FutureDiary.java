@@ -2,8 +2,11 @@ package com.oneul.web.entity;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class FutureDiary {
 	private Integer id;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date bookingDate;
 	private String content;
 	private Boolean pub;
