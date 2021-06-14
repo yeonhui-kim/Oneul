@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,7 +26,8 @@
 
     <main>
         <div class="login-box">
-            <form class="login-form">
+            <form class="login-form" method="post">
+                <h2 class="login-title">로그인</h2>
                 <ul>
                     <li>
                         <input type="text" name="username" placeholder="ID"/>
@@ -35,12 +36,12 @@
                         <input type="password" name="password" placeholder="Password"/>
                     </li>
                     <li>
-                        <input type="submit" value="LOGIN">
+                        <input class="btn-submit" type="submit" value="LOGIN">
                     </li>
                 </ul>
             </form>
             <ul class="login-option">
-                <a href="">회원가입</a>
+                <a href="signup">회원가입</a>
                 <a href="">아이디 찾기</a>
                 <a href="">비밀번호 찾기</a>
             </ul>
