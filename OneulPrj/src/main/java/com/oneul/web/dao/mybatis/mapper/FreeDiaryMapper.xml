@@ -5,5 +5,34 @@
 
 <mapper namespace="com.oneul.web.dao.FreeDiaryDao">
 
+	<select id="get" resultType="com.oneul.web.entity.FreeDiary">
+		select * from FreeDiary where
+		id=#{id}
+	</select>
+
+	<select id="getList" resultType="com.oneul.web.entity.FreeDiary">
+		select * from FreeDiary
+	</select>
+
+	<insert id="insert"
+		parameterType="com.oneul.web.entity.FreeDiary">
+		insert into FreeDiary(content,pub,memberId)
+		values(#{content},#{pub},#{memberId})
+	</insert>
+
+	<delete id="delete" parameterType="int">
+		delete from FreeDiary where id=#{id}
+	</delete>
+
+	<update id="update"
+		parameterType="com.oneul.web.entity.FreeDiary">
+		update FreeDiary
+		<set>
+			<if test="emotionId != null">emotionId = #{emotionId},</if>
+			<if test="content != null">content = #{content},</if>
+			<if test="pub != null">pub = #{pub}</if>
+		</set>
+		where id=#{id}
+	</update>
 
 </mapper>

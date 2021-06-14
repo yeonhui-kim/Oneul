@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oneul.web.dao.FutureDiaryCommentDao">
+
+    
+    <select id="get" resultType="com.oneul.web.entity.FutureDiaryComment">
+        select * from FutureDiaryComment where id=#{param1}
+    </select>
+    
+    <select id="getMainList" resultType="com.oneul.web.entity.FutureDiaryComment">
+		select * from FutureDiaryComment where futureDiaryId = #{param1} and commentId is null order by regDate asc
+    </select>
+    
+    
+     <select id="getSubList" resultType="com.oneul.web.entity.FutureDiaryComment">
+		select * from FutureDiaryComment where commentId = #{param1} order by regDate asc
+    </select>
+    
+    
+    <select id="getCount" resultType="int">
+		select count(id) from FutureDiaryComment where futureDiaryId = #{param1}
+    </select>    
+
+    
+    <insert id="insert" parameterType="com.oneul.web.entity.FutureDiaryComment">
+    	insert into FutureDiaryComment (content, memberId, futureDiaryId , commentId)
+    	values(#{content},#{memberId},#{futureDiaryId},#{commentId});
+    </insert>
+    
+
+    <delete id="delete" parameterType="int">
+		delete from FutureDiaryComment where id= #{id};    
+	</delete>
+    
+    <update id="update" parameterType="com.oneul.web.entity.FutureDiaryComment">
+    	update FutureDiaryComment content = #{content} where id=#{id}
+    </update>
+    
+    
+    
+    
+    
+</mapper>

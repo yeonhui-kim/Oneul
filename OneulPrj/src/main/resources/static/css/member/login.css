@@ -1,0 +1,162 @@
+html,body{
+    height: 100%;
+    
+}
+
+html,body,h1,ul,ol{
+    margin:0;
+    padding:0;
+
+}
+
+a{
+    color:initial;
+    text-decoration: initial;
+}
+
+ul,ol{
+    list-style: none;
+}
+/* --- common(base) style ----------------------------------------- */
+:root{
+    --color-basic:#979797;
+    --color-strong:#ff6a00;
+    --bg-color-basic:#fff;
+    --bg-color-light:#e9e9e9;
+    --bg-color-dark:#313131;
+    --bd-color-basic:#e9e9e9;
+    /* --color-dark: */
+}
+
+body{
+    font-family: "고딕", Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color:var(--color-basic);
+}
+
+a{
+    color:var(--color-basic);
+}
+
+/* ---- utils style ------------------------------------------------ */
+.d-none{
+    display: none !important;
+}
+/*-----------------------------------*/
+#header{
+    display: flex;
+    height: 50px;
+    align-items: center;
+    padding: 0 10px;
+    background-color: #e3f2fd;
+    
+}
+/* The navigation bar */
+.navbar {
+    overflow: hidden;
+    background-color: #90caf9;
+    position: fixed; 
+    bottom: 0;
+    width: 100%;
+  }  
+  /* Links inside the navbar */
+  .navbar a {
+    float: left;
+    display: block;
+    color: #fdf7f7;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change background on mouse-over */
+  .navbar a:hover {
+    background: #ddd;
+    color: black;
+  }
+
+  /*table */
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 8px;
+    height: 2rem;
+  }
+  tr{
+    border: 1px solid #ddd;
+  }
+
+/* ---- main style ------------------------------------------------ */
+main{
+  height: 87%;
+  display: flex;
+  align-items: center;
+}
+
+.login-box{
+  background-color: #d0eaff;
+  border-radius: 10%;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  height: 60%;
+  width: 70%;
+    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+    
+}
+
+  .login-form{
+    height: 90%;
+    width: 80%;
+  }
+  
+    .login-title{
+      color: rgb(114, 114, 114);
+      text-align: center;
+      font-size: x-large;
+    }
+
+    .login-form ul{
+      height: 70%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+      .login-form ul li{
+        height: 70%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        
+      }
+
+        .login-form ul li input{
+          height: 55%;
+          width: 100%;
+          
+          border-style: none;
+          border-radius: 8px;
+        }
+
+          .btn-submit{
+            background-color: rgb(61, 203, 228);
+            color: beige;
+            font-weight: bold;
+          }
+  
+  .login-option{
+    height: 10%;
+  }
+
