@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public class FutureDiary {
 	private Integer id;
+	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date bookingDate;
 	private String content;
