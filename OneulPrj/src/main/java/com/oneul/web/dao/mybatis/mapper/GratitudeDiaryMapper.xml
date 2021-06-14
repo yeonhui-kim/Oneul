@@ -5,14 +5,34 @@
 
 <mapper namespace="com.oneul.web.dao.GratitudeDiaryDao">
 
+	<select id="get" resultType="com.oneul.web.entity.GratitudeDiary">
+		select * from GratitudeDiary where id=#{id}
+	</select>
+	<select id="getList" resultType="com.oneul.web.entity.GratitudeDiary">
+		select * from GratitudeDiary order by regdate desc
+		limit #{size} offset #{offset}
+	</select>
+	
 	<insert id="insert" parameterType="com.oneul.web.entity.GratitudeDiary">
-   		insert into GratitudeDiary(content, image, pub, memberId, emotionId)
-   		value(#{content},#{image},#{pub},#{memberId},#{emotionId})
+   		insert into GratitudeDiary(content1, content2, content3, pub, memberId, emotionId)
+   		value(#{content1},#{content2},#{content3},#{pub},#{memberId},#{emotionId})
    	</insert>
    	
    	<delete id="delete" parameterType="int">
    		delete from GratitudeDiary where id=#{id}
    	</delete>
+   	
+   	<update id="update" parameterType="com.oneul.web.entity.GratitudeDiary">
+		update GratitudeDiary
+		<set>
+			<if test="emotionId != null">emotionId = #{emotionId},</if>
+			<if test="content1 != null">content1 = #{content1},</if>
+			<if test="content2 != null">content2 = #{content2},</if>
+			<if test="content3 != null">content3 = #{content3},</if>
+			<if test="pub != null">pub = #{pub}</if>
+		</set>
+		where id=#{id}
+	</update>
 
 
 </mapper>

@@ -11,63 +11,35 @@
     </resultMap>
      -->
     
-    
-    
-    
-    
-    
-    
-    <!--  
-    <select id="get" resultType="com.newlecture.web.entity.Notice">
-        select * from Notice where id=#{id}
-    </select>
-    
-    <select id="getList" resultType="com.newlecture.web.entity.Notice">
-        select * from Notice 
-       	<where>
-       	<trim prefix="where" prefixOverrides="and | or">
-        <if test="field != null">
-        	${field} like '%${query}%'
-        </if>        
-        	and hit=0
-        </trim>  
-        </where>
-        order by regdate desc
+    <select id="getList" resultType="com.oneul.web.entity.FutureDiary">
+    	select * from FutureDiary
+    	order by regdate desc
         LIMIT #{size} offset #{offset}
     </select>
     
-    <select id="getViewList" resultType="com.newlecture.web.entity.NoticeView">
-        select * from NoticeView where ${param2} like '%${param3}%'
-        order by regdate desc
+    <select id="get" resultType="com.oneul.web.entity.FutureDiary">
+    	select * from FutureDiary
+    	where id = #{id}
     </select>
     
-    <select id="getCount" resultType="int">
-    	select count(id) from Notice
-    	where ${param1} like ='%${param2}%'
-    </select>
-    
-    <insert id="insert" parameterType="com.newlecture.web.entity.Notice">
-    	insert into Notice(title, content, writerId)
-    	values(#{title},#{content},#{writerId})
+    <insert id="insert" parameterType="com.oneul.web.entity.FutureDiary">
+    	insert into FutureDiary(memberId,bookingDate, content)
+    	values(#{memberId},#{bookingDate},#{content})
     </insert>
-       
-    <delete id="delete" parameterType="int">
-    	delete from Notice where id=#{id}
+    
+    <delete id="delete">
+    	delete from FutureDiary where id=#{id};
     </delete>
     
-    <update id="update" parameterType="com.newlecture.web.entity.Notice">
-    	update Notice
+    <update id="update" parameterType="com.oneul.web.entity.FutureDiary">
+    	update FutureDiary
     	<set>
-			<if test="title != null">title = #{title},</if>
-			<if test="writerId != null">writerId = #{writerId},</if>
-			<if test="content != null">content = #{content},</if>
-			<if test="hit != null">hit = #{hit},</if>
-			<if test="files != null">files = #{files},</if>
-			<if test="pub != null">pub = #{pub}</if>
+    	<if test="bookingDate != null">bookingDate = #{bookingDate},</if>
+    	<if test="content != null">content = #{content},</if>
     	</set>
-	   	where id=#{id}
+    	where id=#{id}
     </update>
-     -->
+   
    
     
 </mapper>

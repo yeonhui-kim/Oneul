@@ -3,13 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
 
 <main id="main">
 	<section class="">
-		<h1>자유일기</h1>
-		<h3>내가 쓴 자유일기 목록</h3>
+		<h1>감사일기</h1>
+		<h3>내가 쓴 감사일기 목록</h3>
 		<table>
 			<tr>
 				<th>번호</th>
@@ -31,6 +29,5 @@
 		</div>
 	</section>
 </main>
-</html>
 
 

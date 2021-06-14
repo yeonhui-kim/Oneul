@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<main id="main">
+
+	<form action="edit" method="post">
+		<input type="hidden" name="id" th:value="${freeDiary.id}">
+		<table border="1">
+			<tr>
+				<th>감정선택</th>
+				<td colspan="3">감정이모티콘뷰</td>
+			</tr>
+			<tr>
+				<th>질문선택</th>
+				<td colspan="3">질문선택지</td>
+			</tr>
+			<tr>
+				<th>첨부파일</th>
+				<td colspan="3"><input type="file" name="f"></td>
+			</tr>
+			<tr>
+				<th>작성일</th>
+				<td colspan="3" th:text="${freeDiary.regDate}"></td>
+			</tr>
+			<tr>
+				<th>공개선택</th>
+				<td colspan="3" th:text="${freeDiary.pub}">공개 / 비공개</td>
+			</tr>
+
+			<tr>
+				<td colspan="4">
+				<textarea rows="20" cols="50" name="content" th:text="${freeDiary.content}">
+				</textarea>
+
+				</td>
+			</tr>
+
+		</table>
+
+		<div>
+			<input type="submit" value="저장"> <a href="list">취소</a>
+		</div>
+	</form>
+	</section>
+
+</main>

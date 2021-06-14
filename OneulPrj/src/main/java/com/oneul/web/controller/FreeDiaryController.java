@@ -28,13 +28,13 @@ public class FreeDiaryController {
 		List<FreeDiary> list = service.getList();
 		model.addAttribute("list",list);
 		
-		return "diary.freediary.list";
+		return "diary/freediary/list";
 	}
 	
 	@GetMapping("reg")
 	public String reg(Model model) {
 		
-		return "diary.freediary.reg";
+		return "diary/freediary/reg";
 	}
 	
 	@PostMapping("reg")
@@ -52,7 +52,7 @@ public class FreeDiaryController {
 		FreeDiary freeDiary = service.get(id);
 		model.addAttribute("freeDiary",freeDiary);
 		
-		return "diary.freediary.detail";
+		return "diary/freediary/detail";
 	}
 	
 	@RequestMapping("del")
@@ -67,7 +67,7 @@ public class FreeDiaryController {
 		FreeDiary freeDiary = service.get(id);
 		model.addAttribute("freeDiary",freeDiary);
 		
-		return "diary.freediary.edit";
+		return "diary/freediary/edit";
 	}
 	
 	@PostMapping("edit")

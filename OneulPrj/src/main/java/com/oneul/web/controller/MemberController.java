@@ -19,17 +19,17 @@ public class MemberController {
 	
 	@RequestMapping("login")
 	public String login() {
-		return "member.login";
+		return "member/login";
 	}
 	
 	@RequestMapping("signup")
 	public String signup() {
-		return "member.signup";		
+		return "member/signup";		
 	}
 	
 	@RequestMapping("logintest")
 	public String logintest() {
-		return "member.logintest";		
+		return "member/logintest";		
 	}
 	
 	
