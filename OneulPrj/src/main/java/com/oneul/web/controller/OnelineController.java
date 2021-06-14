@@ -24,7 +24,7 @@ public class OnelineController {
 		List<Oneline> list = service.getList(1, null, null); //서비스 클래스에있는 getList(인자3개)값을 list에 넣자
 		model.addAttribute("list",list);//"list"라는 키값에 위에서 받아온 list데이터를 넣고 model로 전달된다.
 		//test
-		return "feed.oneline";
+		return "feed/oneline/oneline";
 	}
 	
 	@RequestMapping("reg")

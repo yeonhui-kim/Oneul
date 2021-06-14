@@ -1,11 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<html>
+
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+	<main id="main">
+		<section class="">
+			<h1>자유일기</h1>
+			<h3>내가 쓴 자유일기 목록</h3>
+			<table>
+				<tr>
+					<th>번호</th>
+					<th>내용</th>
+					<th>작성자</th>
+					<th>작성일</th>
+				</tr>
 
+				<tr th:each="n:${list}">
+					<td th:text=${n.id}>${n.id}</td>
+					<td><a th:href="@{detail(id=${n.id})}" th:text="${n.content}">${n.content}</a></td>
+					<td th:text="${n.memberId}">${n.memberId}</td>
+					<td th:text="${#calendars.format(n.regDate,'yyyy-MM-dd')}"><fmt:formatDate
+							value="${n.regDate}" pattern="yyyy-MM-dd" /></td>
+				</tr>
+
+			</table>
+			<div>
+				<a href="reg">글쓰기</a>
+			</div>
+		</section>
+	</main>
 </body>
 </html>
