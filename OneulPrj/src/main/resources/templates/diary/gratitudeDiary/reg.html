@@ -1,33 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/inc/layout">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>gratitudeDiary reg</title>
-    <link href="/css/teststyle.css" type="text/css" rel="stylesheet">
 </head>
 
-<body>
-
-<!-- ----------------header부분------------------- -->
-	<header id="header">
-		<h1 class="logo">
-			Oneul<a href=""><img src=""></a>
-		</h1>
-		<nav class="header-menu">
-			<h1 class="d-none">헤더버튼</h1>
-		</nav>
-	</header>
-<!-- ----------------aside부분------------------- -->	
-	<aside id="aside">
-		<h1 class="d-none">어사이드</h1>
-		<nav class="aside-menu"></nav>
-	</aside>
 	
 <!-- ----------------main부분------------------- -->
-	<main id="main">
+	<main id="main" layout:fragment="main">
 		<form class="form" action="reg" method="post"
 			enctype="multipart/form-data">
 			<table border="1">
@@ -37,16 +21,21 @@
 				</tr>
 				<tr>
 					<th>공개선택</th>
-					<td colspan="3">공개 / 비공개</td>
+					<td colspan="3">
+						<label>공개</label><input type="radio" value="1" name="pub">
+						<label>비공개</label><input type="radio" value="0" name="pub" checked>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="4">
-						<div contenteditable="true"></div> <textarea rows="6" cols="50"
-							name="content1">오늘 하루는 어떤 감사한 일이 있었나요?</textarea>
-						<div contenteditable="true"></div> <textarea rows="6" cols="50"
-							name="content2">어떻게 하면 더 좋은 하루를 보낼 수 있을까요?</textarea>
-						<div contenteditable="true"></div> <textarea rows="6" cols="50"
-							name="content3">오늘의 나를 위한 긍정의 한 줄을 남겨주세요!</textarea>
+						<div>오늘하루 감사한 일들을 적어보세요</div>
+						<div>잘 생각이 안난다면 질문에 답해보세요</div>
+						<br>
+						<textarea rows="6" cols="50" name="content1">오늘 하루는 어떤 감사한 일이 있었나요?</textarea>
+						<br>
+						<textarea rows="6" cols="50" name="content2">어떻게 하면 더 좋은 하루를 보낼 수 있을까요?</textarea>
+						<br>
+						<textarea rows="6" cols="50" name="content3">오늘의 나를 위한 긍정의 한 줄을 남겨주세요!</textarea>
 					</td>
 				</tr>
 			</table>
@@ -59,10 +48,4 @@
 
 	</main>
 
-<!-- ----------------navbar부분------------------- -->
-	<div class="navbar">
-		<a href="">Feed</a> <a href="">My Diary</a> <a href="/diary/reg">Write</a>
-		<a href="">Calendar</a> <a href="">My Page</a>
-	</div>
-</body>
 </html>

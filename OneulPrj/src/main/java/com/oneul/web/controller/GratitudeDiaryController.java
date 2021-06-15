@@ -35,8 +35,8 @@ public class GratitudeDiaryController {
 	}
 	
 	@PostMapping("reg")
-	public String reg(String content1, String content2, String content3, Boolean pub, Integer emotionId ) {
-		GratitudeDiary gratitudeDiary = new GratitudeDiary();
+	public String reg(GratitudeDiary gratitudeDiary, 
+						String content1, String content2, String content3, Integer emotionId) {
 		
 		gratitudeDiary.setContent1(content1);
 		gratitudeDiary.setContent2(content2);
