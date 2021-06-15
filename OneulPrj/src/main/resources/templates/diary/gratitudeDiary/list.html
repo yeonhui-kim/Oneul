@@ -1,62 +1,38 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/inc/layout">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>gratitudeDiary list</title>
-    <link href="/css/teststyle.css" type="text/css" rel="stylesheet">
 </head>
 
-<body>
-
-<!-- ----------------header부분------------------- -->
-	<header id="header">
-		<h1 class="logo">
-			Oneul<a href=""><img src=""></a>
-		</h1>
-		<nav class="header-menu">
-			<h1 class="d-none">헤더버튼</h1>
-		</nav>
-	</header>
-<!-- ----------------aside부분------------------- -->	
-	<aside id="aside">
-		<h1 class="d-none">어사이드</h1>
-		<nav class="aside-menu"></nav>
-	</aside>
-	
-<!-- ----------------main부분------------------- -->
-	<main id="main">
+<!-- ----------------main�κ�------------------- -->
+	<main id="main" layout:fragment="main">
 		<section class="">
-			<h1>감사일기</h1>
-			<h3>내가 쓴 감사일기 목록</h3>
+			<h1>�����ϱ�</h1>
+			<h3>���� �� �����ϱ� ���</h3>
 			<table>
 				<tr>
-					<th>번호</th>
-					<th>내용</th>
-					<th>작성자</th>
-					<th>작성일</th>
+					<th>��ȣ</th>
+					<th>����</th>
+					<th>�ۼ���</th>
+					<th>�ۼ���</th>
 				</tr>
 				
 				<tr th:each="d : ${gratitudeDiary}">
-					<td th:text="${d.id}">아이디</td>
-					<td th:text="${d.content1}"><a th:href="@{detail(id=${d.id})}">일기컨텐츠</a></td>
-					<td th:text="${d.memberId}">멤버아이디</td>
-					<td th:text="${#calendars.format(d.regDate, 'yyyy-MM-dd')">작성일자</td>
+					<td th:text="${d.id}">���̵�</td>
+					<td th:text="${d.content1}"><a th:href="@{detail(id=${d.id})}">�ϱ�������</a></td>
+					<td th:text="${d.memberId}">������̵�</td>
+					<td th:text="${#calendars.format(d.regDate, 'yyyy-MM-dd')">�ۼ�����</td>
 				</tr>
 			
 			</table>
 			<div>
-				<a href="reg">글쓰기</a>
+				<a href="reg">�۾���</a>
 			</div>
 		</section>
 	</main>
 	
-<!-- ----------------navbar부분------------------- -->
-	<div class="navbar">
-		<a href="">Feed</a> <a href="">My Diary</a> <a href="/diary/reg">Write</a>
-		<a href="">Calendar</a> <a href="">My Page</a>
-	</div>
-</body>
 </html>
