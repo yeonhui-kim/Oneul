@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/inc/layout">
+
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/css/feed/onelineReg.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<main id="wrapper"  layout:fragment="main">
+
+
+	
+	<form action="reg" method="post" id="main">
+
+		<div class="content">
+			<form action="reg" method="post">
+				<input class="txt" name="content" type="text">
+
+
+				<button type="submit" class="btn">
+					<span>확인</span>
+				</button>
+				
+			</form>
+		</div>
+
+	</form>
+
+	
+
+</main>
+
+</body>
+</html>

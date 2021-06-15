@@ -10,6 +10,10 @@ html, body {
 	background-color: #F2F2F2;
 }
 
+.d-none{
+    display: none;
+}
+
 /* ---------------ÇÇµå------------------------------------ */
 .box {
 	margin-bottom: 30px

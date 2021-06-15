@@ -24,5 +24,20 @@
 	<delete id="delete" parameterType="int">
 		delete from Oneline where id=#{id}
 	</delete>
+	
+	<update id="update"
+		parameterType="com.oneul.web.entity.Oneline">
+		update Oneline
+		<set>
+			<if test="id != null">id = #{id},</if>
+			<if test="content != null">content = #{content},</if>
+			<if test="content != null">content = #{content},</if>
+			<if test="memberId != null">memberId = #{memberId},</if>
+			<if test="regDate != null">regDate = #{regDate}</if>
+		</set>
+		where id=#{id}
+	</update>
+	
+	
     
 </mapper>

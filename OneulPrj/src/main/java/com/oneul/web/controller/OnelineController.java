@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -24,14 +25,14 @@ public class OnelineController {
 		List<Oneline> list = service.getList(1, null, null); //서비스 클래스에있는 getList(인자3개)값을 list에 넣자
 		model.addAttribute("list",list);//"list"라는 키값에 위에서 받아온 list데이터를 넣고 model로 전달된다.
 		//test
-		return "feed/oneline/oneline";
+		return "feed/oneline/list";
 	}
 	
-	@RequestMapping("reg")
+	@GetMapping("reg")
 	public String reg(Model model) {
 	
 		
-		return "feed.onelineReg";
+		return "feed/oneline/reg";
 	}
 	
 	
@@ -55,5 +56,23 @@ public class OnelineController {
 		service.delete(id);
 		return "redirect:list";
 	}
+	
+	@GetMapping("edit")
+	public String edit(int id, Model model) {
+		Oneline oneline = service.get(id);
+		model.addAttribute("Oneline",oneline);
+		
+		return "feed/oneline/edit";
+		
+	}
+	
+	@PostMapping("edit")
+	public String edit(Oneline oneline) {
+		service.update(oneline);
+		
+		return "redirect:list";
+	}
+	
+	
 	
 }
