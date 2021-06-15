@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/inc/layout">
 <head>
-<meta charset="UTF-8">
+	<meta charset="UTF-8">
+    <title>자유일기-수정페이지</title>
 </head>
-<main id="main">
+<main id="main" layout:fragment="main">
 
 	<section class="">
 		<table border="1">
@@ -41,3 +45,4 @@
 	</section>
 
 </main>
+</html>
