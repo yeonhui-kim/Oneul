@@ -10,7 +10,7 @@
 	</select>
 	<select id="getList" resultType="com.oneul.web.entity.GratitudeDiary">
 		select * from GratitudeDiary order by regdate desc
-		limit #{size} offset #{offset}
+		<!-- limit #{size} offset #{offset}-->
 	</select>
 	
 	<insert id="insert" parameterType="com.oneul.web.entity.GratitudeDiary">
