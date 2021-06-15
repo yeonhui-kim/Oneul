@@ -2,16 +2,18 @@ package com.oneul.web.entity;
 
 import java.util.Date;
 
+import javax.annotation.sql.DataSourceDefinition;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class FutureDiary {
 	private Integer id;
 	
-	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date bookingDate;
 	private String content;
 	private Boolean pub;
-	private String image;
+	private String image;	
 	private Date regDate;
 	private Integer memberId;
 	private Integer emotionId;
@@ -19,6 +21,21 @@ public class FutureDiary {
 	public FutureDiary() {
 		// TODO Auto-generated constructor stub
 	}
+	
+
+	public FutureDiary(Integer id, Date bookingDate, String content, Boolean pub, String image, Date regDate,
+			Integer memberId, Integer emotionId) {
+		super();
+		this.id = id;
+		this.bookingDate = bookingDate;
+		this.content = content;
+		this.pub = pub;
+		this.image = image;
+		this.regDate = regDate;
+		this.memberId = memberId;
+		this.emotionId = emotionId;
+	}
+
 
 	public Integer getId() {
 		return id;

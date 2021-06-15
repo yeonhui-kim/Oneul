@@ -34,8 +34,10 @@
     <update id="update" parameterType="com.oneul.web.entity.FutureDiary">
     	update FutureDiary
     	<set>
+    	<if test="emotionId != null">emotionId = #{emotionId},</if>		
     	<if test="bookingDate != null">bookingDate = #{bookingDate},</if>
     	<if test="content != null">content = #{content},</if>
+    	<if test="pub != null">pub = #{pub}</if>
     	</set>
     	where id=#{id}
     </update>

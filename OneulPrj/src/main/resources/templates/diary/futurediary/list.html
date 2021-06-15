@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>gratitudeDiary list</title>
+<title>미래일기 list</title>
 </head>
 <body>
 	<header id="header">
@@ -26,18 +26,17 @@
 			<table>
 				<tr>
 					<th>번호</th>
-					<th>내용</th>
-					<th>작성자</th>
+					<th>내용</th>				
 					<th>작성일</th>
 				</tr>
-				<c:forEach var="n" items="${list}" varStatus="st">
-					<tr>
-						<td>${n.id}</td>
-						<td><a href="detail?id=${n.id}">${n.content}</a></td>
-						<td>${n.memberId}</td>
-						<td><fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd" /></td>
+				
+					<tr th:each = "d:${list}">
+						<td th:text="${d.id}">01</td>
+						<td><a th:href="@{detail(id=${d.id})}" th:text="${d.content}">내용</a></td>
+						<td th:text="${#calendars.format(d.regDate,'yyyy-MM-dd')}">2021-01-01</td>
+						<td></td>
 					</tr>
-				</c:forEach>
+				
 			</table>
 			<div>
 				<a href="reg">글쓰기</a>

@@ -27,7 +27,7 @@ public class FutureDiaryController {
 		List<FutureDiary> list = service.getList(1);
 		
 		model.addAttribute("list", list);
-		return("diary.futurediary.list");
+		return("diary/futurediary/list");
 	}
 	
 	@RequestMapping("detail")
@@ -35,12 +35,12 @@ public class FutureDiaryController {
 		FutureDiary futureDiary = service.get(id);
 		
 		model.addAttribute("futureDiary", futureDiary);
-		return("diary.futurediary.detail");
+		return("diary/futurediary/detail");
 	}
 	
 	@PostMapping("reg")
-	public String reg(@DateTimeFormat(pattern="yyyy-MM-dd")Date bookingDate, String content) {
-		System.out.println("controller:"+bookingDate);
+	public String reg(@DateTimeFormat(pattern = "yyyy-MM-dd")Date bookingDate, String content) {
+		//System.out.println("controller:"+bookingDate);
 		FutureDiary futureDiary = new FutureDiary();
 		
 		futureDiary.setBookingDate(bookingDate);
@@ -52,7 +52,7 @@ public class FutureDiaryController {
 	}
 	@GetMapping("reg")
 	public String reg() {
-		return("diary.futurediary.reg");
+		return("diary/futurediary/reg");
 	}
 	
 	@GetMapping("edit")
@@ -60,7 +60,7 @@ public class FutureDiaryController {
 		FutureDiary futureDiary = service.get(id);
 		
 		model.addAttribute("futureDiary", futureDiary);
-		return("diary.futurediary.edit");
+		return("diary/futurediary/edit");
 	}
 	
 	@PostMapping("edit")
