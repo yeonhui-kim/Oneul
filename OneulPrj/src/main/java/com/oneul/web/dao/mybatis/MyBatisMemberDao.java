@@ -24,7 +24,7 @@ public class MyBatisMemberDao implements MemberDao {
 	@Override
 	public Member get(int id) {
 
-		return null;
+		return mapper.get(id);
 	}
 
 	@Override
