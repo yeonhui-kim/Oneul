@@ -5,32 +5,33 @@
 	layout:decorator="/inc/layout">
 
 <head>
+	<meta charset="UTF-8">
     <title>gratitudeDiary list</title>
 </head>
 
-<!-- ----------------mainºÎºÐ------------------- -->
+<!-- ----------------mainë¶€ë¶„------------------- -->
 	<main id="main" layout:fragment="main">
 		<section class="">
-			<h1>°¨»çÀÏ±â</h1>
-			<h3>³»°¡ ¾´ °¨»çÀÏ±â ¸ñ·Ï</h3>
+			<h1>ê°ì‚¬ì¼ê¸°</h1>
+			<h3>ë‚´ê°€ ì“´ ê°ì‚¬ì¼ê¸° ëª©ë¡</h3>
 			<table>
 				<tr>
-					<th>¹øÈ£</th>
-					<th>³»¿ë</th>
-					<th>ÀÛ¼ºÀÚ</th>
-					<th>ÀÛ¼ºÀÏ</th>
+					<th>ë²ˆí˜¸</th>
+					<th>ë‚´ìš©</th>
+					<th>ìž‘ì„±ìž</th>
+					<th>ìž‘ì„±ì¼</th>
 				</tr>
 				
 				<tr th:each="d : ${gratitudeDiary}">
-					<td th:text="${d.id}">¾ÆÀÌµð</td>
-					<td th:text="${d.content1}"><a th:href="@{detail(id=${d.id})}">ÀÏ±âÄÁÅÙÃ÷</a></td>
-					<td th:text="${d.memberId}">¸â¹ö¾ÆÀÌµð</td>
-					<td th:text="${#calendars.format(d.regDate, 'yyyy-MM-dd')">ÀÛ¼ºÀÏÀÚ</td>
+					<td th:text="${d.id}">ì•„ì´ë””</td>
+					<td th:text="${d.content1}"><a th:href="@{detail(id=${d.id})}">ì¼ê¸°ì»¨í…ì¸ </a></td>
+					<td th:text="${d.memberId}">ë©¤ë²„ì•„ì´ë””</td>
+					<td th:text="${#calendars.format(d.regDate, 'yyyy-MM-dd')">ìž‘ì„±ì¼ìž</td>
 				</tr>
 			
 			</table>
 			<div>
-				<a href="reg">±Û¾²±â</a>
+				<a href="reg">ê¸€ì“°ê¸°</a>
 			</div>
 		</section>
 	</main>
