@@ -12,6 +12,8 @@ public interface OnelineDao {
 	
 	int insert (Oneline oneline);
 	int delete (int id);
+	int update(Oneline oneline);
+	
 	
 
 }

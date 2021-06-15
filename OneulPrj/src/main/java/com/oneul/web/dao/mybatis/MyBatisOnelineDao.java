@@ -55,6 +55,12 @@ public class MyBatisOnelineDao implements OnelineDao{
 		return mapper.delete(id);
 	}
 
+	@Override
+	public int update(Oneline oneline) {
+		// TODO Auto-generated method stub
+		return mapper.update(oneline);
+	}
+
 
 	}
 
