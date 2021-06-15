@@ -1,53 +1,38 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>gratitudeDiary list</title>
-</head>
-<body>
-	<header id="header">
-		<h1 class="logo">
-			Oneul<a href=""><img src=""></a>
-		</h1>
-		<nav class="header-menu">
-			<h1 class="d-none">í—¤ë”ë²„íŠ¼</h1>
-		</nav>
-	</header>
-	
-	<aside id="aside">
-		<h1 class="d-none">ì–´ì‚¬ì´ë“œ</h1>
-		<nav class="aside-menu"></nav>
-	</aside>
+<html 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/inc/layout">
 
-	<main id="main">
+<head>
+    <title>gratitudeDiary list</title>
+</head>
+
+<!-- ----------------mainºÎºĞ------------------- -->
+	<main id="main" layout:fragment="main">
 		<section class="">
-			<h1>ê°ì‚¬ì¼ê¸°</h1>
-			<h3>ë‚´ê°€ ì“´ ê°ì‚¬ì¼ê¸° ëª©ë¡</h3>
+			<h1>°¨»çÀÏ±â</h1>
+			<h3>³»°¡ ¾´ °¨»çÀÏ±â ¸ñ·Ï</h3>
 			<table>
 				<tr>
-					<th>ë²ˆí˜¸</th>
-					<th>ë‚´ìš©</th>
-					<th>ì‘ì„±ì</th>
-					<th>ì‘ì„±ì¼</th>
+					<th>¹øÈ£</th>
+					<th>³»¿ë</th>
+					<th>ÀÛ¼ºÀÚ</th>
+					<th>ÀÛ¼ºÀÏ</th>
 				</tr>
-				<c:forEach var="n" items="${list}" varStatus="st">
-					<tr>
-						<td>${n.id}</td>
-						<td><a href="detail?id=${n.id}">${n.content}</a></td>
-						<td>${n.memberId}</td>
-						<td><fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd" /></td>
-					</tr>
-				</c:forEach>
+				
+				<tr th:each="d : ${gratitudeDiary}">
+					<td th:text="${d.id}">¾ÆÀÌµğ</td>
+					<td th:text="${d.content1}"><a th:href="@{detail(id=${d.id})}">ÀÏ±âÄÁÅÙÃ÷</a></td>
+					<td th:text="${d.memberId}">¸â¹ö¾ÆÀÌµğ</td>
+					<td th:text="${#calendars.format(d.regDate, 'yyyy-MM-dd')">ÀÛ¼ºÀÏÀÚ</td>
+				</tr>
+			
 			</table>
 			<div>
-				<a href="reg">ê¸€ì“°ê¸°</a>
+				<a href="reg">±Û¾²±â</a>
 			</div>
 		</section>
 	</main>
-
-	<div class="navbar">
-		<a href="">Feed</a> <a href="">My Diary</a> <a href="/diary/reg">Write</a>
-		<a href="">Calendar</a> <a href="">My Page</a>
-	</div>
-</body>
+	
 </html>

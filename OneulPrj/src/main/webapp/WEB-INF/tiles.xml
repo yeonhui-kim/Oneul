@@ -24,4 +24,11 @@
     <put-attribute name="navbar" value="/WEB-INF/view/inc/navbar.jsp" />
   </definition>
   
+  <definition name="feed.*" template="/WEB-INF/view/feed/inc/layout.jsp">   
+    <put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
+    <put-attribute name="aside" value="/WEB-INF/view/inc/aside.jsp" />
+    <put-attribute name="main" value="/WEB-INF/view/feed/{1}.jsp" />
+    <put-attribute name="navbar" value="/WEB-INF/view/inc/navbar.jsp" />
+  </definition>
+  
 </tiles-definitions>

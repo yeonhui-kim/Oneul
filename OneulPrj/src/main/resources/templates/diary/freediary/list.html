@@ -1,53 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>gratitudeDiary list</title>
 </head>
-<body>
-	<header id="header">
-		<h1 class="logo">
-			Oneul<a href=""><img src=""></a>
-		</h1>
-		<nav class="header-menu">
-			<h1 class="d-none">헤더버튼</h1>
-		</nav>
-	</header>
-	
-	<aside id="aside">
-		<h1 class="d-none">어사이드</h1>
-		<nav class="aside-menu"></nav>
-	</aside>
+<main id="main">
+	<section class="">
+		<h1>자유일기</h1>
+		<h3>내가 쓴 자유일기 목록</h3>
+		<table>
+			<tr>
+				<th>번호</th>
+				<th>내용</th>
+				<th>작성자</th>
+				<th>작성일</th>
+			</tr>
 
-	<main id="main">
-		<section class="">
-			<h1>감사일기</h1>
-			<h3>내가 쓴 감사일기 목록</h3>
-			<table>
-				<tr>
-					<th>번호</th>
-					<th>내용</th>
-					<th>작성자</th>
-					<th>작성일</th>
+				<tr th:each="n:${list}">
+					<td th:text="${n.id}">게시글아이디자리</td>
+					<td><a th:href="@{detail(id=${n.id})}" th:text="${n.content}"></a></td>
+					<td th:text="${n.memberId}">멤버아이디자리</td>
+					<td th:text="${#calendars.format(n.regDate,'yyyy-MM-dd')}">일기작성일자</td>
 				</tr>
-				<c:forEach var="n" items="${list}" varStatus="st">
-					<tr>
-						<td>${n.id}</td>
-						<td><a href="detail?id=${n.id}">${n.content}</a></td>
-						<td>${n.memberId}</td>
-						<td><fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd" /></td>
-					</tr>
-				</c:forEach>
-			</table>
-			<div>
-				<a href="reg">글쓰기</a>
-			</div>
-		</section>
-	</main>
 
-	<div class="navbar">
-		<a href="">Feed</a> <a href="">My Diary</a> <a href="/diary/reg">Write</a>
-		<a href="">Calendar</a> <a href="">My Page</a>
-	</div>
-</body>
+		</table>
+		<div>
+			<a href="reg">글쓰기</a>
+		</div>
+	</section>
+</main>
 </html>

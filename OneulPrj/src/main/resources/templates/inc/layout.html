@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>layout</title>
+    <link href="/css/teststyle.css" type="text/css" rel="stylesheet">
+</head>
+
+	<body>
+	
+	<!-- ----------------header부분------------------- -->
+		<div th:replace="inc/header::header"></div>
+		
+	<!-- ----------------aside부분------------------- -->	
+		<aside id="aside">
+			<h1 class="d-none">어사이드</h1>
+			<nav class="aside-menu"></nav>
+		</aside>
+		
+	<!-- ----------------main부분------------------- -->
+		<div layout:fragment="main"></div>
+		
+	<!-- ----------------navbar부분------------------- -->
+		<div th:replace="inc/navbar::navbar"></div>
+		
+	</body>
+	
+</html>

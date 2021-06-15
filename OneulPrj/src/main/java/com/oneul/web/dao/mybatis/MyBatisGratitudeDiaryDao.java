@@ -28,7 +28,7 @@ public class MyBatisGratitudeDiaryDao implements GratitudeDiaryDao {
 
 	@Override
 	public List<GratitudeDiary> getList() {
-		return getList();
+		return mapper.getList();
 	}
 
 	@Override
