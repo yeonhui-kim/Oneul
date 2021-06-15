@@ -8,4 +8,8 @@
 		insert into Member (userId, password, name, email, birthday)
 		 VALUES (#{userId}, #{password}, #{name}, #{email}, #{birthday})
 	</insert>
+	
+	<select id="get" resultType="com.oneul.web.entity.Member">
+		select * from Notice where id=#{id}
+	</select>
 </mapper>    
