@@ -38,7 +38,7 @@
 			<div>
 				<a href="list">목록</a> 
 				<a th:href="@{edit(id=${gratitudeDiary.id})}">수정</a>
-				<a th:href="@{list}"
+				<a th:href="@{del(id=${gratitudeDiary.id})}"
 					onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a>
 			</div>
 

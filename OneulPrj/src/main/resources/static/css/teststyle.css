@@ -51,6 +51,10 @@ a{
     background-color: #e3f2fd;
     
 }
+#main{
+	overflow: scroll;
+    height: 86%;
+}
 /* The navigation bar */
 #navbar {
     overflow: hidden;

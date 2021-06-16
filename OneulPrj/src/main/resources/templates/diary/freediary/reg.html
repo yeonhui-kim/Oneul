@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/inc/layout">
 <head>
-<meta charset="UTF-8">
+	<meta charset="UTF-8">
+    <title>자유일기</title>
 </head>
-<main id="main">
+<main id="main" layout:fragment="main">
 
 	<form class="form" action="reg" method="post"
 		enctype="multipart/form-data">
@@ -18,11 +22,11 @@
 			</tr>
 			<tr>
 				<th>첨부파일</th>
-				<td colspan="3"><input type="file" name="f"></td>
+				<td colspan="3"><input type="file" name="file"></td>
 			</tr>
 			<tr>
 				<th>공개선택</th>
-				<td colspan="3">공개 / 비공개</td>
+				<td colspan="3"><input type="checkbox" name="open">공개 / 비공개</td>
 			</tr>
 			<tr>
 				<td colspan="4">
