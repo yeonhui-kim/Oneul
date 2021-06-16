@@ -1,27 +1,16 @@
 
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultaq.net.nz/thymeleaf/layout"
+layout:decorator="/inc/layout">
 <head>
 <meta charset="UTF-8">
 <title>미래일기 list</title>
 </head>
 <body>
-	<header id="header">
-		<h1 class="logo">
-			Oneul<a href=""><img src=""></a>
-		</h1>
-		<nav class="header-menu">
-			<h1 class="d-none">헤더버튼</h1>
-		</nav>
-	</header>
-	
-	<aside id="aside">
-		<h1 class="d-none">어사이드</h1>
-		<nav class="aside-menu"></nav>
-	</aside>
 
 	
-<main id="main">
+<main id="main" layout:fragment="main">
 	<section class="">
 		<h1>Feed section</h1>
 		<h3>Test table</h3>
@@ -40,6 +29,7 @@
                               </tr>  
                               <tr>
                                  <td colspan="4">
+                                 <input type="file" name="file" value="0">
                                  <textarea rows="20" cols="80" name="content"></textarea>
                                     
                                  </td>
@@ -55,10 +45,7 @@
 	</section>
 </main>
 
-	<div class="navbar">
-		<a href="">Feed</a> <a href="">My Diary</a> <a href="/diary/reg">Write</a>
-		<a href="">Calendar</a> <a href="">My Page</a>
-	</div>
+	
 </body>
 </html>
 

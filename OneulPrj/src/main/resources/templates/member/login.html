@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="inc/layout">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,23 +10,9 @@
     <link href="../css/member/login.css" type="text/css" rel="stylesheet">
 
 </head>
-<body>
-    <header id="header">
-        <h1 class="logo">Oneul<a href=""><img src=""></a></h1>
-        <nav class="header-menu">
-            <h1 class="d-none">헤더버튼</h1>
 
-        </nav>
 
-    </header>
-    <aside id="aside">
-        <h1 class="d-none">어사이드</h1>
-        <nav class="aside-menu">
-
-        </nav>
-    </aside>
-
-    <main>
+     <main class="main" layout:fragment="main">
         <div class="login-box">
             <form class="login-form" method="post">
                 <h2 class="login-title">로그인</h2>
@@ -47,13 +35,6 @@
             </ul>
         </div>
     </main>
-    <div class="navbar">
-        <a href="">Feed</a>
-        <a href="">My Diary</a>
-        <a href="">Write</a>
-        <a href="">Calendar</a>
-        <a href="">My Page</a>
-      </div>
 
-</body>
+
 </html>

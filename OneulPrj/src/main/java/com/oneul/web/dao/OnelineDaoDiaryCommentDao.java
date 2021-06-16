@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.oneul.web.entity.Oneline;
 
-public interface OnelineDao {
+public interface OnelineDaoDiaryCommentDao {
 	Oneline get(int id);	
 	List<Oneline> getList();//필터링, 정렬, 페이징, 집계	
 	List<Oneline> getList(int offset, int size);

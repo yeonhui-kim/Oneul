@@ -46,5 +46,18 @@ public class OnelineServiceimp implements OnelineService {
 		return dao.delete(id);
 	}
 
+	@Override
+	public int update(Oneline oneline) {
+
+		return dao.update(oneline);
+		
+	}
+
+	@Override
+	public Oneline get(int id) {
+		// TODO Auto-generated method stub
+		return dao.get(id);
+	}
+
 
 }
