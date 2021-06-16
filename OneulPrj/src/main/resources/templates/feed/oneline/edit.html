@@ -10,29 +10,29 @@
 </head>
 <body>
 
-<main id="wrapper"  layout:fragment="main">
+	<main id="wrapper" layout:fragment="main">
 
 
-	
-	<form action="edit" method="post" id="main">
 
-		<div class="content">
-			<form action="edit" method="post">
-				<input th:text="${Oneline.content}" class="txt" name="content" type="text">
+		<form action="reg" method="post" id="main">
+
+			<div class="content">
+				<form action="reg" method="post">
+					<textarea th:text="${Oneline.content}" class=txt name="content"></textarea>
 
 
-				<button type="submit" class="btn">
-					<span>확인</span>
-				</button>
-				
-			</form>
-		</div>
+					<button type="submit" class="btn">
+						<span>확인</span>
+					</button>
 
-	</form>
+				</form>
+			</div>
 
-	
+		</form>
 
-</main>
+
+
+	</main>
 
 </body>
 </html>
