@@ -23,8 +23,8 @@
     </select>
     
     <insert id="insert" parameterType="com.oneul.web.entity.FutureDiary">
-    	insert into FutureDiary(memberId,bookingDate, content)
-    	values(#{memberId},#{bookingDate},#{content})
+    	insert into FutureDiary(memberId,bookingDate,content,pub)
+    	values(#{memberId},#{bookingDate},#{content},#{pub})
     </insert>
     
     <delete id="delete">
