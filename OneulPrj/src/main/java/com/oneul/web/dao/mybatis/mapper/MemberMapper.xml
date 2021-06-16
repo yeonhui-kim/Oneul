@@ -10,6 +10,22 @@
 	</insert>
 	
 	<select id="get" resultType="com.oneul.web.entity.Member">
-		select * from Notice where id=#{id}
+		select * from Member where id=#{id}
+	</select>
+	
+	<update id="update" parameterType="com.oneul.web.entity.Member">
+    	update Member
+    	<set>
+			<if test="password != null">password = #{password},</if>
+			<if test="name != null">name = #{name},</if>
+			<if test="email != null">email = #{email},</if>
+			<if test="birthday != null">birthday = #{birthday},</if>
+			<if test="image != null">image = #{image}</if>
+    	</set>
+	   	where userId = #{userId}
+    </update>
+	
+	<select id="check_id" parameterType="String" resultType="int">
+		select count(*) from Member where userId=#{id}
 	</select>
 </mapper>    

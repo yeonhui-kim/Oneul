@@ -6,6 +6,7 @@ import java.sql.Date;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,8 +26,21 @@ public class MemberController {
 	
 	@RequestMapping("login")
 	public String login() {
+		
 		return "member/login";
 	}
+	
+	@PostMapping("dologin")
+	public String dologin(HttpServletRequest request) {
+		String username = request.getParameter("username");
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("username", username);
+		
+		return "member/mypagetest";
+	}
+	
+
 	
 	@RequestMapping("signup")
 	public String signup() {
@@ -60,18 +74,17 @@ public class MemberController {
 	}
 	
 	
-	@RequestMapping("uploadtest")
-	public String upload() {
-		return "member/uploadtest";
+	@RequestMapping("mypagetest")
+	public String mypage() {
+		return "member/mypagetest";
 	}
 	
 	@PostMapping("upload")
 	public String upload(MultipartFile file, HttpServletRequest request) {
-		
 		String fileName = file.getOriginalFilename();//파일이름
 		
 		ServletContext application = request.getServletContext();
-		String path = "/upload";
+		String path = "/upload/profile";
 		String realPath = application.getRealPath(path);
 		
 		File pathFile = new File(realPath);
@@ -90,7 +103,17 @@ public class MemberController {
 			e.printStackTrace();
 		}
 		
-		return "member/uploadtest";
+		HttpSession session = request.getSession(true);
+		String username = (String) session.getAttribute("username");
+		
+		Member member = new Member();
+		member.setUserId(username);
+		member.setImage(fileName);
+		service.update(member);
+		
+		//String imageName = service.get(1).getImage();
+		return "member/mypagetest";
+		//return "member/mypagetest?imagename="+imageName;
 	}
 
 }

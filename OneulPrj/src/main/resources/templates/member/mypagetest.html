@@ -2,12 +2,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>마이페이지 테스트</title>
 </head>
 <body>
 	<form action="/member/upload" method="post" enctype="multipart/form-data">
 		<input type="file" name="file"><br>
 		<input type="submit" value="전송">
 	</form>
+	
+	<h1>프로필사진테스트</h1>
+	<img src="/upload/${param.imagename}">
 </body>
 </html>

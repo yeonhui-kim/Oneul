@@ -8,7 +8,12 @@ public interface MemberService {
 	Member get(int id);
 	List<Member> getList();
 	
+	int check_id(String userId);
 	int insert(Member member);
+	
 	int update(Member member);
 	int delete(int id);
+	
+	int member_plus(Member member);
+
 }
