@@ -1,7 +1,12 @@
 package com.oneul.web.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Date;
 import java.util.List;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.oneul.web.entity.FreeDiary;
 import com.oneul.web.entity.Member;
@@ -38,10 +44,37 @@ public class FreeDiaryController {
 	}
 	
 	@PostMapping("reg")
-	public String reg(FreeDiary freeDiary) {
+	public String reg(FreeDiary freeDiary,
+				MultipartFile file,
+				HttpServletRequest request) {
 		freeDiary.setPub(true);
 		freeDiary.setMemberId(4);		
 		service.insert(freeDiary);
+			
+			String fileName = file.getOriginalFilename();
+			
+			ServletContext application = request.getServletContext();
+			String path = "/upload";
+			String realPath = application.getRealPath(path);
+			
+			File pathFile = new File(realPath);
+			if(!pathFile.exists())
+				pathFile.mkdirs();
+			
+			String filePath = realPath + File.separator + fileName;
+			
+			File saveFile = new File(filePath);
+			
+			try {
+				file.transferTo(saveFile);
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}		
+		
 		
 		return "redirect:list";
 	}
@@ -75,5 +108,7 @@ public class FreeDiaryController {
 		service.update(freeDiary);
 		return "redirect:detail?id="+freeDiary.getId();
 	}
+	
+	
 	
 }
