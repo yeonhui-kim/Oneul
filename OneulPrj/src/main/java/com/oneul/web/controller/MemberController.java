@@ -3,6 +3,8 @@ package com.oneul.web.controller;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
+import java.util.List;
+import java.util.ServiceConfigurationError;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
@@ -31,11 +34,14 @@ public class MemberController {
 	}
 	
 	@PostMapping("dologin")
-	public String dologin(HttpServletRequest request) {
+	public String dologin(HttpServletRequest request, Model model) {
 		String username = request.getParameter("username");
-		
+	
 		HttpSession session = request.getSession();
 		session.setAttribute("username", username);
+		
+		Member member = service.get(username);
+		model.addAttribute("member", member);
 		
 		return "member/mypagetest";
 	}
@@ -76,11 +82,13 @@ public class MemberController {
 	
 	@RequestMapping("mypagetest")
 	public String mypage() {
+		
+		
 		return "member/mypagetest";
 	}
 	
 	@PostMapping("upload")
-	public String upload(MultipartFile file, HttpServletRequest request) {
+	public String upload(MultipartFile file, HttpServletRequest request, Model model) {
 		String fileName = file.getOriginalFilename();//파일이름
 		
 		ServletContext application = request.getServletContext();
@@ -111,9 +119,10 @@ public class MemberController {
 		member.setImage(fileName);
 		service.update(member);
 		
-		//String imageName = service.get(1).getImage();
+		Member member2 = service.get(username);
+		model.addAttribute("member", member2);
+		
 		return "member/mypagetest";
-		//return "member/mypagetest?imagename="+imageName;
 	}
 
 }

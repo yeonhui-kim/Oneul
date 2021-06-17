@@ -5,7 +5,7 @@ import java.util.List;
 import com.oneul.web.entity.Member;
 
 public interface MemberService {
-	Member get(int id);
+	Member get(String userId);
 	List<Member> getList();
 	
 	int check_id(String userId);

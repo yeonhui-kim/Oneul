@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>마이페이지 테스트</title>
@@ -11,6 +11,7 @@
 	</form>
 	
 	<h1>프로필사진테스트</h1>
-	<img src="/upload/${param.imagename}">
+	<img th:src="@{/upload/profile/basic.jpg}" th:if="${member.image}=='basic.jpg'">
+	<img th:src="@{'/upload/profile/'+${member.image}}" th:if="${member.image}!='basic.jpg'">
 </body>
 </html>

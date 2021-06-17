@@ -16,9 +16,9 @@ public class MemberServiceimp implements MemberService {
 	private MemberDao memberdao;
 	
 	@Override
-	public Member get(int id) {
+	public Member get(String userId) {
 
-		return memberdao.get(id);
+		return memberdao.get(userId);
 	}
 
 	@Override

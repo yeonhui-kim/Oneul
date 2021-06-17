@@ -10,7 +10,7 @@
 	</insert>
 	
 	<select id="get" resultType="com.oneul.web.entity.Member">
-		select * from Member where id=#{id}
+		select * from Member where userId=#{userId}
 	</select>
 	
 	<update id="update" parameterType="com.oneul.web.entity.Member">

@@ -22,9 +22,9 @@ public class MyBatisMemberDao implements MemberDao {
 	}
 	
 	@Override
-	public Member get(int id) {
+	public Member get(String userId) {
 
-		return mapper.get(id);
+		return mapper.get(userId);
 	}
 
 	@Override
