@@ -30,17 +30,51 @@
 			</tr>
 			<tr>
 				<th>공개선택</th>
-				<td colspan="3"><input type="checkbox" name="open">공개 / 비공개</td>
+				<td colspan="3" th:text="${freeDiary.pub}">공개 / 비공개</td>
 			</tr>
 			<tr>
 				<td colspan="4" th:text="${freeDiary.content}"></td>
 			</tr>
 		</table>
+		
 		<div>
 			<a href="list">목록</a> <a th:href="@{edit(id=${freeDiary.id})}">수정</a> 
 			<a th:href="@{del(id=${freeDiary.id})}"
 				onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a>
 		</div>
+
+<div class="container">
+    <form id="commentForm" name="commentForm" method="post">
+    <br><br>
+        <div>
+            <div>
+                <span><strong>Comments</strong></span> <span id="cCnt"></span>
+            </div>
+            <div>
+                <table class="table">                    
+                    <tr>
+                        <td>
+                            <textarea style="width: 500px" rows="3" cols="30" id="comment" name="comment" placeholder="댓글을 입력하세요"></textarea>
+                            <br>
+                            <div>
+                                <a href='#' onClick="fn_comment('${result.code }')" class="btn pull-right btn-success">등록</a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <input type="hidden" id="b_code" name="b_code" value="${result.code }" />        
+    </form>
+</div><!-- container -->
+<!-- 댓글 -->
+<div id="reply">
+  <ol th:each="n:${commentList}">
+        <p th:text="${n.memberId}"></p>
+        <p th:text="${n.regDate}"></p>
+        <p th:text="${n.content}"></p>
+  </ol>
+</div>
 
 	</section>
 

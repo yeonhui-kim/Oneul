@@ -52,6 +52,8 @@ public class FreeDiary {
 		this.image = image;
 	}
 
+	
+
 	public Boolean getPub() {
 		return pub;
 	}
@@ -89,8 +91,8 @@ public class FreeDiary {
 		return "FreeDiary [id=" + id + ", content=" + content + ", image=" + image + ", pub=" + pub + ", regDate="
 				+ regDate + ", memberId=" + memberId + ", emotionId=" + emotionId + "]";
 	}
-	
-	
+
+
 	
 	
 
