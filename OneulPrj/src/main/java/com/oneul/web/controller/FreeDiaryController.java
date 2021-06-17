@@ -1,8 +1,10 @@
 package com.oneul.web.controller;
 
 import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 
+import org.apache.commons.beanutils.converters.CalendarConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,11 +22,15 @@ import com.oneul.web.service.FreeDiaryService;
 public class FreeDiaryController {
 	
 
+	
 	@Autowired
 	private FreeDiaryService service;
 	
 	@RequestMapping("list")
 	public String list(Model model) {
+
+		
+		
 		List<FreeDiary> list = service.getList();
 		model.addAttribute("list",list);
 		
