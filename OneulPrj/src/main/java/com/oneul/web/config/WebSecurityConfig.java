@@ -20,6 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		http
 			.authorizeRequests()
 				.antMatchers("/member/logintest").hasAnyRole("MEMBER")
+				.antMatchers("/member/mypagetest").hasAnyRole("MEMBER")
 				.and() // 경로 설정 끝냄
 			.formLogin() //권한x일때 로그인페이지로
 				.loginPage("/member/login")
