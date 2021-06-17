@@ -35,17 +35,9 @@ public class GratitudeDiaryController {
 	}
 	
 	@PostMapping("reg")
-	public String reg(GratitudeDiary gratitudeDiary, 
-						String content1, String content2, String content3, String pub, Integer emotionId) {
+	public String reg(GratitudeDiary gratitudeDiary) {
 		
-		int p = Integer.parseInt(pub);
-		
-		gratitudeDiary.setContent1(content1);
-		gratitudeDiary.setContent2(content2);
-		gratitudeDiary.setContent3(content3);
-		gratitudeDiary.setPub(p);
-		gratitudeDiary.setMemberId(4);
-		gratitudeDiary.setEmotionId(emotionId);
+		gratitudeDiary.setMemberId(2);
 		
 		service.insert(gratitudeDiary);
 		
