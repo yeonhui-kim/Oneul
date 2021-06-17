@@ -29,7 +29,7 @@ ul,ol{
 }
 
 body{
-    font-family: "ê³ ë”•", Arial, Helvetica, sans-serif;
+    font-family: "°íµñ", Arial, Helvetica, sans-serif;
     font-size: 11px;
     color:var(--color-basic);
 }
@@ -93,3 +93,72 @@ a{
   }
 
 /* ---- main style ------------------------------------------------ */
+main{
+  height: 87%;
+  display: flex;
+  align-items: center;
+}
+
+.signup-box{
+  background-color: #d0eaff;
+  border-radius: 10%;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  height: 70%;
+  width: 70%;
+    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+    
+}
+
+  .signup-form{
+    height: 90%;
+    width: 80%;
+  }
+  
+    .signup-title{
+      color: rgb(114, 114, 114);
+      text-align: center;
+      font-size: large;
+    }
+
+    .signup-form ul{
+      height: 80%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+      .signup-form ul li{
+        height: 70%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        
+      }
+
+        .signup-form ul li input{
+          height: 80%;
+          width: 100%;
+          
+          border-style: none;
+          border-radius: 8px;
+        }
+        	.date{
+        		background: white;
+        	}
+
+        .btn{
+          display: flex;
+        }
+
+          .btn-submit{
+            background-color: rgb(61, 203, 228);
+            color: beige;
+            font-weight: bold;
+          }

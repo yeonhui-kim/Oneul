@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="inc/layout">
+	
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link href="../css/member/signup.css" type="text/css" rel="stylesheet">
+
+</head>
+    <main class="main" layout:fragment="main">
+        <div class="signup-box">
+             <form class="signup-form" action="reg" method="post">
+                <h2 class="signup-title">회원가입</h2>
+                <ul>
+                    <li>
+                        <input type="text" name="username" placeholder="아이디"/>
+                    </li>
+                    <li>
+                        <input type="password" name="password" placeholder="비밀번호"/>
+                    </li>
+                    <!-- <li>
+                        <input type="password" name="passwordCheck" placeholder="비밀번호 확인"/>
+                    </li> -->
+                    <li>
+                        <input type="text" name="name" placeholder="이름"/>
+                    </li>
+                    <li>
+                        <input class="date" type="date" name="birthday" placeholder="생년월일"/>
+                    </li>
+                    <li>
+                        <input type="email" name="email" placeholder="sophie@example.com"/>
+                    </li>
+                    <li class="btn">
+                        <input class="btn-submit" type="submit" value="회원가입">
+                        <input class="btn-cancel" type="button" value="취소" onclick="window.location.href='login'">
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </main>
+</html>

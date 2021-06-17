@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oneul.web.dao.OnelineDao">
+	
+    <select id="get" resultType="com.oneul.web.entity.Oneline">
+        select * from Oneline where id=#{id}
+    </select>
+    
+    <select id="getList" resultType="com.oneul.web.entity.Oneline">
+        select * from Oneline 
+		order by regdate desc
+		LIMIT #{size} offset #{offset}
+    </select>
+    
+    <insert id="insert"
+		parameterType="com.oneul.web.entity.Oneline">
+		insert into Oneline(content, memberId)
+		values(#{content},#{memberId})
+	</insert>
+	
+	<delete id="delete" parameterType="int">
+		delete from Oneline where id=#{id}
+	</delete>
+	
+	<update id="update"
+		parameterType="com.oneul.web.entity.Oneline">
+		update Oneline
+		<set>
+			<if test="id != null">id = #{id},</if>
+			<if test="content != null">content = #{content},</if>
+			<if test="content != null">content = #{content},</if>
+			<if test="memberId != null">memberId = #{memberId},</if>
+			<if test="regDate != null">regDate = #{regDate}</if>
+		</set>
+		where id=#{id}
+	</update>
+	
+	
+    
+</mapper>

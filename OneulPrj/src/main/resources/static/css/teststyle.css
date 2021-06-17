@@ -51,8 +51,12 @@ a{
     background-color: #e3f2fd;
     
 }
+#main{
+	overflow: scroll;
+    height: 86%;
+}
 /* The navigation bar */
-.navbar {
+#navbar {
     overflow: hidden;
     background-color: #90caf9;
     position: fixed; 
@@ -60,7 +64,7 @@ a{
     width: 100%;
   }  
   /* Links inside the navbar */
-  .navbar a {
+  #navbar a {
     float: left;
     display: block;
     color: #fdf7f7;
@@ -70,7 +74,7 @@ a{
   }
   
   /* Change background on mouse-over */
-  .navbar a:hover {
+  #navbar a:hover {
     background: #ddd;
     color: black;
   }

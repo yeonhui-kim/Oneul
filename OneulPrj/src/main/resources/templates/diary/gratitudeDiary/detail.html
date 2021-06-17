@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/inc/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <title>gratitudeDiary detail</title>
+</head>
+
+<!-- ----------------main부분------------------- -->
+	<main id="main" layout:fragment="main">
+		<section class="">
+			<table border="1">
+				<tr>
+					<th>감정선택</th>
+					<td colspan="3">감정이모티콘뷰</td>
+				</tr>
+				<tr>
+					<th>작성일</th>
+					<td colspan="3" th:text="${#calendars.format(gratitudeDiary.regDate, 'yyyy-MM-dd a hh:mm:ss')}">작성일자</td>
+				</tr>
+				<tr>
+					<th>공개선택</th>
+					<td colspan="3" th:text="${gratitudeDiary.pub}">공개 / 비공개</td>
+				</tr>
+				<tr>
+					<td colspan="4" th:text="${gratitudeDiary.content1}">첫번째 감사</td>
+				</tr>
+				<tr>
+					<td colspan="4" th:text="${gratitudeDiary.content2}">두번째 감사</td>
+				</tr>
+				<tr>
+					<td colspan="4" th:text="${gratitudeDiary.content3}">세번째 감사</td>
+				</tr>
+			</table>
+			<div>
+				<a href="list">목록</a> 
+				<a th:href="@{edit(id=${gratitudeDiary.id})}">수정</a>
+				<a th:href="@{del(id=${gratitudeDiary.id})}"
+					onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a>
+			</div>
+
+		</section>
+	</main>
+
+</html>

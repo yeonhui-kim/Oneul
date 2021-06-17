@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/inc/layout">
+
+<head>
+	<meta charset="UTF-8">
+    <title>gratitudeDiary list</title>
+</head>
+
+<!-- ----------------main부분------------------- -->
+	<main id="main" layout:fragment="main">
+		<section class="">
+			<h1>감사일기</h1>
+			<h3>내가 쓴 감사일기 목록</h3>
+			<table>
+				<tr>
+					<th>번호</th>
+					<th>내용</th>
+					<th>작성자</th>
+					<th>작성일</th>
+				</tr>
+				
+				<tr th:each="d : ${list}">
+					<td th:text="${d.id}">아이디</td>
+					<td>
+						<a th:href="@{detail(id=${d.id})}" 
+						   th:text="${d.content1}">일기컨텐츠</a>
+					</td>
+					<td th:text="${d.memberId}">멤버아이디</td>
+					<td th:text="${#calendars.format(d.regDate,'yyyy-MM-dd')}">작성일자</td>
+				</tr>
+			
+			</table>
+			<div>
+				<a href="reg">글쓰기</a>
+			</div>
+		</section>
+	</main>
+	
+</html>
