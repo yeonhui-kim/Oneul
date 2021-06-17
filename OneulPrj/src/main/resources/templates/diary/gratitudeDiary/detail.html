@@ -21,9 +21,9 @@
 					<th>작성일</th>
 					<td colspan="3" th:text="${#calendars.format(gratitudeDiary.regDate, 'yyyy-MM-dd a hh:mm:ss')}">작성일자</td>
 				</tr>
-				<tr>
-					<th>공개선택</th>
-					<td colspan="3" th:text="${gratitudeDiary.pub}">공개 / 비공개</td>
+				<tr th:with="pub = ${gratitudeDiary.pub}==0?'비공개':'공개'">
+					<th>공개여부</th>
+					<td colspan="3"	th:text="${pub}">공개 / 비공개</td>
 				</tr>
 				<tr>
 					<td colspan="4" th:text="${gratitudeDiary.content1}">첫번째 감사</td>
@@ -38,7 +38,7 @@
 			<div>
 				<a href="list">목록</a> 
 				<a th:href="@{edit(id=${gratitudeDiary.id})}">수정</a>
-				<a th:href="@{list}"
+				<a th:href="@{del(id=${gratitudeDiary.id})}"
 					onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a>
 			</div>
 
