@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.oneul.web.entity.FreeDiary;
 import com.oneul.web.entity.FreeDiaryComment;
+import com.oneul.web.entity.GratitudeDiary;
 import com.oneul.web.entity.Member;
 import com.oneul.web.service.FreeDiaryCommentService;
 import com.oneul.web.service.FreeDiaryCommentServiceImp;
@@ -94,10 +95,25 @@ public class FreeDiaryController {
 		return "diary/freediary/detail";
 	}
 	
+	@PostMapping("detail")
+	public String commentReg(int id,FreeDiary freeDiary,FreeDiaryComment freeDiaryComment) {
+		freeDiaryComment.setMemberId(4);
+		freeDiaryComment.setFreeDiaryId(id);
+		commentService.insert(freeDiaryComment);
+		
+		return "redirect:detail?id="+freeDiary.getId();
+	}
+	
 	@RequestMapping("del")
 	public String delete(int id) {
 		service.delete(id);
 		return "redirect:list";
+	}
+	
+	@RequestMapping("commentdel")
+	public String commentdelete(int id,int freeDiaryId) {
+		commentService.delete(id);
+		return "redirect:detail?id="+freeDiaryId;
 	}
 	
 	@GetMapping("edit")

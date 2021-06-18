@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html 
-	xmlns:th="http://www.thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="/inc/layout">
 <head>
-	<meta charset="UTF-8">
-    <title>자유일기-수정페이지</title>
+<meta charset="UTF-8">
+<title>자유일기-수정페이지</title>
 </head>
 <main id="main" layout:fragment="main">
 
@@ -25,58 +24,63 @@
 			</tr>
 			<tr>
 				<th>작성일</th>
-				<td colspan="3" th:text="${freeDiary.regDate}">
-				</td>
+				<td colspan="3" th:text="${freeDiary.regDate}"></td>
 			</tr>
-			<tr>
+			<tr th:with="pub = ${freeDiary.pub}==false?'비공개':'공개'">
 				<th>공개선택</th>
-				<td colspan="3" th:text="${freeDiary.pub}">공개 / 비공개</td>
+				<td colspan="3" th:text="${pub}">공개 / 비공개</td>
 			</tr>
 			<tr>
 				<td colspan="4" th:text="${freeDiary.content}"></td>
 			</tr>
 		</table>
-		
+
 		<div>
-			<a href="list">목록</a> <a th:href="@{edit(id=${freeDiary.id})}">수정</a> 
+			<a href="list">목록</a> <a th:href="@{edit(id=${freeDiary.id})}">수정</a>
 			<a th:href="@{del(id=${freeDiary.id})}"
 				onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a>
 		</div>
 
-<div class="container">
-    <form id="commentForm" name="commentForm" method="post">
-    <br><br>
-        <div>
-            <div>
-                <span><strong>Comments</strong></span> <span id="cCnt"></span>
-            </div>
-            <div>
-                <table class="table">                    
-                    <tr>
-                        <td>
-                            <textarea style="width: 500px" rows="3" cols="30" id="comment" name="comment" placeholder="댓글을 입력하세요"></textarea>
-                            <br>
-                            <div>
-                                <a href='#' onClick="fn_comment('${result.code }')" class="btn pull-right btn-success">등록</a>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <input type="hidden" id="b_code" name="b_code" value="${result.code }" />        
-    </form>
-</div><!-- container -->
-<!-- 댓글 -->
-<div id="reply">
-  <ol th:each="n:${commentList}">
-        <p th:text="${n.memberId}"></p>
-        <p th:text="${n.regDate}"></p>
-        <p th:text="${n.content}"></p>
-  </ol>
-</div>
-
+		<div class="container">
+			<form id="commentForm" action=""name="commentReg" method="post">
+				<input type="hidden" name="id" th:value="${freeDiary.id}"> <br>
+				<br>
+				<div>
+					<div>
+						<span><strong>Comments</strong></span> <span id="cCnt"></span>
+					</div>
+					<div>
+						<table class="table">
+							<tr>
+								<td><textarea style="width: 500px" rows="3" cols="30"
+										name="content" placeholder="댓글을 입력하세요"></textarea> <br>
+									<div>
+										<input type="submit" value="저장">
+									</div></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!-- container -->
+		<!-- 댓글 -->
+		<div id="reply">
+			<ol th:each="n:${commentList}">
+			<form action="commentdel" method="post">
+				<p th:text="${n.memberId}"></p>
+				<p th:text="${n.regDate}"></p>
+				<p th:text="${n.content}"></p>
+				<a th:href="@{edit(id=${n.id})}">수정</a>
+				<a th:href="@{commentdel(id=${n.id})}"
+					onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a>
+			</form>
+			</ol>
+		</div>
 	</section>
-
+<form action="commentdel" method="post" id="testForm">
+<input type="hidden" name="id" value="댓글아이디">
+<input type="hidden" name="freeDiaryId"th:value="${freeDiary.id}">
+</form>
 </main>
 </html>
