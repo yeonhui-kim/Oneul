@@ -29,15 +29,21 @@
 
 				<tr>
 					<td colspan="4">
-						<div contenteditable="true"></div> 
-						<textarea rows="6" cols="50"
-							name="content1" th:text="${gratitudeDiary.content1}">첫번째 감사</textarea>
-						<div contenteditable="true">
-						</div> <textarea rows="6" cols="50"
-							name="content2" th:text="${gratitudeDiary.content2}">두번째 감사</textarea>
-						<div contenteditable="true"></div> 
-						<textarea rows="6" cols="50"
-							name="content3" th:text="${gratitudeDiary.content3}">세번째 감사</textarea>
+						<br>
+						<div>오늘의 감사한 일 :  </div>
+						<br>
+						<textarea rows="5" cols="50" name="content1" 
+									th:text="${gratitudeDiary.content1}">첫번째 감사</textarea>
+						<br><br>
+						<div>오늘 나에게 일어난 멋진 일 : </div>
+						<br>
+						<textarea rows="6" cols="50" name="content2" 
+									th:text="${gratitudeDiary.content2}">두번째 감사</textarea>
+						<br><br>
+						<div>나를 위한 긍정의 한 줄! :</div>
+						<br>
+						<textarea rows="6" cols="50" name="content3" 
+									th:text="${gratitudeDiary.content3}">세번째 감사</textarea>
 					</td>
 				</tr>
 
