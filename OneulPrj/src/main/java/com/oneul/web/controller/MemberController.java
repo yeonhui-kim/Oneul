@@ -2,6 +2,7 @@ package com.oneul.web.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.Principal;
 import java.sql.Date;
 import java.util.List;
 import java.util.ServiceConfigurationError;
@@ -27,27 +28,15 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
-	@RequestMapping("login")
-	public String login() {
+	@RequestMapping("/login")
+	public String login(HttpServletRequest request) {
+
+		
 		
 		return "member/login";
 	}
 	
-	@PostMapping("dologin")
-	public String dologin(HttpServletRequest request, Model model) {
-		String username = request.getParameter("username");
-	
-		HttpSession session = request.getSession();
-		session.setAttribute("username", username);
-		
-		Member member = service.get(username);
-		model.addAttribute("member", member);
-		
-		return "member/mypagetest";
-	}
-	
 
-	
 	@RequestMapping("signup")
 	public String signup() {
 		return "member/signup";		
@@ -81,14 +70,24 @@ public class MemberController {
 	
 	
 	@RequestMapping("mypagetest")
-	public String mypage() {
+	public String mypage(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession(true);
+		String username = (String) session.getAttribute("username");
 		
+		Member member2 = service.get(username);
+		String fileName = member2.getImage();
+		
+		
+		Member member = new Member();
+		member.setUserId(username);
+		member.setImage(fileName);
+		model.addAttribute("member", member2);
 		
 		return "member/mypagetest";
 	}
 	
 	@PostMapping("upload")
-	public String upload(MultipartFile file, HttpServletRequest request, Model model) {
+	public String upload(MultipartFile file, HttpServletRequest request, Model model, Principal principal) {
 		String fileName = file.getOriginalFilename();//파일이름
 		
 		ServletContext application = request.getServletContext();
