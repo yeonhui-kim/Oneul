@@ -17,7 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.oneul.web.entity.FreeDiary;
+import com.oneul.web.entity.FreeDiaryComment;
+import com.oneul.web.entity.GratitudeDiary;
 import com.oneul.web.entity.Member;
+import com.oneul.web.service.FreeDiaryCommentService;
 import com.oneul.web.service.FreeDiaryCommentServiceImp;
 import com.oneul.web.service.FreeDiaryService;
 
@@ -28,6 +31,8 @@ public class FreeDiaryController {
 
 	@Autowired
 	private FreeDiaryService service;
+	@Autowired
+	private FreeDiaryCommentService commentService;
 	
 	@RequestMapping("list")
 	public String list(Model model) {
@@ -47,7 +52,6 @@ public class FreeDiaryController {
 	public String reg(FreeDiary freeDiary,
 				MultipartFile file,
 				HttpServletRequest request) {
-		freeDiary.setPub(true);
 		freeDiary.setMemberId(4);		
 		service.insert(freeDiary);
 			
@@ -85,13 +89,31 @@ public class FreeDiaryController {
 		FreeDiary freeDiary = service.get(id);
 		model.addAttribute("freeDiary",freeDiary);
 		
+		List<FreeDiaryComment> commentList = commentService.getViewList(id);
+		model.addAttribute("commentList",commentList);
+		
 		return "diary/freediary/detail";
+	}
+	
+	@PostMapping("detail")
+	public String commentReg(int id,FreeDiary freeDiary,FreeDiaryComment freeDiaryComment) {
+		freeDiaryComment.setMemberId(4);
+		freeDiaryComment.setFreeDiaryId(id);
+		commentService.insert(freeDiaryComment);
+		
+		return "redirect:detail?id="+freeDiary.getId();
 	}
 	
 	@RequestMapping("del")
 	public String delete(int id) {
 		service.delete(id);
 		return "redirect:list";
+	}
+	
+	@RequestMapping("commentdel")
+	public String commentdelete(int id,int freeDiaryId) {
+		commentService.delete(id);
+		return "redirect:detail?id="+freeDiaryId;
 	}
 	
 	@GetMapping("edit")

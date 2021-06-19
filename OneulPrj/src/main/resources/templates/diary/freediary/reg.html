@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html 
-	xmlns:th="http://www.thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="/inc/layout">
 <head>
-	<meta charset="UTF-8">
-    <title>자유일기</title>
+<meta charset="UTF-8">
+<title>자유일기</title>
 </head>
 <main id="main" layout:fragment="main">
 
@@ -26,13 +25,15 @@
 			</tr>
 			<tr>
 				<th>공개선택</th>
-				<td colspan="3"><input type="checkbox" name="open">공개 / 비공개</td>
+				<td colspan="3">
+				<label>공개</label>
+				<input type="radio" value="1"name="pub"> 
+				<label>비공개</label>
+				<input type="radio" value="0"name="pub" checked>
+				</td>
 			</tr>
 			<tr>
-				<td colspan="4">
- 
-				<textarea rows="20" cols="50"
-						name="content">자유롭게 글을 써보세요</textarea>
+				<td colspan="4"><textarea rows="20" cols="50" name="content">자유롭게 글을 써보세요</textarea>
 
 				</td>
 			</tr>
