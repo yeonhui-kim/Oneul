@@ -97,6 +97,11 @@ html, body {
 	height: 100%;
 }
 
+.bold{
+	padding: 2px;
+	background: #d6d5d3;
+}
+
 /*-----------------´ñ±Û--------------------------------*/
 #comment-txt {
 	margin-top: 10px;
@@ -110,7 +115,7 @@ html, body {
 
 .btn-box {
 	position: relative;
-	right: 80px;
+	right: 10px;
 	top: 20px;
 	display: inline;
 }
@@ -118,4 +123,8 @@ html, body {
 .reg-img {
 	width: 50px;
 	height: 50px;
+}
+
+.txt{
+	width: 100%; 
 }
