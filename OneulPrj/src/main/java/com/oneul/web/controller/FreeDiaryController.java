@@ -91,6 +91,7 @@ public class FreeDiaryController {
 		
 		List<FreeDiaryComment> commentList = commentService.getViewList(id);
 		model.addAttribute("commentList",commentList);
+		System.out.println("댓글아이디출력"+commentList.get(0));
 		
 		return "diary/freediary/detail";
 	}
