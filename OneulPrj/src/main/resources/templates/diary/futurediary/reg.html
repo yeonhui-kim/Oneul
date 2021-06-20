@@ -18,23 +18,50 @@ layout:decorator="/inc/layout">
                            <table border="1">  
                            <lable>예약날짜</lable>                      
                             <input type="date" name="bookingDate">
-                            <tr>
-                              	<td colspan="4">
-                              		
-                              		<label>공개</label>
-                              		<input type="checkbox" value="1" name="pub">
-                              		<label>비공개</label>
-                              		<input type="checkbox" value="0" name="pub">
-                              	</td>
-                              </tr>  
-                              <tr>
-                                 <td colspan="4">
-                                 <input type="file" name="file" value="0">
-                                 <textarea rows="20" cols="80" name="content"></textarea>
-                                    
-                                 </td>
-                              </tr>
-                           </table>
+					<select name="emotion">
+						<option value="">지금 당신의 감정을 선택하세요</option>
+						<option value="">행복</option>
+						<option value="">뿌듯</option>
+						<option value="">평온</option>
+						<option value="">피곤</option>
+						<option value="">슬픔</option>
+						<option value="">불안</option>
+						<option value="">예민</option>
+						<option value="">화남</option>
+						<option value="">설렘</option>
+					</select>
+					<div class="emotion-container">
+
+						<input id="happy" type="radio"
+							name="emotion" value="행복"> <label for="happy">행복</label>
+						<input id="proud" type="radio"
+							name="emotion" value="뿌듯"> <label for="proud">뿌듯</label>
+						<input id="calm" type="radio"
+							name="emotion" value="평온"> <label for="calm">평온</label>
+						<input id="tired" type="radio"
+							name="emotion" value="피곤"> <label for="tired">피곤</label>
+						<input id="tired" type="radio"
+							name="emotion" value="피곤"> <label for="tired">슬픔</label>
+						<input id="tired" type="radio"
+							name="emotion" value="피곤"> <label for="tired">불안</label>
+						<input id="tired" type="radio"
+							name="emotion" value="피곤"> <label for="tired">예민</label>
+						<input id="tired" type="radio"
+							name="emotion" value="피곤"> <label for="tired">화남</label>
+						<input id="tired" type="radio"
+							name="emotion" value="피곤"> <label for="tired">설렘</label>
+
+					</div>
+					<tr>
+						<td colspan="4"><label>공개</label> <input type="radio"
+							value="1" name="pub"> <label>비공개</label> <input
+							type="radio" value="0" name="pub" checked></td>
+					</tr>
+					<tr>
+						<td colspan="4"><input type="file" name="file" value="0">
+							<textarea rows="20" cols="80" name="content"></textarea></td>
+					</tr>
+				</table>
                            
                      <div>
                         <input type="submit" value="저장">
