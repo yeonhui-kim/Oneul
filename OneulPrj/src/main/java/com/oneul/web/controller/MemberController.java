@@ -2,13 +2,18 @@ package com.oneul.web.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.Principal;
 import java.sql.Date;
+import java.util.List;
+import java.util.ServiceConfigurationError;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,11 +28,15 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
-	@RequestMapping("login")
-	public String login() {
+	@RequestMapping("/login")
+	public String login(HttpServletRequest request) {
+
+		
+		
 		return "member/login";
 	}
 	
+
 	@RequestMapping("signup")
 	public String signup() {
 		return "member/signup";		
@@ -60,18 +69,29 @@ public class MemberController {
 	}
 	
 	
-	@RequestMapping("uploadtest")
-	public String upload() {
-		return "member/uploadtest";
+	@RequestMapping("mypagetest")
+	public String mypage(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession(true);
+		String username = (String) session.getAttribute("username");
+		
+		Member member2 = service.get(username);
+		String fileName = member2.getImage();
+		
+		
+		Member member = new Member();
+		member.setUserId(username);
+		member.setImage(fileName);
+		model.addAttribute("member", member2);
+		
+		return "member/mypagetest";
 	}
 	
 	@PostMapping("upload")
-	public String upload(MultipartFile file, HttpServletRequest request) {
-		
+	public String upload(MultipartFile file, HttpServletRequest request, Model model, Principal principal) {
 		String fileName = file.getOriginalFilename();//파일이름
 		
 		ServletContext application = request.getServletContext();
-		String path = "/upload";
+		String path = "/upload/profile";
 		String realPath = application.getRealPath(path);
 		
 		File pathFile = new File(realPath);
@@ -90,7 +110,18 @@ public class MemberController {
 			e.printStackTrace();
 		}
 		
-		return "member/uploadtest";
+		HttpSession session = request.getSession(true);
+		String username = (String) session.getAttribute("username");
+		
+		Member member = new Member();
+		member.setUserId(username);
+		member.setImage(fileName);
+		service.update(member);
+		
+		Member member2 = service.get(username);
+		model.addAttribute("member", member2);
+		
+		return "member/mypagetest";
 	}
 
 }

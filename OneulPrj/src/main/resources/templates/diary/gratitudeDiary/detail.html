@@ -21,19 +21,30 @@
 					<th>작성일</th>
 					<td colspan="3" th:text="${#calendars.format(gratitudeDiary.regDate, 'yyyy-MM-dd a hh:mm:ss')}">작성일자</td>
 				</tr>
-				<tr>
-					<th>공개선택</th>
-					<td colspan="3" th:text="${gratitudeDiary.pub}">공개 / 비공개</td>
+				<tr th:with="pub = ${gratitudeDiary.pub}==false?'비공개':'공개'">
+					<th>공개여부</th>
+					<td colspan="3"	th:text="${pub}">공개 / 비공개</td>
 				</tr>
+			</table>		
+				
+				
+			<table>	
+				
+				<th>오늘의 감사한 일 :</th>
 				<tr>
-					<td colspan="4" th:text="${gratitudeDiary.content1}">첫번째 감사</td>
+					<td colspan="4" th:text="${gratitudeDiary.content1}"></td>		
 				</tr>
+				<th>오늘 나에게 일어난 멋진 일 :</th>
 				<tr>
-					<td colspan="4" th:text="${gratitudeDiary.content2}">두번째 감사</td>
+					<td colspan="4" th:text="${gratitudeDiary.content2}"></td>
 				</tr>
+				<th>나를 위한 긍정의 한 줄! :</th>
 				<tr>
-					<td colspan="4" th:text="${gratitudeDiary.content3}">세번째 감사</td>
+					<td colspan="4" th:text="${gratitudeDiary.content3}"></td>		
 				</tr>
+						
+						
+				
 			</table>
 			<div>
 				<a href="list">목록</a> 

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.oneul.web.entity.Oneline;
+import com.oneul.web.entity.OnelineComment;
+import com.oneul.web.service.OnelineCommentService;
 import com.oneul.web.service.OnelineService;
 
 @Controller("OnelineController")
@@ -19,14 +21,25 @@ public class OnelineController {
 
 	@Autowired
 	private OnelineService service;
+	private OnelineCommentService serviceCom;
 	
 	@RequestMapping("list")
-	public String list(Model model) {	
-		List<Oneline> list = service.getList(1, null, null); //서비스 클래스에있는 getList(인자3개)값을 list에 넣자
-		model.addAttribute("list",list);//"list"라는 키값에 위에서 받아온 list데이터를 넣고 model로 전달된다.
+	public String list(Model model, int id) {	
+		List<OnelineComment> clist = serviceCom.getViewList(1); //서비스 클래스에있는 getList(인자3개)값을 list에 넣자
+		model.addAttribute("clist",clist);//"list"라는 키값에 위에서 받아온 list데이터를 넣고 model로 전달된다.
 		//test
-		return "feed/oneline/list";
+		return "feed/oneline/commenttest";
 	}
+	
+	
+	//-----------------게시글 출력------------------------
+//	@RequestMapping("list") 
+//	public String list(Model model) {	
+//		List<Oneline> list = service.getList(1, null, null); //서비스 클래스에있는 getList(인자3개)값을 list에 넣자
+//		model.addAttribute("list",list);//"list"라는 키값에 위에서 받아온 list데이터를 넣고 model로 전달된다.
+//		//test
+//		return "feed/oneline/list";
+//	}
 	
 	@GetMapping("reg")
 	public String reg(Model model) {
@@ -38,9 +51,15 @@ public class OnelineController {
 	
 	
 	@PostMapping("reg")
-	public String reg(String content) {
+	public String reg(String content, String comment) {
 		
 		Oneline oneline = new Oneline();
+//		OnelineComment onelinecomment = new OnelineComment();
+//		onelinecomment.setContent(comment);
+//		onelinecomment.setMemberId(5);
+//		onelinecomment.setOnelineId(5);
+//		onelinecomment.setCommentId(5);
+		
 		oneline.setContent(content);
 		oneline.setMemberId(5);
 		
@@ -49,6 +68,19 @@ public class OnelineController {
 		return "redirect:list";	//객체 형태로 리턴 //list로 돌아감
 		
 	}
+	
+//	@PostMapping("regC")
+//	public String regC(String content) {
+//		
+//		OnelineComment onelinecomment = new OnelineComment();
+//		onelinecomment.setContent(content);
+//		onelinecomment.setMemberId(5);
+//		
+//		serviceCom.insert(onelinecomment);
+//		
+//		
+//		return "redirect:list";
+//	}
 	
 	@RequestMapping("del")
 	public String reg(int id) {
@@ -61,6 +93,7 @@ public class OnelineController {
 	public String edit(int id, Model model) {
 		Oneline oneline = service.get(id);
 		model.addAttribute("Oneline",oneline);
+		
 		
 		return "feed/oneline/edit";
 		

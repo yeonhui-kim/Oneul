@@ -17,25 +17,41 @@
 			<table border="1">
 				<tr>
 					<th>감정선택</th>
-					<td colspan="3">감정이모티콘뷰</td>
+					<td colspan="3">
+						<label>행복</label><input type="radio" value="1" name="emotionId">
+						<label>뿌듯</label><input type="radio" value="2" name="emotionId">
+						<label>설렘</label><input type="radio" value="3" name="emotionId">
+						<label>평온</label><input type="radio" value="4" name="emotionId">
+						<label>에민</label><input type="radio" value="5" name="emotionId">
+						<label>불안</label><input type="radio" value="6" name="emotionId">
+						<label>피곤</label><input type="radio" value="7" name="emotionId">
+						<label>슬픔</label><input type="radio" value="8" name="emotionId">
+						<label>화남</label><input type="radio" value="9" name="emotionId">				
+					</td>
 				</tr>
 				<tr>
 					<th>공개선택</th>
 					<td colspan="3">
-						<label>공개</label><input type="radio" value="1" name="pub">
-						<label>비공개</label><input type="radio" value="0" name="pub" checked>
+						<label>공개</label><input type="radio" value="true" name="pub">
+						<label>비공개</label><input type="radio" value="false" name="pub" checked>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="4">
-						<div>오늘하루 감사한 일들을 적어보세요</div>
-						<div>잘 생각이 안난다면 질문에 답해보세요</div>
+						<div>오늘하루 감사한 일들을 적어보세요, 잘 생각이 안난다면 질문에 답해보세요</div>
 						<br>
-						<textarea rows="6" cols="50" name="content1">오늘 하루는 어떤 감사한 일이 있었나요?</textarea>
 						<br>
-						<textarea rows="6" cols="50" name="content2">어떻게 하면 더 좋은 하루를 보낼 수 있을까요?</textarea>
+						<div>오늘의 감사한 일 :  </div>
 						<br>
-						<textarea rows="6" cols="50" name="content3">오늘의 나를 위한 긍정의 한 줄을 남겨주세요!</textarea>
+						<textarea rows="5" cols="50" name="content1"></textarea>
+						<br><br>
+						<div>오늘 나에게 일어난 멋진 일 : </div>
+						<br>
+						<textarea rows="5" cols="50" name="content2"></textarea>
+						<br><br>
+						<div>나를 위한 긍정의 한 줄! :</div>
+						<br>
+						<textarea rows="5" cols="50" name="content3"></textarea>
 					</td>
 				</tr>
 			</table>
