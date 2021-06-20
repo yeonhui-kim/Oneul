@@ -7,11 +7,11 @@
 
     
     <select id="get" resultType="com.oneul.web.entity.OnelineComment">
-        select * from OnelineComment where id=#{1}
+        select * from OnelineComment where id=#{param1}
     </select>
     
     <select id="getMainList" resultType="com.oneul.web.entity.OnelineComment">
-		select * from OnelineComment where onelineId = #{1} and commentId is null order by regDate asc
+		select * from OnelineComment where onelineId = #{param1} and commentId is null order by regDate asc
     </select>
     
     

@@ -8,64 +8,69 @@
 <title>Insert title here</title>
 <link href="/css/feed/onelineList.css" type="text/css" rel="stylesheet">
 </head>
-	<main id="wrapper"  layout:fragment="main">
+<main id="wrapper" layout:fragment="main">
 
 
 	<div id="main">
 
 		<div class="btn-box">
-			<a href="reg"> <img class="reg-img"
-				src="">
+			<a href="reg"> <img class="reg-img" src="">
 			</a>
 		</div>
 
-		<div th:each="n:${list}" >
+		<div th:each="n:${list}">
 			<article class="box">
 				<div class="content">
 
 					<div class="profile">
 						<img class="profile-image" src="../images/user.PNG"> <a
-							class="user-name">이동진</a> 
-							<a class="date" th:text="${#calendars.format(n.regDate,'yyy-MM-dd')}"></a>
-							<a class="edit" th:href="@{edit(id=${n.id})}" href="edit?id=${n.id}">수정</a>
-						<a class="del" th:href="@{del(id=${n.id})}" onclick="if(!confirm('삭제하시겠습니까?')) return false;">삭제</a>
-					</div>					
+							class="user-name">이동진</a> <a class="date"
+							th:text="${#calendars.format(n.regDate,'yyy-MM-dd')}"></a> <a
+							class="edit" th:href="@{edit(id=${n.id})}" href="edit?id=${n.id}">수정</a>
+						<a class="del" th:href="@{del(id=${n.id})}"
+							onclick="if(!confirm('삭제하시겠습니까?')) return false;">삭제</a>
+					</div>
 
 					<a th:text="${n.id}">게시글아이디</a>
 					<div>
-						<a href="detail?id=${n.id}" th:text="${n.content}">${n.content}</a>
+						<a th:href="@{detail(id=${n.id})}" th:text="${n.content}">${n.content}</a>
 					</div>
 
 					<div class="review-attr">
 						<span>좋아요 0</span> <span>댓글 0</span>
 					</div>
 					<hr>
-				
-				
-			<!--------------------------------------- 댓글 출력란------------------------------- -->
 					
-					<div class="profile">
+					<div th:each="c:${clist}" class="profile">
+					<a th:text="${c.content}"></a>
+					</div>
+
+					<!-- <form action="list">
+						<input type="text" name="id"> <input type="hidden"
+							name="hide" value="egoing"> <input type="submit">
+					</form> -->
+					<!--------------------------------------- 댓글 출력란------------------------------- -->
+
+					<!-- <div th:each="n:${clist}" class="profile">
 						<img class="profile-image" src="../images/user.PNG"> <a
-							class="user-name">이동진</a> 
-							<a class="date" th:text="${#calendars.format(n.regDate,'yyy-MM-dd')}"></a>
-							<a class="edit" th:href="@{edit(id=${n.id})}" href="edit?id=${n.id}">수정</a>
-						<a class="del" th:href="@{del(id=${n.id})}" onclick="if(!confirm('삭제하시겠습니까?')) return false;">삭제</a>
-					</div>	s
-			
-					
-					
-					
+							class="user-name">이동진</a> <a th:text="${n.content}"></a>
+							<a>ssssss</a>
+					</div> -->
+
+
+
+
 					<!-- ------------------댓글입력---------------------------------------------- -->
-					
+
 					<form action="reg" method="post">
-					<div class="review-btn-group">
-						<!-- <input class="like" id="like-button" type="button" value="좋아요"> -->
-						<a class="text">여러분의 댓글을 남겨주세요.</a>
-					</div>
-					<div class="comment-box">
-						<textarea rows="3" class=txt  name="comment" ></textarea>
+						<div class="review-btn-group">
+							<!-- <input class="like" id="like-button" type="button" value="좋아요"> -->
+							<a class="text">여러분의 댓글을 남겨주세요.</a>
+						</div>
+						<div class="comment-box">
+							<textarea rows="3" class=txt name="comment"></textarea>
 							<input type="submit" value="확인" id="btn">
-					</div>
+						</div>
 					</form>
 				</div>
 			</article>
