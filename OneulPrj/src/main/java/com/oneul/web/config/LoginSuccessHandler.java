@@ -34,7 +34,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 		RequestCache requestCache = new HttpSessionRequestCache();
 		SavedRequest savedRequest = requestCache.getRequest(request, response);
 
-		String uri = null;
+		String uri = "http://localhost:8080/feed/oneline/list";
 		// 있을 경우 URI 등 정보를 가져와서 사용
 		if (savedRequest != null) {
 			uri = savedRequest.getRedirectUrl();
