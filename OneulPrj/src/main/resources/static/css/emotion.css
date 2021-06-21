@@ -1,46 +1,60 @@
 @charset "UTF-8";
 
+.happy, 
+.proud, 
+.flutter, 
+.calm, 
+.sensitive, 
+.unstable, 
+.tired, 
+.sad, 
+.upset{
+	width: 70px;
+	height: 70px;
+	
+} 
+
 .happy{
 	background: url("/images/emotions/happy.png") no-repeat center center; 
-	
+	background-size: cover;
 }
 
 .proud{
 	background: url("/images/emotions/proud.png") no-repeat center center; 
-	
+	background-size: cover;
 }
 
 .flutter{
 	background: url("/images/emotions/flutter.png") no-repeat center center; 
-	
+	background-size: cover;
 }
 
 .calm{
 	background: url("/images/emotions/calm.png") no-repeat center center; 
-	
+	background-size: cover;
 }
 
 .sensitive{
 	background: url("/images/emotions/sensitive.png") no-repeat center center; 
-	
+	background-size: cover;
 }
 
 .unstable{
 	background: url("/images/emotions/unstable.png") no-repeat center center; 
-	
+	background-size: cover;
 }
 
 .tired{
 	background: url("/images/emotions/tired.png") no-repeat center center; 
-	
+	background-size: cover;
 }
 
 .sad{
 	background: url("/images/emotions/sad.png") no-repeat center center; 
-	
+	background-size: cover;
 }
 
 .upset{
 	background: url("/images/emotions/upset.png") no-repeat center center; 
-	
+	background-size: cover;
 }

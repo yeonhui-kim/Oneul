@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <title>gratitudeDiary reg</title>
     <link href="/css/diary/modal.css" type="text/css" rel="stylesheet">
+    <link href="/css/emotion.css" type="text/css" rel="stylesheet">
     <script src='/js/modal/modal.js'></script>
 </head>
 
@@ -20,6 +21,8 @@
 					<th>감정선택</th>
 					<td colspan="3">
    						<button id="open-button" type="button">감정 선택</button> 
+   						<div id="emotion"></div>
+   						
 						<div id="modal" class="modal">
 							<!-- Modal content -->
 							<div class="modal-content">
@@ -33,7 +36,6 @@
 								<label>피곤</label><input type="radio" value="7" name="emotionId">
 								<label>슬픔</label><input type="radio" value="8" name="emotionId">
 								<label>화남</label><input type="radio" value="9" name="emotionId">
-								<input type="button" value="선택" onclick="window.close();">
 							</div>
 						</div> 
 										

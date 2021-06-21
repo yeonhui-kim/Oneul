@@ -14,6 +14,12 @@
 	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
+#emotion {
+	display: none;
+	width: 70px;
+	height: 70px;
+}
+
 /* Modal Content/Box */
 .modal-content {
 	background-color: #fefefe;
