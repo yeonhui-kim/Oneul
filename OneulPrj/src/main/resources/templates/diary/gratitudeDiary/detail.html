@@ -7,6 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <title>gratitudeDiary detail</title>
+    <link href="/css/emotion.css" type="text/css" rel="stylesheet">
 </head>
 
 <!-- ----------------main부분------------------- -->
@@ -15,7 +16,18 @@
 			<table border="1">
 				<tr>
 					<th>오늘의 감정</th>
-					<td colspan="3" th:text="${gratitudeDiary.emotionId}">감정이모티콘뷰</td>
+					<!-- <td id="emotion" colspan="3" th:text="${gratitudeDiary.emotionId}"> -->
+					<td colspan="3">
+						<div class="div" th:classappend="${gratitudeDiary.emotionId} =='1' ? 'happy'"></div>
+						<div class="div" th:classappend="${gratitudeDiary.emotionId} =='2' ? 'proud'"></div>
+						<div class="div" th:classappend="${gratitudeDiary.emotionId} =='3' ? 'flutter'"></div>
+						<div class="div" th:classappend="${gratitudeDiary.emotionId} =='4' ? 'calm'"></div>
+						<div class="div" th:classappend="${gratitudeDiary.emotionId} =='5' ? 'sensitive'"></div>
+						<div class="div" th:classappend="${gratitudeDiary.emotionId} =='6' ? 'unstable'"></div>
+						<div class="div" th:classappend="${gratitudeDiary.emotionId} =='7' ? 'tired'"></div>
+						<div class="div" th:classappend="${gratitudeDiary.emotionId} =='8' ? 'sad'"></div>
+						<div class="div" th:classappend="${gratitudeDiary.emotionId} =='9' ? 'upset'"></div>
+					</td>
 				</tr>
 				<tr>
 					<th>작성일</th>
