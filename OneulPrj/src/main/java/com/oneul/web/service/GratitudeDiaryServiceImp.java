@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.oneul.web.dao.GratitudeDiaryDao;
+import com.oneul.web.entity.CalendarEmotion;
 import com.oneul.web.entity.GratitudeDiary;
 
 @Service
@@ -34,18 +35,33 @@ public class GratitudeDiaryServiceImp implements GratitudeDiaryService {
 	}
 
 	@Override
-	public int insert(GratitudeDiary gratitudeDiary) {
-		return dao.insert(gratitudeDiary);
-	}
-
-	@Override
-	public int update(GratitudeDiary gratitudeDiary) {
-		return dao.update(gratitudeDiary);
-	}
-
-	@Override
 	public int delete(int id) {
 		return dao.delete(id);
+	}
+
+	@Override
+	public int insertDiary(GratitudeDiary gratitudeDiary) {
+		return dao.insertDiary(gratitudeDiary);
+	}
+
+	@Override
+	public int updateDiary(GratitudeDiary gratitudeDiary) {
+		return dao.updateDiary(gratitudeDiary);
+	}
+
+	@Override
+	public int insertCalendar(CalendarEmotion calendarEmotion) {
+		return dao.insertCalendar(calendarEmotion);
+	}
+
+	@Override
+	public int updateCalendar(CalendarEmotion calendarEmotion) {
+		return dao.updateCalendar(calendarEmotion);
+	}
+
+	@Override
+	public int selectCalEmotionCnt(CalendarEmotion calendarEmotion) {
+		return dao.selectCalEmotionCnt(calendarEmotion);
 	}
 	
 	

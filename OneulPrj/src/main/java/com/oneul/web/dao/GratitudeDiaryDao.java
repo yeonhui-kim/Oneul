@@ -2,6 +2,7 @@ package com.oneul.web.dao;
 
 import java.util.List;
 
+import com.oneul.web.entity.CalendarEmotion;
 import com.oneul.web.entity.GratitudeDiary;
 
 public interface GratitudeDiaryDao {
@@ -11,9 +12,14 @@ public interface GratitudeDiaryDao {
 	List<GratitudeDiary> getList();
 	List<GratitudeDiary> getList(int offset, int size);
 	
-	int insert(GratitudeDiary gratitudeDiary);
-	int update(GratitudeDiary gratitudeDiary);
+	int insertDiary(GratitudeDiary gratitudeDiary);
+	int updateDiary(GratitudeDiary gratitudeDiary);
 	int delete(int id);
+	
+	int insertCalendar(CalendarEmotion calendarEmotion);
+	int updateCalendar(CalendarEmotion calendarEmotion);
+
+	int selectCalEmotionCnt(CalendarEmotion calendarEmotion);
 	
 	
 }
