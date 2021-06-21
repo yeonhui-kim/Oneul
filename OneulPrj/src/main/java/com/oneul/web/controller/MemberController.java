@@ -57,7 +57,8 @@ public class MemberController {
 		
 		Member member = new Member();
 		member.setUserId(username);
-		member.setPassword(password);
+		String noopPassword = "{noop}"+password;
+		member.setPassword(noopPassword);
 		member.setName(name);
 		member.setBirthday(birthday);
 		member.setEmail(email);
