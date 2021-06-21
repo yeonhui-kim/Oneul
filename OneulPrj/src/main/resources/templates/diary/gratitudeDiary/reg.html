@@ -7,26 +7,38 @@
 <head>
     <meta charset="UTF-8">
     <title>gratitudeDiary reg</title>
+    <link href="/css/diary/modal.css" type="text/css" rel="stylesheet">
+    <link href="/css/emotion.css" type="text/css" rel="stylesheet">
+    <script src='/js/modal/modal.js'></script>
 </head>
 
 	
 <!-- ----------------main부분------------------- -->
 	<main id="main" layout:fragment="main">
-		<form class="form" action="reg" method="post"
-			enctype="multipart/form-data">
+		<form class="form" action="/diary/gratitudeDiary/reg" method="post" enctype="multipart/form-data">
 			<table border="1">
 				<tr>
 					<th>감정선택</th>
 					<td colspan="3">
-						<label>행복</label><input type="radio" value="1" name="emotionId">
-						<label>뿌듯</label><input type="radio" value="2" name="emotionId">
-						<label>설렘</label><input type="radio" value="3" name="emotionId">
-						<label>평온</label><input type="radio" value="4" name="emotionId">
-						<label>에민</label><input type="radio" value="5" name="emotionId">
-						<label>불안</label><input type="radio" value="6" name="emotionId">
-						<label>피곤</label><input type="radio" value="7" name="emotionId">
-						<label>슬픔</label><input type="radio" value="8" name="emotionId">
-						<label>화남</label><input type="radio" value="9" name="emotionId">				
+   						<button id="open-button" type="button">감정 선택</button> 
+   						<div id="emotion"></div>
+   						
+						<div id="modal" class="modal">
+							<!-- Modal content -->
+							<div class="modal-content">
+								<span class="close">&times;</span>
+								<label>행복</label><input type="radio" value="1" name="emotionId">
+								<label>뿌듯</label><input type="radio" value="2" name="emotionId">
+								<label>설렘</label><input type="radio" value="3" name="emotionId">
+								<label>평온</label><input type="radio" value="4" name="emotionId">
+								<label>에민</label><input type="radio" value="5" name="emotionId">
+								<label>불안</label><input type="radio" value="6" name="emotionId">
+								<label>피곤</label><input type="radio" value="7" name="emotionId">
+								<label>슬픔</label><input type="radio" value="8" name="emotionId">
+								<label>화남</label><input type="radio" value="9" name="emotionId">
+							</div>
+						</div> 
+										
 					</td>
 				</tr>
 				<tr>
@@ -58,7 +70,8 @@
 
 
 			<div>
-				<input type="submit" value="저장"> <a href="list">취소</a>
+				<input type="submit" value="저장"> 
+				<a href="list">취소</a>
 			</div>
 		</form>
 

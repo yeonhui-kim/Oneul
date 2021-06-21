@@ -2,7 +2,10 @@ package com.oneul.web.service;
 
 import java.util.List;
 
+
+
 import com.oneul.web.entity.OnelineComment;
+
 
 public interface OnelineCommentService {
 	OnelineComment get(int id);

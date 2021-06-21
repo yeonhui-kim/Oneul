@@ -29,9 +29,13 @@ public class MemberController {
 	private MemberService service;
 	
 	@RequestMapping("/login")
-	public String login(HttpServletRequest request) {
-
+	public String login(HttpServletRequest request, Model model) {
+		String errMsg;
 		
+		if(request.getAttribute("loginFailMsg")!=null) {
+			errMsg = (String) request.getAttribute("loginFailMsg");
+			model.addAttribute("errMsg", errMsg);
+		}
 		
 		return "member/login";
 	}
@@ -57,7 +61,8 @@ public class MemberController {
 		
 		Member member = new Member();
 		member.setUserId(username);
-		member.setPassword(password);
+		String noopPassword = "{noop}"+password;
+		member.setPassword(noopPassword);
 		member.setName(name);
 		member.setBirthday(birthday);
 		member.setEmail(email);

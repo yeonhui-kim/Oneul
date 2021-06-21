@@ -26,6 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.loginPage("/member/login")
 //				.loginProcessingUrl("/member/dologin")
 				.successHandler(new LoginSuccessHandler())
+				.failureHandler(new LoginFailedHandler())
 				.and()
 			.csrf() //csrf설정
 				.disable(); //끄겠다

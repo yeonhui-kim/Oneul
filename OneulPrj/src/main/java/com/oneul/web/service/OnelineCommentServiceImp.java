@@ -3,11 +3,12 @@ package com.oneul.web.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.oneul.web.dao.OnelineCommentDao;
-import com.oneul.web.entity.FreeDiaryComment;
 import com.oneul.web.entity.OnelineComment;
 
+@Service
 public class OnelineCommentServiceImp implements OnelineCommentService {
 
 	@Autowired
