@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.oneul.web.dao.GratitudeDiaryDao;
+import com.oneul.web.entity.CalendarEmotion;
 import com.oneul.web.entity.GratitudeDiary;
 
 @Repository
@@ -37,18 +38,33 @@ public class MyBatisGratitudeDiaryDao implements GratitudeDiaryDao {
 	}
 
 	@Override
-	public int insert(GratitudeDiary gratitudeDiary) {
-		return mapper.insert(gratitudeDiary);
-	}
-
-	@Override
-	public int update(GratitudeDiary gratitudeDiary) {
-		return mapper.update(gratitudeDiary);
-	}
-
-	@Override
 	public int delete(int id) {
 		return mapper.delete(id);
+	}
+
+	@Override
+	public int insertDiary(GratitudeDiary gratitudeDiary) {
+		return mapper.insertDiary(gratitudeDiary);
+	}
+
+	@Override
+	public int updateDiary(GratitudeDiary gratitudeDiary) {
+		return mapper.updateDiary(gratitudeDiary);
+	}
+
+	@Override
+	public int insertCalendar(CalendarEmotion calendarEmotion) {
+		return mapper.insertCalendar(calendarEmotion);
+	}
+
+	@Override
+	public int updateCalendar(CalendarEmotion calendarEmotion) {
+		return mapper.updateCalendar(calendarEmotion);
+	}
+
+	@Override
+	public int selectCalEmotionCnt(CalendarEmotion calendarEmotion) {
+		return mapper.selectCalEmotionCnt(calendarEmotion);
 	}
 
 	

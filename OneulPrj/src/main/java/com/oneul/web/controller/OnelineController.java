@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.oneul.web.entity.FreeDiaryComment;
 import com.oneul.web.entity.Oneline;
 import com.oneul.web.entity.OnelineComment;
+import com.oneul.web.service.FreeDiaryCommentService;
 import com.oneul.web.service.OnelineCommentService;
 import com.oneul.web.service.OnelineService;
 
@@ -21,15 +23,34 @@ public class OnelineController {
 
 	@Autowired
 	private OnelineService service;
-	private OnelineCommentService serviceCom;
 	
-	@RequestMapping("list")
+	@Autowired
+	private OnelineCommentService cservice;
+	
+	
+	@RequestMapping("list") 
 	public String list(Model model, int id) {	
-		List<OnelineComment> clist = serviceCom.getViewList(1); //서비스 클래스에있는 getList(인자3개)값을 list에 넣자
-		model.addAttribute("clist",clist);//"list"라는 키값에 위에서 받아온 list데이터를 넣고 model로 전달된다.
-		//test
-		return "feed/oneline/commenttest";
+		List<Oneline> list = service.getList(1, null, null); //서비스 클래스에있는 getList(인자3개)값을 list에 넣자
+		model.addAttribute("list",list);//"list"라는 키값에 위에서 받아온 list데이터를 넣고 model로 전달된다.
+		
+		List<OnelineComment> clist = cservice.getViewList(id);
+		model.addAttribute("clist",clist);
+		
+		return "feed/oneline/list";
 	}
+	
+	@RequestMapping("detail")
+	public String detail(Model model, int id) {
+		Oneline oneline = service.get(id);	
+		model.addAttribute("detail",oneline);
+
+//		List<OnelineComment> clist = cservice.getViewList(id);
+//		model.addAttribute("clist",clist);
+		
+		return "feed/oneline/detail";
+	}
+	
+	
 	
 	
 	//-----------------게시글 출력------------------------
@@ -53,13 +74,7 @@ public class OnelineController {
 	@PostMapping("reg")
 	public String reg(String content, String comment) {
 		
-		Oneline oneline = new Oneline();
-//		OnelineComment onelinecomment = new OnelineComment();
-//		onelinecomment.setContent(comment);
-//		onelinecomment.setMemberId(5);
-//		onelinecomment.setOnelineId(5);
-//		onelinecomment.setCommentId(5);
-		
+		Oneline oneline = new Oneline();	
 		oneline.setContent(content);
 		oneline.setMemberId(5);
 		
@@ -69,18 +84,6 @@ public class OnelineController {
 		
 	}
 	
-//	@PostMapping("regC")
-//	public String regC(String content) {
-//		
-//		OnelineComment onelinecomment = new OnelineComment();
-//		onelinecomment.setContent(content);
-//		onelinecomment.setMemberId(5);
-//		
-//		serviceCom.insert(onelinecomment);
-//		
-//		
-//		return "redirect:list";
-//	}
 	
 	@RequestMapping("del")
 	public String reg(int id) {

@@ -28,18 +28,42 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
+	//로그인페이지 조회
 	@RequestMapping("/login")
-	public String login(HttpServletRequest request) {
-
+	public String login(HttpServletRequest request, Model model) {
+		String errMsg;
 		
+		if(request.getAttribute("loginFailMsg")!=null) {
+			errMsg = (String) request.getAttribute("loginFailMsg");
+			model.addAttribute("errMsg", errMsg);
+		}
 		
 		return "member/login";
 	}
 	
-
-	@RequestMapping("signup")
+	//회원가입페이지 조회
+	@RequestMapping("signup") 
 	public String signup() {
 		return "member/signup";		
+	}
+	
+	//회원정보수정 페이지 조회
+	@RequestMapping("edit") 
+	public String edit(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession(true);
+		String username = (String) session.getAttribute("username");
+		
+		Member member = new Member();
+		member = service.get(username);
+		
+		//{noop} 없애기
+		String password_ = member.getPassword();
+		String password = password_.substring(6);
+		member.setPassword(password);
+		
+		model.addAttribute(member);
+		
+		return "member/edit";		
 	}
 	
 	@RequestMapping("logintest")
@@ -47,8 +71,8 @@ public class MemberController {
 		return "member/logintest";		
 	}
 	
-	
-	@PostMapping("reg")
+	//회원정보 등록
+	@PostMapping("reg") 
 	public String reg(String username,
 						String password,
 						String name,
@@ -57,7 +81,8 @@ public class MemberController {
 		
 		Member member = new Member();
 		member.setUserId(username);
-		member.setPassword(password);
+		String noopPassword = "{noop}"+password;
+		member.setPassword(noopPassword);
 		member.setName(name);
 		member.setBirthday(birthday);
 		member.setEmail(email);
@@ -65,7 +90,6 @@ public class MemberController {
 		service.insert(member);
 		
 		return "redirect:login";
-		//헬로
 	}
 	
 	
@@ -86,7 +110,8 @@ public class MemberController {
 		return "member/mypagetest";
 	}
 	
-	@PostMapping("upload")
+	//프로필사진 업로드
+	@PostMapping("upload") 
 	public String upload(MultipartFile file, HttpServletRequest request, Model model, Principal principal) {
 		String fileName = file.getOriginalFilename();//파일이름
 		

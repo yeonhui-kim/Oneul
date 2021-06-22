@@ -3,7 +3,9 @@ package com.oneul.web.dao;
 import java.util.List;
 
 
+
 import com.oneul.web.entity.OnelineComment;
+
 
 public interface OnelineCommentDao {
 	OnelineComment get(int id);

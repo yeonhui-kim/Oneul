@@ -43,29 +43,7 @@
 				
 			<!--------------------------------------- 댓글 출력란------------------------------- -->
 					
-					<div class="profile">
-						<img class="profile-image" src="../images/user.PNG"> <a
-							class="user-name">이동진</a> 
-							<a class="date" th:text="${#calendars.format(n.regDate,'yyy-MM-dd')}"></a>
-							<a class="edit" th:href="@{edit(id=${n.id})}" href="edit?id=${n.id}">수정</a>
-						<a class="del" th:href="@{del(id=${n.id})}" onclick="if(!confirm('삭제하시겠습니까?')) return false;">삭제</a>
-					</div>	s
-			
 					
-					
-					
-					<!-- ------------------댓글입력---------------------------------------------- -->
-					
-					<form action="reg" method="post">
-					<div class="review-btn-group">
-						<!-- <input class="like" id="like-button" type="button" value="좋아요"> -->
-						<a class="text">여러분의 댓글을 남겨주세요.</a>
-					</div>
-					<div class="comment-box">
-						<textarea rows="3" class=txt  name="comment" ></textarea>
-							<input type="submit" value="확인" id="btn">
-					</div>
-					</form>
 				</div>
 			</article>
 		</div>
