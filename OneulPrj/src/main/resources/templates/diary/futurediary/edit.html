@@ -15,14 +15,11 @@ layout:decorator="/inc/layout">
 		<form class="form" action="edit" method="post" enctype="multipart/form-data">
                            <table border="1">  
                            <lable>예약날짜</lable>                      
-                            <input type="date" name="bookingDate" th:value="${futureDiary.bookingDate}">
+                            <input type="date" name="bookingDate" th:value="${#calendars.format(futureDiary.bookingDate,'yyyy-MM-dd')}">
                             <tr>
-                              	<td colspan="4">
-                              		
-                              		<label>공개</label>
-                              		<input type="checkbox" value="1" name="pub">
-                              		<label>비공개</label>
-                              		<input type="checkbox" value="0" name="pub">
+                              	<td colspan="4">															 
+	                              	<label>공개</label> <input type="radio" value="1" name="pub"  th:checked="${futureDiary.pub} ? 'true': 'false'"> 
+	                              	<label>비공개</label> <input type="radio" value="0" name="pub" th:checked="${futureDiary.pub} ? 'false': 'true'">
                               	</td>
                               </tr>  
                               <tr>

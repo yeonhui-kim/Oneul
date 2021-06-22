@@ -18,7 +18,7 @@ layout:decorator="/inc/layout">
                            <table border="1">  
                            <lable>예약날짜</lable>                      
                             <input type="date" name="bookingDate">
-					<select name="emotion">
+				<!-- 	<select name="emotion">
 						<option value="">지금 당신의 감정을 선택하세요</option>
 						<option value="">행복</option>
 						<option value="">뿌듯</option>
@@ -29,27 +29,27 @@ layout:decorator="/inc/layout">
 						<option value="">예민</option>
 						<option value="">화남</option>
 						<option value="">설렘</option>
-					</select>
+					</select> -->
 					<div class="emotion-container">
 
 						<input id="happy" type="radio"
-							name="emotion" value="행복"> <label for="happy">행복</label>
+							name="emotion" value="1"> <label for="happy">행복</label>
 						<input id="proud" type="radio"
-							name="emotion" value="뿌듯"> <label for="proud">뿌듯</label>
+							name="emotion" value="2"> <label for="proud">뿌듯</label>
+						<input id="flutter" type="radio"
+							name="emotion" value="3"> <label for="tired">설렘</label>
 						<input id="calm" type="radio"
-							name="emotion" value="평온"> <label for="calm">평온</label>
+							name="emotion" value="4"> <label for="calm">평온</label>
+						<input id="sensitive" type="radio"
+							name="emotion" value="5"> <label for="tired">예민</label>
+						<input id="unstable" type="radio"
+							name="emotion" value="6"> <label for="tired">불안</label>
 						<input id="tired" type="radio"
-							name="emotion" value="피곤"> <label for="tired">피곤</label>
-						<input id="tired" type="radio"
-							name="emotion" value="피곤"> <label for="tired">슬픔</label>
-						<input id="tired" type="radio"
-							name="emotion" value="피곤"> <label for="tired">불안</label>
-						<input id="tired" type="radio"
-							name="emotion" value="피곤"> <label for="tired">예민</label>
-						<input id="tired" type="radio"
-							name="emotion" value="피곤"> <label for="tired">화남</label>
-						<input id="tired" type="radio"
-							name="emotion" value="피곤"> <label for="tired">설렘</label>
+							name="emotion" value="7"> <label for="tired">피곤</label>
+						<input id="sad" type="radio"
+							name="emotion" value="8"> <label for="tired">슬픔</label>
+						<input id="upset" type="radio"
+							name="emotion" value="9"> <label for="tired">화남</label>
 
 					</div>
 					<tr>

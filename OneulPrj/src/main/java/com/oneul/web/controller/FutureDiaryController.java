@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.oneul.web.entity.FutureDiary;
+import com.oneul.web.entity.FutureDiaryComment;
+import com.oneul.web.service.FutureDiaryCommentService;
 import com.oneul.web.service.FutureDiaryService;
 
 @Controller
@@ -27,6 +29,9 @@ public class FutureDiaryController {
 
 	@Autowired
 	private FutureDiaryService service;
+	
+	@Autowired
+	private FutureDiaryCommentService commentService;
 	
 	@RequestMapping("list")
 	public String list(Model model) {
@@ -41,18 +46,26 @@ public class FutureDiaryController {
 		FutureDiary futureDiary = service.get(id);
 		
 		model.addAttribute("futureDiary", futureDiary);
+		
+		List<FutureDiaryComment> list = commentService.getViewList(id);
+		model.addAttribute("commentList", list);
 		return("diary/futurediary/detail");
 	}
+	
+//	@PostMapping("detail")
+//	public String detail() {
+//		
+//	}
 	
 	@PostMapping("reg")
 	public String reg(@DateTimeFormat(pattern = "yyyy-MM-dd")Date bookingDate, 
 					  String content,
 					  MultipartFile file,
 					  String pub,
+					  String emotion,
 					  HttpServletRequest request) {
 		int p = Integer.parseInt(pub);
-		
-
+		int emt = Integer.parseInt(emotion);
 		String fileName = file.getOriginalFilename();
 		
 		ServletContext application = request.getServletContext();
@@ -65,6 +78,7 @@ public class FutureDiaryController {
 		
 		String filePath = realPath + File.separator + fileName;
 		
+		System.out.println(filePath);
 		File saveFile = new File(filePath);
 		
 		try {
@@ -82,6 +96,8 @@ public class FutureDiaryController {
 		futureDiary.setContent(content);
 		futureDiary.setMemberId(4);
 		futureDiary.setPub(p);
+		futureDiary.setEmotionId(emt);
+		futureDiary.setImage(fileName);
 		service.insert(futureDiary);
 		
 		return("redirect:list");
