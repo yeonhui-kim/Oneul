@@ -29,7 +29,7 @@ public class OnelineServiceimp implements OnelineService {
 	@Override
 	public List<Oneline> getList(int page, String field, String query) {
 		int offset = (page-1)*10; //1->0, 2->10, 3->20, 4->30 
-		int size = 10;	
+		int size = 100;	
 		List<Oneline> list = dao.getList(offset, size, field, query);	
 		return list;
 	}

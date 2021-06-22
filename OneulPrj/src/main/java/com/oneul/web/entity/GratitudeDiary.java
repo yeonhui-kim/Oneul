@@ -9,7 +9,7 @@ public class GratitudeDiary {
 	private String content2;
 	private String content3;
 	private String image;
-	private Boolean pub;
+	private boolean pub;
 	private Date regDate;
 	private Integer memberId;
 	private Integer emotionId;
@@ -18,7 +18,7 @@ public class GratitudeDiary {
 		
 	}
 	
-	public GratitudeDiary(Integer id, String content1, String content2, String content3, String image, Boolean pub,
+	public GratitudeDiary(Integer id, String content1, String content2, String content3, String image, boolean pub,
 			Date regDate, Integer memberId, Integer emotionId) {
 		super();
 		this.id = id;
@@ -74,11 +74,11 @@ public class GratitudeDiary {
 		this.image = image;
 	}
 	
-	public Boolean getPub() {
+	public boolean getPub() {
 		return pub;
 	}
 	
-	public void setPub(Boolean pub) {
+	public void setPub(boolean pub) {
 		this.pub = pub;
 	}
 	
@@ -112,6 +112,7 @@ public class GratitudeDiary {
 				+ content3 + ", image=" + image + ", pub=" + pub + ", regDate=" + regDate + ", memberId=" + memberId
 				+ ", emotionId=" + emotionId + "]";
 	}
+
 	
 
 	

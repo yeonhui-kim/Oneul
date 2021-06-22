@@ -3,25 +3,72 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="/inc/layout"
-	lang='en'>
+	lang='ko'>
 	
   <head>
     <meta charset='UTF-8' />
     <link href='/css/calendar/calendar.css' rel='stylesheet' />
     <script src='/js/calendar/calendar.js'></script>
     <script>
-
+      var calendar = null;
+      var jsonString= "${jsonString}";
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth'
+        
+        calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth',
+       	  editable: true,
+          selectable: true,
+          businessHours: true,
+          dayMaxEvents: true,
+          events: JSON.parse("${jsonString}"),
+          
+          customButtons: {
+        	    myCustomButton: {
+        	      text: '테스트 일정 추가',
+        	      click: function() {
+        	    	  addEventSource();
+        	      }
+        	    }
+        	  },
+      	  headerToolbar: {
+      	    left: 'myCustomButton',
+      	    center: ''
+      	  }
+        
         });
         calendar.render();
+        
       });
+      
+      
+      function addEventSource() {
+    	 
+    	  calendar.addEventSource([
+              {
+                start: "2021-06-22",
+                title: "테스트 일정1",
+                id : "event1"
+              },
+              {
+                  start: "2021-06-23",
+                  title: "테스트 일정2",
+                  id : "event2"
+                },
+                {
+                    start: "2021-06-22",
+                    title: "테스트 일정3",
+                    id : "event3"
+                  }
+          ]);
+      }
 
     </script>
   </head>
   <main id="main" layout:fragment="main">
     <div id='calendar'></div>
+    
+    
+    
   </main>
 </html>

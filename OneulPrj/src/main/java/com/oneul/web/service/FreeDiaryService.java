@@ -12,4 +12,5 @@ public interface FreeDiaryService {
 
 	int insert(FreeDiary freeDiary);
 	int update(FreeDiary freeDiary);
-	int delete(int id);}
+	int delete(int id);
+	}

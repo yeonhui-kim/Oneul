@@ -1,7 +1,12 @@
 package com.oneul.web.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -43,8 +48,34 @@ public class FutureDiaryController {
 	public String reg(@DateTimeFormat(pattern = "yyyy-MM-dd")Date bookingDate, 
 					  String content,
 					  MultipartFile file,
-					  String pub) {
+					  String pub,
+					  HttpServletRequest request) {
 		int p = Integer.parseInt(pub);
+		
+
+		String fileName = file.getOriginalFilename();
+		
+		ServletContext application = request.getServletContext();
+		String path = "/upload";
+		String realPath = application.getRealPath(path);
+		
+		File pathFile = new File(realPath);
+		if(!pathFile.exists())
+			pathFile.mkdirs();
+		
+		String filePath = realPath + File.separator + fileName;
+		
+		File saveFile = new File(filePath);
+		
+		try {
+			file.transferTo(saveFile);
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 		
 		FutureDiary futureDiary = new FutureDiary();	
 		futureDiary.setBookingDate(bookingDate);
