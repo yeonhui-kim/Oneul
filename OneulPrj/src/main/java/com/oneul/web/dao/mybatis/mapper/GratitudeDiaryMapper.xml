@@ -32,7 +32,7 @@
    	<update id="updateDiary" parameterType="com.oneul.web.entity.GratitudeDiary">
 		update GratitudeDiary
 		<set>
-			<!-- <if test="emotionId != null">emotionId = #{emotionId},</if> -->
+			<if test="emotionId != null">emotionId = #{emotionId},</if>
 			<if test="content1 != null">content1 = #{content1},</if>
 			<if test="content2 != null">content2 = #{content2},</if>
 			<if test="content3 != null">content3 = #{content3},</if>
