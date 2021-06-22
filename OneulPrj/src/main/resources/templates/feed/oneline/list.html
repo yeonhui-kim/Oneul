@@ -21,11 +21,10 @@
 		<div th:each="n:${list}">
 			<article class="box">
 				<div class="content">
-
 					<div class="profile">
 						<img class="profile-image" src="../images/user.PNG"> <a
-							class="user-name">이동진</a> <a class="date"
-							th:text="${#calendars.format(n.regDate,'yyy-MM-dd')}"></a> <a
+							class="user-name" th:text="${n.writerId}">이동진</a> 
+							<a class="date" th:text="${#calendars.format(n.regDate,'yyy-MM-dd')}"></a> <a
 							class="edit" th:href="@{edit(id=${n.id})}" href="edit?id=${n.id}">수정</a>
 						<a class="del" th:href="@{del(id=${n.id})}"
 							onclick="if(!confirm('삭제하시겠습니까?')) return false;">삭제</a>
@@ -40,9 +39,9 @@
 						<span>좋아요 0</span> <span>댓글 0</span>
 					</div>
 					<hr>
-					
+
 					<div th:each="c:${clist}" class="profile">
-					<a th:text="${c.content}"></a>
+						<a th:text="${c.content}"></a>
 					</div>
 
 					<!-- <form action="list">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="/inc/layout">
+   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+   layout:decorator="/inc/layout">
 
 <head>
 <meta charset="UTF-8">
@@ -13,23 +13,25 @@
 <main id="wrapper"  layout:fragment="main">
 
 
-	
-	<form action="reg" method="post" id="main">
+   
+   <form action="reg" method="post" id="main">
 
-		<div class="content">
-				<textarea class=txt 
-						name="content" ></textarea>
+      <div class="content">
+      <!-- <a th:text="${list.writerId}"></a> -->
+            <textarea class=txt name="content"></textarea>
+                  <!-- <td th:text="${notice.writerId}">newlec</td> -->
+      <!-- <input type="hidden" name="uname" th:value="${member.name}"/> -->
 
 
-				<button type="submit" class="btn">
-					<span>확인</span>
-				</button>
-				
-		</div>
+            <button type="submit" class="btn">
+               <span>확인</span>
+            </button>
+            
+      </div>
 
-	</form>
+   </form>
 
-	
+   
 
 </main>
 
