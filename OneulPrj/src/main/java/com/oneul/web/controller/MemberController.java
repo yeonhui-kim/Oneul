@@ -52,7 +52,7 @@ public class MemberController {
 	}
 	
 	
-	@PostMapping("reg")
+	@PostMapping("reg") //회원가입
 	public String reg(String username,
 						String password,
 						String name,
@@ -91,7 +91,7 @@ public class MemberController {
 		return "member/mypagetest";
 	}
 	
-	@PostMapping("upload")
+	@PostMapping("upload") //프로필사진 업로드
 	public String upload(MultipartFile file, HttpServletRequest request, Model model, Principal principal) {
 		String fileName = file.getOriginalFilename();//파일이름
 		
