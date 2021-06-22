@@ -45,7 +45,6 @@ public class GratitudeDiaryController {
 		gratitudeDiary.setMemberId(2);
 		gratitudeDiary.setRegDate(now);
 
-		
 		calendarEmotion.setMemberId(gratitudeDiary.getMemberId());
 		calendarEmotion.setRegDate(fmt.format(gratitudeDiary.getRegDate()));
 		
@@ -90,7 +89,7 @@ public class GratitudeDiaryController {
 	@PostMapping("edit")
 	public String edit(GratitudeDiary gratitudeDiary, CalendarEmotion calendarEmotion) {
 		service.updateDiary(gratitudeDiary);
-		service.updateCalendar(calendarEmotion);
+		//service.updateCalendar(calendarEmotion);
 		
 		return "redirect:detail?id="+gratitudeDiary.getId();
 	}

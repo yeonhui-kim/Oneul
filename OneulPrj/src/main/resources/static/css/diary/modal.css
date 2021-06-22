@@ -20,12 +20,18 @@
 	height: 70px;
 }
 
+#checked-emo{
+	display: inline-block;
+}
+
+
+
 /* Modal Content/Box */
 .modal-content {
 	background-color: #fefefe;
 	margin: 15% auto; /* 15% from the top and centered */
 	padding: 20px;
-	border: 1px solid #888;
+	border: 1px solid #fefefe;
 	width: 50%; /* Could be more or less, depending on screen size */
 }
 /* The Close Button */
