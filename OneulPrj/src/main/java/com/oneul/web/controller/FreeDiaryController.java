@@ -59,10 +59,11 @@ public class FreeDiaryController {
 				MultipartFile file,
 				HttpServletRequest request) {
 		freeDiary.setMemberId(4);		
-		service.insert(freeDiary);
 			
 			String fileName = file.getOriginalFilename();
-			
+			System.out.println(fileName);
+			freeDiary.setImage(fileName);
+			service.insert(freeDiary);
 			ServletContext application = request.getServletContext();
 			String path = "/upload";
 			String realPath = application.getRealPath(path);
