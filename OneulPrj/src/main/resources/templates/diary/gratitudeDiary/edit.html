@@ -19,18 +19,19 @@
 				<tr>
 					<th>오늘의 감정</th>
 					<td colspan="3">
-   						
-   						<div id="checked-emo" th:classappend="${gratitudeDiary.emotionId} =='1' ? 'happy'"></div>
-						<div id="checked-emo" th:classappend="${gratitudeDiary.emotionId} =='2' ? 'proud'"></div>
-						<div id="checked-emo" th:classappend="${gratitudeDiary.emotionId} =='3' ? 'flutter'"></div>
-						<div id="checked-emo" th:classappend="${gratitudeDiary.emotionId} =='4' ? 'calm'"></div>
-						<div id="checked-emo" th:classappend="${gratitudeDiary.emotionId} =='5' ? 'sensitive'"></div>
-						<div id="checked-emo" th:classappend="${gratitudeDiary.emotionId} =='6' ? 'unstable'"></div>
-						<div id="checked-emo" th:classappend="${gratitudeDiary.emotionId} =='7' ? 'tired'"></div>
-						<div id="checked-emo" th:classappend="${gratitudeDiary.emotionId} =='8' ? 'sad'"></div>
-						<div id="checked-emo" th:classappend="${gratitudeDiary.emotionId} =='9' ? 'upset'"></div>
-   						
-   						<div id="emotion"></div>
+						<th:block th:switch="${gratitudeDiary.emotionId}">
+							<span th:case="1"><div class="checked-emotion happy"></div></span>
+							<span th:case="2"><div class="checked-emotion proud"></div></span>
+							<span th:case="3"><div class="checked-emotion flutter"></div></span>
+							<span th:case="4"><div class="checked-emotion calm"></div></span>
+							<span th:case="5"><div class="checked-emotion sensitive"></div></span>
+							<span th:case="6"><div class="checked-emotion unstable"></div></span>
+							<span th:case="7"><div class="checked-emotion tired"></div></span>
+							<span th:case="8"><div class="checked-emotion sad"></div></span>
+							<span th:case="9"><div class="checked-emotion upset"></div></span>
+						</th:block>
+
+						<div id="emotion"></div>
    						<button id="open-button" type="button">감정 선택</button> 
    						
 						<div th:replace="inc/modal::modal"></div>
