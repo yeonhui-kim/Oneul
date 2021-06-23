@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>마이페이지 테스트</title>
+</head>
+<body>
+	<form action="/mypage/upload" method="post" enctype="multipart/form-data">
+		<input type="file" name="file"><br>
+		<input type="submit" value="전송">
+	</form>
+	<div th:text="${member.image}"></div>
+	<div th:text="${member.name}"></div>
+	<div th:text="${member.introduction}"></div>
+	<a th:href="@{/aa}" >회원정보 수정</a>
+	<h1>프로필사진테스트</h1>
+	<img th:src="@{/upload/profile/basic.jpg}" th:if="${member.image}=='basic.jpg'">
+	<img th:src="@{'/upload/profile/'+${member.image}}" th:if="${member.image}!='basic.jpg'">
+	
+	<div th:each="n:${myComment}"> <div th:text="${n.content}"></div> <div th:text="${n.comment}"></div> <div th:text="${n.regDate}"></div> </div>
+	<hr>
+	<div th:each="n:${myDiary}"> <div th:text="${n.content}"></div> <div th:text="${n.diary}"></div> <div th:text="${n.regDate}"></div></div>
+</body>
+</html>
