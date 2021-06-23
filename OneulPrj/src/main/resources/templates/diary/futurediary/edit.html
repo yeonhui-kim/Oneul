@@ -5,6 +5,8 @@ layout:decorator="/inc/layout">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="/css/diary/modal.css" type="text/css" rel="stylesheet">
+<script src='/js/modal/modal.js'></script>
 </head>
 <body>
 
@@ -16,6 +18,14 @@ layout:decorator="/inc/layout">
                            <table border="1">  
                            <lable>예약날짜</lable>                      
                             <input type="date" name="bookingDate" th:value="${#calendars.format(futureDiary.bookingDate,'yyyy-MM-dd')}">
+                            <tr>
+								<th>감정선택</th>
+								<td colspan="3">
+			   						<div id="emotion"></div>
+			   						<button id="open-button" type="button">감정 선택</button> 
+			   						<div th:replace="inc/modal::modal"></div>						
+								</td>
+							</tr>
                             <tr>
                               	<td colspan="4">															 
 	                              	<label>공개</label> <input type="radio" value="1" name="pub"  th:checked="${futureDiary.pub} ? 'true': 'false'"> 
