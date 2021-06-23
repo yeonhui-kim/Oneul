@@ -47,8 +47,11 @@ window.addEventListener("load",function(){
 		let input = target.childNodes[0];
 		console.log(input);
 		input.checked = "true";
-
-		checkedEmotion.style.display = "none";
+		
+		if(checkedEmotion != null){
+			checkedEmotion.style.display = "none";
+		}
+		
 		modal.style.display = "none";
 		
 		//checked emotion display
