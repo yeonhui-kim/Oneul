@@ -37,7 +37,7 @@ public class OnelineController {
    public String list(Model model) {
       List<Oneline> list = service.getList(); 
 		/* list.get(0).getContent() */
-      model.addAttribute("list", list);// "list"라는 키값에 위에서 받아온 list데이터를 넣고 model로 전달된다.
+      model.addAttribute("list", list);
 
       
       return "feed/oneline/list";
@@ -70,11 +70,13 @@ public class OnelineController {
       Member member2 = mservice.get(username); //2.서비스객체에 .get(세션에가져온이름)을 넣었다
       String name = member2.getName();
       Integer memberId = member2.getId(); //로그인세션 memberId 
-      String writerId2 = member2.getUserId();
+      String writerId2 = member2.getUserId(); //로그인 아이디
+      String image = member2.getImage();
       
       Member member = new Member();
       member.setUserId(username);
       member.setName(name);
+      member.setImage(image);
       model.addAttribute("member", member2);
       
 
@@ -82,6 +84,7 @@ public class OnelineController {
       oneline.setContent(content);
       oneline.setMemberId(memberId);
       oneline.setWriterId(writerId2);
+      oneline.setImage(image);
 
       service.insert(oneline);
 
