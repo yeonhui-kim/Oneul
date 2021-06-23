@@ -33,38 +33,7 @@
    						<div id="emotion"></div>
    						<button id="open-button" type="button">감정 선택</button> 
    						
-						<div id="modal" class="modal">
-							<!-- Modal content -->
-							<div class="modal-content">
-								<span class="close">&times;</span>
-								<table class="emotion-table">
-									<tr>
-										<td><label>행복</label>
-											<div class="happy"><input type="radio" value="1" name="emotionId"></div></td>
-										<td><label>뿌듯</label>
-											<div class="proud"><input type="radio" value="2" name="emotionId"></div></td>
-										<td><label>설렘</label>
-											<div class="flutter"><input type="radio" value="3" name="emotionId"></div></td>
-									</tr>
-									<tr>
-										<td><label>평온</label>
-											<div class="calm"><input type="radio" value="4" name="emotionId"></div></td>
-										<td><label>에민</label>
-											<div class="sensitive"><input type="radio" value="5" name="emotionId"></div></td>
-										<td><label>불안</label>
-											<div class="unstable"><input type="radio" value="6" name="emotionId"></div></td>
-									</tr>
-									<tr>
-										<td><label>피곤</label>
-											<div class="tired"><input type="radio" value="7" name="emotionId"></div></td>
-										<td><label>슬픔</label>
-											<div class="sad"><input type="radio" value="8" name="emotionId"></div></td>
-										<td><label>화남</label>
-											<div class="upset"><input type="radio" value="9" name="emotionId"></div></td>
-									</tr>
-								</table>
-							</div>
-						</div> 
+						<div th:replace="inc/modal::modal"></div>
 										
 					</td>
 				</tr>
