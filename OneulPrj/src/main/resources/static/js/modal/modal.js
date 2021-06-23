@@ -21,8 +21,48 @@ window.addEventListener("load", function (event) {
 	// When the user clicks on <span> (x), close the modal
 	closePage.onclick = function() {
 		modal.style.display = "none";
+		emotionDisplay();
+	}
+	
+	
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+	
+	
+	
+});
+
+window.addEventListener("load",function(){
+	let emotionTable = document.querySelector(".emotion-table");
+
+	emotionTable.onclick = function(e){
+		console.log(e.target);
+		if(!e.target.classList.contains("emotion-icon-container")){
+			return;
+		}
 		
-		let checkEmotion = document.querySelector('input[name="emotionId"]:checked').value;
+		let target = e.target;
+		let input = target.childNodes[0];
+		console.log(input);
+		input.checked = "true";
+
+		modal.style.display = "none";
+		
+		//checked emotion display
+		emotionDisplay();
+		
+	}
+});
+
+function emotionDisplay(){
+	if(document.querySelector('input[name="emotionId"]:checked')==null){
+		return;
+	}
+	let checkEmotion = document.querySelector('input[name="emotionId"]:checked').value;
 		if(checkEmotion != null){
 			//emotion.innerText = checkedEmotion;
 			//checkedEmo.style.display = "none";
@@ -49,16 +89,5 @@ window.addEventListener("load", function (event) {
 				emotion.className = 'upset';
 			}
 		}
-	}
-	
-	
-	// When the user clicks anywhere outside of the modal, close it
-	window.onclick = function(event) {
-		if (event.target == modal) {
-			modal.style.display = "none";
-		}
-	}
-	
-	
-	
-});
+
+}

@@ -1,57 +1,67 @@
 
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-xmlns:layout="http://www.ultaq.net.nz/thymeleaf/layout"
-layout:decorator="/inc/layout">
+	xmlns:layout="http://www.ultaq.net.nz/thymeleaf/layout"
+	layout:decorator="/inc/layout">
 <head>
 <meta charset="UTF-8">
-<title>미래일기 list</title>
+	<title>미래일기 reg</title>
+	<link href="/css/diary/modal.css" type="text/css" rel="stylesheet">
+	<script src='/js/modal/modal.js'></script>
 </head>
-<body>
+ 
 
-	
-<main id="main" layout:fragment="main">
-	<section class="">
-		<h1>Feed section</h1>
-		<h3>Test table</h3>
-		<form class="form" action="reg" method="post" enctype="multipart/form-data">
-                           <table border="1">  
-                           <lable>예약날짜</lable>                      
-                            <input type="date" name="bookingDate">
-				<!-- 	<select name="emotion">
-						<option value="">지금 당신의 감정을 선택하세요</option>
-						<option value="">행복</option>
-						<option value="">뿌듯</option>
-						<option value="">평온</option>
-						<option value="">피곤</option>
-						<option value="">슬픔</option>
-						<option value="">불안</option>
-						<option value="">예민</option>
-						<option value="">화남</option>
-						<option value="">설렘</option>
-					</select> -->
-					<div class="emotion-container">
-
-						<input id="happy" type="radio"
-							name="emotion" value="1"> <label for="happy">행복</label>
-						<input id="proud" type="radio"
-							name="emotion" value="2"> <label for="proud">뿌듯</label>
-						<input id="flutter" type="radio"
-							name="emotion" value="3"> <label for="tired">설렘</label>
-						<input id="calm" type="radio"
-							name="emotion" value="4"> <label for="calm">평온</label>
-						<input id="sensitive" type="radio"
-							name="emotion" value="5"> <label for="tired">예민</label>
-						<input id="unstable" type="radio"
-							name="emotion" value="6"> <label for="tired">불안</label>
-						<input id="tired" type="radio"
-							name="emotion" value="7"> <label for="tired">피곤</label>
-						<input id="sad" type="radio"
-							name="emotion" value="8"> <label for="tired">슬픔</label>
-						<input id="upset" type="radio"
-							name="emotion" value="9"> <label for="tired">화남</label>
-
-					</div>
+	<main id="main" layout:fragment="main">
+		<section class="">
+			<h1>Feed section</h1>
+			<h3>Test table</h3>
+			<form class="form" action="reg" method="post"
+				enctype="multipart/form-data">
+				<table border="1">
+					<lable>예약날짜</lable>
+					<input type="date" name="bookingDate">
+					
+					<tr>
+					<th>감정선택</th>
+					<td colspan="3">
+   						<div id="emotion"></div>
+   						<button id="open-button" type="button">감정 선택</button> 
+   						
+						<div id="modal" class="modal">
+							<!-- Modal content -->
+							<div class="modal-content">
+								<span class="close">&times;</span>
+								<table class="emotion-table">
+									<tr>
+										<td><label>행복</label>
+											<div class="happy emotion-icon-container"><input type="radio" value="1" name="emotionId" style="display:none;"></div></td>
+										<td><label>뿌듯</label>
+											<div class="proud emotion-icon-container"><input type="radio" value="2" name="emotionId" style="display:none;"></div></td>
+										<td><label>설렘</label>
+											<div class="flutter emotion-icon-container"><input type="radio" value="3" name="emotionId" style="display:none;"></div></td>
+									</tr>
+									<tr>
+										<td><label>평온</label>
+											<div class="calm emotion-icon-container"><input type="radio" value="4" name="emotionId" style="display:none;"></div></td>
+										<td><label>에민</label>
+											<div class="sensitive emotion-icon-container"><input type="radio" value="5" name="emotionId" style="display:none;"></div></td>
+										<td><label>불안</label>
+											<div class="unstable emotion-icon-container"><input type="radio" value="6" name="emotionId" style="display:none;"></div></td>
+									</tr>
+									<tr>
+										<td><label>피곤</label>
+											<div class="tired emotion-icon-container"><input type="radio" value="7" name="emotionId" style="display:none;"></div></td>
+										<td><label>슬픔</label>
+											<div class="sad emotion-icon-container"><input type="radio" value="8" name="emotionId" style="display:none;"></div></td>
+										<td><label>화남</label>
+											<div class="upset emotion-icon-container"><input type="radio" value="9" name="emotionId" style="display:none;"></div></td>
+									</tr>
+								</table>
+							</div>
+						</div> 
+										
+					</td>
+				</tr>
 					<tr>
 						<td colspan="4"><label>공개</label> <input type="radio"
 							value="1" name="pub"> <label>비공개</label> <input
@@ -62,18 +72,17 @@ layout:decorator="/inc/layout">
 							<textarea rows="20" cols="80" name="content"></textarea></td>
 					</tr>
 				</table>
-                           
-                     <div>
-                        <input type="submit" value="저장">
-                        <a href="list">취소</a>
-                     </div>
-                  </form>
 
-	</section>
-</main>
+				<div>
+					<input type="submit" value="저장"> <a href="list">취소</a>
+				</div>
+			</form>
 
-	
-</body>
+		</section>
+	</main>
+
+
+ 
 </html>
 
 
