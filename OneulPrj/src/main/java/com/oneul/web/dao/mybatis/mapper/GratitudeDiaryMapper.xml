@@ -16,7 +16,6 @@
 	<insert id="insertDiary" parameterType="com.oneul.web.entity.GratitudeDiary">
    		insert into GratitudeDiary(content1, content2, content3, pub, memberId, emotionId)
    		value(#{content1},#{content2},#{content3},#{pub},#{memberId},#{emotionId})
-   		<!-- insert into Emotion(emotionId) value(#{emotionId}) -->
    	</insert>
    	
    	<insert id="insertCalendar" parameterType="com.oneul.web.entity.CalendarEmotion">

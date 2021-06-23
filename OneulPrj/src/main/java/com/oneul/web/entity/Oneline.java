@@ -7,6 +7,9 @@ public class Oneline {
 	private String content;
 	private Integer memberId;
 	private Date regDate;
+	private String writerId;
+	private String image;
+	
 	
 	public Integer getId() {
 		return id;
@@ -32,6 +35,19 @@ public class Oneline {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
+	public String getWriterId() {
+		return writerId;
+	}
+	public void setWriterId(String writerId) {
+		this.writerId = writerId;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+	
 	@Override
 	public String toString() {
 		return "Oneline24 [id=" + id + ", content=" + content + ", memberId=" + memberId + ", regDate=" + regDate + "]";

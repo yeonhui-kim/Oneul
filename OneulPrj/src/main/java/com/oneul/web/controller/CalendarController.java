@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
-
 @Controller
 @RequestMapping("/calendar/")
 public class CalendarController {

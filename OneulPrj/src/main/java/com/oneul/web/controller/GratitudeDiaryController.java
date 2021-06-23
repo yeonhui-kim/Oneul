@@ -40,24 +40,24 @@ public class GratitudeDiaryController {
 	
 	@PostMapping("reg")
 	public String reg(@ModelAttribute GratitudeDiary gratitudeDiary, @ModelAttribute CalendarEmotion calendarEmotion) {
-		SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+		//SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
 		Date now = new Date(System.currentTimeMillis());
 		gratitudeDiary.setMemberId(2);
 		gratitudeDiary.setRegDate(now);
 
-		calendarEmotion.setMemberId(gratitudeDiary.getMemberId());
-		calendarEmotion.setRegDate(fmt.format(gratitudeDiary.getRegDate()));
+		//calendarEmotion.setMemberId(gratitudeDiary.getMemberId());
+		//calendarEmotion.setRegDate(fmt.format(gratitudeDiary.getRegDate()));
 		
 		service.insertDiary(gratitudeDiary);
-		
-		//1. 현재 로그인한 사용자가 해당 날짜에 감정을 등록한적 있는지 확인
-		int cnt = service.selectCalEmotionCnt(calendarEmotion);
-		
-		if( cnt > 0 ) {
-			service.updateCalendar(calendarEmotion);
-		} else {
-			service.insertCalendar(calendarEmotion);
-		}
+//		
+//		//1. 현재 로그인한 사용자가 해당 날짜에 감정을 등록한적 있는지 확인
+//		int cnt = service.selectCalEmotionCnt(calendarEmotion);
+//		
+//		if( cnt > 0 ) {
+//			service.updateCalendar(calendarEmotion);
+//		} else {
+//			service.insertCalendar(calendarEmotion);
+//		}
 		
 		return "redirect:list";
 	}

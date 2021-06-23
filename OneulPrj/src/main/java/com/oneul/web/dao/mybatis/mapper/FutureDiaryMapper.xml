@@ -4,12 +4,6 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.oneul.web.dao.FutureDiaryDao">
-    <!-- 
-    <resultMap type="com.newlecture.web.entity.Notice" id="noticeMap">    
-        <result column="writer_id" property="writerId"/>
-        <result column="reg_date" property="regDate"/>
-    </resultMap>
-     -->
     
     <select id="getList" resultType="com.oneul.web.entity.FutureDiary">
     	select * from FutureDiary
@@ -23,8 +17,8 @@
     </select>
     
     <insert id="insert" parameterType="com.oneul.web.entity.FutureDiary">
-    	insert into FutureDiary(memberId,bookingDate,content,pub)
-    	values(#{memberId},#{bookingDate},#{content},#{pub})
+    	insert into FutureDiary(memberId,bookingDate,content,pub,emotionId,image)
+    	values(#{memberId},#{bookingDate},#{content},#{pub},#{emotionId},#{image})
     </insert>
     
     <delete id="delete">

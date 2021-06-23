@@ -20,11 +20,22 @@
 	height: 70px;
 }
 
-#checked-emo{
+.checked-emotion{
 	display: inline-block;
 }
 
-
+#open-button{
+	width: 80px;
+	height: 25px;
+	background-color: rgb(126, 173, 231);
+	color: #fefefe;
+	font-size: 13px;
+	border: 1px solid #808080;
+	text-align: center;
+	text-decoration: none;
+    display: inline-block;
+	border-radius: 3px;
+}
 
 /* Modal Content/Box */
 .modal-content {
@@ -32,8 +43,14 @@
 	margin: 15% auto; /* 15% from the top and centered */
 	padding: 20px;
 	border: 1px solid #fefefe;
-	width: 50%; /* Could be more or less, depending on screen size */
+	width: 70%; /* Could be more or less, depending on screen size */
 }
+
+	.emotion-table{
+		border-collapse: separate;
+		border: 0px;
+	}
+
 /* The Close Button */
 .close {
 	color: #aaa;
