@@ -66,6 +66,30 @@ public class MemberController {
 		return "member/edit";		
 	}
 	
+	@PostMapping("edit")
+	public String edit(HttpServletRequest request,String username, String password) {
+		
+		//변경전 회원아이디
+		HttpSession session = request.getSession(true); 
+		String originUsername = (String) session.getAttribute("username");
+		
+		//회원 식별 아이디
+		Member member2 = new Member();
+		member2 = service.get(originUsername);
+		int id = member2.getId();
+		
+		//변경된 회원정보 업데이트
+		Member member = new Member();
+		member.setId(id);
+		member.setUserId(username);
+		String noopPassword = "{noop}"+password;
+		member.setPassword(noopPassword);
+		
+		service.updatebyid(member);
+		
+		return "redirect:/doLogout";
+	}
+	
 	@RequestMapping("logintest")
 	public String logintest() {
 		return "member/logintest";		
@@ -135,13 +159,14 @@ public class MemberController {
 			e.printStackTrace();
 		}
 		
+		//로그인 아이디 획득
 		HttpSession session = request.getSession(true);
 		String username = (String) session.getAttribute("username");
 		
 		Member member = new Member();
 		member.setUserId(username);
 		member.setImage(fileName);
-		service.update(member);
+		service.updatebyname(member);
 		
 		Member member2 = service.get(username);
 		model.addAttribute("member", member2);

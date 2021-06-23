@@ -9,7 +9,8 @@ public interface MemberDao {
 	List<Member> getList();
 	
 	int insert(Member member);
-	int update(Member member);
+	int updatebyid(Member member);
+	int updatebyname(Member member);
 	int delete(int id);
 	
 	int check_id(String userId);

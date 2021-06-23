@@ -40,9 +40,15 @@ public class MemberServiceimp implements MemberService {
 	}
 
 	@Override
-	public int update(Member member) {
+	public int updatebyid(Member member) {
 
-		return memberdao.update(member);
+		return memberdao.updatebyid(member);
+	}
+	
+	@Override
+	public int updatebyname(Member member) {
+
+		return memberdao.updatebyname(member);
 	}
 	
 	@Override
