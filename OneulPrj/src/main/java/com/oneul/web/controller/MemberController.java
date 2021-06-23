@@ -137,10 +137,15 @@ public class MemberController {
 	//프로필사진 업로드
 	@PostMapping("upload") 
 	public String upload(MultipartFile file, HttpServletRequest request, Model model, Principal principal) {
+		//로그인 아이디 획득
+		HttpSession session = request.getSession(true);
+		String username = (String) session.getAttribute("username");
+		
+		
 		String fileName = file.getOriginalFilename();//파일이름
 		
 		ServletContext application = request.getServletContext();
-		String path = "/upload/profile";
+		String path = "/upload/profile/"+username;
 		String realPath = application.getRealPath(path);
 		
 		File pathFile = new File(realPath);
@@ -159,9 +164,7 @@ public class MemberController {
 			e.printStackTrace();
 		}
 		
-		//로그인 아이디 획득
-		HttpSession session = request.getSession(true);
-		String username = (String) session.getAttribute("username");
+
 		
 		Member member = new Member();
 		member.setUserId(username);
