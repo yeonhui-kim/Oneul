@@ -8,24 +8,19 @@ window.addEventListener("load", function (event) {
 	
 	let emotion = document.querySelector("#emotion");
 	
-	//let checkedEmo = document.querySelector("#checked-emo");
-	console.log(emotion);
-	
-	
-	// When the user clicks on the button, open the modal 
+
 	openBtn.onclick = function() {
 		
 		modal.style.display = "block";
 	}
 	
-	// When the user clicks on <span> (x), close the modal
+
 	closePage.onclick = function() {
 		modal.style.display = "none";
 		emotionDisplay();
 	}
 	
-	
-	// When the user clicks anywhere outside of the modal, close it
+
 	window.onclick = function(event) {
 		if (event.target == modal) {
 			modal.style.display = "none";
@@ -36,8 +31,11 @@ window.addEventListener("load", function (event) {
 	
 });
 
+
 window.addEventListener("load",function(){
+	
 	let emotionTable = document.querySelector(".emotion-table");
+	let checkedEmotion = document.querySelector(".checked-emotion");
 
 	emotionTable.onclick = function(e){
 		console.log(e.target);
@@ -50,6 +48,7 @@ window.addEventListener("load",function(){
 		console.log(input);
 		input.checked = "true";
 
+		checkedEmotion.style.display = "none";
 		modal.style.display = "none";
 		
 		//checked emotion display
@@ -64,9 +63,7 @@ function emotionDisplay(){
 	}
 	let checkEmotion = document.querySelector('input[name="emotionId"]:checked').value;
 		if(checkEmotion != null){
-			//emotion.innerText = checkedEmotion;
-			//checkedEmo.style.display = "none";
-			
+
 			emotion.style.display = "inline-block";
 			
 			if(checkEmotion == 1){
