@@ -141,11 +141,14 @@ public class MemberController {
 		HttpSession session = request.getSession(true);
 		String username = (String) session.getAttribute("username");
 		
+		//식별변호 획득
+		Member member2 = service.get(username);
+		int id = member2.getId();
 		
 		String fileName = file.getOriginalFilename();//파일이름
 		
 		ServletContext application = request.getServletContext();
-		String path = "/upload/profile/"+username;
+		String path = "/upload/profile/"+id;
 		String realPath = application.getRealPath(path);
 		
 		File pathFile = new File(realPath);
@@ -167,14 +170,15 @@ public class MemberController {
 
 		
 		Member member = new Member();
+		member.setId(id);
 		member.setUserId(username);
 		member.setImage(fileName);
 		service.updatebyname(member);
 		
-		Member member2 = service.get(username);
+		
 		model.addAttribute("member", member2);
 		
-		return "member/mypagetest";
+		return "redirect:mypagetest";
 	}
 
 }
