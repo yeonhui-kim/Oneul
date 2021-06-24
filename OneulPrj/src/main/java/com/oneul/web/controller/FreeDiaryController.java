@@ -3,7 +3,9 @@ package com.oneul.web.controller;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
+
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +33,7 @@ import com.oneul.web.service.QuestionService;
 public class FreeDiaryController {
 	
 
+	
 	@Autowired
 	private FreeDiaryService service;
 	@Autowired
@@ -40,6 +43,9 @@ public class FreeDiaryController {
 	
 	@RequestMapping("list")
 	public String list(Model model) {
+
+		
+		
 		List<FreeDiary> list = service.getList();
 		model.addAttribute("list",list);
 		

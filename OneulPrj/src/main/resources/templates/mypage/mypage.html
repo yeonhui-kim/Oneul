@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/inc/layout">
+<head>
+	<meta charset="UTF-8">
+    <title>자유일기</title>
+    <style>
+        .d-none {
+            display: none;
+        }
+
+        body{
+            margin: 0px;
+        }
+
+
+
+
+
+
+        #main {
+            
+        }
+
+
+
+        #main{
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 720px;
+            min-height: 720px;
+            background-color: white;
+        }
+
+
+
+
+
+
+
+/* .container-upside */
+        .upside-container{
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .upside-container-alram{
+            position: absolute;
+            right: 0px;
+        }
+
+
+
+
+/* midleside - container*/
+        .midleside-container{
+
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .midleside-container-img{
+            width: 100px;
+            height: 100px;
+        }
+
+/* midledownside-container */
+
+        .midledownside-container{
+
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .midledownside-container .my-diary-button{
+        	cursor: pointer;
+        	border-bottom: 2px solid white;
+        	
+
+        }
+                .midledownside-container .my-diary-button:hover{
+                	border-bottom-color: var(--color-basic);
+                }
+        
+       	.midledownside-container .my-comment-button{
+        	cursor: pointer;
+        	border-bottom: 2px solid white;
+        }
+        	    .midledownside-container .my-comment-button:hover{
+                	border-bottom-color: var(--color-basic);
+                }
+        
+
+        
+    </style>
+	<script>
+	window.addEventListener("load", ()=>{
+		console.log("dddd");
+		let diaryMenuButton = document.querySelector(".my-diary-button");
+		let commentMenuButton = document.querySelector(".my-comment-button");
+		let diaryList = document.querySelector(".my-diary-list");
+		let commentList = document.querySelector(".my-comment-list");
+
+		diaryMenuButton.onclick = () => {
+			console.log("sss");
+			diaryList.classList.remove("d-none");
+            commentList.classList.add("d-none");
+		};
+		
+		commentMenuButton.onclick = () => {
+			console.log("sssfsfs")
+            diaryList.classList.add("d-none");
+            commentList.classList.remove("d-none");
+		};
+	});
+	</script>
+</head>
+<main id="main" layout:fragment="main">
+	
+	
+	 <section>
+        <h1 class="d-none">main</h1>
+
+
+        <div>
+
+            <div class="upside-container">
+                <section class="upside-container-title">
+                    <h1>나의 세줄일기</h1>
+                    <div>나의 일상을 돌아 봅니다...</div>
+                </section>
+
+                <section class="upside-container-alram">
+                    <h1 class="d-none">알림페이지버튼</h1>
+                    <a href="">알람페이지버튼</a>
+                </section>
+            </div>
+
+
+            <div class="midleside-container">
+
+                <section>
+                    <h1 class="d-none">img</h1>
+                    <img class="midleside-container-img" th:src="@{/upload/profile/basic.jpg}" th:alt="${member.image}" th:if="${member.image}=='basic.jpg'">
+					<img class="midleside-container-img" th:src="@{'/upload/profile/'+${member.image}}" th:alt="${member.image}" th:if="${member.image}!='basic.jpg'">
+                </section>
+
+                <section>
+                    <h1 class="d-none">자기소개</h1>
+                    <ul>
+                        <li><span th:text="${member.name}">홍길동</span> 나는</li>
+                        <li th:text="${member.introduction}">자기소개 작성</li>
+                        <li><input type="button" value="회원 정보 수정"></li>
+                    </ul>
+                </section>
+
+            </div>
+
+            <div>
+                <nav class="midledownside-container" >    
+                    <h1 class="d-none">nav</h1>
+                    <div class="my-diary-button" >내 일기</div>
+                    <div class="my-comment-button" >내 댓글</div>
+                </nav>
+            </div>
+
+
+        </div>
+
+        <article>
+            <h1 class="d-none">내용</h1>
+            <ul>
+                <li>
+                    <p>제목이 없는 일기내용일기내용일기내용일기내용</p>
+                    <P>21년 10월 21일</P>
+                </li>
+            </ul>
+
+        </article>
+
+
+    </section>
+	
+	
+	
+	<section class="my-diary-list ">
+		<h1 class="d-none">다이어리 리스트</h1>
+		다이어리
+		<div th:each="n:${myDiary}"> <div th:text="${n.content}"></div> <div th:text="${n.diary}"></div> <div th:text="${n.regDate}"></div> </div>
+				
+	</section>
+	
+		
+	<section class="my-comment-list d-none">
+		<h1 class="d-none">댓글 리스트</h1>
+		댓글
+		<div th:each="n:${myComment}"> <div th:text="${n.content}"></div> <div th:text="${n.comment}"></div> <div th:text="${n.regDate}"></div></div>
+		
+				
+	</section>
+	
+	
+
+
+</main>
+</html>

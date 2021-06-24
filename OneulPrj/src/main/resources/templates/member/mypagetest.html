@@ -12,6 +12,6 @@
 	
 	<h1>프로필사진테스트</h1>
 	<img th:src="@{/upload/profile/basic.jpg}" th:if="${member.image}=='basic.jpg'">
-	<img th:src="@{'/upload/profile/'+${member.image}}" th:if="${member.image}!='basic.jpg'">
+	<img th:src="@{'/upload/profile/'+${member.id}+'/'+${member.image}}" th:if="${member.image}!='basic.jpg'">
 </body>
 </html>

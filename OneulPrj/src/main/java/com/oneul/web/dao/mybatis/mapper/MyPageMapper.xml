@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oneul.web.dao.MyPageDao">
+
+    
+    <select id="getDiaryList" resultType="com.oneul.web.entity.MyDiary">
+        select id , content ,regDate , 'FreeDiary' as diary from FreeDiary where memberId = #{param1} union all select id , content ,regDate, 'FutureDiary' as diary from FutureDiary where memberId = #{param1} union all select id , content1 ,regDate, 'GratitudeDiary' as diary from GratitudeDiary where memberId = #{param1} order by regDate DESC;
+    </select>
+    
+    <select id="getCommentList" resultType="com.oneul.web.entity.MyComment">
+		select id , content ,regDate , 'FreeDiaryComment' as "comment" from FreeDiaryComment where memberId = #{param1} union all select id , content ,regDate, 'FutureDiaryComment' as "comment" from FutureDiaryComment where memberId = #{param1} union all select id , content ,regDate, 'GratitudeDiaryComment' as "comment" from GratitudeDiaryComment where memberId = #{param1} order by regDate DESC;
+    </select>
+    
+    
+    
+ 
+    
+</mapper>
