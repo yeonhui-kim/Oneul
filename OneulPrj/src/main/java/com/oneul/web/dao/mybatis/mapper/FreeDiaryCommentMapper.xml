@@ -11,12 +11,12 @@
     </select>
     
     <select id="getMainList" resultType="com.oneul.web.entity.FreeDiaryComment">
-		select * from FreeDiaryComment where freeDiaryId = #{param1} and commentId is null order by regDate asc
+		select * from FreeDiaryComment left join Member as m on m.id = FreeDiaryComment.memberid where freeDiaryId = #{param1} and commentId is null order by regDate asc
     </select>
     
     
      <select id="getSubList" resultType="com.oneul.web.entity.FreeDiaryComment">
-		select * from FreeDiaryComment where commentId = #{param1} order by regDate asc
+		select * from FreeDiaryComment left join Member as m on m.id = FreeDiaryComment.memberid where commentId = #{param1} order by regDate asc
     </select>
     
     

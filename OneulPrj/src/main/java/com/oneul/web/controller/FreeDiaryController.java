@@ -98,7 +98,7 @@ public class FreeDiaryController {
 		
 		List<FreeDiaryComment> commentList = commentService.getViewList(id);
 		model.addAttribute("commentList",commentList);
-		
+		System.out.println(commentList);
 		return "diary/freediary/detail";
 	}
 	
@@ -125,6 +125,8 @@ public class FreeDiaryController {
 	
 	@GetMapping("edit")
 	public String edit(int id,Model model) {
+		List<Question> list = questionService.getList();
+		model.addAttribute("list",list);
 		
 		FreeDiary freeDiary = service.get(id);
 		model.addAttribute("freeDiary",freeDiary);
