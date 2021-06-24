@@ -40,9 +40,15 @@ public class MyBatisMemberDao implements MemberDao {
 	}
 
 	@Override
-	public int update(Member member) {
+	public int updatebyid(Member member) {
 
-		return mapper.update(member);
+		return mapper.updatebyid(member);
+	}
+	
+	@Override
+	public int updatebyname(Member member) {
+
+		return mapper.updatebyname(member);
 	}
 
 	@Override

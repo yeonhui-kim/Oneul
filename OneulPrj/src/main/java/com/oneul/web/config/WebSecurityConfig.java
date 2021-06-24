@@ -30,6 +30,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.successHandler(new LoginSuccessHandler())
 				.failureHandler(new LoginFailedHandler())
 				.and()
+			.logout()
+				.logoutUrl("/doLogout")
+				.logoutSuccessUrl("/member/login")
+				.and()
 			.csrf() //csrf설정
 				.disable(); //끄겠다
 

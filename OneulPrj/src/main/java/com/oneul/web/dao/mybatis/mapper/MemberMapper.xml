@@ -13,7 +13,7 @@
 		select * from Member where userId=#{userId}
 	</select>
 	
-	<update id="update" parameterType="com.oneul.web.entity.Member">
+	<update id="updatebyname" parameterType="com.oneul.web.entity.Member">
     	update Member
     	<set>
 			<if test="password != null">password = #{password},</if>
@@ -23,6 +23,19 @@
 			<if test="image != null">image = #{image}</if>
     	</set>
 	   	where userId = #{userId}
+    </update>
+    
+    <update id="updatebyid" parameterType="com.oneul.web.entity.Member">
+    	update Member
+    	<set>
+    		<if test="userId != null">userId = #{userId},</if>
+			<if test="password != null">password = #{password},</if>
+			<if test="name != null">name = #{name},</if>
+			<if test="email != null">email = #{email},</if>
+			<if test="birthday != null">birthday = #{birthday},</if>
+			<if test="image != null">image = #{image}</if>
+    	</set>
+	   	where id = #{id}
     </update>
 	
 	<select id="check_id" parameterType="String" resultType="int">
