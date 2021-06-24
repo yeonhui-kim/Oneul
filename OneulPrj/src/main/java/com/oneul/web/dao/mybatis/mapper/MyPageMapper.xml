@@ -11,7 +11,7 @@
     </select>
     
     <select id="getCommentList" resultType="com.oneul.web.entity.MyComment">
-	select id , content ,regDate , 'FreeDiaryComment' as "comment" from FreeDiary where memberId = #{param1} union all select id , content ,regDate, 'FutureDiaryComment' as "comment" from FutureDiary where memberId = #{param1} union all select id , content1 ,regDate, 'GratitudeDiaryComment' as "comment" from GratitudeDiary where memberId = #{param1} order by regDate DESC;
+		select id , content ,regDate , 'FreeDiaryComment' as "comment" from FreeDiaryComment where memberId = #{param1} union all select id , content ,regDate, 'FutureDiaryComment' as "comment" from FutureDiaryComment where memberId = #{param1} union all select id , content ,regDate, 'GratitudeDiaryComment' as "comment" from GratitudeDiaryComment where memberId = #{param1} order by regDate DESC;
     </select>
     
     

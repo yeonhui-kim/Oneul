@@ -53,7 +53,7 @@ public class MypageController {
 		model.addAttribute("myDiary", myDiary);
 		
 		System.out.println(myComment);
-		System.out.println(myDiary);
+		System.out.println(member.getId());
 	
 		
 		return "/mypage/mypage";
