@@ -10,12 +10,34 @@ public class FreeDiaryComment {
 	private Integer freeDiaryId;
 	private Integer commentId;
 	private List<FreeDiaryComment> list;
+	private String userId;
 	
 	
 	
 	public FreeDiaryComment() {
 		// TODO Auto-generated constructor stub
 	}
+
+
+
+
+
+
+	public FreeDiaryComment(Integer id, String regDate, String content, Integer memberId, Integer freeDiaryId,
+			Integer commentId, List<FreeDiaryComment> list, String userId) {
+		super();
+		this.id = id;
+		this.regDate = regDate;
+		this.content = content;
+		this.memberId = memberId;
+		this.freeDiaryId = freeDiaryId;
+		this.commentId = commentId;
+		this.list = list;
+		this.userId = userId;
+	}
+
+
+
 
 
 
@@ -32,6 +54,15 @@ public class FreeDiaryComment {
 	}
 
 
+	public String getUserId() {
+		return userId;
+	}
+	
+	
+	
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
 	public Integer getId() {
 		return id;
@@ -120,7 +151,8 @@ public class FreeDiaryComment {
 	@Override
 	public String toString() {
 		return "FreeDiaryComment [id=" + id + ", regDate=" + regDate + ", content=" + content + ", memberId=" + memberId
-				+ ", freeDiaryId=" + freeDiaryId + ", commentId=" + commentId + ", list=" + list + "]";
+				+ ", freeDiaryId=" + freeDiaryId + ", commentId=" + commentId + ", list=" + list + ", userId=" + userId
+				+ "]";
 	}
 	
 	

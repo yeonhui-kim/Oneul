@@ -16,8 +16,8 @@
 
 	<insert id="insert"
 		parameterType="com.oneul.web.entity.FreeDiary">
-		insert into FreeDiary(content,pub,memberId,image)
-		values(#{content},#{pub},#{memberId},#{image})
+		insert into FreeDiary(content,pub,memberId,image,emotionId)
+		values(#{content},#{pub},#{memberId},#{image},#{emotionId})
 	</insert>
 
 	<delete id="delete" parameterType="int">

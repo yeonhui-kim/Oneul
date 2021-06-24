@@ -28,12 +28,8 @@ public class FreeDiaryCommentServiceImp implements FreeDiaryCommentService {
 		list = dao.getMainList(freeDiaryId);
 		for(FreeDiaryComment n : list) {
 			if(n.getCommentId() == null)
-				n.setList(dao.getSubList(n.getId()));
-			
-		}
-		
-		
-		
+				n.setList(dao.getSubList(n.getId()));			
+		}	
 		
 		return list;
 	}

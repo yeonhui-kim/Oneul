@@ -12,16 +12,25 @@
 	<section class="sectionClass">
 		<table border="1">
 			<tr>
-				<th>감정선택</th>
-				<td colspan="3">감정이모티콘뷰</td>
-			</tr>
-			<tr>
-				<th>질문선택</th>
-				<td colspan="3">질문선택지</td>
+					<th>오늘의 감정</th>
+					<!-- <td id="emotion" colspan="3" th:text="${gratitudeDiary.emotionId}"> -->
+					<td colspan="3">
+						<div class="div" th:classappend="${freeDiary.emotionId} =='1' ? 'happy'"></div>
+						<div class="div" th:classappend="${freeDiary.emotionId} =='2' ? 'proud'"></div>
+						<div class="div" th:classappend="${freeDiary.emotionId} =='3' ? 'flutter'"></div>
+						<div class="div" th:classappend="${freeDiary.emotionId} =='4' ? 'calm'"></div>
+						<div class="div" th:classappend="${freeDiary.emotionId} =='5' ? 'sensitive'"></div>
+						<div class="div" th:classappend="${freeDiary.emotionId} =='6' ? 'unstable'"></div>
+						<div class="div" th:classappend="${freeDiary.emotionId} =='7' ? 'tired'"></div>
+						<div class="div" th:classappend="${freeDiary.emotionId} =='8' ? 'sad'"></div>
+						<div class="div" th:classappend="${freeDiary.emotionId} =='9' ? 'upset'"></div>
+					</td>
 			</tr>
 			<tr>
 				<th>첨부파일</th>
-				<td colspan="3"><img src="${freeDiary.image}"></td>
+				<td colspan="3">
+				<img style="width:300px;"th:src="@{'/upload/'+ ${freeDiary.image}} " th:if="${freeDiary.image}!=''" >
+				</td>
 			</tr>
 			<tr>
 				<th>작성일</th>
@@ -67,19 +76,37 @@
 		<!-- container -->
 		<!-- 댓글목록 -->
  		<div id="reply">
-			<ol th:each="n:${commentList}">
-				<p th:text="${n.memberId}"></p>
+			<ol>
+			<li th:each="n:${commentList}">
+				<p th:text="${n.userId}"></p>
 				<p th:text="${n.regDate}"></p>
 				<p th:text="${n.content}"></p>
+				<a th:href="@{edit(id=${nc.id})}">답글</a>
 				<a th:href="@{edit(id=${n.id})}">수정</a>
 				<a id ="commentDelBtn" 
 					th:href="@{commentdel(id=${n.id},freeDiaryId=${param.id})}"
 					onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a>
+				<ul th:if="${n.list!=null}">
+					<li style="margin-left:30px;" th:each="nc:${n.list}">
+						<p th:text="${nc.userId}"></p>
+						<p th:text="${nc.regDate}"></p>
+						<p th:text="${nc.content}"></p>
+						<a th:href="@{edit(id=${nc.id})}">수정</a>
+						<a id ="commentDelBtn" 
+							th:href="@{commentdel(id=${nc.id},freeDiaryId=${param.id})}"
+							onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a>
+					</li>
+				</ul>
+			</li>
 			</ol>
 		</div>
 	</section>
-<form action="" method="post" id="testForm">
-<input type="hidden" name="id" value="댓글아이디">
-</form>
+	
+	<section class="editComment">
+		<div id="modal" class="modal" th:fragment="modal">
+		<!-- Modal content -->
+	
+		</div>
+	</section>
 </main>
 </html>
