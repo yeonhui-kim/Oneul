@@ -56,7 +56,8 @@ layout:decorator="/inc/layout">
                    													
                   </div>
                   <div class="container">
-			<form id="commentForm" action=""name="commentReg" method="post">
+                  
+			<form id="commentForm" action="commentReg" method="post">
 				<input type="hidden" name="id" th:value="${futureDiary.id}"> <br>
 				<br>
 				<div>
@@ -77,6 +78,7 @@ layout:decorator="/inc/layout">
 					</div>
 				</div>
 			</form>
+			
 		</div>
 		<!-- container -->
 		<!-- 댓글목록 -->
@@ -87,7 +89,7 @@ layout:decorator="/inc/layout">
 				<p th:text="${n.content}"></p>
 				<a th:href="@{edit(id=${n.id})}">수정</a>
 				<a id ="commentDelBtn" 
-					th:href="@{commentdel(id=${n.id},futureDiaryId=${param.id})}"
+					th:href="@{commentDel(id=${n.id},futureDiaryId=${param.id})}"
 					onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a>
 			</ol>
 		</div>

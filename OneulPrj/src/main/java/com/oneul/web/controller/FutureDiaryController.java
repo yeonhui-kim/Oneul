@@ -52,10 +52,24 @@ public class FutureDiaryController {
 		return("diary/futurediary/detail");
 	}
 	
-//	@PostMapping("detail")
-//	public String detail() {
-//		
-//	}
+	@PostMapping("commentReg")
+	public String commentReg(int id, String content) {
+		FutureDiaryComment comment = new FutureDiaryComment();
+		comment.setContent(content);
+		comment.setFutureDiaryId(id);
+		comment.setMemberId(4);
+		
+		commentService.insert(comment);
+		return("redirect:detail?id="+id);
+	}
+	
+	@RequestMapping("commentDel")
+	public String commentDel(int id, int futureDiaryId) {
+		commentService.delete(id);
+		
+		return("redirect:detail?id="+futureDiaryId);
+		
+	}
 	
 	@PostMapping("reg")
 	public String reg(@DateTimeFormat(pattern = "yyyy-MM-dd")Date bookingDate, 
