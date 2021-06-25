@@ -2,8 +2,9 @@ window.addEventListener("load", function() {
 	
 	
 	let quetionList = document.querySelector('.quetionList');
-	let textarea = document.querySelector(".content");
-	console.log(textarea);
+	let textareaContent = document.querySelector(".content");
+	let selectedQuestion = document.querySelector(".selectedQuestion");
+	console.log(textareaContent);
 	
 	quetionList.oninput = function(e){
 		console.log('질문선택했음');
@@ -12,9 +13,8 @@ window.addEventListener("load", function() {
 	
 	console.log(text);
 	console.log(value);
-	
-		textarea.innerText=value;
-		console.log(value);
+
+		selectedQuestion.value=value;
 	};
 
 

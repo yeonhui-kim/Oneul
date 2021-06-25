@@ -6,7 +6,6 @@ import java.sql.Date;
 import java.util.Calendar;
 import java.util.List;
 
-
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
@@ -31,121 +30,115 @@ import com.oneul.web.service.QuestionService;
 @Controller
 @RequestMapping("/diary/freediary/")
 public class FreeDiaryController {
-	
 
-	
 	@Autowired
 	private FreeDiaryService service;
 	@Autowired
 	private FreeDiaryCommentService commentService;
 	@Autowired
 	private QuestionService questionService;
-	
+
 	@RequestMapping("list")
 	public String list(Model model) {
 
-		
-		
 		List<FreeDiary> list = service.getList();
-		model.addAttribute("list",list);
-		
+		model.addAttribute("list", list);
+
 		return "diary/freediary/list";
 	}
-	
+
 	@GetMapping("reg")
 	public String reg(Model model) {
 		List<Question> list = questionService.getList();
-		model.addAttribute("list",list);
-		
+		model.addAttribute("list", list);
+
 		return "diary/freediary/reg";
 	}
-	
+
 	@PostMapping("reg")
-	public String reg(FreeDiary freeDiary,
-				MultipartFile file,
-				HttpServletRequest request) {
-		freeDiary.setMemberId(4);		
-			
-			String fileName = file.getOriginalFilename();
-			System.out.println(fileName);
-			freeDiary.setImage(fileName);
-			service.insert(freeDiary);
-			ServletContext application = request.getServletContext();
-			String path = "/upload";
-			String realPath = application.getRealPath(path);
-			
-			File pathFile = new File(realPath);
-			if(!pathFile.exists())
-				pathFile.mkdirs();
-			
-			String filePath = realPath + File.separator + fileName;
-			
-			File saveFile = new File(filePath);
-			
-			try {
-				file.transferTo(saveFile);
-			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}		
-		
-		
+	public String reg(FreeDiary freeDiary, MultipartFile file, HttpServletRequest request) {
+		freeDiary.setMemberId(4);
+
+		String fileName = file.getOriginalFilename();
+		System.out.println(fileName);
+		freeDiary.setImage(fileName);
+		service.insert(freeDiary);
+		ServletContext application = request.getServletContext();
+		String path = "/upload";
+		String realPath = application.getRealPath(path);
+
+		File pathFile = new File(realPath);
+		if (!pathFile.exists())
+			pathFile.mkdirs();
+
+		String filePath = realPath + File.separator + fileName;
+
+		File saveFile = new File(filePath);
+
+		try {
+			file.transferTo(saveFile);
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		return "redirect:list";
 	}
-	
-	@RequestMapping("detail")
-	public String detail(int id,Model model) {
-		
+
+	@GetMapping("detail")
+	public String detail(int id, Model model) {
+		// 다이어리 상세내역
 		FreeDiary freeDiary = service.get(id);
-		model.addAttribute("freeDiary",freeDiary);
-		
+		model.addAttribute("freeDiary", freeDiary);
+		// 상세페이지내 댓글리스
 		List<FreeDiaryComment> commentList = commentService.getViewList(id);
-		model.addAttribute("commentList",commentList);
+		model.addAttribute("commentList", commentList);
 		System.out.println(commentList);
 		return "diary/freediary/detail";
 	}
-	
+
 	@PostMapping("detail")
-	public String commentReg(int id,FreeDiary freeDiary,FreeDiaryComment freeDiaryComment) {
-		freeDiaryComment.setMemberId(4);
-		freeDiaryComment.setFreeDiaryId(id);
-		commentService.insert(freeDiaryComment);
-		
-		return "redirect:detail?id="+freeDiary.getId();
+	public String commentReg(FreeDiaryComment freeDiaryComment) {// 메소드이름은상관x
+
+		 freeDiaryComment.setMemberId(4);//회원아이디
+		 freeDiaryComment.setCommentId(freeDiaryComment.getCommentId());//부모댓글
+		 freeDiaryComment.setFreeDiaryId(freeDiaryComment.getFreeDiaryId());//일기번호
+		 freeDiaryComment.setContent(freeDiaryComment.getContent());
+		 commentService.insert(freeDiaryComment); //
+
+		return "redirect:detail?id=" + freeDiaryComment.getFreeDiaryId();
 	}
-	
+
 	@RequestMapping("del")
 	public String delete(int id) {
 		service.delete(id);
 		return "redirect:list";
 	}
-	
+
 	@RequestMapping("commentdel")
-	public String commentdelete(int id,int freeDiaryId) {
+	public String commentdelete(int id, int freeDiaryId) {
 		commentService.delete(id);
-		return "redirect:detail?id="+freeDiaryId;
+		return "redirect:detail?id=" + freeDiaryId;
 	}
-	
+
 	@GetMapping("edit")
-	public String edit(int id,Model model) {
+	public String edit(int id, Model model) {
 		List<Question> list = questionService.getList();
-		model.addAttribute("list",list);
-		
+		model.addAttribute("list", list);
+
 		FreeDiary freeDiary = service.get(id);
-		model.addAttribute("freeDiary",freeDiary);
-		
+		model.addAttribute("freeDiary", freeDiary);
+
 		return "diary/freediary/edit";
 	}
-	
+
 	@PostMapping("edit")
 	public String edit(FreeDiary freeDiary) {
 		service.update(freeDiary);
-		return "redirect:detail?id="+freeDiary.getId();
+		return "redirect:detail?id=" + freeDiary.getId();
 	}
-	
-	
-	
+
 }

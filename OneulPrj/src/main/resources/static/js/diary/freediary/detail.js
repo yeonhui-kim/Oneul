@@ -1,39 +1,34 @@
-/**
-window.addEventListener("load",function(){
+window.addEventListener("load", function (event) {
+ 	
+	let modal = document.getElementById("modal");
 	
- let testForm = document.querySelector('#testForm');
- let commentId = testForm.firstElementChild;
- let commentDelBtn = document.querySelector('#commentDelBtn');
- let sectionClass = document.querySelector('.sectionClass');
- 
-	console.log(commentDelBtn);
-
-	let request = new XMLHttpRequest();
+	//let openBtn = document.getElementById("open-button");
+	let openBtns = document.querySelectorAll('.open-button');
 	
-	request.onload = function(){
-		let list = JSON.parse(request.responseText);
+	let closePage = document.getElementsByClassName("close")[0];
+	
+	let emotion = document.querySelector("#emotion");
+	
+	for(let i=0;i<openBtns.length;i++){
+	openBtns[i].onclick = function() {
 		
-		for(let i=0;i<list.length;i++){
-			let div=`<div id="reply">
-			<ol>
-				<p>${list[i].id}</p>
-				<p>${list[i].regDate}</p>
-				<p>${list[i].content}</p>
-				<a>수정</a>
-				<a onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a>
-			</ol>
-		</div>`;
-		sectionClass.insertAdjacentHTML("beforeend",div)
-		}	
-	};
-	request.open("GET","http://localhost:8080/diary/freediary/detail?id=6",true);
-	request.send(null);	
- 
+		modal.style.display = "block";
+		};
+		
+	}
 	
-})
 
-function getPost(){
-	testForm.action = "commentdel";
-	commentId.value = "${n.id}";
-}
- */
+	closePage.onclick = function() {
+		modal.style.display = "none";
+	}
+	
+
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+	
+	
+	
+});
