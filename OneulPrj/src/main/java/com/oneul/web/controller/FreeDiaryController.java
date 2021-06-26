@@ -99,7 +99,7 @@ public class FreeDiaryController {
 		System.out.println(commentList);
 		return "diary/freediary/detail";
 	}
-
+	//답글달기
 	@PostMapping("detail")
 	public String commentReg(FreeDiaryComment freeDiaryComment) {// 메소드이름은상관x
 
@@ -139,6 +139,12 @@ public class FreeDiaryController {
 	public String edit(FreeDiary freeDiary) {
 		service.update(freeDiary);
 		return "redirect:detail?id=" + freeDiary.getId();
+	}
+	//댓글수정
+	@PostMapping("commentedit")
+	public String commentedit(FreeDiaryComment freeDiaryComment) {
+		commentService.update(freeDiaryComment);
+		return "redirect:detail?id=" + freeDiaryComment.getFreeDiaryId();
 	}
 
 }
