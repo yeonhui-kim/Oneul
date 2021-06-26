@@ -8,33 +8,80 @@
 	rel="stylesheet">
 <script src='/js/diary/freediary/detail.js'></script>
 </head>
-<div id="modal" class="modal" th:fragment="comment">
-	<!-- Modal content -->
-	<div class="modal-content">
-		<span class="close">&times;</span>
-
-		<form id="commentReg" name="commentReg" method="post">
-			<input type="hidden" name="id" th:value="${n.id}">
-			<input type="hidden" name="freeDiaryId" th:value="${nc.freeDiaryId}"> <br>
-			<br>
-			<div>
-				<div>
-					<span style="color: #007bff;"th:text="${nc.userId}"><strong></strong></span><span> 님에게 답글남기기</span>
-				</div>
-				<div>
-					<textarea style="width: 85%" rows="3" cols="30" name="content"
-						placeholder="댓글을 입력하세요"></textarea>
-					<br>
-					<div>
-						<input type="submit" value="저장">
+<div th:fragment="comment">
+	<!-- comments list -->
+	<div id="reply">
+		<ol>
+			<li th:each="n:${commentList}">
+				<div
+					th:with="pid=${n.id},pUserId=${n.userId},freeDiaryId=${n.freeDiaryId}">
+					<div style="display: flex;" th:with="userId=${n.userId}">
+						<p th:text="${pid}">부모댓글아이디</p>
+						<img
+							style="height: 50px; width: 50px; border-radius: 25%; margin-right: 10px;"
+							src="https://randomuser.me/api/portraits/lego/1.jpg">
+						<div>
+							<p style="color: #007bff;" th:text="${userId}"></p>
+							<p th:text="${n.regDate}"></p>
+						</div>
 					</div>
+					<p th:text="${n.content}"></p>
+					<a class="open-button" type="button">답글</a> 
+					<a th:href="@{edit(id=${n.id})}">수정</a> <a id="commentDelBtn"
+						th:href="@{commentdel(id=${n.id},freeDiaryId=${param.id})}"
+						onclick="if(!confirm('댓글을 정말 삭제하시겠습니까?')) return false;">삭제</a>
+
+					<!-- form to reply -->
+					<div id="modal" class="modal">
+						<div class="modal-content">
+							<span class="close">&times;</span>
+							<form id="commentReg" action="/diary/freediary/detail"
+								method="post">
+								<input type="hidden" name="commentId" th:value="${pid}">
+								<input type="hidden" name="freeDiaryId"
+									th:value="${freeDiaryId}">
+								<div>
+									<div>
+										<span style="color: #007bff;" th:text="${pUserId}"><strong></strong></span><span>
+											님에게 답글남기기</span>
+									</div>
+									<div th:with="content=${n.content}!=''?'댓글을 입력하세요':'${content}'">
+										<textarea style="width: 85%" rows="3" cols="30" name="content"
+											th:placeholder="${content}"></textarea>
+										<br>
+										<div>
+											<input type="submit" value="저장">
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div><!-- form to reply -->
+
+					<ul class="subComment">
+						<li style="margin-left: 40px;" th:each="nc:${n.list}">
+
+							<div style="display: flex;">
+								<img
+									style="height: 50px; width: 50px; border-radius: 25%; margin-right: 10px;"
+									src="https://randomuser.me/api/portraits/lego/4.jpg">
+								<div>
+									<p style="color: #007bff;" th:text="${nc.userId}"></p>
+									<!-- <div th:replace="diary/freediary/comment::comment"></div> -->
+									<p th:text="${nc.regDate}"></p>
+								</div>
+							</div>
+							<p th:text="${nc.content}"></p> <a th:href="@{edit(id=${nc.id})}">수정</a>
+							<a id="commentDelBtn"
+							th:href="@{commentdel(id=${nc.id},freeDiaryId=${param.id})}"
+							onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a>
+
+						</li>
+					</ul>
 				</div>
-			</div>
-		</form>
-
-
+			</li>
+		</ol>
 	</div>
-</div>
-<!-- modal -->
 
+</div>
 </html>

@@ -117,7 +117,7 @@ public class FreeDiaryController {
 		service.delete(id);
 		return "redirect:list";
 	}
-
+	//댓글삭제
 	@RequestMapping("commentdel")
 	public String commentdelete(int id, int freeDiaryId) {
 		commentService.delete(id);
