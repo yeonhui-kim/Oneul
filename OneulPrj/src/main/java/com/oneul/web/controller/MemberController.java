@@ -196,6 +196,23 @@ public class MemberController {
 		
 		return "redirect:mypagetest";		
 	}
+	
+	@GetMapping("out")
+	public String out(HttpServletRequest request) {
+		//로그인 아이디 획득
+		HttpSession session = request.getSession(true);
+		String username = (String) session.getAttribute("username");
+		
+		//식별변호 획득
+		Member member = service.get(username);
+		int id = member.getId();
+		service.delete(id);
+		
+		
+		return "redirect:login";
+	}
+	
+	
 
 }
 
