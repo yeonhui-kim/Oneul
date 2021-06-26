@@ -29,6 +29,11 @@ public class FreeDiaryServiceImp implements FreeDiaryService {
 	}
 
 	@Override
+	public List<FreeDiary> getList(int id) {
+		List<FreeDiary> list = dao.getList(id);
+		return list;
+	}
+	@Override
 	public int insert(FreeDiary freeDiary) {
 
 		return dao.insert(freeDiary);
@@ -45,5 +50,6 @@ public class FreeDiaryServiceImp implements FreeDiaryService {
 
 		return dao.delete(id);
 	}
+
 
 }

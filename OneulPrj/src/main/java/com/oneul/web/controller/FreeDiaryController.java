@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,7 @@ import com.oneul.web.entity.Question;
 import com.oneul.web.service.FreeDiaryCommentService;
 import com.oneul.web.service.FreeDiaryCommentServiceImp;
 import com.oneul.web.service.FreeDiaryService;
+import com.oneul.web.service.MemberService;
 import com.oneul.web.service.QuestionService;
 
 @Controller
@@ -37,11 +39,18 @@ public class FreeDiaryController {
 	private FreeDiaryCommentService commentService;
 	@Autowired
 	private QuestionService questionService;
+	@Autowired
+	private MemberService memberSerivce;
 
 	@RequestMapping("list")
-	public String list(Model model) {
-
+	public String list(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession(true);//세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
+		String username = (String) session.getAttribute("username");
+		Member member = new Member();
+		member = memberSerivce.get(username);
+		int id = member.getId();
 		List<FreeDiary> list = service.getList();
+		//List<FreeDiary> list = service.getList(id);
 		model.addAttribute("list", list);
 
 		return "diary/freediary/list";
@@ -57,7 +66,14 @@ public class FreeDiaryController {
 
 	@PostMapping("reg")
 	public String reg(FreeDiary freeDiary, MultipartFile file, HttpServletRequest request) {
-		freeDiary.setMemberId(4);
+		HttpSession session = request.getSession(true);//세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
+		String username = (String) session.getAttribute("username");
+		
+		Member member = new Member();
+		member = memberSerivce.get(username);
+		int id = member.getId();
+		
+		freeDiary.setMemberId(id);
 
 		String fileName = file.getOriginalFilename();
 		System.out.println(fileName);

@@ -26,7 +26,7 @@ window.addEventListener("load", function(event) {
 			commentId.value = parentCommentId;
 
 		};
-	}
+	};
 
 
 	for(let i=0;i<closePages.length;i++){
@@ -34,10 +34,11 @@ window.addEventListener("load", function(event) {
 		
 	};
 
+
 	closePage.onclick = function() {
 		modal.style.display = "none";
 		editModal.style.display = "none";
-	}
+	};
 
 
 	window.onclick = function(event) {

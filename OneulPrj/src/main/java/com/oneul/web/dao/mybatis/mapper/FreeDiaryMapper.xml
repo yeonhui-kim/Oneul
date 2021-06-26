@@ -13,6 +13,11 @@
 	<select id="getList" resultType="com.oneul.web.entity.FreeDiary">
 		select * from FreeDiary
 	</select>
+	
+<!-- 	<select id="getList" parameterType="int" resultType="com.oneul.web.entity.FreeDiary">
+		select * from FreeDiary 
+		<if test="id != null">where memberId = #{memberId}</if>
+	</select> -->
 
 	<insert id="insert"
 		parameterType="com.oneul.web.entity.FreeDiary">
