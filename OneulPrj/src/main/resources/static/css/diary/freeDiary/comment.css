@@ -37,3 +37,6 @@
 	text-decoration: none;
 	cursor: pointer;
 }
+.open-button,.edit-button{
+	cursor: pointer;
+}

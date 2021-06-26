@@ -4,9 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <title>modal</title>
-<link href="/css/diary/freeDiary/detail.css" type="text/css"
+<link href="/css/diary/freeDiary/comment.css" type="text/css"
 	rel="stylesheet">
-<script src='/js/diary/freediary/detail.js'></script>
+<script src='/js/diary/freediary/comment.js'></script>
 </head>
 <div th:fragment="comment">
 	<!-- comments list -->
@@ -47,7 +47,7 @@
 											님에게 답글남기기</span>
 									</div>
 									<div>
-										<textarea style="width: 85%" rows="3" cols="30" name="content"
+										<textarea style="width: 95%" rows="3" cols="30" name="content"
 											placeholder="댓글을 입력하세요"></textarea>
 										<br>
 										<div>
@@ -73,7 +73,7 @@
 											님에게 답글남기기</span>
 									</div>
 									<div>
-										<textarea class="editContent"style="width: 85%" rows="3" cols="30" name="content"
+										<textarea class="editContent"style="width: 95%" rows="3" cols="30" name="content"
 											th:placeholder="${n.content}"></textarea>
 										<br>
 										<div>
