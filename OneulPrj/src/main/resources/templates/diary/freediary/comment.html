@@ -15,22 +15,22 @@
 			<li th:each="n:${commentList}">
 				<div
 					th:with="pid=${n.id},pUserId=${n.userId},freeDiaryId=${n.freeDiaryId}">
-					<div style="display: flex;" th:with="userId=${n.userId}">
+					<div style="display: flex; margin: 10px;" th:with="userId=${n.userId}">
 						<p th:text="${pid}">부모댓글아이디</p>
 						<img
 							style="height: 50px; width: 50px; border-radius: 25%; margin-right: 10px;"
 							src="https://randomuser.me/api/portraits/lego/1.jpg">
 						<div>
-							<p style="color: #007bff;" th:text="${userId}"></p>
-							<p th:text="${n.regDate}"></p>
+							<span style="color: #007bff;" th:text="${userId}"></span>
+							<span th:text="${n.regDate}"></span>
+							<p th:text="${n.content}"></p>
+							<a class="open-button">답글</a> 
+							<a class="edit-button">수정</a> 
+							<a id="commentDelBtn"
+								th:href="@{commentdel(id=${n.id},freeDiaryId=${param.id})}"
+								onclick="if(!confirm('댓글을 정말 삭제하시겠습니까?')) return false;">삭제</a>
 						</div>
 					</div>
-					<p th:text="${n.content}"></p>
-					<a class="open-button">답글</a> 
-					<a class="edit-button">수정</a> 
-					<a id="commentDelBtn"
-						th:href="@{commentdel(id=${n.id},freeDiaryId=${param.id})}"
-						onclick="if(!confirm('댓글을 정말 삭제하시겠습니까?')) return false;">삭제</a>
 
 					<!-- form to reply -->
 					<div id="modal" class="modal">
@@ -89,21 +89,20 @@
 						<li style="margin-left: 40px;" th:each="nc:${n.list}">
 
 							<div style="display: flex;"th:with="id=${nc.id}">
-							<p th:text="${id}">부모댓글아이디</p>
+								<p th:text="${id}">부모댓글아이디</p>
 								<img
 									style="height: 50px; width: 50px; border-radius: 25%; margin-right: 10px;"
 									src="https://randomuser.me/api/portraits/lego/4.jpg">
 								<div>
-									<p style="color: #007bff;" th:text="${nc.userId}"></p>
-									<!-- <div th:replace="diary/freediary/comment::comment"></div> -->
-									<p th:text="${nc.regDate}"></p>
+									<span style="color: #007bff;" th:text="${nc.userId}"></span>
+									<span th:text="${nc.regDate}"></span>
+									<p th:text="${nc.content}"></p> 
+									<a class="edit-button">수정</a>
+									<a id="commentDelBtn"
+									th:href="@{commentdel(id=${nc.id},freeDiaryId=${param.id})}"
+									onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a>
 								</div>
 							</div>
-							<p th:text="${nc.content}"></p> 
-							<a class="edit-button">수정</a>
-							<a id="commentDelBtn"
-							th:href="@{commentdel(id=${nc.id},freeDiaryId=${param.id})}"
-							onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a>
 
 						</li>
 					</ul>

@@ -17,12 +17,12 @@ window.addEventListener("load", function(event) {
 	let commentReg = document.querySelector('#commentReg');
 
 	for (let i = 0; i < openBtns.length; i++) {
-		openBtns[i].onclick = function() {
+		openBtns[i].onclick = function(event) {
 			//popup to reply
 			modal.style.display = "block";
 			//insert commentId
 			let commentId = commentReg.firstElementChild;
-			let parentCommentId = openBtns[i].parentNode.firstElementChild.firstElementChild.innerText;
+			let parentCommentId = openBtns[i].parentNode.parentNode.firstElementChild.innerText;
 			commentId.value = parentCommentId;
 
 		};
@@ -55,16 +55,15 @@ window.addEventListener("load", function(event) {
 			//popup to reply
 			editModal.style.display = "block";
 			//선택한 댓글의 번호가져오기
-			let selectedCommentId = event.target.parentNode.firstElementChild.firstElementChild.innerText;
+			let selectedCommentId = event.target.parentNode.parentNode.firstElementChild;
 			//가져온 번호 히든인풋에 넘기기
 			let inputId = editModal.firstElementChild.querySelector("input");
-			inputId.value = selectedCommentId;
+			inputId.value = selectedCommentId.innerText;
 			//선택한 댓글의 원문가져오기
-			let selectedCommentContent = event.target.parentNode.firstElementChild.nextElementSibling;
+			let selectedCommentContent = event.target.parentNode.firstElementChild.nextElementSibling.nextElementSibling;
 			//원문 보여주기
-			let originalContent = event.target.parentNode.firstElementChild.nextElementSibling.innerText;
 			let editContent = document.querySelector('.editContent');
-			editContent.placeholder = originalContent;
+			editContent.placeholder = selectedCommentContent.innerText;
 		};
 	}
 

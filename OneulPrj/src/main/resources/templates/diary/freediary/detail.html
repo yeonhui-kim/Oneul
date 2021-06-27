@@ -62,6 +62,10 @@
 				onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a>
 		</div>
 
+		<!-- comment -->
+		<div th:replace="diary/freediary/comment::comment"></div>
+
+
 		<div class="container"><!--form to reg comments -->
 			<form id="commentForm" action="/diary/freediary/detail" method="post">
 				<input type="hidden" name="freeDiaryId" th:value="${freeDiary.id}">
@@ -84,8 +88,6 @@
 				</div>
 			</form>
 		</div><!-- container -->
-		<!-- comment -->
-		<div th:replace="diary/freediary/comment::comment"></div>
 
 	</section>
 </main>
