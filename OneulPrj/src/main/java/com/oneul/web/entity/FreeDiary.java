@@ -11,13 +11,16 @@ public class FreeDiary {
 	private Date regDate;
 	private Integer memberId;
 	private Integer emotionId;
+	private Integer count;
 	
 	public FreeDiary() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 
 	public FreeDiary(Integer id, String content, String image, Boolean pub, Date regDate, Integer memberId,
-			Integer emotionId) {
+			Integer emotionId, Integer count) {
 		super();
 		this.id = id;
 		this.content = content;
@@ -26,7 +29,9 @@ public class FreeDiary {
 		this.regDate = regDate;
 		this.memberId = memberId;
 		this.emotionId = emotionId;
+		this.count = count;
 	}
+
 
 	public Integer getId() {
 		return id;
@@ -85,14 +90,25 @@ public class FreeDiary {
 	public void setEmotionId(Integer emotionId) {
 		this.emotionId = emotionId;
 	}
+	
+	
+
+	public Integer getCount() {
+		return count;
+	}
+
+
+
+	public void setCount(Integer count) {
+		this.count = count;
+	}
+	
 
 	@Override
 	public String toString() {
 		return "FreeDiary [id=" + id + ", content=" + content + ", image=" + image + ", pub=" + pub + ", regDate="
-				+ regDate + ", memberId=" + memberId + ", emotionId=" + emotionId + "]";
+				+ regDate + ", memberId=" + memberId + ", emotionId=" + emotionId + ", count=" + count + "]";
 	}
-
-
 	
 	
 

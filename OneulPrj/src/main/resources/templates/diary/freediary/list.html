@@ -25,7 +25,12 @@
 				<td>
 				<img style="width:70px;border-radius: 15%;" th:src="@{'/upload/'+ ${n.image}} " th:if="${n.image}!=''" >
 				</td>
-				<td><a th:href="@{detail(id=${n.id})}" th:text="${n.content}"></a></td>
+				<td><a th:href="@{detail(id=${n.id})}" th:text="${n.content}"></a>
+					<br>
+					<img style="width: 15px;" src="https://image.flaticon.com/icons/png/128/1216/1216575.png">
+					<img style="width: 15px;" src="https://image.flaticon.com/icons/png/128/134/134819.png">
+					<span th:text="${n.count}"></span>
+				</td>
 				<td th:text="${n.memberId}">멤버아이디자리</td>
 				<td th:text="${#calendars.format(n.regDate,'yyyy-MM-dd')}">일기작성일자</td>
 			</tr>

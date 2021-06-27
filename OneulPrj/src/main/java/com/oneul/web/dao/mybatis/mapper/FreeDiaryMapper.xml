@@ -9,10 +9,18 @@
 		select * from FreeDiary where
 		id=#{id}
 	</select>
-
+	
+	
 	<select id="getList" resultType="com.oneul.web.entity.FreeDiary">
-		select * from FreeDiary
+		select d.*,
+		(select count(id) from FreeDiaryComment where freeDiaryId = d.id) count
+		from FreeDiary d;
 	</select>
+	
+
+<!-- 	<select id="getList" resultType="com.oneul.web.entity.FreeDiary">
+		select * from FreeDiary
+	</select> -->
 	
 <!-- 	<select id="getList" parameterType="int" resultType="com.oneul.web.entity.FreeDiary">
 		select * from FreeDiary 

@@ -3,6 +3,7 @@ package com.oneul.web.controller;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
@@ -49,10 +50,11 @@ public class FreeDiaryController {
 		Member member = new Member();
 		member = memberSerivce.get(username);
 		int id = member.getId();
-		List<FreeDiary> list = service.getList();
-		//List<FreeDiary> list = service.getList(id);
+		
+		List<FreeDiary> list = service.getList();//모든 일기목록
+		//List<FreeDiary> list = service.getList(id);//해당아이디 일기리스트
 		model.addAttribute("list", list);
-
+		System.out.println(list);
 		return "diary/freediary/list";
 	}
 
@@ -112,7 +114,7 @@ public class FreeDiaryController {
 		// 상세페이지내 댓글리스
 		List<FreeDiaryComment> commentList = commentService.getViewList(id);
 		model.addAttribute("commentList", commentList);
-		System.out.println(commentList);
+
 		return "diary/freediary/detail";
 	}
 	//답글달기
