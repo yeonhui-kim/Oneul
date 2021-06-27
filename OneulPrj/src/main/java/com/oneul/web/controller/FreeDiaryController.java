@@ -117,9 +117,17 @@ public class FreeDiaryController {
 	}
 	//답글달기
 	@PostMapping("detail")
-	public String commentReg(FreeDiaryComment freeDiaryComment) {// 메소드이름은상관x
-
-		 freeDiaryComment.setMemberId(4);//회원아이디
+	public String commentReg(FreeDiaryComment freeDiaryComment, HttpServletRequest request) {// 메소드이름은상관x
+		HttpSession session = request.getSession(true);//세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
+		String username = (String) session.getAttribute("username");
+		
+		Member member = new Member();
+		member = memberSerivce.get(username);
+		int id = member.getId();
+		
+		freeDiaryComment.setMemberId(id);
+		
+		 //freeDiaryComment.setMemberId(4);//회원아이디
 		 freeDiaryComment.setCommentId(freeDiaryComment.getCommentId());//부모댓글
 		 freeDiaryComment.setFreeDiaryId(freeDiaryComment.getFreeDiaryId());//일기번호
 		 freeDiaryComment.setContent(freeDiaryComment.getContent());
