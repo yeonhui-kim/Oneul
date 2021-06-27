@@ -26,8 +26,8 @@
 
     
     <insert id="insert" parameterType="com.oneul.web.entity.OnelineComment">
-    	insert into OnelineComment (content, memberId, onelineId , commentId)
-    	values(#{content},#{memberId},#{onelineId},#{commentId});
+    	insert into OnelineComment (content, memberId, onelineId , commentId, writerId, image)
+    	values(#{content},#{memberId},#{onelineId},#{commentId},#{writerId},#{image});
     </insert>
     
 

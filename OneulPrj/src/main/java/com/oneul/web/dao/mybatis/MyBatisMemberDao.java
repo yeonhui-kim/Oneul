@@ -54,7 +54,7 @@ public class MyBatisMemberDao implements MemberDao {
 	@Override
 	public int delete(int id) {
 
-		return 0;
+		return mapper.delete(id);
 	}
 
 	@Override

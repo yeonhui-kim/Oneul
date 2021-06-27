@@ -1,81 +1,85 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="/inc/layout">
+   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+   layout:decorator="/inc/layout">
 
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/css/feed/onelineList.css" type="text/css" rel="stylesheet">
+<link href="/css/feed/onelineDetail.css" type="text/css" rel="stylesheet">
 </head>
-	<main id="wrapper"  layout:fragment="main">
+   <main id="wrapper"  layout:fragment="main">
 
 
-	<div id="main">
+   <div id="main">   
+      <div>
+         <article id="wrapper">
+            <div class="content">
 
-		<div class="btn-box">
-			<a href="reg"> <img class="reg-img"
-				src="">
-			</a>
-		</div>
-		
-		<div>
-			<article class="box">
-				<div class="content">
+               <div class="profile">
+                  <img class="profile-image" th:src="@{'/upload/profile/'+${detail.image}}"> <a
+                  th:text="${detail.writerId}" class="user-name">유저아이디</a> 
+                     <a class="date" th:text="${#calendars.format(detail.regDate,'yyy-MM-dd')}">날짜</a>
+                     <a class="edit" th:href="@{edit(id=${detail.id})}" href="edit?id=${detail.id}"></a>
+                  <a class="del" th:href="@{del(id=${detail.id})}" onclick="if(!confirm('삭제하시겠습니까?')) return false;"></a>
+               </div>               
 
-					<div class="profile">
-						<img class="profile-image" src="../images/user.PNG"> <a
-							class="user-name">이동진</a> 
-							<a class="date" th:text="${#calendars.format(detail.regDate,'yyy-MM-dd')}"></a>
-							<a class="edit" th:href="@{edit(id=${detail.id})}" href="edit?id=${detail.id}">수정</a>
-						<a class="del" th:href="@{del(id=${detail.id})}" onclick="if(!confirm('삭제하시겠습니까?')) return false;">삭제</a>
-					</div>					
+               <!-- <a class="onelineId" th:text="${detail.id}">게시글아이디</a> -->
+               <div class="content-text">
+                  <a th:href="@{detail(id=${detail.id})}" th:text="${detail.content}">내용</a>
+               </div>
+   
+               <div class="line"></div>
+               
+               <div class="review-attr">
+                  <span>좋아요 0</span> <span>댓글 0</span>
+               </div>
+            
+            
+         <!--------------------------------------- 댓글 출력란------------------------------- -->
+             <div class="comment-box" th:each="c:${clist}">
+             
+             <div class="line-comment"></div>
+             
+               <div class="profile-comment" >
+                  <img class="profile-image-comment" th:src="@{'/upload/profile/'+${c.image}}"> 
+                  <a class="user-name-c" th:text="${c.writerId}">로그인아이디</a> 
+                  <a class="date-c" th:text="${#calendars.format(c.regDate,'a hh:mm')}">날짜</a>
+                  
+                  <div th:if="${c.memberId == member.id}">
+                  <a class="edit">수정</a>
+                  <a class="del" th:href="@{cdel(id=${c.id})}"
+                     onclick="if(!confirm('삭제하시겠습니까?')) return false;">삭제</a>
+                   </div>
+               </div>
+                  <div class="content-text-comment">
+                  <a th:text="${c.content}">댓글내용</a>                        
+                  </div>   
+               
+               
+                </div>
+                
+                </div>
+               
+               <!-- ------------------댓글입력---------------------------------------------- -->
+               
+            <form action="CommentReg" method="post">
+            <input type="hidden" name="id" th:value="${detail.id}">
+               <div class="review-btn-group">
+               </div>
+               <div class="comment-box">
+                  <textarea rows="3" class=txt  name="comment" placeholder="여러분의 댓글을 남겨주세요."></textarea>
+                     <input type="submit" value="확인" id="btn">
+               </div>
+               </form>
+            
+         </article>
+      </div>
 
-					<a th:text="${detail.id}">게시글아이디</a>
-					<div>
-						<a th:href="@{detail(id=${detail.id})}" th:text="${detail.content}">${n.content}</a>
-					</div>
-
-					<div class="review-attr">
-						<span>좋아요 0</span> <span>댓글 0</span>
-					</div>
-					<hr>
-				
-				
-			<!--------------------------------------- 댓글 출력란------------------------------- -->
-				 
-					<div class="profile" th:each="n:${clist}">
-						<img class="profile-image" src="../images/user.PNG"> <a
-							class="user-name">이동진</a> 
-							<a th:text="${n.content}"></a>
-							
-						
-					</div>	
-					
-			 
-					
-					
-					
-					<!-- ------------------댓글입력---------------------------------------------- -->
-					
-				<!-- 	<form action="reg" method="post">
-					<div class="review-btn-group">
-						<input class="like" id="like-button" type="button" value="좋아요">
-						<a class="text">여러분의 댓글을 남겨주세요.</a>
-					</div>
-					<div class="comment-box">
-						<textarea rows="3" class=txt  name="comment" ></textarea>
-							<input type="submit" value="확인" id="btn">
-					</div>
-					</form> -->
-				</div>
-			</article>
-		</div>
 
 
 
-
-	</div>
+   </div>
 
 </main>
 </html>
