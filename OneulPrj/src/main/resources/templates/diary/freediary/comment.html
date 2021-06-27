@@ -20,16 +20,15 @@
 						<img
 							style="height: 50px; width: 50px; border-radius: 25%; margin-right: 10px;"
 							src="https://randomuser.me/api/portraits/lego/1.jpg">
-						<div style="width:100%;">
+						<div>
 							<span style="color: #007bff;" th:text="${userId}"></span>
-							<span style="float: right;"th:text="${n.regDate}"></span>
+							<span th:text="${n.regDate}"></span>
 							<p th:text="${n.content}"></p>
-							<a class="open-button"><img style="width:15px;"src="https://image.flaticon.com/icons/png/128/1230/1230203.png"></a> 
-							<a class="edit-button"><img style="width:15px; margin:0px 10px;"src="https://image.flaticon.com/icons/png/128/833/833275.png"></a> 
+							<a class="open-button">답글</a> 
+							<a class="edit-button">수정</a> 
 							<a id="commentDelBtn"
 								th:href="@{commentdel(id=${n.id},freeDiaryId=${param.id})}"
-								onclick="if(!confirm('댓글을 정말 삭제하시겠습니까?')) return false;">
-								<img style="width:15px;"src="https://image.flaticon.com/icons/png/512/833/833262.png"></a>
+								onclick="if(!confirm('댓글을 정말 삭제하시겠습니까?')) return false;">삭제</a>
 						</div>
 					</div>
 
@@ -44,7 +43,7 @@
 									th:value="${freeDiaryId}">
 								<div>
 									<div>
-										<span class="parentUserId"style="color: #007bff;" th:text="${pUserId}"><strong></strong></span><span>
+										<span style="color: #007bff;" th:text="${pUserId}"><strong></strong></span><span>
 											님에게 답글남기기</span>
 									</div>
 									<div>
@@ -70,7 +69,8 @@
 								<input type="hidden" name="freeDiaryId"th:value="${freeDiaryId}">
 								<div>
 									<div>
-										<span style="color: #007bff;"><strong>Editing..</strong></span>
+										<span style="color: #007bff;" th:text="${pUserId}"><strong></strong></span><span>
+											님에게 답글남기기</span>
 									</div>
 									<div>
 										<textarea class="editContent"style="width: 95%" rows="3" cols="30" name="content"
@@ -93,14 +93,14 @@
 								<img
 									style="height: 50px; width: 50px; border-radius: 25%; margin-right: 10px;"
 									src="https://randomuser.me/api/portraits/lego/4.jpg">
-								<div style="width:100%;">
+								<div>
 									<span style="color: #007bff;" th:text="${nc.userId}"></span>
-									<span style="float: right;"th:text="${nc.regDate}"></span>
+									<span th:text="${nc.regDate}"></span>
 									<p th:text="${nc.content}"></p> 
-									<a class="edit-button"><img style="width:15px; margin:0px 10px;"src="https://image.flaticon.com/icons/png/128/833/833275.png"></a>
+									<a class="edit-button">수정</a>
 									<a id="commentDelBtn"
 									th:href="@{commentdel(id=${nc.id},freeDiaryId=${param.id})}"
-									onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;"><img style="width:15px;"src="https://image.flaticon.com/icons/png/512/833/833262.png"></a>
+									onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a>
 								</div>
 							</div>
 

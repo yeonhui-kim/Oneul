@@ -22,11 +22,8 @@ window.addEventListener("load", function(event) {
 			modal.style.display = "block";
 			//insert commentId
 			let commentId = commentReg.firstElementChild;
-			let parentCommentId = openBtns[i].parentNode.parentNode.firstElementChild;
-			commentId.value = parentCommentId.innerText;
-			let parentUserId = document.querySelector('.parentUserId');
-			parentUserId.innerText = event.target.parentNode.firstElementChild.innerText;
-			
+			let parentCommentId = openBtns[i].parentNode.parentNode.firstElementChild.innerText;
+			commentId.value = parentCommentId;
 
 		};
 	};
@@ -73,3 +70,4 @@ window.addEventListener("load", function(event) {
 
 
 });
+
