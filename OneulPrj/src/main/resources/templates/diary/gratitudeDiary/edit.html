@@ -40,10 +40,21 @@
 				</tr>
 				
 				<tr>
+					<th>날짜변경</th>
+					<td>
+						<div th:text="${gratitudeDiary.regDate}"></div>
+						<br>
+						<input type="date" name="regDate">
+					</td>
+				</tr>
+				
+				<tr>
 					<th>공개선택</th>
 					<td colspan="3">
-						<label>공개</label><input type="radio" value="1" name="pub">
-						<label>비공개</label><input type="radio" value="0" name="pub" checked>
+						<label>공개</label>
+						<input type="radio" value="1" name="pub" th:checked="${gratitudeDiary.pub}?'true':'false'">
+						<label>비공개</label>
+						<input type="radio" value="0" name="pub" th:checked="${gratitudeDiary.pub}?'false':'true'">
 					</td>
 				</tr>
 

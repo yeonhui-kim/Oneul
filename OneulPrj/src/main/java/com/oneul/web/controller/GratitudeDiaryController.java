@@ -1,13 +1,16 @@
 package com.oneul.web.controller;
 
-import java.sql.Date;
+//import java.sql.Date;
+
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -55,7 +58,11 @@ public class GratitudeDiaryController {
 	}
 	
 	@PostMapping("reg")
-	public String reg(@ModelAttribute GratitudeDiary gratitudeDiary, @ModelAttribute CalendarEmotion calendarEmotion, HttpServletRequest request) {
+	public String reg(@ModelAttribute GratitudeDiary gratitudeDiary, 
+						@ModelAttribute CalendarEmotion calendarEmotion, 
+						@DateTimeFormat(pattern = "yyyy-MM-dd")Date regDate,
+						HttpServletRequest request) {
+		
 		HttpSession session = request.getSession(true);//세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
 		String username = (String) session.getAttribute("username");
 		Member member = new Member();
@@ -63,23 +70,23 @@ public class GratitudeDiaryController {
 		int id = member.getId();
 		
 		//SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
-		Date now = new Date(System.currentTimeMillis());
+		//Date now = new Date(System.currentTimeMillis());
 		gratitudeDiary.setMemberId(id);
-		gratitudeDiary.setRegDate(now);
+		gratitudeDiary.setRegDate(regDate);
 
-		//calendarEmotion.setMemberId(gratitudeDiary.getMemberId());
-		//calendarEmotion.setRegDate(fmt.format(gratitudeDiary.getRegDate()));
+		calendarEmotion.setMemberId(gratitudeDiary.getMemberId());
+		calendarEmotion.setRegDate(gratitudeDiary.getRegDate());
 		
 		service.insertDiary(gratitudeDiary);
-//		
-//		//1. 현재 로그인한 사용자가 해당 날짜에 감정을 등록한적 있는지 확인
-//		int cnt = service.selectCalEmotionCnt(calendarEmotion);
-//		
-//		if( cnt > 0 ) {
-//			service.updateCalendar(calendarEmotion);
-//		} else {
-//			service.insertCalendar(calendarEmotion);
-//		}
+		
+		//1. 현재 로그인한 사용자가 해당 날짜에 감정을 등록한적 있는지 확인
+		int cnt = service.selectCalEmotionCnt(calendarEmotion);
+		
+		if( cnt > 0 ) {
+			service.updateCalendar(calendarEmotion);
+		} else {
+			service.insertCalendar(calendarEmotion);
+		}
 		
 		return "redirect:list";
 	}
@@ -140,7 +147,7 @@ public class GratitudeDiaryController {
 	@PostMapping("edit")
 	public String edit(GratitudeDiary gratitudeDiary, CalendarEmotion calendarEmotion) {
 		service.updateDiary(gratitudeDiary);
-		//service.updateCalendar(calendarEmotion);
+		service.updateCalendar(calendarEmotion);
 		
 		return "redirect:detail?id="+gratitudeDiary.getId();
 	}

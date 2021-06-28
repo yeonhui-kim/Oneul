@@ -11,7 +11,7 @@
     <script src='/js/calendar/calendar.js'></script>
     <script>
       var calendar = null;
-      //var jsonString= "${jsonString}";
+     // var jsonString= "${jsonString}";
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         
@@ -21,9 +21,9 @@
           selectable: true,
           businessHours: true,
           dayMaxEvents: true,
-         // events: JSON.parse("${jsonString}"),
+          events: JSON.parse("${jsonString}"),
           
-          /* customButtons: {
+           /* customButtons: {
         	    myCustomButton: {
         	      text: '테스트 일정 추가',
         	      click: function() {
@@ -34,7 +34,7 @@
       	  headerToolbar: {
       	    left: 'myCustomButton',
       	    center: ''
-      	  } */
+      	  }  */
         
         });
         calendar.render();
