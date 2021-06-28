@@ -42,7 +42,7 @@ layout:decorator="/inc/layout">
                            
                            <tr>
                               <td colspan="4">
-                               <img th:if="${futureDiary.image}!=null" th:src="@{/upload/} + ${futureDiary.image}">
+                               <img class="image" th:if="${futureDiary.image}!=''" th:src="@{/upload/} + ${futureDiary.image}">
                               <div th:text = "${futureDiary.content}">                      
                                  미래일기내용
                               </div>
