@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
 import java.sql.Date;
-import java.util.List;
-import java.util.ServiceConfigurationError;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.oneul.web.entity.Member;
@@ -29,6 +29,53 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
+	//회원가입페이지 조회
+	@RequestMapping("signup") 
+	public String signup(@RequestParam(name = "result", defaultValue = "0") int result
+						, Model model) {
+		if(result == 1)
+			model.addAttribute("checkmsg","중복된 아이디입니다.");
+			
+		return "member/signup";
+	}
+	
+	//아이디 중복체크버튼
+	@ResponseBody
+	@PostMapping("checkid")
+	public int check_id(String username) {
+		int result = service.check_id(username);
+		
+		return result;
+	}
+	
+	//회원정보 등록
+	@PostMapping("reg") 
+	public String reg(String username,
+						String password,
+						String name,
+						Date birthday,
+						String email,
+						Model model) {
+		
+		int result = service.check_id(username);
+		if(result == 1) {
+			return "redirect:signup?result="+result;			
+		}
+		else {
+			Member member = new Member();
+			member.setUserId(username);
+			String noopPassword = "{noop}"+password;
+			member.setPassword(noopPassword);
+			member.setName(name);
+			member.setBirthday(birthday);
+			member.setEmail(email);
+			
+			service.insert(member);
+			
+			return "redirect:login";
+		}
+	}
+	
 	//로그인페이지 조회
 	@RequestMapping("/login")
 	public String login(HttpServletRequest request, Model model) {
@@ -40,12 +87,6 @@ public class MemberController {
 		}
 		
 		return "member/login";
-	}
-	
-	//회원가입페이지 조회
-	@RequestMapping("signup") 
-	public String signup() {
-		return "member/signup";		
 	}
 	
 	//회원정보수정 페이지 조회
@@ -95,29 +136,7 @@ public class MemberController {
 	public String logintest() {
 		return "member/logintest";		
 	}
-	
-	//회원정보 등록
-	@PostMapping("reg") 
-	public String reg(String username,
-						String password,
-						String name,
-						Date birthday,
-						String email) {
 		
-		Member member = new Member();
-		member.setUserId(username);
-		String noopPassword = "{noop}"+password;
-		member.setPassword(noopPassword);
-		member.setName(name);
-		member.setBirthday(birthday);
-		member.setEmail(email);
-		
-		service.insert(member);
-		
-		return "redirect:login";
-	}
-	
-	
 	@RequestMapping("mypagetest")
 	public String mypage(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession(true);

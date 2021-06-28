@@ -56,24 +56,6 @@ public class MemberServiceimp implements MemberService {
 
 		return memberdao.delete(id);
 	}
-
-	@Override
-	public int member_plus(Member member) {
-
-		if(check_id(member.getUserId())==1) { //아이디 중복 있으면
-			return 0;
-		}
-		else { //아이디 중복 없으면
-			return 0;			
-		}
 		
-	}
-
-
-	
-	
-
-
-
-
 }
+
