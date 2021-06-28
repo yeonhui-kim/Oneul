@@ -1,13 +1,8 @@
 /**
  * 
  */
-  window.addEventListener("load",()=>{
+ window.addEventListener("load",()=>{
 	const fileInput = document.querySelector("input[type='file']");
-	let img = document.querySelector(".image");
-	const fileDelBtn = document.querySelector(".file-del-btn");
-	
-	
-	
 	
 	fileInput.oninput = ()=>{
 		let file = fileInput.files[0];
@@ -19,25 +14,17 @@
 		reader.readAsDataURL(file);
 		reader.onload = (e)=>{
 			console.log("reader load");
+			let img = document.querySelector(".image");
 			img.src = e.target.result;
 			img.style.width = "200px";
 			img.style.height = "150px";
 			
 			fileInput.insertAdjacentElement("beforebegin",img);
-		};		
-	}
-	
-	//js에서 삭제버튼 onclick -> 이미지클래스 src 지우고..
-	//원본파일은 컨트롤러에서 조건처리(만약에 파일이 ''이면 원래파일삭제..원래파일은? 히든으로 전달할가..
-	fileDelBtn.onclick = ()=>{
-		img.removeAttribute("src");
-		img.removeAttribute("style");
-		fileInput.value="";
+		};
 		
+			
 	}
-	
 });
-
 
 window.addEventListener("load",()=>{
 	//과거날짜 선택 불가
@@ -52,13 +39,3 @@ window.addEventListener("load",()=>{
 	
 	dateInput.min = today;
 });
-
-window.addEventListener("load", ()=>{
-	if(img.src == ''){
-		console.log("dd");
-		fileDelBtn.style.display = 'none';
-		console.log("")
-	}else{
-		fileDelBtn.style.display = '';
-	}
-})

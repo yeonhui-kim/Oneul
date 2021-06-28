@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.oneul.web.entity.FutureDiary;
@@ -76,10 +77,11 @@ public class FutureDiaryController {
 					  String content,
 					  MultipartFile file,
 					  String pub,
-					  String emotion,
+					  String emotionId,
 					  HttpServletRequest request) {
 		int p = Integer.parseInt(pub);
-		int emt = Integer.parseInt(emotion);
+		int emt = Integer.parseInt(emotionId);
+		
 		String fileName = file.getOriginalFilename();
 		
 		ServletContext application = request.getServletContext();
@@ -116,6 +118,7 @@ public class FutureDiaryController {
 		
 		return("redirect:list");
 	}
+	
 	@GetMapping("reg")
 	public String reg() {
 		return("diary/futurediary/reg");
@@ -130,7 +133,35 @@ public class FutureDiaryController {
 	}
 	
 	@PostMapping("edit")
-	public String edit(FutureDiary futureDiary) {
+	public String edit(FutureDiary futureDiary,
+						MultipartFile file, 
+						HttpServletRequest request) {
+		String fileName = file.getOriginalFilename();
+		
+		ServletContext application = request.getServletContext();
+		String path = "/upload";
+		String realPath = application.getRealPath(path);
+		
+		File pathFile = new File(realPath);
+		if(!pathFile.exists())
+			pathFile.mkdirs();
+		
+		String filePath = realPath + File.separator + fileName;
+		
+		System.out.println(filePath);
+		File saveFile = new File(filePath);
+		
+		try {
+			file.transferTo(saveFile);
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		
+		futureDiary.setImage(fileName);
 		service.update(futureDiary);
 		return "redirect:detail?id="+futureDiary.getId();
 	}
@@ -142,6 +173,11 @@ public class FutureDiaryController {
 		
 		return("redirect:list");
 	}
+	
+	
+		//js에서 삭제버튼 onclick -> 이미지클래스 src 지우고..
+		//원본파일은 컨트롤러에서 조건처리(만약에 파일이 ''이면 원래파일삭제..원래파일은? 히든으로 전달할가..
+	
 	
 	
 }

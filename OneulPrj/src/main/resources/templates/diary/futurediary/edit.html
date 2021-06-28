@@ -7,6 +7,7 @@ layout:decorator="/inc/layout">
 <title>Insert title here</title>
 <link href="/css/diary/modal.css" type="text/css" rel="stylesheet">
 <script src='/js/modal/modal.js'></script>
+<script src='/js/diary/futureDiary/edit.js'></script>
 </head>
 <body>
 
@@ -44,6 +45,15 @@ layout:decorator="/inc/layout">
 	                              	<label>비공개</label> <input type="radio" value="0" name="pub" th:checked="${futureDiary.pub} ? 'false': 'true'">
                               	</td>
                               </tr>  
+                              <tr>
+                                 <td colspan="4">
+                                 <img class="image" th:if="${futureDiary.image}!=''" th:src="@{/upload/} + ${futureDiary.image}"
+                                 style="width:200px; height:150px;">
+                                 <img class="image" th:if="${futureDiary.image}==''" >
+                                 <input class="file-del-btn" type="button" value="삭제">
+                               	<input type="file" name="file" value="0">
+                                    
+                                 </td>
                               <tr>
                                  <td colspan="4">
                                  <textarea rows="20" cols="80" name="content" th:text="${futureDiary.content}">일기내용</textarea>
