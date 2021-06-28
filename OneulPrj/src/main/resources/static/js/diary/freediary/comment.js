@@ -15,6 +15,8 @@ window.addEventListener("load", function(event) {
 	let emotion = document.querySelector("#emotion");
 
 	let commentReg = document.querySelector('#commentReg');
+	
+	let receiver = document.querySelector('.receiver');
 
 	for (let i = 0; i < openBtns.length; i++) {
 		openBtns[i].onclick = function(event) {
@@ -22,8 +24,12 @@ window.addEventListener("load", function(event) {
 			modal.style.display = "block";
 			//insert commentId
 			let commentId = commentReg.firstElementChild;
-			let parentCommentId = openBtns[i].parentNode.parentNode.firstElementChild.innerText;
-			commentId.value = parentCommentId;
+			console.log(commentId);//사용자가선택한 아이디
+			let parentCommentId = openBtns[i].parentNode.parentNode.firstElementChild;
+			commentId.value = parentCommentId.innerText;
+			console.log(openBtns[i].parentNode.parentNode.lastElementChild.firstElementChild.innerText);
+			let receriverName = openBtns[i].parentNode.parentNode.lastElementChild.firstElementChild;
+			receiver.innerText = receriverName.innerText;
 
 		};
 	};

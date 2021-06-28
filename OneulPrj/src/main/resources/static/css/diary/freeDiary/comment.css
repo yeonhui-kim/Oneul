@@ -36,6 +36,34 @@
 	text-decoration: none;
 	cursor: pointer;
 }
+#reply{
+	font-size: 13px;
+}
 .open-button,.edit-button{
 	cursor: pointer;
+}
+.displayDiv{
+	display: flex;
+	margin: 10px;
+}
+.sectionClass{
+	font-size: 13px;
+}
+.commentId{
+    color: white;
+}
+.commentImg{
+	height: 30px;
+	width: 30px; 
+	border-radius: 25%; 
+	margin-right: 10px;
+}
+.userId,.receiver{
+    color: #616161;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.commentBox{
+	width: 95%;
 }
