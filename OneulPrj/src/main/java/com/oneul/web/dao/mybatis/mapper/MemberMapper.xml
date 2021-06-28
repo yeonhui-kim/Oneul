@@ -41,4 +41,8 @@
 	<select id="check_id" parameterType="String" resultType="int">
 		select count(*) from Member where userId=#{id}
 	</select>
+	
+	<delete id="delete" parameterType="int">
+		delete from Member where id=#{id}
+	</delete>
 </mapper>    

@@ -4,33 +4,37 @@
 	layout:decorator="/inc/layout">
 <head>
 <meta charset="UTF-8">
-<script src='/js/diary/freediary/detail.js'></script>
 <title>자유일기-상세페이지</title>
+<link href="/css/diary/freeDiary/comment.css" type="text/css"
+	rel="stylesheet">
+<script src='/js/diary/freediary/comment.js'></script>
 </head>
 <main id="main" layout:fragment="main">
 
 	<section class="sectionClass">
 		<table border="1">
 			<tr>
-					<th>오늘의 감정</th>
-					<!-- <td id="emotion" colspan="3" th:text="${gratitudeDiary.emotionId}"> -->
-					<td colspan="3">
-						<div class="div" th:classappend="${freeDiary.emotionId} =='1' ? 'happy'"></div>
-						<div class="div" th:classappend="${freeDiary.emotionId} =='2' ? 'proud'"></div>
-						<div class="div" th:classappend="${freeDiary.emotionId} =='3' ? 'flutter'"></div>
-						<div class="div" th:classappend="${freeDiary.emotionId} =='4' ? 'calm'"></div>
-						<div class="div" th:classappend="${freeDiary.emotionId} =='5' ? 'sensitive'"></div>
-						<div class="div" th:classappend="${freeDiary.emotionId} =='6' ? 'unstable'"></div>
-						<div class="div" th:classappend="${freeDiary.emotionId} =='7' ? 'tired'"></div>
-						<div class="div" th:classappend="${freeDiary.emotionId} =='8' ? 'sad'"></div>
-						<div class="div" th:classappend="${freeDiary.emotionId} =='9' ? 'upset'"></div>
-					</td>
+				<th>오늘의 감정</th>
+				<!-- <td id="emotion" colspan="3" th:text="${gratitudeDiary.emotionId}"> -->
+				<td colspan="3">
+					<th:block th:switch="${freeDiary.emotionId}">
+						<span th:case="1"><div class="checked-emotion happy"></div></span>
+						<span th:case="2"><div class="checked-emotion proud"></div></span>
+						<span th:case="3"><div class="checked-emotion flutter"></div></span>
+						<span th:case="4"><div class="checked-emotion calm"></div></span>
+						<span th:case="5"><div class="checked-emotion sensitive"></div></span>
+						<span th:case="6"><div class="checked-emotion unstable"></div></span>
+						<span th:case="7"><div class="checked-emotion tired"></div></span>
+						<span th:case="8"><div class="checked-emotion sad"></div></span>
+						<span th:case="9"><div class="checked-emotion upset"></div></span>
+					</th:block>
+				</td>
 			</tr>
 			<tr>
 				<th>첨부파일</th>
-				<td colspan="3">
-				<img style="width:300px;"th:src="@{'/upload/'+ ${freeDiary.image}} " th:if="${freeDiary.image}!=''" >
-				</td>
+				<td colspan="3"><img style="width: 300px;"
+					th:src="@{'/upload/'+ ${freeDiary.image}} "
+					th:if="${freeDiary.image}!=''"></td>
 			</tr>
 			<tr>
 				<th>작성일</th>
@@ -51,18 +55,22 @@
 				onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a>
 		</div>
 
-		<div class="container">
-			<form id="commentForm" action=""name="commentReg" method="post">
-				<input type="hidden" name="id" th:value="${freeDiary.id}"> <br>
-				<br>
+		<!-- comment -->
+		<div th:replace="diary/freediary/comment::comment"></div>
+
+
+		<div class="container"><!--form to reg comments -->
+			<form id="commentForm" action="/diary/freediary/detail" method="post">
+				<input type="hidden" name="freeDiaryId" th:value="${freeDiary.id}">
+				<br> <br>
 				<div>
 					<div>
-						<span><strong>Comments</strong></span> <span id="cCnt"></span>
+						<span><strong>Leave a comment</strong></span> <span id="cCnt"></span>
 					</div>
 					<div>
 						<table class="table">
 							<tr>
-								<td><textarea style="width: 500px" rows="3" cols="30"
+								<td><textarea style="width: 85%" rows="3" cols="30"
 										name="content" placeholder="댓글을 입력하세요"></textarea> <br>
 									<div>
 										<input type="submit" value="저장">
@@ -72,41 +80,8 @@
 					</div>
 				</div>
 			</form>
-		</div>
-		<!-- container -->
-		<!-- 댓글목록 -->
- 		<div id="reply">
-			<ol>
-			<li th:each="n:${commentList}">
-				<p th:text="${n.userId}"></p>
-				<p th:text="${n.regDate}"></p>
-				<p th:text="${n.content}"></p>
-				<a th:href="@{edit(id=${nc.id})}">답글</a>
-				<a th:href="@{edit(id=${n.id})}">수정</a>
-				<a id ="commentDelBtn" 
-					th:href="@{commentdel(id=${n.id},freeDiaryId=${param.id})}"
-					onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a>
-				<ul th:if="${n.list!=null}">
-					<li style="margin-left:30px;" th:each="nc:${n.list}">
-						<p th:text="${nc.userId}"></p>
-						<p th:text="${nc.regDate}"></p>
-						<p th:text="${nc.content}"></p>
-						<a th:href="@{edit(id=${nc.id})}">수정</a>
-						<a id ="commentDelBtn" 
-							th:href="@{commentdel(id=${nc.id},freeDiaryId=${param.id})}"
-							onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a>
-					</li>
-				</ul>
-			</li>
-			</ol>
-		</div>
-	</section>
-	
-	<section class="editComment">
-		<div id="modal" class="modal" th:fragment="modal">
-		<!-- Modal content -->
-	
-		</div>
+		</div><!-- container -->
+
 	</section>
 </main>
 </html>

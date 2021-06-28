@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <script src='/js/diary/freeDiary.js'></script>
+<title>자유일기-수정페이지</title>
+	<link href="/css/diary/modal.css" type="text/css" rel="stylesheet">
+    <script src='/js/modal/modal.js'></script>
 </head>
 <main id="main" layout:fragment="main">
 
@@ -13,30 +16,50 @@
 		<table border="1">
 			<tr>
 				<th>감정선택</th>
-				<td colspan="3">감정이모티콘뷰</td>
+				<td colspan="3">
+				   						<div id="emotion"></div>
+   						<button id="open-button" type="button">감정 선택</button> 
+   						
+   						<div th:replace="inc/modal::modal"></div>
+				</td>
 			</tr>
 			<tr>
 				<th>질문선택</th>
-				<td colspan="3">질문선택지</td>
+				<td colspan="3"><select id="quetionList" name="quetionList"
+					class="quetionList">
+						<option value="" selected="selected">선택</option>
+						<div th:each="n:${list}">
+							<option th:value="${n.question}" th:text="${n.question}"
+								id="selectedQuestion"></option>
+						</div>
+				</select></td>
 			</tr>
 			<tr>
 				<th>첨부파일</th>
-				<td colspan="3"><input type="file" name="f"></td>
+				<td colspan="3"><input type="file" name="file"></td>
 			</tr>
 			<tr>
 				<th>작성일</th>
 				<td colspan="3" th:text="${freeDiary.regDate}"></td>
 			</tr>
-			<tr>
+			<tr th:with="pub = ${freeDiary.pub}==false?'비공개':'공개'">
 				<th>공개선택</th>
-				<td colspan="3" th:text="${freeDiary.pub}">공개 / 비공개</td>
+				<td th:text="${pub}"></td>
+				<td><label>공개</label> 
+				<input type="radio" value="1" name="pub"
+					th:checked="${freeDiary.pub} ? 'true': 'false'"> 
+				<label>비공개</label>
+				<input type="radio" value="0" name="pub"
+					th:checked="${freeDiary.pub} ? 'false': 'true'"></td>
 			</tr>
 
 			<tr>
 				<td colspan="4">
-				<textarea rows="20" cols="50" name="content" th:text="${freeDiary.content}">
-				</textarea>
-
+				<input type="text"value=""name="content" class="selectedQuestion" 
+				style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;
+				width:500px;
+				outline:none;"></input><br>
+				<textarea class="content" rows="20" cols="50" name="content" th:text="${freeDiary.content}"></textarea>
 				</td>
 			</tr>
 
@@ -47,5 +70,6 @@
 		</div>
 	</form>
 	</section>
-
+<script src='/js/diary/freediary/reg.js'></script>
 </main>
+</html>

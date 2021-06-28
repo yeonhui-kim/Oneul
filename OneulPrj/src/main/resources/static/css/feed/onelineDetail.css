@@ -7,16 +7,27 @@ html, body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	background-color: #F2F2F2;
+	background-color: #bcbeb7;
 }
 
 .d-none{
     display: none;
 }
 
-/* ---------------피드------------------------------------ */
-.box {
-	margin-bottom: 20px
+.line{
+    border: 3px solid #f0f3ea;
+    margin-top: 5px;
+}
+
+.review-attr{
+	padding: 10px 0px 10px 0px;
+}
+
+
+
+/* ---------------피드------------------------------------ */	
+#wrapper{
+	margin-bottom: 30px
 }
 
 .profile {
@@ -24,16 +35,18 @@ html, body {
 	height: 50px;
 	grid-template-columns: 60px 1fr 1fr;
 	grid-template-rows: repeat(2, 1fr);
-	grid-template-areas: "img nickname edit" "img date del";
-	margin-bottom: 5px;
+	grid-template-areas: 
+	"img nickname edit" 
+	"img date del";
 	align-items: center;
+	padding: 10px;
 }
 
 .profile-image {
 	grid-area: img;
 	width: 80%;
 	height: 80%;
-	border-radius: 60%;
+	border-radius: 70%;
 }
 
 .user-name {
@@ -79,7 +92,7 @@ html, body {
 	transform: translate(-50%);
 	width: 90%;
 	height: 100%;
-	padding: 10px;
+	padding-top: 10px;
 	/* background-color: white; */
 	border-radius: 8px;
 }
@@ -96,7 +109,7 @@ html, body {
 .content {
 	background-color: white;
 	border-radius: 8px;
-	padding: 10px;
+	/* padding: 10px; */
 	width: 100%;
 	height: 100%;
 }
@@ -106,18 +119,53 @@ html, body {
 	background: #d6d5d3;
 }
 
-
+.onelineId{
+	position: absolute;
+	left: 80%;
+}
 
 .content-text{
-	margin-bottom: 15px;
+	margin-bottom: 30%;
+	padding: 10px
 }
 
 /*-----------------댓글--------------------------------*/
-#comment-txt {
-	margin-top: 10px;
-	width: 100%;
-	height: 60px;
+
+.line-comment{
+	border: 1px solid #f0f3ea;
+    margin-top: 5px;
 }
+
+.profile-comment {
+	display: grid;
+	height: 50px;
+	grid-template-columns: 60px 1fr 1fr;
+	grid-template-rows: repeat(2, 1fr);
+	grid-template-areas: 
+	"img nickname edit" 
+	"img date del";
+	align-items: center;
+
+}
+
+.profile-image-comment{
+	grid-area: img;
+	width: 60%;
+	height: 60%;
+	border-radius: 70%;
+	justify-self: center; 
+}
+
+
+.content-text-comment{
+	padding: 5px 60px 0px 60px;
+	
+}
+
+.comment-box{
+	padding: 0px 15px 15px 15px;
+}
+
 
 #btn {
 	margin-top: 5px;
@@ -138,3 +186,19 @@ html, body {
 .txt{
 	width: 100%; 
 }
+
+.user-name-c{
+	font-size: 12px;
+	font-weight: bold;
+	grid-area: nickname;
+    margin-top: 7px;
+    margin-left: 0px;
+}
+
+.date-c{
+	font-size: 10px;
+	grid-area: date;
+    margin-left: 0px;
+    margin-bottom: 7px;
+}
+

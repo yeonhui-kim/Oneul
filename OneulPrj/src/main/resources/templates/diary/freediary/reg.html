@@ -5,59 +5,50 @@
 <head>
 <meta charset="UTF-8">
 <title>자유일기</title>
-	<link href="/css/diary/modal.css" type="text/css" rel="stylesheet">
-    <script src='/js/modal/modal.js'></script>
+<link href="/css/diary/modal.css" type="text/css" rel="stylesheet">
+<script src='/js/modal/modal.js'></script>
 </head>
 <main id="main" layout:fragment="main">
 
-	<form class="form" action="reg" method="post"
+	<form class="form" action="/diary/freediary/reg" method="post"
 		enctype="multipart/form-data">
 		<table border="1">
 			<tr>
 				<th>감정선택</th>
 				<td colspan="3">
-				   		<div id="emotion"></div>
-   						<button id="open-button" type="button">감정 선택</button> 
-   						
-   						<div th:replace="inc/modal::modal"></div>
+					<div id="emotion"></div>
+					<button id="open-button" type="button">감정 선택</button>
+
+					<div th:replace="inc/modal::modal"></div>
 				</td>
 			</tr>
 			<tr>
 				<th>질문선택</th>
-				<td colspan="3">
-				<select id="quetionList" name="quetionList" class="quetionList">
+				<td colspan="3"><select id="quetionList" name="quetionList"
+					class="quetionList">
 						<option value="" selected="selected">선택</option>
-					<div th:each="n:${list}">
-						<option th:value="${n.question}" th:text="${n.question}" id="selectedQuestion"></option>
-					</div>
-				</select>
-
-
-				</td>
+						<div th:each="n:${list}">
+							<option th:value="${n.question}" th:text="${n.question}"
+								id="selectedQuestion"></option>
+						</div>
+				</select></td>
 			</tr>
 			<tr>
 
 				<th>첨부파일</th>
-				<td colspan="3"><input type="file" name="file"></td>
+				<td colspan="3"><input type="file" name="file" value="0"></td>
 			</tr>
 			<tr>
 				<th>공개선택</th>
-				<td colspan="3">
-				<label>공개</label> 
-				<input type="radio" value="1"
-					name="pub"> 
-				<label>비공개</label> 
-				<input type="radio"
-					value="0" name="pub" checked>
-				</td>
+				<td colspan="3"><label>공개</label> <input type="radio" value="1"
+					name="pub"> <label>비공개</label> <input type="radio"
+					value="0" name="pub" checked></td>
 			</tr>
 			<tr>
-				<td colspan="4">
-				<input type="text"value=""name="content" class="selectedQuestion" 
-				style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;
-				width:500px;
-				outline:none;"></input><br>
-				<textarea class="content" rows="20" cols="50" name="content">자유롭게 글을 써보세요</textarea>
+				<td colspan="4"><input type="text" value="" name="content"
+					class="selectedQuestion"
+					style="border: none; border-right: 0px; border-top: 0px; boder-left: 0px; boder-bottom: 0px; width: 500px; outline: none;"></input><br>
+					<textarea class="content" rows="20" cols="50" name="content">자유롭게 글을 써보세요</textarea>
 				</td>
 			</tr>
 		</table>
@@ -68,6 +59,6 @@
 		</div>
 	</form>
 	</section>
-<script src='/js/diary/freediary/reg.js'></script>
+	<script src='/js/diary/freediary/reg.js'></script>
 </main>
 </html>

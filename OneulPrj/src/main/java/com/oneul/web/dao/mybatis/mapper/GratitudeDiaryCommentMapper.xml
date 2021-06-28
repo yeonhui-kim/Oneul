@@ -36,7 +36,7 @@
 	</delete>
     
     <update id="update" parameterType="com.oneul.web.entity.GratitudeDiaryComment">
-    	update GratitudeDiaryComment content = #{content} where id=#{id}
+    	update GratitudeDiaryComment set content = #{content} where id=#{id}
     </update>
     
     

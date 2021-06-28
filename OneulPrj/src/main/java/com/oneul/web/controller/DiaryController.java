@@ -8,10 +8,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/diary/")
 public class DiaryController {
 	
-	@RequestMapping("reg")
+	@RequestMapping("list")
 	public String list() {
 		
-		return "diary.reg";
+		return "diary/list";
+	}
+	
+	@RequestMapping("reg")
+	public String reglist() {
+		
+		return "diary/reg";
 	}
 
 }

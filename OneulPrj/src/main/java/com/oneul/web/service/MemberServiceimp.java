@@ -54,7 +54,7 @@ public class MemberServiceimp implements MemberService {
 	@Override
 	public int delete(int id) {
 
-		return 0;
+		return memberdao.delete(id);
 	}
 
 	@Override

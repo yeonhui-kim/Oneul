@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
     <link href="../css/member/signup.css" type="text/css" rel="stylesheet">
-
+	<script src="/js/member/signup.js"></script>
 </head>
     <main class="main" layout:fragment="main">
         <div class="signup-box">
@@ -17,8 +17,12 @@
                 <h2 class="signup-title">회원가입</h2>
                 <ul>
                     <li>
-                        <input type="text" name="username" placeholder="아이디"/>
+                        <input class="username" type="text" name="username" placeholder="아이디"/>
+                    	<button class="checkid" type="button">중복체크</button>
                     </li>
+
+                        <div class="checkmsg" th:if="${checkmsg}!=null" th:text="${checkmsg}"></div>
+
                     <li>
                         <input type="password" name="password" placeholder="비밀번호"/>
                     </li>

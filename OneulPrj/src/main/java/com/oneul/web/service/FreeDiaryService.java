@@ -9,6 +9,7 @@ public interface FreeDiaryService {
 	
 	FreeDiary get(int id);
 	List<FreeDiary> getList();
+	List<FreeDiary> getList(int id);
 
 	int insert(FreeDiary freeDiary);
 	int update(FreeDiary freeDiary);

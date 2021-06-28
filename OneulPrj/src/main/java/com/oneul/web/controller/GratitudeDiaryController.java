@@ -4,6 +4,9 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.oneul.web.entity.CalendarEmotion;
 import com.oneul.web.entity.GratitudeDiary;
+import com.oneul.web.entity.GratitudeDiaryComment;
+import com.oneul.web.entity.Member;
+import com.oneul.web.service.GratitudeDiaryCommentService;
 import com.oneul.web.service.GratitudeDiaryService;
+import com.oneul.web.service.MemberService;
 
 @Controller
 @RequestMapping("/diary/gratitudeDiary")
@@ -22,9 +29,18 @@ public class GratitudeDiaryController {
 
 	@Autowired
 	private GratitudeDiaryService service;
+	@Autowired
+	private MemberService memberSerivce;
+	@Autowired
+	private GratitudeDiaryCommentService commentService;
 	
 	@RequestMapping("list")
-	public String list(Model model) {
+	public String list(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession(true);//세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
+		String username = (String) session.getAttribute("username");
+		Member member = new Member();
+		member = memberSerivce.get(username);
+		int id = member.getId();
 		
 		List<GratitudeDiary> list = service.getList();
 		model.addAttribute("list",list);
@@ -39,10 +55,16 @@ public class GratitudeDiaryController {
 	}
 	
 	@PostMapping("reg")
-	public String reg(@ModelAttribute GratitudeDiary gratitudeDiary, @ModelAttribute CalendarEmotion calendarEmotion) {
+	public String reg(@ModelAttribute GratitudeDiary gratitudeDiary, @ModelAttribute CalendarEmotion calendarEmotion, HttpServletRequest request) {
+		HttpSession session = request.getSession(true);//세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
+		String username = (String) session.getAttribute("username");
+		Member member = new Member();
+		member = memberSerivce.get(username);
+		int id = member.getId();
+		
 		//SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
 		Date now = new Date(System.currentTimeMillis());
-		gratitudeDiary.setMemberId(2);
+		gratitudeDiary.setMemberId(id);
 		gratitudeDiary.setRegDate(now);
 
 		//calendarEmotion.setMemberId(gratitudeDiary.getMemberId());
@@ -68,13 +90,42 @@ public class GratitudeDiaryController {
 		GratitudeDiary gratitudeDiary = service.get(id);
 		model.addAttribute("gratitudeDiary",gratitudeDiary);
 		
+		// 상세페이지내 댓글리스
+		List<GratitudeDiaryComment> commentList = commentService.getViewList(id);
+		model.addAttribute("commentList", commentList);
+		
 		return "diary/gratitudeDiary/detail";
+	}
+	
+	//답글달기
+	@PostMapping("detail")
+	public String commentReg(GratitudeDiaryComment gratitudeDiaryComment, HttpServletRequest request) {// 메소드이름은상관x
+		HttpSession session = request.getSession(true);//세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
+		String username = (String) session.getAttribute("username");
+		Member member = new Member();
+		member = memberSerivce.get(username);
+		int id = member.getId();
+		
+		gratitudeDiaryComment.setMemberId(id);
+		
+		gratitudeDiaryComment.setCommentId(gratitudeDiaryComment.getCommentId());//부모댓글
+		gratitudeDiaryComment.setGratitudeDiaryId(gratitudeDiaryComment.getGratitudeDiaryId());//일기번호
+		gratitudeDiaryComment.setContent(gratitudeDiaryComment.getContent());
+		 commentService.insert(gratitudeDiaryComment); //
+
+		return "redirect:detail?id=" + gratitudeDiaryComment.getGratitudeDiaryId();
 	}
 	
 	@RequestMapping("del")
 	public String delete(int id) {
 		service.delete(id);
 		return "redirect:list";
+	}
+	//댓글삭제
+	@RequestMapping("commentdel")
+	public String commentdelete(int id, int gratitudeDiaryId) {
+		commentService.delete(id);
+		return "redirect:detail?id=" + gratitudeDiaryId;
 	}
 	
 	@GetMapping("edit")
@@ -93,4 +144,11 @@ public class GratitudeDiaryController {
 		
 		return "redirect:detail?id="+gratitudeDiary.getId();
 	}
+	//댓글수정
+	@PostMapping("commentedit")
+	public String commentedit(GratitudeDiaryComment gratitudeDiaryComment) {
+		commentService.update(gratitudeDiaryComment);
+		return "redirect:detail?id=" + gratitudeDiaryComment.getGratitudeDiaryId();
+	}
+	
 }

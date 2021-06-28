@@ -52,46 +52,56 @@ a{
     
 }
 #main{
-	overflow: scroll;
-    height: 86%;
+	height: 85%;
+    overflow: scroll;
 }
+
 /* The navigation bar */
 #navbar {
-    overflow: hidden;
-    background-color: #90caf9;
-    position: fixed; 
-    bottom: 0;
-    width: 100%;
-  }  
-  /* Links inside the navbar */
+	overflow: hidden;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	background-color: #e3f2fd;
+}
   #navbar a {
     float: left;
     display: block;
     color: #fdf7f7;
     text-align: center;
-    padding: 15px 22px;
+    padding: 14px 16px;
     text-decoration: none;
   }
-  
-  /* Change background on mouse-over */
-  #navbar a:hover {
-    background: #ddd;
-    color: black;
-  }
 
-  /*table */
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 100%;
-    border: 1px solid #ddd;
-  }
+.select-diary div {
+	margin: 10px;
+	text-align: center;
+	font-size: 15px;
+}
 
-  th, td {
-    text-align: left;
-    padding: 8px;
-    height: 2rem;
-  }
-  tr{
-    border: 1px solid #ddd;
-  }
+/* Change background on mouse-over */
+#navbar a:hover {
+	background: #ddd;
+	color: black;
+}
+
+/*table */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+	border: 1px solid #ddd;
+}
+
+th, td {
+	text-align: left;
+	padding: 8px;
+	height: 2rem;
+}
+
+tr {
+	border: 1px solid #ddd;
+}

@@ -9,6 +9,9 @@
 		<input type="file" name="file"><br>
 		<input type="submit" value="전송">
 	</form>
+	<form action="/member/basic" method="get">
+		<button>기본사진으로 변경</button>
+	</form>
 	
 	<h1>프로필사진테스트</h1>
 	<img th:src="@{/upload/profile/basic.jpg}" th:if="${member.image}=='basic.jpg'">

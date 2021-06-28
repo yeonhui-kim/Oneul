@@ -30,6 +30,12 @@ public class MyBatisFreeDiaryDao implements FreeDiaryDao {
 	}
 
 	@Override
+	public List<FreeDiary> getList(int id) {
+		
+		return mapper.getList(id);
+	}
+	
+	@Override
 	public int insert(FreeDiary freeDiary) {
 
 		return mapper.insert(freeDiary);
@@ -47,6 +53,8 @@ public class MyBatisFreeDiaryDao implements FreeDiaryDao {
 		
 		return mapper.delete(id);
 	}
+
+
 
 
 

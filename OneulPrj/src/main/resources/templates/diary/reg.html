@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/inc/layout">
+<head>
+<meta charset="UTF-8">
+<title>일기선택</title>
+</head>
+<main id="main" layout:fragment="main">
+
+    <section class="section">
+
+        <h1>작성할 일기를 선택해주세요!</h1>
+       <div class="select-diary">
+           <div onclick="location.href='/diary/freediary/reg'"><img src="https://image.flaticon.com/icons/png/128/3237/3237849.png"><br>
+           <a href="/diary/freediary/reg">자유일기</a></div>
+           <div onclick="location.href='/diary/gratitudeDiary/reg'"><img src="https://image.flaticon.com/icons/png/128/3237/3237849.png"><br>
+           <a href="/diary/gratitudeDiary/reg">감사일기</a></div>
+           <div onclick="location.href='/diary/futurediary/reg'"><img src="https://image.flaticon.com/icons/png/128/3237/3237849.png"><br>
+           <a href="/diary/futurediary/reg">미래일기</a></div>
+        </div>
+
+
+        
+    </section>  
+</main>
+</html>
