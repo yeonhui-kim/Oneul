@@ -56,16 +56,42 @@
 				<tr>
 					<td colspan="4" th:text="${gratitudeDiary.content3}"></td>		
 				</tr>
-						
-						
-				
+					
 			</table>
+			
 			<div>
 				<a href="list">목록</a> 
 				<a th:href="@{edit(id=${gratitudeDiary.id})}">수정</a>
 				<a th:href="@{del(id=${gratitudeDiary.id})}"
 					onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a>
 			</div>
+			
+			<!-- comment -->
+			<div th:replace="diary/gratitudeDiary/comment::comment"></div>
+	
+	
+			<div class="container"><!--form to reg comments -->
+				<form id="commentForm" action="/diary/gratitudeDiary/detail" method="post">
+					<input type="hidden" name="gratitudeDiaryId" th:value="${gratitudeDiary.id}">
+					<br> <br>
+					<div>
+						<div>
+							<span><strong>Leave a comment</strong></span> <span id="cCnt"></span>
+						</div>
+						<div>
+							<table class="table">
+								<tr>
+									<td><textarea style="width: 85%" rows="3" cols="30"
+											name="content" placeholder="댓글을 입력하세요"></textarea> <br>
+										<div>
+											<input type="submit" value="저장">
+										</div></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</form>
+			</div><!-- container -->
 
 		</section>
 	</main>
