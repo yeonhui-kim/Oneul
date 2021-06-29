@@ -76,6 +76,7 @@ public class GratitudeDiaryController {
 
 		calendarEmotion.setMemberId(gratitudeDiary.getMemberId());
 		calendarEmotion.setRegDate(gratitudeDiary.getRegDate());
+		//calendarEmotion.setEmotionId(gratitudeDiary.getEmotionId());
 		
 		service.insertDiary(gratitudeDiary);
 		

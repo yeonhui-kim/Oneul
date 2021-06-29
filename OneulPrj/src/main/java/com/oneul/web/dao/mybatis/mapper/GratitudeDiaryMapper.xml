@@ -41,7 +41,7 @@
 		where id=#{id}
 	</update>
 	
-	<select id="selectCalEmotionCnt" parameterType="com.oneul.web.entity.CalendarEmotion">
+	<select id="selectCalEmotionCnt" resultType="int">
 		select count(*) 
 		  from CalendarEmotion
 		 where 1=1
@@ -53,7 +53,7 @@
 	<update id="updateCalendar" parameterType="com.oneul.web.entity.CalendarEmotion">
 		update CalendarEmotion
 		<set>
-			<if test="emotionId != null">emotionId = #{enotionId}</if>
+			<if test="emotionId != null">emotionId = #{emotionId}</if>
 		</set>
 		where 1=1 
 		  and memberId=#{memberId}
