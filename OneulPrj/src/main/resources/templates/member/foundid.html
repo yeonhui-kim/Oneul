@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="inc/layout">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<main class="main" layout:fragment="main">
+	<span th:text=${session.member.name}></span>
+	<span>님의 아이디는</span>
+	<span th:text=${session.member.userId}></span>
+	
+	<a href="login">로그인하기</a>
+	<a href="findpass">비밀번호 찾기</a>
+	</main>
+</body>
+</html>

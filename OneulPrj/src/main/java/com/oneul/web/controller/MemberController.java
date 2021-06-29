@@ -76,6 +76,36 @@ public class MemberController {
 		}
 	}
 	
+	//아이디찾기페이지 조회
+	@RequestMapping("findid")
+	public String findid() {
+		return "member/findid";		
+	}
+	
+	@PostMapping("findid")
+	public String findid(String name, Date birthday, String email,HttpServletRequest request) {
+		Member member = new Member();
+		member.setName(name);
+		member.setBirthday(birthday);
+		member.setEmail(email);
+		
+		//아이디 찾기 서비스 구현
+		String username = service.findid(member);
+		member.setUserId(username);
+		
+		//아이디 session에 담기
+		HttpSession session = request.getSession(true);
+		session.setAttribute("member", member);
+		
+		return "redirect:foundid";
+	}
+	
+	@RequestMapping("foundid")
+	public String foundid(Model model) {
+		
+		return "member/foundid";		
+	}
+	
 	//로그인페이지 조회
 	@RequestMapping("/login")
 	public String login(HttpServletRequest request, Model model) {

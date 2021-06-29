@@ -10,6 +10,8 @@ public interface MemberService {
 	
 	int check_id(String userId);
 	int insert(Member member);
+	String findid(Member member);
+
 	
 	int updatebyid(Member member);
 	int updatebyname(Member member);

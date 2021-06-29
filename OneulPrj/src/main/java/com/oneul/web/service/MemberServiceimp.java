@@ -38,6 +38,13 @@ public class MemberServiceimp implements MemberService {
 
 		return memberdao.insert(member);
 	}
+	
+	@Override
+	public String findid(Member member) {
+		
+		return memberdao.findid(member);
+	}
+	
 
 	@Override
 	public int updatebyid(Member member) {
@@ -56,6 +63,8 @@ public class MemberServiceimp implements MemberService {
 
 		return memberdao.delete(id);
 	}
+
+
 		
 }
 
