@@ -22,6 +22,7 @@ import com.oneul.web.entity.CalendarEmotion;
 import com.oneul.web.entity.GratitudeDiary;
 import com.oneul.web.entity.GratitudeDiaryComment;
 import com.oneul.web.entity.Member;
+import com.oneul.web.service.CalendarEmotionService;
 import com.oneul.web.service.GratitudeDiaryCommentService;
 import com.oneul.web.service.GratitudeDiaryService;
 import com.oneul.web.service.MemberService;
@@ -30,6 +31,8 @@ import com.oneul.web.service.MemberService;
 @RequestMapping("/diary/gratitudeDiary")
 public class GratitudeDiaryController {
 
+	@Autowired
+	private CalendarEmotionService calendarService;
 	@Autowired
 	private GratitudeDiaryService service;
 	@Autowired
@@ -81,12 +84,12 @@ public class GratitudeDiaryController {
 		service.insertDiary(gratitudeDiary);
 		
 		//1. 현재 로그인한 사용자가 해당 날짜에 감정을 등록한적 있는지 확인
-		int cnt = service.selectCalEmotionCnt(calendarEmotion);
+		int cnt = calendarService.selectCalEmotionCnt(calendarEmotion);
 		
 		if( cnt > 0 ) {
-			service.updateCalendar(calendarEmotion);
+			calendarService.updateCalendar(calendarEmotion);
 		} else {
-			service.insertCalendar(calendarEmotion);
+			calendarService.insertCalendar(calendarEmotion);
 		}
 		
 		return "redirect:list";
@@ -148,7 +151,7 @@ public class GratitudeDiaryController {
 	@PostMapping("edit")
 	public String edit(GratitudeDiary gratitudeDiary, CalendarEmotion calendarEmotion) {
 		service.updateDiary(gratitudeDiary);
-		service.updateCalendar(calendarEmotion);
+		calendarService.updateCalendar(calendarEmotion);
 		
 		return "redirect:detail?id="+gratitudeDiary.getId();
 	}

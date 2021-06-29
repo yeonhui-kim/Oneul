@@ -52,20 +52,4 @@ public class MyBatisGratitudeDiaryDao implements GratitudeDiaryDao {
 		return mapper.updateDiary(gratitudeDiary);
 	}
 
-	@Override
-	public int insertCalendar(CalendarEmotion calendarEmotion) {
-		return mapper.insertCalendar(calendarEmotion);
-	}
-
-	@Override
-	public int updateCalendar(CalendarEmotion calendarEmotion) {
-		return mapper.updateCalendar(calendarEmotion);
-	}
-
-	@Override
-	public int selectCalEmotionCnt(CalendarEmotion calendarEmotion) {
-		return mapper.selectCalEmotionCnt(calendarEmotion);
-	}
-
-	
 }
