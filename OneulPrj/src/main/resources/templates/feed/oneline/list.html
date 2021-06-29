@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="/css/feed/onelineList.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="/js/feed/oneline/list.js"></script>
 </head>
 <main id="wrapper" layout:fragment="main">
 
@@ -21,15 +22,21 @@
          <article class="box">
             <div class="content">
                <div class="profile">      
-                  <img class="profile-image" th:src="@{'/upload/profile/'+${n.image}}"> 
+               <img class="profile-image" th:src="@{/upload/profile/basic.jpg}" th:if="${n.image}=='basic.jpg'">
+                  <img class="profile-image" th:src="@{'/upload/profile/' +${n.memberId} +'/'  +${n.image}   }" th:if="${n.image}!='basic.jpg'"> 
                   <a class="user-name" th:text="${n.writerId}">로그인아이디</a>
                      <a class="date" th:text="${#calendars.format(n.regDate,'yyy-MM-dd')}">날짜</a>
                      
                      
-                  <div th:if="${n.memberId == member.id}">
-                  <a class="edit" th:href="@{edit(id=${n.id})}" href="edit?id=${n.id}">수정</a>         
-                  <a class="del" th:href="@{del(id=${n.id})}"
-                     onclick="if(!confirm('삭제하시겠습니까?')) return false;">삭제</a>
+                  <div class="edit" th:if="${n.memberId == member.id}">
+                
+                        <a th:href="@{edit(id=${n.id})}" href="edit?id=${n.id}">수정</a>                                           
+                        
+            
+                  </div>
+                  <div class="del" th:if="${n.memberId == member.id}">
+                        <a  th:href="@{del(id=${n.id})}"
+                        onclick="if(!confirm('삭제하시겠습니까?')) return false;">삭제</a>
                   </div>
                </div>
 
@@ -39,7 +46,7 @@
                </div>
 
                <div class="review-attr">
-                  <span>좋아요 0</span> <span>댓글 0</span>
+                  <span>좋아요 0</span> <span th:text="'댓글'+${n.count}">댓글 0</span>
                </div>
                <hr>
                
@@ -67,5 +74,7 @@
    </div>
 
 </main>
+
+
 
 </html>
