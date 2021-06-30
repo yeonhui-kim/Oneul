@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -19,10 +20,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.oneul.web.entity.CalendarEmotion;
 import com.oneul.web.entity.FutureDiary;
 import com.oneul.web.entity.FutureDiaryComment;
+import com.oneul.web.entity.Member;
+import com.oneul.web.service.CalendarEmotionService;
 import com.oneul.web.service.FutureDiaryCommentService;
 import com.oneul.web.service.FutureDiaryService;
+import com.oneul.web.service.MemberService;
 
 @Controller
 @RequestMapping("/diary/futurediary/")
@@ -33,6 +38,13 @@ public class FutureDiaryController {
 	
 	@Autowired
 	private FutureDiaryCommentService commentService;
+	
+	@Autowired
+	private MemberService memberSerivce;
+	
+	@Autowired
+	private CalendarEmotionService calendarService;
+
 	
 	@RequestMapping("list")
 	public String list(Model model) {
@@ -78,16 +90,23 @@ public class FutureDiaryController {
 					  MultipartFile file,
 					  String pub,
 					  String emotionId,
-					  HttpServletRequest request) {
+					  HttpServletRequest request, CalendarEmotion calendarEmotion) {
 		int p = Integer.parseInt(pub);
 		int emt = Integer.parseInt(emotionId);
 		
 		String fileName = file.getOriginalFilename();
 		
+		HttpSession session = request.getSession(true);//세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
+		String username = (String) session.getAttribute("username");
+		
+		Member member = new Member();
+		member = memberSerivce.get(username);
+		int memberId = member.getId();
+		
 		FutureDiary futureDiary = new FutureDiary();	
 		futureDiary.setBookingDate(bookingDate);
 		futureDiary.setContent(content);
-		futureDiary.setMemberId(4);
+		futureDiary.setMemberId(memberId);
 		futureDiary.setPub(p);
 		futureDiary.setEmotionId(emt);
 		futureDiary.setImage(fileName);
@@ -99,7 +118,7 @@ public class FutureDiaryController {
 		
 		if(!fileName.equals("")) {
 			ServletContext application = request.getServletContext();
-			String path = "/upload/diary/futureDiary/"+"4"+"/"+id; //회원id + 일기id
+			String path = "/upload/diary/futureDiary/"+memberId+"/"+id; //회원id + 일기id
 			String realPath = application.getRealPath(path);
 			
 			File pathFile = new File(realPath);
@@ -122,6 +141,19 @@ public class FutureDiaryController {
 			}	
 		}
 		
+		// --------------------달력 서비스----------------------------
+		calendarEmotion.setMemberId(futureDiary.getMemberId());
+		calendarEmotion.setRegDate(futureDiary.getBookingDate());
+		
+		//1. 현재 로그인한 사용자가 해당 날짜에 감정을 등록한적 있는지 확인
+		int cnt = calendarService.selectCalEmotionCnt(calendarEmotion);
+		
+		if( cnt > 0 ) {
+			calendarService.updateCalendar(calendarEmotion);
+		} else {
+			calendarService.insertCalendar(calendarEmotion);
+		}
+		// --------------------달력 서비스----------------------------
 		
 		return("redirect:list");
 	}
