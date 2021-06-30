@@ -2,12 +2,15 @@ package com.oneul.web.entity;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class FreeDiary {
 	
 	private Integer id;
 	private String content;
 	private String image;
 	private Boolean pub;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date regDate;
 	private Integer memberId;
 	private Integer emotionId;
