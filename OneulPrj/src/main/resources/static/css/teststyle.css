@@ -1,5 +1,6 @@
 html,body{
     height: 100%;
+    background-color:#F2F2F2;
     
 }
 
@@ -47,9 +48,16 @@ a{
     display: flex;
     height: 50px;
     align-items: center;
+    justify-content: center;
+
     padding: 0 10px;
-    background-color: #e3f2fd;
+    background-color:#F8F1E5;
     
+}
+
+.logo{
+	width:80px;
+	height:auto;
 }
 #main{
 	height: 85%;
@@ -65,7 +73,7 @@ a{
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
-	background-color: #e3f2fd;
+	background-color: #F8F1E5
 }
   #navbar a {
     float: left;
