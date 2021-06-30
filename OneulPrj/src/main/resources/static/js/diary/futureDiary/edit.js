@@ -5,6 +5,7 @@
 	const fileInput = document.querySelector("input[type='file']");
 	let img = document.querySelector(".image");
 	const fileDelBtn = document.querySelector(".file-del-btn");
+	const changed = document.querySelector(".changed");
 	
 	
 	
@@ -24,7 +25,8 @@
 			img.style.height = "150px";
 			
 			fileInput.insertAdjacentElement("beforebegin",img);
-		};		
+		};	
+		changed.value="1"; //파일바뀜	
 	}
 	
 	//js에서 삭제버튼 onclick -> 이미지클래스 src 지우고..
@@ -33,6 +35,7 @@
 		img.removeAttribute("src");
 		img.removeAttribute("style");
 		fileInput.value="";
+		changed.value="1";
 		
 	}
 	
@@ -52,13 +55,19 @@ window.addEventListener("load",()=>{
 	
 	dateInput.min = today;
 });
-
+//input hidden 1 : 원래 파일 이름
+//input hidden 2 : 변경여부
+//변경안됐으면..업데이트할때 파일은 냅둠
+/*
 window.addEventListener("load", ()=>{
-	if(img.src == ''){
+	const fileDelBtn = document.querySelector(".file-del-btn");
+	const fileInput = document.querySelector("input[type='file']");
+	
+	if(fileInput.value == ''){
 		console.log("dd");
 		fileDelBtn.style.display = 'none';
-		console.log("")
+		
 	}else{
 		fileDelBtn.style.display = '';
 	}
-})
+})*/
