@@ -107,13 +107,19 @@ public class FreeDiaryController {
 	}
 
 	@GetMapping("detail")
-	public String detail(int id, Model model) {
+	public String detail(int id, Model model, HttpServletRequest request) {
 		// 다이어리 상세내역
 		FreeDiary freeDiary = service.get(id);
 		model.addAttribute("freeDiary", freeDiary);
 		// 상세페이지내 댓글리스
 		List<FreeDiaryComment> commentList = commentService.getViewList(id);
 		model.addAttribute("commentList", commentList);
+		
+		HttpSession session = request.getSession(true);
+        String username = (String) session.getAttribute("username");    
+        Member member2 = memberSerivce.get(username);
+        System.out.println(member2.getId());
+        model.addAttribute("member", member2);
 
 		return "diary/freediary/detail";
 	}
