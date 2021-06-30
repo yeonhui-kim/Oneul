@@ -25,6 +25,10 @@
 	   	where userId = #{userId}
     </update>
     
+    <select id="findid" parameterType="com.oneul.web.entity.Member" resultType="String">
+		select userId from Member where name = #{name} and email = #{email} and birthday = #{birthday}
+	</select>
+    
     <update id="updatebyid" parameterType="com.oneul.web.entity.Member">
     	update Member
     	<set>

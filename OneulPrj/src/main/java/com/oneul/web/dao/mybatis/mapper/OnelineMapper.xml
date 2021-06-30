@@ -10,9 +10,11 @@
     </select>
     
     <select id="getList" resultType="com.oneul.web.entity.Oneline">
-        select * from Oneline 
-		order by regdate desc
-		LIMIT #{size} offset #{offset}
+        select d.*,
+      (select count(id) from OnelineComment where onelineId = d.id) count
+      from Oneline d 
+        order by regdate desc
+      LIMIT #{size} offset #{offset};
     </select>
     
     <insert id="insert"

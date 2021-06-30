@@ -1,26 +1,30 @@
 package com.oneul.web.entity;
 
-import java.sql.Date;
+import java.util.Date;
+//import java.sql.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class CalendarEmotion {
 	
-	private String regDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date regDate;
 	private Integer memberId;
 	private Integer emotionId;
 	
 	
-	public CalendarEmotion(Integer id, String regDate, Integer memberId, Integer emotionId) {
+	public CalendarEmotion(Integer id, Date regDate, Integer memberId, Integer emotionId) {
 		super();
 		this.regDate = regDate;
 		this.memberId = memberId;
 		this.emotionId = emotionId;
 	}
 	
-	public String getRegDate() {
+	public Date getRegDate() {
 		return regDate;
 	}
 
-	public void setRegDate(String regDate) {
+	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
 
@@ -41,6 +45,8 @@ public class CalendarEmotion {
 	public String toString() {
 		return "CalendarEmotion [regDate=" + regDate + ", memberId=" + memberId + ", emotionId=" + emotionId + "]";
 	}
+
+	
 	
 	
 	

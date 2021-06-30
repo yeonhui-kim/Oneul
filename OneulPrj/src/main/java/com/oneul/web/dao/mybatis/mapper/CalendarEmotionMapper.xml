@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oneul.web.dao.CalendarEmotionDao">
+
+	<select id="getListCalendar" resultType="com.oneul.web.entity.CalendarEmotion">
+		select * from CalendarEmotion
+	</select>
+	
+   	<insert id="insertCalendar" parameterType="com.oneul.web.entity.CalendarEmotion">
+   		insert into CalendarEmotion(regDate, memberId, emotionId)
+   		value(#{regDate}, #{memberId}, #{emotionId})
+   	</insert>
+	
+	<select id="selectCalEmotionCnt" resultType="int">
+		select count(CalendarEmotion.*) from
+		  from (
+		  		select memberId, regDate 
+		  		from FreeDiary
+		  		where memberId = #{memberId} and regDate = #{regDate}
+		  	union all
+		  		select memberId, regDate 
+		  		from FutureDiary
+		  		where memberId = #{memberId} and regDate = #{regDate}
+		  	union all
+		  		select memberId, regDate 
+		  		from GratitudeDiary
+		  		where memberId = #{memberId} and regDate = #{regDate}
+		  ) CalendarEmotion
+	</select>
+	
+	<update id="updateCalendar" parameterType="com.oneul.web.entity.CalendarEmotion">
+		update CalendarEmotion
+		<set>
+			<if test="emotionId != null">emotionId = #{emotionId}</if>
+		</set>
+		where 1=1 
+		  and memberId=#{memberId}
+		  and regDate=#{regDate}
+		  
+	</update>
+
+</mapper>

@@ -17,8 +17,9 @@
             <div class="content">
 
                <div class="profile">
-                  <img class="profile-image" th:src="@{'/upload/profile/'+${detail.image}}"> <a
-                  th:text="${detail.writerId}" class="user-name">유저아이디</a> 
+               <img class="profile-image" th:src="@{/upload/profile/basic.jpg}" th:if="${detail.image}=='basic.jpg'">
+                  <img class="profile-image"th:src="@{'/upload/profile/' +${detail.memberId} +'/'  +${detail.image}   }" th:if="${detail.image}!='basic.jpg'"> 
+                  <a th:text="${detail.writerId}" class="user-name">유저아이디</a> 
                      <a class="date" th:text="${#calendars.format(detail.regDate,'yyy-MM-dd')}">날짜</a>
                      <a class="edit" th:href="@{edit(id=${detail.id})}" href="edit?id=${detail.id}"></a>
                   <a class="del" th:href="@{del(id=${detail.id})}" onclick="if(!confirm('삭제하시겠습니까?')) return false;"></a>
@@ -46,11 +47,14 @@
                   <a class="user-name-c" th:text="${c.writerId}">로그인아이디</a> 
                   <a class="date-c" th:text="${#calendars.format(c.regDate,'a hh:mm')}">날짜</a>
                   
-                  <div th:if="${c.memberId == member.id}">
-                  <a class="edit">수정</a>
-                  <a class="del" th:href="@{cdel(id=${c.id})}"
-                     onclick="if(!confirm('삭제하시겠습니까?')) return false;">삭제</a>
-                   </div>
+                  <div class="edit" th:if="${c.memberId == member.id}">
+                        <a>수정</a>
+                  </div>
+                  
+                  <div class="del" th:if="${c.memberId == member.id}">
+                        <a th:href="@{cdel(id=${c.id})}"
+                          onclick="if(!confirm('삭제하시겠습니까?')) return false;">삭제</a>
+                  </div>
                </div>
                   <div class="content-text-comment">
                   <a th:text="${c.content}">댓글내용</a>                        

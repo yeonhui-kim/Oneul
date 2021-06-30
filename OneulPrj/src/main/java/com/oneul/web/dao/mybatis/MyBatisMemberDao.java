@@ -38,6 +38,12 @@ public class MyBatisMemberDao implements MemberDao {
 
 		return mapper.insert(member);
 	}
+	
+	@Override
+	public String findid(Member member) {
+		
+		return mapper.findid(member);
+	}
 
 	@Override
 	public int updatebyid(Member member) {
@@ -61,5 +67,7 @@ public class MyBatisMemberDao implements MemberDao {
 	public int check_id(String userId) {
 		return mapper.check_id(userId);
 	}
+
+
 
 }

@@ -15,13 +15,11 @@
 			<li th:each="n:${commentList}">
 				<div
 					th:with="pid=${n.id},pUserId=${n.userId},freeDiaryId=${n.freeDiaryId}">
-					<div style="display: flex; margin: 10px;" th:with="userId=${n.userId}">
-						<p th:text="${pid}">부모댓글아이디</p>
-						<img
-							style="height: 50px; width: 50px; border-radius: 25%; margin-right: 10px;"
-							src="https://randomuser.me/api/portraits/lego/1.jpg">
+					<div class="displayDiv" th:with="userId=${n.userId}">
+						<p class="commentId"th:text="${pid}">부모댓글아이디</p>
+						<img class="commentImg"src="https://randomuser.me/api/portraits/lego/1.jpg">
 						<div>
-							<span style="color: #007bff;" th:text="${userId}"></span>
+							<span class="userId" th:text="${userId}"></span>
 							<span th:text="${n.regDate}"></span>
 							<p th:text="${n.content}"></p>
 							<a class="open-button">답글</a> 
@@ -43,11 +41,11 @@
 									th:value="${freeDiaryId}">
 								<div>
 									<div>
-										<span style="color: #007bff;" th:text="${pUserId}"><strong></strong></span><span>
+										<span class="receiver" th:text="${pUserId}"><strong></strong></span><span>
 											님에게 답글남기기</span>
 									</div>
 									<div>
-										<textarea style="width: 95%" rows="3" cols="30" name="content"
+										<textarea class="commentBox" rows="3" cols="30" name="content"
 											placeholder="댓글을 입력하세요"></textarea>
 										<br>
 										<div>
@@ -69,11 +67,10 @@
 								<input type="hidden" name="freeDiaryId"th:value="${freeDiaryId}">
 								<div>
 									<div>
-										<span style="color: #007bff;" th:text="${pUserId}"><strong></strong></span><span>
-											님에게 답글남기기</span>
+										<span class="receiver"><strong>Editing</strong></span>
 									</div>
 									<div>
-										<textarea class="editContent"style="width: 95%" rows="3" cols="30" name="content"
+										<textarea class="editContent commentBox" rows="3" cols="30" name="content"
 											th:placeholder="${n.content}"></textarea>
 										<br>
 										<div>
@@ -88,13 +85,12 @@
 					<ul class="subComment">
 						<li style="margin-left: 40px;" th:each="nc:${n.list}">
 
-							<div style="display: flex;"th:with="id=${nc.id}">
-								<p th:text="${id}">부모댓글아이디</p>
-								<img
-									style="height: 50px; width: 50px; border-radius: 25%; margin-right: 10px;"
+							<div class="displayDiv" th:with="id=${nc.id}">
+								<p class="commentId"th:text="${id}">부모댓글아이디</p>
+								<img class="commentImg"
 									src="https://randomuser.me/api/portraits/lego/4.jpg">
 								<div>
-									<span style="color: #007bff;" th:text="${nc.userId}"></span>
+									<span class="userId" th:text="${nc.userId}"></span>
 									<span th:text="${nc.regDate}"></span>
 									<p th:text="${nc.content}"></p> 
 									<a class="edit-button">수정</a>

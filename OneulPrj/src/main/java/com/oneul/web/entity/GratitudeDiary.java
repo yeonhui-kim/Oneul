@@ -1,15 +1,17 @@
 package com.oneul.web.entity;
 
-import java.sql.Date;
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class GratitudeDiary {
-	
 	private Integer id;
 	private String content1;
 	private String content2;
 	private String content3;
 	private String image;
 	private boolean pub;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date regDate;
 	private Integer memberId;
 	private Integer emotionId;
