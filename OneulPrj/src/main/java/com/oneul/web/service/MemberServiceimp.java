@@ -3,7 +3,12 @@ package com.oneul.web.service;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import com.oneul.web.dao.MemberDao;
@@ -14,6 +19,9 @@ public class MemberServiceimp implements MemberService {
 	
 	@Autowired
 	private MemberDao memberdao;
+	
+	@Autowired
+	private JavaMailSender sender;
 	
 	@Override
 	public Member get(String userId) {
@@ -28,9 +36,9 @@ public class MemberServiceimp implements MemberService {
 	}
 	
 	@Override
-	public int check_id(String userId) {
+	public int check(Member member) {
 		
-		return memberdao.check_id(userId);
+		return memberdao.check(member);
 	}
 
 	@Override
@@ -44,6 +52,24 @@ public class MemberServiceimp implements MemberService {
 		
 		return memberdao.findid(member);
 	}
+	
+	@Override
+	public void sendEmail(String toAddress, String subject, String body) {
+	    
+	  MimeMessage message = sender.createMimeMessage();
+	  MimeMessageHelper helper = new MimeMessageHelper(message);
+	  try {
+	    helper.setTo(toAddress);
+	    helper.setSubject(subject);
+	    helper.setText(body);
+	  } catch (MessagingException e) {
+	    e.printStackTrace();
+	  }
+	 
+	  sender.send(message);
+	  
+	}
+	
 	
 
 	@Override

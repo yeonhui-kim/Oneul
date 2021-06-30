@@ -43,7 +43,10 @@ public class MemberController {
 	@ResponseBody
 	@PostMapping("checkid")
 	public int check_id(String username) {
-		int result = service.check_id(username);
+		Member member = new Member();
+		member.setUserId(username);
+		
+		int result = service.check(member);
 		
 		return result;
 	}
@@ -57,7 +60,10 @@ public class MemberController {
 						String email,
 						Model model) {
 		
-		int result = service.check_id(username);
+		Member member2 = new Member();
+		member2.setUserId(username);
+		int result = service.check(member2);
+		
 		if(result == 1) {
 			return "redirect:signup?result="+result;			
 		}
@@ -82,6 +88,7 @@ public class MemberController {
 		return "member/findid";		
 	}
 	
+	//아이디 찾기 실행
 	@PostMapping("findid")
 	public String findid(String name, Date birthday, String email,HttpServletRequest request) {
 		Member member = new Member();
@@ -89,7 +96,7 @@ public class MemberController {
 		member.setBirthday(birthday);
 		member.setEmail(email);
 		
-		//아이디 찾기 서비스 구현
+		//아이디 찾기 서비스
 		String username = service.findid(member);
 		member.setUserId(username);
 		
@@ -100,10 +107,31 @@ public class MemberController {
 		return "redirect:foundid";
 	}
 	
+	//아이디 찾은 후 페이지 조회
 	@RequestMapping("foundid")
 	public String foundid(Model model) {
 		
 		return "member/foundid";		
+	}
+	
+	//비밀번호찾기 페이지 조회
+	@RequestMapping("findpwd")
+	public String findpwd() {
+		return "member/findpwd";		
+	}
+	
+	//비밀번호 찾기 수행
+	@PostMapping("findpwd")
+	public String findpwd(String username, String name, Date birthday, String email) {
+		
+		//임시비밀번호
+		String pwd = "";
+		//비밀번호 이메일 발송
+		String title = "Oneul 임시비밀번호";
+		String body = name+"님의 임시비밀번호는 "+pwd+" 입니다.";
+		service.sendEmail(email, title, body);
+		
+		return "redirect:findpwd";
 	}
 	
 	//로그인페이지 조회
