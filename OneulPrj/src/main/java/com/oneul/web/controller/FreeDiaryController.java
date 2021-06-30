@@ -19,11 +19,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.oneul.web.entity.CalendarEmotion;
 import com.oneul.web.entity.FreeDiary;
 import com.oneul.web.entity.FreeDiaryComment;
 import com.oneul.web.entity.GratitudeDiary;
 import com.oneul.web.entity.Member;
 import com.oneul.web.entity.Question;
+import com.oneul.web.service.CalendarEmotionService;
 import com.oneul.web.service.FreeDiaryCommentService;
 import com.oneul.web.service.FreeDiaryCommentServiceImp;
 import com.oneul.web.service.FreeDiaryService;
@@ -42,6 +44,8 @@ public class FreeDiaryController {
 	private QuestionService questionService;
 	@Autowired
 	private MemberService memberSerivce;
+	@Autowired
+	private CalendarEmotionService calendarService;
 
 	@RequestMapping("list")
 	public String list(Model model, HttpServletRequest request) {
@@ -67,7 +71,7 @@ public class FreeDiaryController {
 	}
 
 	@PostMapping("reg")
-	public String reg(FreeDiary freeDiary, MultipartFile file, HttpServletRequest request) {
+	public String reg(FreeDiary freeDiary, MultipartFile file, HttpServletRequest request, CalendarEmotion calendarEmotion) {
 		HttpSession session = request.getSession(true);//세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
 		String username = (String) session.getAttribute("username");
 		
@@ -77,6 +81,20 @@ public class FreeDiaryController {
 		
 		freeDiary.setMemberId(id);
 
+		// --------------------달력 서비스----------------------------
+		calendarEmotion.setMemberId(freeDiary.getMemberId());
+		calendarEmotion.setRegDate(freeDiary.getRegDate());
+		
+		//1. 현재 로그인한 사용자가 해당 날짜에 감정을 등록한적 있는지 확인
+		int cnt = calendarService.selectCalEmotionCnt(calendarEmotion);
+		
+		if( cnt > 0 ) {
+			calendarService.updateCalendar(calendarEmotion);
+		} else {
+			calendarService.insertCalendar(calendarEmotion);
+		}
+		// --------------------달력 서비스----------------------------
+		
 		String fileName = file.getOriginalFilename();
 		System.out.println(fileName);
 		freeDiary.setImage(fileName);
@@ -107,13 +125,19 @@ public class FreeDiaryController {
 	}
 
 	@GetMapping("detail")
-	public String detail(int id, Model model) {
+	public String detail(int id, Model model, HttpServletRequest request) {
 		// 다이어리 상세내역
 		FreeDiary freeDiary = service.get(id);
 		model.addAttribute("freeDiary", freeDiary);
 		// 상세페이지내 댓글리스
 		List<FreeDiaryComment> commentList = commentService.getViewList(id);
 		model.addAttribute("commentList", commentList);
+		
+		HttpSession session = request.getSession(true);
+        String username = (String) session.getAttribute("username");    
+        Member member2 = memberSerivce.get(username);
+        System.out.println(member2.getId());
+        model.addAttribute("member", member2);
 
 		return "diary/freediary/detail";
 	}

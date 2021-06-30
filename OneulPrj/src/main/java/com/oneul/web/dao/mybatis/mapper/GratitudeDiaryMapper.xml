@@ -18,12 +18,6 @@
    		value(#{regDate},#{content1},#{content2},#{content3},#{pub},#{memberId},#{emotionId})
    	</insert>
    	
-   	<insert id="insertCalendar" parameterType="com.oneul.web.entity.CalendarEmotion">
-   		insert into CalendarEmotion(regDate, memberId, emotionId)
-   		value(#{regDate}, #{memberId}, #{emotionId})
-   	</insert>
-   	
-   	
    	<delete id="delete" parameterType="int">
    		delete from GratitudeDiary where id=#{id}
    	</delete>
@@ -39,26 +33,6 @@
 			<if test="pub != null">pub = #{pub}</if>
 		</set>
 		where id=#{id}
-	</update>
-	
-	<select id="selectCalEmotionCnt" parameterType="com.oneul.web.entity.CalendarEmotion">
-		select count(*) 
-		  from CalendarEmotion
-		 where 1=1
-		   and regDate = #{regDate}
-		   and memberId = #{memberId}
-	</select>
-	
-	
-	<update id="updateCalendar" parameterType="com.oneul.web.entity.CalendarEmotion">
-		update CalendarEmotion
-		<set>
-			<if test="emotionId != null">emotionId = #{enotionId}</if>
-		</set>
-		where 1=1 
-		  and memberId=#{memberId}
-		  and regDate=#{regDate}
-		  
 	</update>
 
 </mapper>

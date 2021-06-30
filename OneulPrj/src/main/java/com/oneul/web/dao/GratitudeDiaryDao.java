@@ -16,10 +16,4 @@ public interface GratitudeDiaryDao {
 	int updateDiary(GratitudeDiary gratitudeDiary);
 	int delete(int id);
 	
-	int insertCalendar(CalendarEmotion calendarEmotion);
-	int updateCalendar(CalendarEmotion calendarEmotion);
-
-	int selectCalEmotionCnt(CalendarEmotion calendarEmotion);
-	
-	
 }

@@ -18,7 +18,7 @@ layout:decorator="/inc/layout">
 		<form class="form" action="edit" method="post" enctype="multipart/form-data">
                            <table border="1">  
                            <lable>예약날짜</lable>                      
-                            <input type="date" name="bookingDate" th:value="${#calendars.format(futureDiary.bookingDate,'yyyy-MM-dd')}">
+                            <div th:text="${#calendars.format(futureDiary.bookingDate,'yyyy-MM-dd')}"></div>
                             <tr>
 								<th>감정선택</th>
 								<td colspan="3">
@@ -47,11 +47,13 @@ layout:decorator="/inc/layout">
                               </tr>  
                               <tr>
                                  <td colspan="4">
-                                 <img class="image" th:if="${futureDiary.image}!=''" th:src="@{/upload/} + ${futureDiary.image}"
+                                 <img class="image" th:if="${futureDiary.image}!=''" th:src="@{/upload/diary/futureDiary/} +${futureDiary.memberId}+@{/}+${futureDiary.id}+@{/}+ ${futureDiary.image}"
                                  style="width:200px; height:150px;">
                                  <img class="image" th:if="${futureDiary.image}==''" >
                                  <input class="file-del-btn" type="button" value="삭제">
-                               	<input type="file" name="file" value="0">
+                               	<input type="file" name="file">
+                               	<input class="changed" type="hidden" name="changed" value="0">
+                               	<input type="hidden" name="originalFile" th:value="${futureDiary.image}">
                                     
                                  </td>
                               <tr>

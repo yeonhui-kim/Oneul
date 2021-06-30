@@ -9,19 +9,39 @@
     <meta charset='UTF-8' />
     <link href='/css/calendar/calendar.css' rel='stylesheet' />
     <script src='/js/calendar/calendar.js'></script>
+    <style type="text/css">
+    	#calendar {
+	    	padding: 0px;
+	        max-width: 600px;
+	        margin: auto auto;
+	        height: 580px;
+	        margin-top: 10px;
+    	}
+		
+		.happy, .proud, .flutter, .calm, .sensitive, .unstable, .tired, .sad, .upset {
+		    width: 60px;
+		    height: 60px;
+		    margin: auto auto;
+	    }
+	
+    </style>
     <script>
       var calendar = null;
-     // var jsonString= "${jsonString}";
+      /* var dataMap = {
+    		  start : ["yyyy-MM-dd"],
+    		  className: [""]
+      }
+      var jsonString = JSON.stringify(dataMap); */
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
-        
+         
         calendar = new FullCalendar.Calendar(calendarEl, {
           initialView: 'dayGridMonth',
        	  editable: true,
           selectable: true,
           businessHours: true,
           dayMaxEvents: true,
-          events: JSON.parse("${jsonString}"),
+          /* events: JSON.parse("${jsonString}"), */
           
            /* customButtons: {
         	    myCustomButton: {
@@ -35,7 +55,29 @@
       	    left: 'myCustomButton',
       	    center: ''
       	  }  */
-        
+        	
+      	  events:[
+      		{
+      			start: "2021-06-15",
+                className: "sensitive"
+      	  	},
+      		{
+      			start: "2021-06-16",
+                className: "flutter"
+      	  	}, 
+      		{
+      			start: "2021-06-24",
+                className: "sad"
+      	  	},
+      	  	{
+	      	  	start: "2021-06-23",
+	            className: "happy"
+      	  	}
+      	  	
+      	  ],
+      	
+           
+        	
         });
         calendar.render();
         
@@ -67,7 +109,6 @@
   </head>
   <main id="main" layout:fragment="main">
     <div id='calendar'></div>
-    
     
     
   </main>

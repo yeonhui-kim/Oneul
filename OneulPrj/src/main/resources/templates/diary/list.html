@@ -4,20 +4,27 @@
 	layout:decorator="/inc/layout">
 <head>
 <meta charset="UTF-8">
+<link href="/css/diary/list.css" type="text/css" rel="stylesheet">
 <title>일기선택</title>
 </head>
 <main id="main" layout:fragment="main">
 
     <section class="section">
 
-        <h1>일기 목록을 선택해주세요</h1>
+        
        <div class="select-diary">
-           <div onclick="location.href='/diary/freediary/list'"><img src="https://image.flaticon.com/icons/png/128/3237/3237849.png"><br>
-           <a href="/diary/freediary/list">자유일기</a></div>
-           <div onclick="location.href='/diary/gratitudeDiary/list'"><img src="https://image.flaticon.com/icons/png/128/3237/3237849.png"><br>
-           <a href="/diary/gratitudeDiary/list">감사일기</a></div>
-           <div onclick="location.href='/diary/futurediary/list'"><img src="https://image.flaticon.com/icons/png/128/3237/3237849.png"><br>
-           <a href="/diary/futurediary/list">미래일기</a></div>
+           <div class = "menu" onclick="location.href='/diary/freediary/list'">
+	           
+	           <a href="/diary/freediary/list">자유일기</a>
+	           
+	           <img class="arrow-right" src="/images/icon/arrow-right.png">
+           </div>
+           <div class = "menu" onclick="location.href='/diary/gratitudeDiary/list'">
+           <a href="/diary/gratitudeDiary/list">감사일기</a><img class="arrow-right" src="/images/icon/arrow-right.png">
+           </div>
+           <div class = "menu" onclick="location.href='/diary/futurediary/list'">
+           <a href="/diary/futurediary/list">미래일기</a><img class="arrow-right" src="/images/icon/arrow-right.png">
+           </div>
         </div>
 
 

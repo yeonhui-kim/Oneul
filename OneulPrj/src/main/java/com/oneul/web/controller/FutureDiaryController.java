@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -19,10 +20,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.oneul.web.entity.CalendarEmotion;
 import com.oneul.web.entity.FutureDiary;
 import com.oneul.web.entity.FutureDiaryComment;
+import com.oneul.web.entity.Member;
+import com.oneul.web.service.CalendarEmotionService;
 import com.oneul.web.service.FutureDiaryCommentService;
 import com.oneul.web.service.FutureDiaryService;
+import com.oneul.web.service.MemberService;
 
 @Controller
 @RequestMapping("/diary/futurediary/")
@@ -33,6 +38,13 @@ public class FutureDiaryController {
 	
 	@Autowired
 	private FutureDiaryCommentService commentService;
+	
+	@Autowired
+	private MemberService memberSerivce;
+	
+	@Autowired
+	private CalendarEmotionService calendarService;
+
 	
 	@RequestMapping("list")
 	public String list(Model model) {
@@ -78,43 +90,70 @@ public class FutureDiaryController {
 					  MultipartFile file,
 					  String pub,
 					  String emotionId,
-					  HttpServletRequest request) {
+					  HttpServletRequest request, CalendarEmotion calendarEmotion) {
 		int p = Integer.parseInt(pub);
 		int emt = Integer.parseInt(emotionId);
 		
 		String fileName = file.getOriginalFilename();
 		
-		ServletContext application = request.getServletContext();
-		String path = "/upload";
-		String realPath = application.getRealPath(path);
+		HttpSession session = request.getSession(true);//세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
+		String username = (String) session.getAttribute("username");
 		
-		File pathFile = new File(realPath);
-		if(!pathFile.exists())
-			pathFile.mkdirs();
-		
-		String filePath = realPath + File.separator + fileName;
-		
-		System.out.println(filePath);
-		File saveFile = new File(filePath);
-		
-		try {
-			file.transferTo(saveFile);
-		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
+		Member member = new Member();
+		member = memberSerivce.get(username);
+		int memberId = member.getId();
 		
 		FutureDiary futureDiary = new FutureDiary();	
 		futureDiary.setBookingDate(bookingDate);
 		futureDiary.setContent(content);
-		futureDiary.setMemberId(4);
+		futureDiary.setMemberId(memberId);
 		futureDiary.setPub(p);
 		futureDiary.setEmotionId(emt);
 		futureDiary.setImage(fileName);
+		
 		service.insert(futureDiary);
+
+		System.out.println(futureDiary.getId());
+		int id = futureDiary.getId();
+		
+		if(!fileName.equals("")) {
+			ServletContext application = request.getServletContext();
+			String path = "/upload/diary/futureDiary/"+memberId+"/"+id; //회원id + 일기id
+			String realPath = application.getRealPath(path);
+			
+			File pathFile = new File(realPath);
+			if(!pathFile.exists())
+				pathFile.mkdirs();
+			
+			String filePath = realPath + File.separator +fileName; 
+			
+			System.out.println(filePath);
+			File saveFile = new File(filePath);
+			
+			try {
+				file.transferTo(saveFile);
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+		}
+		
+		// --------------------달력 서비스----------------------------
+		calendarEmotion.setMemberId(futureDiary.getMemberId());
+		calendarEmotion.setRegDate(futureDiary.getBookingDate());
+		
+		//1. 현재 로그인한 사용자가 해당 날짜에 감정을 등록한적 있는지 확인
+		int cnt = calendarService.selectCalEmotionCnt(calendarEmotion);
+		
+		if( cnt > 0 ) {
+			calendarService.updateCalendar(calendarEmotion);
+		} else {
+			calendarService.insertCalendar(calendarEmotion);
+		}
+		// --------------------달력 서비스----------------------------
 		
 		return("redirect:list");
 	}
@@ -135,33 +174,92 @@ public class FutureDiaryController {
 	@PostMapping("edit")
 	public String edit(FutureDiary futureDiary,
 						MultipartFile file, 
-						HttpServletRequest request) {
+						HttpServletRequest request,
+						int changed,
+						String originalFile) {
+		System.out.println(changed);
+		System.out.println(originalFile);
+		
+		int id = futureDiary.getId();
+	
+		
+		//파일 수정안됐을 경우 원래 파일로 저장
+		if(changed ==0) {
+			futureDiary.setImage(originalFile);
+		}
+		
 		String fileName = file.getOriginalFilename();
 		
-		ServletContext application = request.getServletContext();
-		String path = "/upload";
-		String realPath = application.getRealPath(path);
+		// 파일 수정됐을 경우
+		//이전 파일 지우고 수정된 파일로 저장
+		if(!fileName.equals("") && changed == 1) {
+			
+			ServletContext application = request.getServletContext();
+			//이전 파일 삭제
+	         String prevFilePath = "/upload/diary/futureDiary/"+"4"+"/"+id;
+	         String prevFilerealPath = application.getRealPath(prevFilePath);
+	         String deleteFilePath = prevFilerealPath + File.separator+originalFile;
+	         System.out.println(deleteFilePath);
+	         
+	         File deleteFile = new File(deleteFilePath);
+	          if(deleteFile.exists()) {	                  
+	                  // 파일 삭제.
+	             deleteFile.delete(); 
+	             System.out.println("삭제완료");
+	          }
+
+			String path = "/upload/diary/futureDiary/"+"4"+"/"+id;
+			String realPath = application.getRealPath(path);
+			
+			File pathFile = new File(realPath);
+			if(!pathFile.exists())
+				pathFile.mkdirs();
+			
+			String filePath = realPath + File.separator + fileName;
+			
+			//System.out.println(filePath);
+			File saveFile = new File(filePath);
+			
+			try {
+				file.transferTo(saveFile);
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+			futureDiary.setImage(fileName);
+		}
 		
-		File pathFile = new File(realPath);
-		if(!pathFile.exists())
-			pathFile.mkdirs();
+		//파일 삭제됐을 경우
+		if(fileName.equals("")&& changed == 1) {
+			ServletContext application = request.getServletContext();
+	
+	         String prevFilePath = "/upload/diary/futureDiary/"+"4"+"/"+id;
+	         String prevFilerealPath = application.getRealPath(prevFilePath);
+	         
+	         File folder = new File(prevFilerealPath);
+	         while(folder.exists()) {
+	     		File[] folder_list = folder.listFiles(); //파일리스트 얻어오기
+	     				
+	     		for (int j = 0; j < folder_list.length; j++) {
+	     			folder_list[j].delete(); //파일 삭제 
+	     			System.out.println("파일이 삭제되었습니다.");
+	     					
+	     		}
+	     				
+	     		if(folder_list.length == 0 && folder.isDirectory()){ 
+	     			folder.delete(); //대상폴더 삭제
+	     			System.out.println("폴더가 삭제되었습니다.");
+	     		}
+	                 }
+	        
+	         
+			futureDiary.setImage(fileName);			
+		}
 		
-		String filePath = realPath + File.separator + fileName;
 		
-		System.out.println(filePath);
-		File saveFile = new File(filePath);
-		
-		try {
-			file.transferTo(saveFile);
-		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
-		
-		futureDiary.setImage(fileName);
 		service.update(futureDiary);
 		return "redirect:detail?id="+futureDiary.getId();
 	}

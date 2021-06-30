@@ -16,7 +16,7 @@
     	where id = #{id}
     </select>
     
-    <insert id="insert" parameterType="com.oneul.web.entity.FutureDiary">
+    <insert id="insert" parameterType="com.oneul.web.entity.FutureDiary" useGeneratedKeys="true" keyProperty="id">
     	insert into FutureDiary(memberId,bookingDate,content,pub,emotionId,image)
     	values(#{memberId},#{bookingDate},#{content},#{pub},#{emotionId},#{image})
     </insert>
