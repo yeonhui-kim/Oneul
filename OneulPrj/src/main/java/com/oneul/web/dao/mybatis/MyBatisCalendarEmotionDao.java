@@ -1,6 +1,7 @@
 package com.oneul.web.dao.mybatis;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,8 @@ public class MyBatisCalendarEmotionDao implements CalendarEmotionDao {
 	}
 	
 	@Override
-	public List<CalendarEmotion> getListCalendar() {
-		return mapper.getListCalendar();
+	public List<Map<String, Object>> getListCalendar(CalendarEmotion param) {
+		return mapper.getListCalendar(param);
 	}
 	
 	@Override
