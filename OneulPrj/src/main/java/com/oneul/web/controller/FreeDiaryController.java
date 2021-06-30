@@ -2,9 +2,9 @@ package com.oneul.web.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Date;
+
 import java.util.Arrays;
-import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -71,7 +72,11 @@ public class FreeDiaryController {
 	}
 
 	@PostMapping("reg")
-	public String reg(FreeDiary freeDiary, MultipartFile file, HttpServletRequest request, CalendarEmotion calendarEmotion) {
+	public String reg(@DateTimeFormat(pattern = "yyyy-MM-dd")Date regDate,
+			FreeDiary freeDiary, 
+			MultipartFile file, 
+			HttpServletRequest request, 
+			CalendarEmotion calendarEmotion) {
 		HttpSession session = request.getSession(true);//세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
 		String username = (String) session.getAttribute("username");
 		
@@ -79,6 +84,7 @@ public class FreeDiaryController {
 		member = memberSerivce.get(username);
 		int id = member.getId();
 		
+		freeDiary.setRegDate(regDate);
 		freeDiary.setMemberId(id);
 
 		// --------------------달력 서비스----------------------------

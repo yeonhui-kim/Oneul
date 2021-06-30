@@ -122,16 +122,38 @@ public class MemberController {
 	
 	//비밀번호 찾기 수행
 	@PostMapping("findpwd")
-	public String findpwd(String username, String name, Date birthday, String email) {
+	public String findpwd(String username, String name, Date birthday, String email, Model model) {
 		
-		//임시비밀번호
-		String pwd = "";
-		//비밀번호 이메일 발송
-		String title = "Oneul 임시비밀번호";
-		String body = name+"님의 임시비밀번호는 "+pwd+" 입니다.";
-		service.sendEmail(email, title, body);
+		//회원정보체크
+		Member member = new Member();
+		member.setUserId(username);
+		member.setName(name);
+		member.setBirthday(birthday);
+		member.setEmail(email);
 		
-		return "redirect:findpwd";
+		int result = service.check(member);
+		
+		if(result==1) { //회원정보 있으면
+			//임시비밀번호생성
+			String pwd = service.makePwd(10);
+			String realpwd = "{noop}"+pwd;
+			//임시비밀번호로 변경
+			member.setPassword(realpwd);
+			service.updatebyname(member);
+			
+			//비밀번호 이메일 발송
+			String title = "Oneul 임시비밀번호";
+			String body = name+"님의 임시비밀번호는 "+pwd+" 입니다.";
+			service.sendEmail(email, title, body);
+			
+			return "redirect:login";
+			
+		}else { //회원정보 없으면
+			model.addAttribute("msg","존재하지않는 회원정보입니다");
+			return "member/findpwd";
+		}
+
+		
 	}
 	
 	//로그인페이지 조회
