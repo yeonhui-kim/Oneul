@@ -12,6 +12,7 @@ public interface MemberService {
 	int insert(Member member);
 	String findid(Member member);
 	
+	String makePwd(int length);
 	void sendEmail(String toAddress, String subject, String body);
 
 	
