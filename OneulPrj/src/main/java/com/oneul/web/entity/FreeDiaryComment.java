@@ -11,6 +11,7 @@ public class FreeDiaryComment {
 	private Integer commentId;
 	private List<FreeDiaryComment> list;
 	private String userId;
+	private String image;
 	
 	
 	
@@ -20,11 +21,8 @@ public class FreeDiaryComment {
 
 
 
-
-
-
 	public FreeDiaryComment(Integer id, String regDate, String content, Integer memberId, Integer freeDiaryId,
-			Integer commentId, List<FreeDiaryComment> list, String userId) {
+			Integer commentId, List<FreeDiaryComment> list, String userId, String image) {
 		super();
 		this.id = id;
 		this.regDate = regDate;
@@ -34,24 +32,21 @@ public class FreeDiaryComment {
 		this.commentId = commentId;
 		this.list = list;
 		this.userId = userId;
+		this.image = image;
 	}
 
 
 
-
-
-
-	public FreeDiaryComment(Integer id, String regDate, String content, Integer memberId, Integer freeDiaryId,
-			Integer commentId, List<FreeDiaryComment> list) {
-		super();
-		this.id = id;
-		this.regDate = regDate;
-		this.content = content;
-		this.memberId = memberId;
-		this.freeDiaryId = freeDiaryId;
-		this.commentId = commentId;
-		this.list = list;
+	public String getImage() {
+		return image;
 	}
+
+
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 
 
 	public String getUserId() {
@@ -152,7 +147,7 @@ public class FreeDiaryComment {
 	public String toString() {
 		return "FreeDiaryComment [id=" + id + ", regDate=" + regDate + ", content=" + content + ", memberId=" + memberId
 				+ ", freeDiaryId=" + freeDiaryId + ", commentId=" + commentId + ", list=" + list + ", userId=" + userId
-				+ "]";
+				+ ", image=" + image + "]";
 	}
 	
 	
