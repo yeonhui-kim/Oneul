@@ -9,8 +9,12 @@
 		 VALUES (#{userId}, #{password}, #{name}, #{email}, #{birthday})
 	</insert>
 	
-	<select id="get" resultType="com.oneul.web.entity.Member">
+	<select id="getbyname" resultType="com.oneul.web.entity.Member">
 		select * from Member where userId=#{userId}
+	</select>
+	
+	<select id="getbyid" resultType="com.oneul.web.entity.Member">
+		select * from Member where id=#{id}
 	</select>
 	
 	<update id="updatebyname" parameterType="com.oneul.web.entity.Member">

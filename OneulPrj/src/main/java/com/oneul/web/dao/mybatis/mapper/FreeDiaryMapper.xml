@@ -11,7 +11,7 @@
 	</select>
 	
 	
-	<select id="getList" resultType="com.oneul.web.entity.FreeDiary">
+	<select id="getList" resultType="com.oneul.web.entity.FreeDiary"><!-- 댓글리스트 및 댓글갯수 구하는 매퍼 -->
 		select d.*,
 		(select count(id) from FreeDiaryComment where freeDiaryId = d.id) count
 		from FreeDiary d;

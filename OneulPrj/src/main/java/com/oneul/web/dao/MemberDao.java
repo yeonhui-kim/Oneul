@@ -5,7 +5,8 @@ import java.util.List;
 import com.oneul.web.entity.Member;
 
 public interface MemberDao {
-	Member get(String userId);
+	Member getbyname(String userId);
+	Member getbyid(int id);
 	List<Member> getList();
 	
 	int insert(Member member);

@@ -1,5 +1,6 @@
 html,body{
     height: 100%;
+    background-color:#F2F2F2;
     
 }
 
@@ -29,7 +30,7 @@ ul,ol{
 }
 
 body{
-    font-family: "고딕", Arial, Helvetica, sans-serif;
+    font-family: "����", Arial, Helvetica, sans-serif;
     font-size: 11px;
     color:var(--color-basic);
 }
@@ -47,20 +48,34 @@ a{
     display: flex;
     height: 50px;
     align-items: center;
+    justify-content: center;
+
     padding: 0 10px;
-    background-color: #e3f2fd;
+    background-color:#F8F1E5;
     
 }
+
+.logo{
+	width:80px;
+	height:auto;
+}
+#main{
+	height: 85%;
+    overflow: scroll;
+}
+
 /* The navigation bar */
-.navbar {
-    overflow: hidden;
-    background-color: #90caf9;
-    position: fixed; 
-    bottom: 0;
-    width: 100%;
-  }  
-  /* Links inside the navbar */
-  .navbar a {
+#navbar {
+	overflow: hidden;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	background-color: #F8F1E5
+}
+  #navbar a {
     float: left;
     display: block;
     color: #fdf7f7;
@@ -68,30 +83,36 @@ a{
     padding: 14px 16px;
     text-decoration: none;
   }
-  
-  /* Change background on mouse-over */
-  .navbar a:hover {
-    background: #ddd;
-    color: black;
-  }
 
-  /*table */
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 100%;
-    border: 1px solid #ddd;
-  }
+.select-diary div {
+	margin: 10px;
+	text-align: center;
+	font-size: 15px;
+}
 
-  th, td {
-    text-align: left;
-    padding: 8px;
-    height: 2rem;
-  }
-  tr{
-    border: 1px solid #ddd;
-  }
+/* Change background on mouse-over */
+#navbar a:hover {
+	background: #ddd;
+	color: black;
+}
 
+/*table */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+	border: 1px solid #ddd;
+}
+
+th, td {
+	text-align: left;
+	padding: 8px;
+	height: 2rem;
+}
+
+tr {
+	border: 1px solid #ddd;
+}
 /* ---- main style ------------------------------------------------ */
 main{
   height: 87%;
@@ -100,8 +121,9 @@ main{
 }
 
 .login-box{
-  background-color: #d0eaff;
+  background-color: #ece7db;
   border-radius: 10%;
+  box-shadow: 5px 5px 15px;
 
   margin-left: auto;
   margin-right: auto;
@@ -151,18 +173,25 @@ main{
         }
 
           .btn-submit{
-            background-color: rgb(61, 203, 228);
-            color: beige;
-            font-weight: bold;
+            background-color: #f8d599;
+            color: rgba(0, 0, 0, 0.438);
+            font-weight: bolder;
+            font-size: medium;
           }
           
           .failMsg{
           	color: red;
+            font-weight: bold;
           }
   
   .login-option{
     height: 10%;
   }
+
+   .login-option a{
+     color: black;
+     font-weight: bold;
+   }
   
 
 

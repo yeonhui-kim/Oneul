@@ -56,8 +56,8 @@ public class FreeDiaryController {
 		member = memberSerivce.get(username);
 		int id = member.getId();
 		
-		List<FreeDiary> list = service.getList();//모든 일기목록
-		//List<FreeDiary> list = service.getList(id);//해당아이디 일기리스트
+		//List<FreeDiary> list = service.getList();//모든 일기목록
+		List<FreeDiary> list = service.getList(id);//해당아이디 일기리스트
 		model.addAttribute("list", list);
 		System.out.println(list);
 		return "diary/freediary/list";
@@ -137,7 +137,7 @@ public class FreeDiaryController {
 		model.addAttribute("freeDiary", freeDiary);
 		// 상세페이지내 댓글리스
 		List<FreeDiaryComment> commentList = commentService.getViewList(id);
-		model.addAttribute("commentList", commentList);
+		model.addAttribute("commentList", commentList);//DTo가필요할지도, 엔티티끼리 조인이필요함->다음을 그릇이 필요하다 ->DTO
 		
 		HttpSession session = request.getSession(true);
         String username = (String) session.getAttribute("username");    
@@ -192,7 +192,8 @@ public class FreeDiaryController {
 	}
 
 	@PostMapping("edit")
-	public String edit(FreeDiary freeDiary) {
+	public String edit(FreeDiary freeDiary, CalendarEmotion calendarEmotion) {
+		calendarService.updateCalendar(calendarEmotion);
 		service.update(freeDiary);
 		return "redirect:detail?id=" + freeDiary.getId();
 	}

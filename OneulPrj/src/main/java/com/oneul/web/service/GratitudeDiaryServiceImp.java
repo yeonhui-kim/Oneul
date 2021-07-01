@@ -20,18 +20,17 @@ public class GratitudeDiaryServiceImp implements GratitudeDiaryService {
 	}
 
 	@Override
-	public List<GratitudeDiary> getList() {
-		List<GratitudeDiary> list = dao.getList();
+	public List<GratitudeDiary> getList(int id) {
+		List<GratitudeDiary> list = dao.getList(id);
 		return list;
 	}
 
-	@Override
-	public List<GratitudeDiary> getList(int page) {
-		int offset = (page-1)*10;
-		int size = 10;
-		
-		return dao.getList(offset, size);
-	}
+	/*
+	 * @Override public List<GratitudeDiary> getList1(int page) { int offset =
+	 * (page-1)*10; int size = 10;
+	 * 
+	 * return dao.getList(offset, size); }
+	 */
 
 	@Override
 	public int delete(int id) {

@@ -17,7 +17,8 @@
 					th:with="pid=${n.id},pUserId=${n.userId},freeDiaryId=${n.freeDiaryId}">
 					<div class="displayDiv" th:with="userId=${n.userId}">
 						<p class="commentId"th:text="${pid}">부모댓글아이디</p>
-						<img class="commentImg"src="https://randomuser.me/api/portraits/lego/1.jpg">
+						<img class="commentImg" th:src="@{'/upload/profile/'+${n.memberId} +'/'+${n.image}}" th:if="${n.image}!='basic.jpg'">
+						<img class="commentImg" th:src="@{/upload/profile/basic.jpg}" th:if="${n.image}=='basic.jpg'">
 						<div class="commentBg">
 							<span class="userId" th:text="${userId}"></span>
 							<span th:text="${n.regDate}"></span>
@@ -87,8 +88,8 @@
 
 							<div class="displayDiv" th:with="id=${nc.id}">
 								<p class="commentId"th:text="${id}">부모댓글아이디</p>
-								<img class="commentImg"
-									src="https://randomuser.me/api/portraits/lego/4.jpg">
+								<img class="commentImg" th:src="@{'/upload/profile/'+${nc.memberId} +'/'+${nc.image}}" th:if="${nc.image}!='basic.jpg'">
+								<img class="commentImg" th:src="@{/upload/profile/basic.jpg}" th:if="${nc.image}=='basic.jpg'">
 								<div class="commentBg">
 									<span class="userId" th:text="${nc.userId}"></span>
 									<span th:text="${nc.regDate}"></span>
