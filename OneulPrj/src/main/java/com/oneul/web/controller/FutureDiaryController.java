@@ -116,6 +116,21 @@ public class FutureDiaryController {
 		futureDiary.setEmotionId(emt);
 		futureDiary.setImage(fileName);
 		
+		// --------------------달력 서비스----------------------------
+				calendarEmotion.setMemberId(futureDiary.getMemberId());
+				calendarEmotion.setRegDate(futureDiary.getBookingDate());
+				
+				//1. 현재 로그인한 사용자가 해당 날짜에 감정을 등록한적 있는지 확인
+				int cnt = calendarService.selectCalEmotionCnt(calendarEmotion);
+				
+				if( cnt > 0 ) {
+					calendarService.updateCalendar(calendarEmotion);
+				} else {
+					calendarService.insertCalendar(calendarEmotion);
+				}
+				// --------------------달력 서비스----------------------------
+				service.insert(futureDiary);
+		
 
 		System.out.println(futureDiary.getId());
 		int id = futureDiary.getId();
@@ -145,20 +160,7 @@ public class FutureDiaryController {
 			}	
 		}
 		
-		// --------------------달력 서비스----------------------------
-		calendarEmotion.setMemberId(futureDiary.getMemberId());
-		calendarEmotion.setRegDate(futureDiary.getBookingDate());
 		
-		//1. 현재 로그인한 사용자가 해당 날짜에 감정을 등록한적 있는지 확인
-		int cnt = calendarService.selectCalEmotionCnt(calendarEmotion);
-		
-		if( cnt > 0 ) {
-			calendarService.updateCalendar(calendarEmotion);
-		} else {
-			calendarService.insertCalendar(calendarEmotion);
-		}
-		// --------------------달력 서비스----------------------------
-		service.insert(futureDiary);
 		
 		return("redirect:list");
 	}
@@ -181,7 +183,8 @@ public class FutureDiaryController {
 						MultipartFile file, 
 						HttpServletRequest request,
 						int changed,
-						String originalFile) {
+						String originalFile,
+						CalendarEmotion calendarEmotion) {
 		System.out.println(changed);
 		System.out.println(originalFile);
 		
@@ -264,7 +267,7 @@ public class FutureDiaryController {
 			futureDiary.setImage(fileName);			
 		}
 		
-		
+		calendarService.updateCalendar(calendarEmotion);
 		service.update(futureDiary);
 		return "redirect:detail?id="+futureDiary.getId();
 	}
