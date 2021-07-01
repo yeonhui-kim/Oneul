@@ -24,12 +24,13 @@ public class CalendarController {
 	
 	@Autowired
 	private CalendarEmotionService calendarService;
-	
 	@Autowired
 	private MemberService memberSerivce;
 	
 	@RequestMapping("list")
-	public String list(HttpServletRequest request, @RequestParam(name="currentMonth", required = false) String currentMonth ,Model model) {
+	public String list(HttpServletRequest request, 
+						@RequestParam(name="currentMonth", required = false) String currentMonth,
+						Model model) {
 		
 		HttpSession session = request.getSession(true);//세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
 		String username = (String) session.getAttribute("username");
@@ -46,9 +47,7 @@ public class CalendarController {
 		try {
 			json = mapper.writeValueAsString(emotionList);
 		} catch(Exception e) {
-			
 		}
-
 		model.addAttribute("jsonString", json);
 		
 		return "calendar/calendar";
