@@ -7,6 +7,8 @@ import com.oneul.web.entity.FutureDiary;
 public interface FutureDiaryService {
 
 	List<FutureDiary> getList(int page);
+	
+	List<FutureDiary> getListAll();
 
 	FutureDiary get(int id);
 	

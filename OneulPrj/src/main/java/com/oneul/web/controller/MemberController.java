@@ -90,21 +90,31 @@ public class MemberController {
 	
 	//아이디 찾기 실행
 	@PostMapping("findid")
-	public String findid(String name, Date birthday, String email,HttpServletRequest request) {
+	public String findid(String name, Date birthday, String email,HttpServletRequest request, Model model) {
+		
+		//회원정보 체크
 		Member member = new Member();
 		member.setName(name);
 		member.setBirthday(birthday);
 		member.setEmail(email);
+		int result = service.check(member);
 		
-		//아이디 찾기 서비스
-		String username = service.findid(member);
-		member.setUserId(username);
+		if(result==1) {
+			//아이디 찾기 서비스
+			String username = service.findid(member);
+			member.setUserId(username);
+			
+			//아이디 session에 담기
+			HttpSession session = request.getSession(true);
+			session.setAttribute("member", member);
+			
+			return "redirect:foundid";
+		}
+		else {
+			model.addAttribute("msg","존재하지 않는 회원정보입니다");
+			return "member/findid";
+		}
 		
-		//아이디 session에 담기
-		HttpSession session = request.getSession(true);
-		session.setAttribute("member", member);
-		
-		return "redirect:foundid";
 	}
 	
 	//아이디 찾은 후 페이지 조회

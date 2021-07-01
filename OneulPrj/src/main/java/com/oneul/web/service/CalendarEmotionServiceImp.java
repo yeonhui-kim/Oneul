@@ -1,6 +1,7 @@
 package com.oneul.web.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +16,8 @@ public class CalendarEmotionServiceImp implements CalendarEmotionService {
 	private CalendarEmotionDao dao;
 	
 	@Override
-	public List<CalendarEmotion> getListCalendar() {
-		List<CalendarEmotion> list = dao.getListCalendar();
+	public List<Map<String, Object>> getListCalendar(CalendarEmotion param) {
+		List<Map<String, Object>> list = dao.getListCalendar(param);
 		return list;
 	}
 	

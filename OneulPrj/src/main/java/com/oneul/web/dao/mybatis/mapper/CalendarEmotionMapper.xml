@@ -5,8 +5,13 @@
 
 <mapper namespace="com.oneul.web.dao.CalendarEmotionDao">
 
-	<select id="getListCalendar" resultType="com.oneul.web.entity.CalendarEmotion">
-		select * from CalendarEmotion
+	<select id="getListCalendar" resultType="java.util.HashMap" 
+								parameterType="com.oneul.web.entity.CalendarEmotion">
+		SELECT DATE_FORMAT(CE.regDate, '%Y-%m-%d') AS 'start'
+     	     , E.name AS 'className'	
+          FROM oneul.CalendarEmotion CE
+         INNER JOIN oneul.Emotion E ON CE.emotionId = E.id
+         WHERE CE.memberId = #{memberId}
 	</select>
 	
    	<insert id="insertCalendar" parameterType="com.oneul.web.entity.CalendarEmotion">
@@ -19,10 +24,6 @@
 		  from (
 		  		select memberId, regDate 
 		  		from FreeDiary
-		  		where memberId = #{memberId} and regDate = #{regDate}
-		  	union all
-		  		select memberId, regDate 
-		  		from FutureDiary
 		  		where memberId = #{memberId} and regDate = #{regDate}
 		  	union all
 		  		select memberId, regDate 

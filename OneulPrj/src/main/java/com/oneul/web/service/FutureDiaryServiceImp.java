@@ -42,4 +42,10 @@ public class FutureDiaryServiceImp implements FutureDiaryService{
 	public int update(FutureDiary futureDiary) {
 		return dao.update(futureDiary);
 	}
+
+	@Override
+	public List<FutureDiary> getListAll() {
+		// TODO Auto-generated method stub
+		return dao.getListAll();
+	}
 }

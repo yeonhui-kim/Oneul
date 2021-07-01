@@ -60,4 +60,10 @@ public class MyBatisFutureDiaryDao implements FutureDiaryDao {
 		
 	}
 
+	@Override
+	public List<FutureDiary> getListAll() {
+		// TODO Auto-generated method stub
+		return mapper.getListAll();
+	}
+
 }

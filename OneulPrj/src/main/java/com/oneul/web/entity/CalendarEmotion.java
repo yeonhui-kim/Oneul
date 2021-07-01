@@ -12,6 +12,8 @@ public class CalendarEmotion {
 	private Integer memberId;
 	private Integer emotionId;
 	
+	public CalendarEmotion() {
+	}
 	
 	public CalendarEmotion(Integer id, Date regDate, Integer memberId, Integer emotionId) {
 		super();

@@ -192,7 +192,8 @@ public class FreeDiaryController {
 	}
 
 	@PostMapping("edit")
-	public String edit(FreeDiary freeDiary) {
+	public String edit(FreeDiary freeDiary, CalendarEmotion calendarEmotion) {
+		calendarService.updateCalendar(calendarEmotion);
 		service.update(freeDiary);
 		return "redirect:detail?id=" + freeDiary.getId();
 	}

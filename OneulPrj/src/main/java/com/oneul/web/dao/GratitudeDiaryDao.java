@@ -9,8 +9,8 @@ public interface GratitudeDiaryDao {
 
 	GratitudeDiary get(int id);
 	
-	List<GratitudeDiary> getList();
-	List<GratitudeDiary> getList(int offset, int size);
+	List<GratitudeDiary> getList(int id);
+//	List<GratitudeDiary> getList(int offset, int size);
 	
 	int insertDiary(GratitudeDiary gratitudeDiary);
 	int updateDiary(GratitudeDiary gratitudeDiary);
