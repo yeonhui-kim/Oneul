@@ -18,7 +18,7 @@
 					<div class="displayDiv" th:with="userId=${n.userId}">
 						<p class="commentId"th:text="${pid}">부모댓글아이디</p>
 						<img class="commentImg"src="https://randomuser.me/api/portraits/lego/1.jpg">
-						<div>
+						<div class="commentBg">
 							<span class="userId" th:text="${userId}"></span>
 							<span th:text="${n.regDate}"></span>
 							<p th:text="${n.content}"></p>
@@ -89,7 +89,7 @@
 								<p class="commentId"th:text="${id}">부모댓글아이디</p>
 								<img class="commentImg"
 									src="https://randomuser.me/api/portraits/lego/4.jpg">
-								<div>
+								<div class="commentBg">
 									<span class="userId" th:text="${nc.userId}"></span>
 									<span th:text="${nc.regDate}"></span>
 									<p th:text="${nc.content}"></p> 

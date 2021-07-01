@@ -8,9 +8,12 @@ public interface MemberService {
 	Member get(String userId);
 	List<Member> getList();
 	
-	int check_id(String userId);
+	int check(Member member);
 	int insert(Member member);
 	String findid(Member member);
+	
+	String makePwd(int length);
+	void sendEmail(String toAddress, String subject, String body);
 
 	
 	int updatebyid(Member member);

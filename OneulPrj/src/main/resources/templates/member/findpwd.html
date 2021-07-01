@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="inc/layout">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<!-- <link href="../css/member/findid.css" type="text/css" rel="stylesheet"> -->
+</head>
+<body>
+    <main class="main" layout:fragment="main">
+        <h1>비밀번호 찾기</h1>
+        <form action="findpwd" method="post">
+            <ul>
+                <li>
+                    <legend>회원아이디</legend>
+                    <input type="text" name="username">
+                </li>
+                <li>
+                    <legend>이름</legend>
+                    <input type="text" name="name">
+                </li>
+                <li>
+                    <legend>생년월일</legend>
+                    <input type="date" name="birthday">
+                </li>
+                <li>
+                    <legend>이메일</legend>
+                    <input type="email" name="email" placeholder="sophie@example.com">
+                </li>
+                <li>
+                    <input type="submit">
+                </li>
+                <div class="msg" th:if="${msg}!=null" th:text="${msg}"></div>
+            </ul>
+        </form>
+    </main>
+</body>
+</html>

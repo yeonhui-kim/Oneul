@@ -43,7 +43,10 @@ public class MemberController {
 	@ResponseBody
 	@PostMapping("checkid")
 	public int check_id(String username) {
-		int result = service.check_id(username);
+		Member member = new Member();
+		member.setUserId(username);
+		
+		int result = service.check(member);
 		
 		return result;
 	}
@@ -57,7 +60,10 @@ public class MemberController {
 						String email,
 						Model model) {
 		
-		int result = service.check_id(username);
+		Member member2 = new Member();
+		member2.setUserId(username);
+		int result = service.check(member2);
+		
 		if(result == 1) {
 			return "redirect:signup?result="+result;			
 		}
@@ -82,6 +88,7 @@ public class MemberController {
 		return "member/findid";		
 	}
 	
+	//아이디 찾기 실행
 	@PostMapping("findid")
 	public String findid(String name, Date birthday, String email,HttpServletRequest request) {
 		Member member = new Member();
@@ -89,7 +96,7 @@ public class MemberController {
 		member.setBirthday(birthday);
 		member.setEmail(email);
 		
-		//아이디 찾기 서비스 구현
+		//아이디 찾기 서비스
 		String username = service.findid(member);
 		member.setUserId(username);
 		
@@ -100,10 +107,53 @@ public class MemberController {
 		return "redirect:foundid";
 	}
 	
+	//아이디 찾은 후 페이지 조회
 	@RequestMapping("foundid")
 	public String foundid(Model model) {
 		
 		return "member/foundid";		
+	}
+	
+	//비밀번호찾기 페이지 조회
+	@RequestMapping("findpwd")
+	public String findpwd() {
+		return "member/findpwd";		
+	}
+	
+	//비밀번호 찾기 수행
+	@PostMapping("findpwd")
+	public String findpwd(String username, String name, Date birthday, String email, Model model) {
+		
+		//회원정보체크
+		Member member = new Member();
+		member.setUserId(username);
+		member.setName(name);
+		member.setBirthday(birthday);
+		member.setEmail(email);
+		
+		int result = service.check(member);
+		
+		if(result==1) { //회원정보 있으면
+			//임시비밀번호생성
+			String pwd = service.makePwd(10);
+			String realpwd = "{noop}"+pwd;
+			//임시비밀번호로 변경
+			member.setPassword(realpwd);
+			service.updatebyname(member);
+			
+			//비밀번호 이메일 발송
+			String title = "Oneul 임시비밀번호";
+			String body = name+"님의 임시비밀번호는 "+pwd+" 입니다.";
+			service.sendEmail(email, title, body);
+			
+			return "redirect:login";
+			
+		}else { //회원정보 없으면
+			model.addAttribute("msg","존재하지않는 회원정보입니다");
+			return "member/findpwd";
+		}
+
+		
 	}
 	
 	//로그인페이지 조회

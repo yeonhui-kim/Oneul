@@ -26,10 +26,20 @@
 	
     </style>
     <script>
+    
+      var jsonString ="[[${jsonString}]]";
+      
+      if( jsonString == "" ) {
+    	  jsonString = "[]";
+      } else {
+    	  jsonString = jsonString.replace(/&quot;/g, "\"");
+      }
+      var eventList = JSON.parse(jsonString);
+      
       var calendar = null;
       /* var dataMap = {
-    		  start : ["yyyy-MM-dd"],
-    		  className: [""]
+    		  start : "yyyy-MM-dd",
+    		  className: ""
       }
       var jsonString = JSON.stringify(dataMap); */
       document.addEventListener('DOMContentLoaded', function() {
@@ -56,35 +66,17 @@
       	    center: ''
       	  }  */
         	
-      	  events:[
-      		{
-      			start: "2021-06-15",
-                className: "sensitive"
-      	  	},
-      		{
-      			start: "2021-06-16",
-                className: "flutter"
-      	  	}, 
-      		{
-      			start: "2021-06-24",
-                className: "sad"
-      	  	},
-      	  	{
-	      	  	start: "2021-06-23",
-	            className: "happy"
-      	  	}
-      	  	
-      	  ],
+      	  events:eventList,
       	
-           
-        	
         });
         calendar.render();
         
       });
       
       
-      function addEventSource() {
+      
+      
+      /* function addEventSource() {
     	 
     	  calendar.addEventSource([
               {
@@ -103,7 +95,7 @@
                     id : "event3"
                   }
           ]);
-      }
+      } */
 
     </script>
   </head>
