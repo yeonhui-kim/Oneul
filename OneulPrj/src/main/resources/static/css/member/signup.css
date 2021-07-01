@@ -172,6 +172,10 @@ main{
           border-style: none;
           border-radius: 8px;
         }
+        
+        .date{
+        	background-color:white;
+        }
 
           .checkid{
             background-color:#ffc477;
