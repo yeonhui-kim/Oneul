@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +26,7 @@ import com.oneul.web.entity.FutureDiaryComment;
 import com.oneul.web.service.FutureDiaryCommentService;
 import com.oneul.web.service.FutureDiaryService;
 
+@EnableScheduling
 @Controller
 @RequestMapping("/diary/futurediary/")
 public class FutureDiaryController {
@@ -244,6 +247,14 @@ public class FutureDiaryController {
 		//js에서 삭제버튼 onclick -> 이미지클래스 src 지우고..
 		//원본파일은 컨트롤러에서 조건처리(만약에 파일이 ''이면 원래파일삭제..원래파일은? 히든으로 전달할가..
 	
+	//second, minute, hour, day, month, weekday
 	
+	//cron(0 10 * * ? *) 16시 (0 0 0 * * *)
+	@Scheduled(cron="0 22 16 * * *")
+	public void printHi() {
+		
+		System.out.println("hi");
+		
+	}
 	
 }
