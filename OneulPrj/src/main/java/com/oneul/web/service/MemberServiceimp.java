@@ -26,7 +26,13 @@ public class MemberServiceimp implements MemberService {
 	@Override
 	public Member get(String userId) {
 
-		return memberdao.get(userId);
+		return memberdao.getbyname(userId);
+	}
+	
+	@Override
+	public Member get(int id) {
+		
+		return memberdao.getbyid(id);
 	}
 
 	@Override
@@ -103,6 +109,8 @@ public class MemberServiceimp implements MemberService {
 
 		return memberdao.delete(id);
 	}
+
+
 
 
 

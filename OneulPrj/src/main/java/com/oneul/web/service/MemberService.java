@@ -6,6 +6,7 @@ import com.oneul.web.entity.Member;
 
 public interface MemberService {
 	Member get(String userId);
+	Member get(int id);
 	List<Member> getList();
 	
 	int check(Member member);

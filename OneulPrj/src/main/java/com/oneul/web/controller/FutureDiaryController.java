@@ -2,6 +2,7 @@ package com.oneul.web.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.oneul.web.entity.CalendarEmotion;
@@ -43,7 +45,7 @@ public class FutureDiaryController {
 	private FutureDiaryCommentService commentService;
 	
 	@Autowired
-	private MemberService memberSerivce;
+	private MemberService memberService;
 	
 	@Autowired
 	private CalendarEmotionService calendarService;
@@ -73,7 +75,7 @@ public class FutureDiaryController {
 		FutureDiaryComment comment = new FutureDiaryComment();
 		comment.setContent(content);
 		comment.setFutureDiaryId(id);
-		comment.setMemberId(4);
+		comment.setMemberId(6);
 		
 		commentService.insert(comment);
 		return("redirect:detail?id="+id);
@@ -99,17 +101,17 @@ public class FutureDiaryController {
 		
 		String fileName = file.getOriginalFilename();
 		
-		HttpSession session = request.getSession(true);//세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
-		String username = (String) session.getAttribute("username");
-		
-		Member member = new Member();
-		member = memberSerivce.get(username);
-		int memberId = member.getId();
+//		HttpSession session = request.getSession(true);//세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
+//		String username = (String) session.getAttribute("username");
+//		
+//		Member member = new Member();
+//		member = memberSerivce.get(username);
+//		int memberId = member.getId();
 		
 		FutureDiary futureDiary = new FutureDiary();	
 		futureDiary.setBookingDate(bookingDate);
 		futureDiary.setContent(content);
-		futureDiary.setMemberId(memberId);
+		futureDiary.setMemberId(6);
 		futureDiary.setPub(p);
 		futureDiary.setEmotionId(emt);
 		futureDiary.setImage(fileName);
@@ -120,7 +122,7 @@ public class FutureDiaryController {
 		
 		if(!fileName.equals("")) {
 			ServletContext application = request.getServletContext();
-			String path = "/upload/diary/futureDiary/"+memberId+"/"+id; //회원id + 일기id
+			String path = "/upload/diary/futureDiary/"+6+"/"+id; //회원id + 일기id
 			String realPath = application.getRealPath(path);
 			
 			File pathFile = new File(realPath);
@@ -199,7 +201,7 @@ public class FutureDiaryController {
 			
 			ServletContext application = request.getServletContext();
 			//이전 파일 삭제
-	         String prevFilePath = "/upload/diary/futureDiary/"+"4"+"/"+id;
+	         String prevFilePath = "/upload/diary/futureDiary/"+"6"+"/"+id;
 	         String prevFilerealPath = application.getRealPath(prevFilePath);
 	         String deleteFilePath = prevFilerealPath + File.separator+originalFile;
 	         System.out.println(deleteFilePath);
@@ -211,7 +213,7 @@ public class FutureDiaryController {
 	             System.out.println("삭제완료");
 	          }
 
-			String path = "/upload/diary/futureDiary/"+"4"+"/"+id;
+			String path = "/upload/diary/futureDiary/"+"6"+"/"+id;
 			String realPath = application.getRealPath(path);
 			
 			File pathFile = new File(realPath);
@@ -239,7 +241,7 @@ public class FutureDiaryController {
 		if(fileName.equals("")&& changed == 1) {
 			ServletContext application = request.getServletContext();
 	
-	         String prevFilePath = "/upload/diary/futureDiary/"+"4"+"/"+id;
+	         String prevFilePath = "/upload/diary/futureDiary/"+"6"+"/"+id;
 	         String prevFilerealPath = application.getRealPath(prevFilePath);
 	         
 	         File folder = new File(prevFilerealPath);
@@ -282,10 +284,31 @@ public class FutureDiaryController {
 	//second, minute, hour, day, month, weekday
 	
 	//cron(0 10 * * ? *) 16시 (0 0 0 * * *)
-	@Scheduled(cron="0 22 16 * * *")
+	
+	@Scheduled(cron="0/3 * * * * ?")
 	public void printHi() {
 		
-		System.out.println("hi");
+		List<FutureDiary> list = service.getListAll();
+		
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Date time = new Date();
+		
+		String today = format.format(time); //현재날짜
+
+		for(FutureDiary fd : list) {
+			String bookingDate = format.format(fd.getBookingDate()); //예약날짜
+			if(today.equals(bookingDate)) {
+				int memberId = fd.getMemberId();
+				Member member = memberService.get("");
+				String email = member.getImage();
+				String title = "과거로부터 온 일기를 열어보아요";
+				String body = "지금 바로 읽어보세요" + "http://localhost:8080/diary/futurediary/detail?id="+fd.getId();
+				memberService.sendEmail(email,title,body);
+				
+			}
+			
+		}
+		
 		
 	}
 	
