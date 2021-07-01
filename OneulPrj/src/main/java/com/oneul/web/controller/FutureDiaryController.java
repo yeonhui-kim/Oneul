@@ -114,7 +114,6 @@ public class FutureDiaryController {
 		futureDiary.setEmotionId(emt);
 		futureDiary.setImage(fileName);
 		
-		service.insert(futureDiary);
 
 		System.out.println(futureDiary.getId());
 		int id = futureDiary.getId();
@@ -157,6 +156,7 @@ public class FutureDiaryController {
 			calendarService.insertCalendar(calendarEmotion);
 		}
 		// --------------------달력 서비스----------------------------
+		service.insert(futureDiary);
 		
 		return("redirect:list");
 	}
