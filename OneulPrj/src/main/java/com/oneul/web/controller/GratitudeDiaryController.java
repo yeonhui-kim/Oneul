@@ -75,8 +75,6 @@ public class GratitudeDiaryController {
 		gratitudeDiary.setMemberId(id);
 		gratitudeDiary.setRegDate(regDate);
 
-		service.insertDiary(gratitudeDiary);
-
 		// --------------------달력 서비스----------------------------
 		calendarEmotion.setMemberId(gratitudeDiary.getMemberId());
 		calendarEmotion.setRegDate(gratitudeDiary.getRegDate());
@@ -90,6 +88,9 @@ public class GratitudeDiaryController {
 			calendarService.insertCalendar(calendarEmotion);
 		}
 		// --------------------달력 서비스----------------------------
+		
+		service.insertDiary(gratitudeDiary);
+		
 		return "redirect:list";
 	}
 	
@@ -148,8 +149,8 @@ public class GratitudeDiaryController {
 	
 	@PostMapping("edit")
 	public String edit(GratitudeDiary gratitudeDiary, CalendarEmotion calendarEmotion) {
-		service.updateDiary(gratitudeDiary);
 		calendarService.updateCalendar(calendarEmotion);
+		service.updateDiary(gratitudeDiary);
 		
 		return "redirect:detail?id="+gratitudeDiary.getId();
 	}

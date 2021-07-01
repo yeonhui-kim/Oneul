@@ -11,6 +11,10 @@
         LIMIT #{size} offset #{offset}
     </select>
     
+     <select id="getListAll" resultType="com.oneul.web.entity.FutureDiary">
+    	select * from FutureDiary
+    </select>
+    
     <select id="get" resultType="com.oneul.web.entity.FutureDiary">
     	select * from FutureDiary
     	where id = #{id}
