@@ -7,42 +7,34 @@
 
 	
 	
-	<select id="getFreeList" resultType="com.oneul.web.entity.FreeDiary"><!-- 댓글리스트 및 댓글갯수 구하는 매퍼 -->
-		select d.*,
-		(select count(id) from FreeDiaryComment where freeDiaryId = d.id) count
-		from FreeDiary d;
+	<select id="getFreeList" resultType="com.oneul.web.entity.FreeDiaryView">
+		select f.*, c.commentCount , m.userId from FreeDiary f 
+        left join (select freeDiaryId, count(*) commentCount from FreeDiaryComment group by freeDiaryId) c on f.id = c.freeDiaryId
+        left join Member m on f.memberId = m.id
+		where f.memberId = #{param1} and content Like '%${param2}%'
+        order by regDate desc
+        LIMIT 10 offset ${param3}
 	</select>
 	
-
-<!-- 	<select id="getList" resultType="com.oneul.web.entity.FreeDiary">
-		select * from FreeDiary
-	</select> -->
 	
-<!-- 	<select id="getList" parameterType="int" resultType="com.oneul.web.entity.FreeDiary">
-		select * from FreeDiary 
-		<if test="id != null">where memberId = #{memberId}</if>
-	</select> -->
-
-	<insert id="insert"
-		parameterType="com.oneul.web.entity.FreeDiary">
-		insert into FreeDiary(content,pub,memberId,image,emotionId,regDate)
-		values(#{content},#{pub},#{memberId},#{image},#{emotionId},#{regDate})
-	</insert>
-
-	<delete id="delete" parameterType="int">
-		delete from FreeDiary where id=#{id}
-	</delete>
-
-	<update id="update"
-		parameterType="com.oneul.web.entity.FreeDiary">
-		update FreeDiary
-		<set>
-			<if test="regDate != null">regDate = #{regDate},</if>
-			<if test="emotionId != null">emotionId = #{emotionId},</if>
-			<if test="content != null">content = #{content},</if>
-			<if test="pub != null">pub = #{pub}</if>
-		</set>
-		where id=#{id}
-	</update>
-
+	
+	<select id="getFutureList" resultType="com.oneul.web.entity.FutureDiaryView">
+		select f.*, c.commentCount , m.userId from FutureDiary f 
+        left join (select futureDiaryId, count(*) commentCount from FutureDiaryComment group by futureDiaryId) c on f.id = c.futureDiaryId
+        left join Member m on f.memberId = m.id
+		where f.memberId = #{param1} and content Like '%${param2}%'
+        order by regDate desc
+        LIMIT 10 offset ${param3}
+	</select>
+	
+	
+	<select id="getGratitudeList" resultType="com.oneul.web.entity.GratitudeDiaryView">
+		select f.*, c.commentCount , m.userId from GratitudeDiary f 
+        left join (select gratitudeDiaryId, count(*) commentCount from GratitudeDiaryComment group by gratitudeDiaryId) c on f.id = c.gratitudeDiaryId
+        left join Member m on f.memberId = m.id
+		where f.memberId = #{param1} and (content1 Like '%${param2}%' OR content2 Like '%${param2}%' OR content3 Like '%${param2}%')
+        order by regDate desc
+        LIMIT 10 offset ${param3}
+	</select>
+	
 </mapper>
