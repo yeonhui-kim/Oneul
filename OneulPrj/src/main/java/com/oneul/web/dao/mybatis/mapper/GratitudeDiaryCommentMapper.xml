@@ -7,17 +7,17 @@
 
     
     <select id="get" resultType="com.oneul.web.entity.GratitudeDiaryComment">
-        select * from GratitudeDiaryComment where id=#{param1}
+    	select f.*, m.userId, m.image from GratitudeDiaryComment f left join Member m on f.memberId = m.id where f.id = #{param1}    	
     </select>
     
     <select id="getMainList" resultType="com.oneul.web.entity.GratitudeDiaryComment">
-		select * from GratitudeDiaryComment where gratitudeDiaryId = #{param1} and commentId is null order by regDate asc
+    	select f.*, m.userId, m.image from GratitudeDiaryComment f left join Member m on f.memberId = m.id where f.gratitudeDiaryId = #{param1} and f.commentId is null order by regDate asc
     </select>
     
     
      <select id="getSubList" resultType="com.oneul.web.entity.GratitudeDiaryComment">
-		select * from GratitudeDiaryComment where commentId = #{param1} order by regDate asc
-    </select>
+     	select f.*, m.userId, m.image from GratitudeDiaryComment f left join Member m on f.memberId = m.id where f.commentId = #{param1} order by regDate asc
+      </select>
     
     
     <select id="getCount" resultType="int">

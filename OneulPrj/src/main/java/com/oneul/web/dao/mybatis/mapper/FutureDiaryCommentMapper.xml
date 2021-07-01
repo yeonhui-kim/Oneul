@@ -7,16 +7,16 @@
 
     
     <select id="get" resultType="com.oneul.web.entity.FutureDiaryComment">
-        select * from FutureDiaryComment where id=#{param1}
+  		select f.*, m.userId, m.image from FutureDiaryComment f left join Member m on f.memberId = m.id where f.id = #{param1}
     </select>
     
     <select id="getMainList" resultType="com.oneul.web.entity.FutureDiaryComment">
-		select * from FutureDiaryComment where futureDiaryId = #{param1} and commentId is null order by regDate asc
+    	select f.*, m.userId, m.image from FutureDiaryComment f left join Member m on f.memberId = m.id where f.futureDiaryId = #{param1} and f.commentId is null order by regDate asc
     </select>
     
     
      <select id="getSubList" resultType="com.oneul.web.entity.FutureDiaryComment">
-		select * from FutureDiaryComment where commentId = #{param1} order by regDate asc
+     	select f.*, m.userId, m.image from FutureDiaryComment f left join Member m on f.memberId = m.id where f.commentId = #{param1} order by regDate asc
     </select>
     
     

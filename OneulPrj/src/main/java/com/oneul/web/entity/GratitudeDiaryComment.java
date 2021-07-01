@@ -9,14 +9,16 @@ public class GratitudeDiaryComment {
 	private Integer memberId;
 	private Integer gratitudeDiaryId;
 	private Integer commentId;
+	private String userId;
+	private String image;
 	private List<GratitudeDiaryComment> list;
-
+	
 	public GratitudeDiaryComment() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public GratitudeDiaryComment(Integer id, String regDate, String content, Integer memberId, Integer gratitudeDiaryId,
-			Integer commentId, List<GratitudeDiaryComment> list) {
+			Integer commentId, String userId, String image, List<GratitudeDiaryComment> list) {
 		super();
 		this.id = id;
 		this.regDate = regDate;
@@ -24,6 +26,8 @@ public class GratitudeDiaryComment {
 		this.memberId = memberId;
 		this.gratitudeDiaryId = gratitudeDiaryId;
 		this.commentId = commentId;
+		this.userId = userId;
+		this.image = image;
 		this.list = list;
 	}
 
@@ -75,6 +79,22 @@ public class GratitudeDiaryComment {
 		this.commentId = commentId;
 	}
 
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	public List<GratitudeDiaryComment> getList() {
 		return list;
 	}
@@ -86,8 +106,8 @@ public class GratitudeDiaryComment {
 	@Override
 	public String toString() {
 		return "GratitudeDiaryComment [id=" + id + ", regDate=" + regDate + ", content=" + content + ", memberId="
-				+ memberId + ", gratitudeDiaryId=" + gratitudeDiaryId + ", commentId=" + commentId + ", list=" + list
-				+ "]";
+				+ memberId + ", gratitudeDiaryId=" + gratitudeDiaryId + ", commentId=" + commentId + ", userId="
+				+ userId + ", image=" + image + ", list=" + list + "]";
 	}
 	
 	

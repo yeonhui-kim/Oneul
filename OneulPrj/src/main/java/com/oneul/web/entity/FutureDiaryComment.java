@@ -9,6 +9,8 @@ public class FutureDiaryComment {
 	private Integer memberId;
 	private Integer futureDiaryId;
 	private Integer commentId;
+	private String userId;
+	private String image;
 	private List<FutureDiaryComment> list;
 	
 	public FutureDiaryComment() {
@@ -16,7 +18,7 @@ public class FutureDiaryComment {
 	}
 
 	public FutureDiaryComment(Integer id, String regDate, String content, Integer memberId, Integer futureDiaryId,
-			Integer commentId, List<FutureDiaryComment> list) {
+			Integer commentId, String userId, String image, List<FutureDiaryComment> list) {
 		super();
 		this.id = id;
 		this.regDate = regDate;
@@ -24,6 +26,8 @@ public class FutureDiaryComment {
 		this.memberId = memberId;
 		this.futureDiaryId = futureDiaryId;
 		this.commentId = commentId;
+		this.userId = userId;
+		this.image = image;
 		this.list = list;
 	}
 
@@ -75,6 +79,22 @@ public class FutureDiaryComment {
 		this.commentId = commentId;
 	}
 
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	public List<FutureDiaryComment> getList() {
 		return list;
 	}
@@ -86,7 +106,8 @@ public class FutureDiaryComment {
 	@Override
 	public String toString() {
 		return "FutureDiaryComment [id=" + id + ", regDate=" + regDate + ", content=" + content + ", memberId="
-				+ memberId + ", futureDiaryId=" + futureDiaryId + ", commentId=" + commentId + ", list=" + list + "]";
+				+ memberId + ", futureDiaryId=" + futureDiaryId + ", commentId=" + commentId + ", userId=" + userId
+				+ ", image=" + image + ", list=" + list + "]";
 	}
 	
 	
