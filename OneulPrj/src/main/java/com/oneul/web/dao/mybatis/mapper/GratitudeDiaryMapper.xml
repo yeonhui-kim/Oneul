@@ -6,12 +6,18 @@
 <mapper namespace="com.oneul.web.dao.GratitudeDiaryDao">
 
 	<select id="get" resultType="com.oneul.web.entity.GratitudeDiary">
-		select * from GratitudeDiary where id=#{id}
+		select * from GratitudeDiary 
+				where id=#{id}
 	</select>
-	<select id="getList" resultType="com.oneul.web.entity.GratitudeDiary">
+	
+	<select id="getList" parameterType="int" resultType="com.oneul.web.entity.GratitudeDiary">
+		select * from GratitudeDiary 
+		<if test="id != null">where memberId = #{memberId}</if>
+	</select>
+	<!-- <select id="getList" resultType="com.oneul.web.entity.GratitudeDiary">
+		
 		select * from GratitudeDiary order by regDate desc
-		<!-- limit #{size} offset #{offset}-->
-	</select>
+	</select> -->
 	
 	<insert id="insertDiary" parameterType="com.oneul.web.entity.GratitudeDiary">
    		insert into GratitudeDiary(regDate, content1, content2, content3, pub, memberId, emotionId)

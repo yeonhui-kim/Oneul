@@ -28,14 +28,14 @@ public class MyBatisGratitudeDiaryDao implements GratitudeDiaryDao {
 	}
 
 	@Override
-	public List<GratitudeDiary> getList() {
-		return mapper.getList();
+	public List<GratitudeDiary> getList(int id) {
+		return mapper.getList(id);
 	}
 
-	@Override
-	public List<GratitudeDiary> getList(int offset, int size) {
-		return getList(offset, size);
-	}
+//	@Override
+//	public List<GratitudeDiary> getList(int offset, int size) {
+//		return getList(offset, size);
+//	}
 
 	@Override
 	public int delete(int id) {

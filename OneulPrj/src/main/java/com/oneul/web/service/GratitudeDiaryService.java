@@ -7,8 +7,8 @@ import com.oneul.web.entity.GratitudeDiary;
 public interface GratitudeDiaryService {
 	
 	GratitudeDiary get(int id);
-	List<GratitudeDiary> getList();
-	List<GratitudeDiary> getList(int page);
+	List<GratitudeDiary> getList(int id);
+//	List<GratitudeDiary> getList(int page);
 	
 	int insertDiary(GratitudeDiary gratitudeDiary);
 	int updateDiary(GratitudeDiary gratitudeDiary);
