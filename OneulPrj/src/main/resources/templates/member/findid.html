@@ -9,27 +9,31 @@
 </head>
 <body>
     <main class="main" layout:fragment="main">
-        <h1>아이디 찾기</h1>
-        <form action="findid" method="post">
-            <ul>
-                <li>
-                    <legend>이름</legend>
-                    <input type="text" name="name">
-                </li>
-                <li>
-                    <legend>생년월일</legend>
-                    <input type="date" name="birthday">
-                </li>
-                <li>
-                    <legend>이메일</legend>
-                    <input type="email" name="email" placeholder="sophie@example.com">
-                </li>
-                <li>
-                    <input type="submit">
-                </li>
-                <div class="msg" th:if="${msg}!=null" th:text="${msg}"></div>
-            </ul>
-        </form>
+        <div class="findid-box">
+            <form class="findid-form" action="findid" method="post">
+                <h1 class="findid-title">아이디 찾기</h1>
+                <ul>
+                    <li class="input">
+                        <legend>이름</legend>
+                        <input class="b" type="text" name="name">
+                    </li>
+                    <li class="input">
+                        <legend>생년월일</legend>
+                        <input class="b" type="date" name="birthday">
+                    </li>
+                    <li class="input">
+                        <legend>이메일</legend>
+                        <input class="b" type="email" name="email" placeholder="sophie@example.com">
+                    </li>
+                    <li class="btn">
+                        <input class="submit" type="submit">
+                        <input class="btn-cancel" type="button" value="취소" onclick="window.location.href='login'">
+                    </li>
+                    <div class="msg" th:if="${msg}!=null" th:text="${msg}"></div>
+                    
+                </ul>
+            </form> 
+        </div>
     </main>
 </body>
 </html>
