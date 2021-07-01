@@ -41,6 +41,7 @@
 		parameterType="com.oneul.web.entity.FreeDiary">
 		update FreeDiary
 		<set>
+			<if test="regDate != null">regDate = #{regDate},</if>
 			<if test="emotionId != null">emotionId = #{emotionId},</if>
 			<if test="content != null">content = #{content},</if>
 			<if test="pub != null">pub = #{pub}</if>
