@@ -192,8 +192,9 @@ public class FreeDiaryController {
 	}
 
 	@PostMapping("edit")
-	public String edit(FreeDiary freeDiary) {
+	public String edit(FreeDiary freeDiary, CalendarEmotion calendarEmotion) {
 		service.update(freeDiary);
+		calendarService.updateCalendar(calendarEmotion);
 		return "redirect:detail?id=" + freeDiary.getId();
 	}
 	//댓글수정
