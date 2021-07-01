@@ -95,7 +95,7 @@ public class FutureDiaryController {
 					  MultipartFile file,
 					  String pub,
 					  String emotionId,
-					  HttpServletRequest request, CalendarEmotion calendarEmotion) {
+					  HttpServletRequest request) {
 		int p = Integer.parseInt(pub);
 		int emt = Integer.parseInt(emotionId);
 		
@@ -115,6 +115,8 @@ public class FutureDiaryController {
 		futureDiary.setPub(p);
 		futureDiary.setEmotionId(emt);
 		futureDiary.setImage(fileName);
+		
+		service.insert(futureDiary);
 		
 
 		System.out.println(futureDiary.getId());
@@ -145,20 +147,7 @@ public class FutureDiaryController {
 			}	
 		}
 		
-		// --------------------달력 서비스----------------------------
-		calendarEmotion.setMemberId(futureDiary.getMemberId());
-		calendarEmotion.setRegDate(futureDiary.getBookingDate());
 		
-		//1. 현재 로그인한 사용자가 해당 날짜에 감정을 등록한적 있는지 확인
-		int cnt = calendarService.selectCalEmotionCnt(calendarEmotion);
-		
-		if( cnt > 0 ) {
-			calendarService.updateCalendar(calendarEmotion);
-		} else {
-			calendarService.insertCalendar(calendarEmotion);
-		}
-		// --------------------달력 서비스----------------------------
-		service.insert(futureDiary);
 		
 		return("redirect:list");
 	}
@@ -181,7 +170,8 @@ public class FutureDiaryController {
 						MultipartFile file, 
 						HttpServletRequest request,
 						int changed,
-						String originalFile) {
+						String originalFile,
+						CalendarEmotion calendarEmotion) {
 		System.out.println(changed);
 		System.out.println(originalFile);
 		
@@ -264,7 +254,6 @@ public class FutureDiaryController {
 			futureDiary.setImage(fileName);			
 		}
 		
-		
 		service.update(futureDiary);
 		return "redirect:detail?id="+futureDiary.getId();
 	}
@@ -285,7 +274,7 @@ public class FutureDiaryController {
 	
 	//cron(0 10 * * ? *) 16시 (0 0 0 * * *)
 	
-	@Scheduled(cron="0/3 * * * * ?")
+	@Scheduled(cron="0 0 0 * * *")
 	public void printHi() {
 		
 		List<FutureDiary> list = service.getListAll();
@@ -299,12 +288,13 @@ public class FutureDiaryController {
 			String bookingDate = format.format(fd.getBookingDate()); //예약날짜
 			if(today.equals(bookingDate)) {
 				int memberId = fd.getMemberId();
-				Member member = memberService.get("");
-				String email = member.getImage();
+				Member member = memberService.get(memberId);
+				String email = member.getEmail();
+				System.out.println(email);
 				String title = "과거로부터 온 일기를 열어보아요";
 				String body = "지금 바로 읽어보세요" + "http://localhost:8080/diary/futurediary/detail?id="+fd.getId();
 				memberService.sendEmail(email,title,body);
-				
+				System.out.println("발송완료");
 			}
 			
 		}
