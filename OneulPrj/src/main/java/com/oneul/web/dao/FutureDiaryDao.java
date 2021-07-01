@@ -15,6 +15,7 @@ public interface FutureDiaryDao {
 	int insert(FutureDiary futureDiary);
 	int update(FutureDiary futureDiary);
 	int delete(int id);
+	List<FutureDiary> getListAll();
 	
 	
 }
