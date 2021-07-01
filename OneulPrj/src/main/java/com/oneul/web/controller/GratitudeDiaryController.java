@@ -149,8 +149,8 @@ public class GratitudeDiaryController {
 	
 	@PostMapping("edit")
 	public String edit(GratitudeDiary gratitudeDiary, CalendarEmotion calendarEmotion) {
-		service.updateDiary(gratitudeDiary);
 		calendarService.updateCalendar(calendarEmotion);
+		service.updateDiary(gratitudeDiary);
 		
 		return "redirect:detail?id="+gratitudeDiary.getId();
 	}
