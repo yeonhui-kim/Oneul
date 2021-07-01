@@ -20,18 +20,17 @@
 
 
 
-        #main {
-            
-        }
-
-
+/*다른 CSS 에서 #main에 걸려있는 overflow scroll 하고 height 85% 끄면 잘됨 밑에 걸어서 뺴줌 그리고 바디의 height 100% 빼주고 */
 
         #main{
             margin-left: auto;
             margin-right: auto;
+            padding-bottom: 100px;
             max-width: 720px;
             min-height: 720px;
             background-color: white;
+            overflow: auto;
+            height: auto;
         }
 
 
@@ -96,6 +95,7 @@
 
         
     </style>
+    <script src="/js/mypage/infiniteScrollWith.js"></script>
 	<script>
 	window.addEventListener("load", ()=>{
 		console.log("dddd");
@@ -115,10 +115,27 @@
             diaryList.classList.add("d-none");
             commentList.classList.remove("d-none");
 		};
+		
+		
+		let query = "";
+        let requestUrl = "http://localhost:8080/api/diary/free";
+        function returningHTML(json) {
+        	
+        	console.log(json);
+            
+            return `<h1>${json[0].id}</h1><h1>${json[0].content}</h1><h1>${json[0].userId}</h1><h1>${json[0].id}</h1><h1>${json[0].content}</h1><h1>${json[0].userId}</h1><h1>${json[0].id}</h1><h1>${json[0].content}</h1><h1>${json[0].userId}</h1><h1>${json[0].id}</h1><h1>${json[0].content}</h1><h1>${json[0].userId}</h1><h1>${json[0].id}</h1><h1>${json[0].content}</h1><h1>${json[0].userId}</h1><h1>${json[0].id}</h1><h1>${json[0].content}</h1><h1>${json[0].userId}</h1><h1>${json[0].id}</h1><h1>${json[0].content}</h1><h1>${json[0].userId}</h1>`;
+        };
+        let containerClass = ".wow";
+        
+        infiniteScrollWith(requestUrl, containerClass,returningHTML,query);
+        
+        
+		
 	});
 	</script>
+	
 </head>
-<main id="main" layout:fragment="main">
+<main class="wow" id="main" layout:fragment="main">
 	
 	
 	 <section>
@@ -202,8 +219,6 @@
 				
 	</section>
 	
-	
-
 
 </main>
 </html>

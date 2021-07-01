@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,11 +28,10 @@ import com.oneul.web.service.MemberService;
 public class DiaryController {
 	
 	@Autowired
-	private MemberService memberSerivce;
+	private MemberService memberService;
 	
 	@Autowired
 	private ApiDiaryService apiDiaryService;
-	
 	
 	
 	@GetMapping("/free/{p}")
@@ -42,7 +42,7 @@ public class DiaryController {
 		// 로그인된 멤버를 가져옴
 		HttpSession session = request.getSession(true);//세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
 		String username = (String) session.getAttribute("username");
-		Member member = memberSerivce.get(username);
+		Member member = memberService.get(username);
 		
 		
 		// page로 pageOffset을 구함
@@ -57,7 +57,6 @@ public class DiaryController {
 	}
 
 	
-	
 	@GetMapping("/future/{p}")
 	public List<FutureDiaryView> futureDiaryList(@PathVariable(name ="p") Integer page, 
 			@RequestParam( name = "q", defaultValue = "") String query, 
@@ -66,7 +65,7 @@ public class DiaryController {
 		// 로그인된 멤버를 가져옴
 		HttpSession session = request.getSession(true);//세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
 		String username = (String) session.getAttribute("username");
-		Member member = memberSerivce.get(username);
+		Member member = memberService.get(username);
 		
 		
 		// page로 pageOffset을 구함
@@ -81,7 +80,6 @@ public class DiaryController {
 	}
 
 
-
 	@GetMapping("/gratitude/{p}")
 	public List<GratitudeDiaryView> GratitudeDiaryList(@PathVariable(name ="p") Integer page, 
 			@RequestParam( name = "q", defaultValue = "") String query, 
@@ -90,7 +88,7 @@ public class DiaryController {
 		// 로그인된 멤버를 가져옴
 		HttpSession session = request.getSession(true);//세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
 		String username = (String) session.getAttribute("username");
-		Member member = memberSerivce.get(username);
+		Member member = memberService.get(username);
 		
 		
 		// page로 pageOffset을 구함
