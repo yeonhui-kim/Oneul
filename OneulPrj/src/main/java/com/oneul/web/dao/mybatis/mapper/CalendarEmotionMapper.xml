@@ -5,7 +5,8 @@
 
 <mapper namespace="com.oneul.web.dao.CalendarEmotionDao">
 
-	<select id="getListCalendar" resultType="java.util.HashMap" parameterType="com.oneul.web.entity.CalendarEmotion">
+	<select id="getListCalendar" resultType="java.util.HashMap" 
+								parameterType="com.oneul.web.entity.CalendarEmotion">
 		SELECT DATE_FORMAT(CE.regDate, '%Y-%m-%d') AS 'start'
      	     , E.name AS 'className'	
           FROM oneul.CalendarEmotion CE

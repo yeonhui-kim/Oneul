@@ -44,11 +44,11 @@ public class GratitudeDiaryController {
 	public String list(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession(true);//세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
 		String username = (String) session.getAttribute("username");
-		Member member = new Member();
-		member = memberSerivce.get(username);
+		Member member = memberSerivce.get(username);
 		int id = member.getId();
 		
-		List<GratitudeDiary> list = service.getList();
+		List<GratitudeDiary> list = service.getList(id);
+		
 		model.addAttribute("list",list);
 		
 		return "diary/gratitudeDiary/list";
@@ -72,16 +72,14 @@ public class GratitudeDiaryController {
 		member = memberSerivce.get(username);
 		int id = member.getId();
 		
-		//SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
-		//Date now = new Date(System.currentTimeMillis());
 		gratitudeDiary.setMemberId(id);
 		gratitudeDiary.setRegDate(regDate);
 
+		service.insertDiary(gratitudeDiary);
+
+		// --------------------달력 서비스----------------------------
 		calendarEmotion.setMemberId(gratitudeDiary.getMemberId());
 		calendarEmotion.setRegDate(gratitudeDiary.getRegDate());
-		//calendarEmotion.setEmotionId(gratitudeDiary.getEmotionId());
-		
-		service.insertDiary(gratitudeDiary);
 		
 		//1. 현재 로그인한 사용자가 해당 날짜에 감정을 등록한적 있는지 확인
 		int cnt = calendarService.selectCalEmotionCnt(calendarEmotion);
@@ -91,7 +89,7 @@ public class GratitudeDiaryController {
 		} else {
 			calendarService.insertCalendar(calendarEmotion);
 		}
-		
+		// --------------------달력 서비스----------------------------
 		return "redirect:list";
 	}
 	
@@ -132,12 +130,12 @@ public class GratitudeDiaryController {
 		service.delete(id);
 		return "redirect:list";
 	}
-	//댓글삭제
-	@RequestMapping("commentdel")
-	public String commentdelete(int id, int gratitudeDiaryId) {
-		commentService.delete(id);
-		return "redirect:detail?id=" + gratitudeDiaryId;
-	}
+//	//댓글삭제
+//	@RequestMapping("commentdel")
+//	public String commentdelete(int id, int gratitudeDiaryId) {
+//		commentService.delete(id);
+//		return "redirect:detail?id=" + gratitudeDiaryId;
+//	}
 	
 	@GetMapping("edit")
 	public String edit(int id, Model model) {
