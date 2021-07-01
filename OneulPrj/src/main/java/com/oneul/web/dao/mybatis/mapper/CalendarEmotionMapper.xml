@@ -27,10 +27,6 @@
 		  		where memberId = #{memberId} and regDate = #{regDate}
 		  	union all
 		  		select memberId, regDate 
-		  		from FutureDiary
-		  		where memberId = #{memberId} and regDate = #{regDate}
-		  	union all
-		  		select memberId, regDate 
 		  		from GratitudeDiary
 		  		where memberId = #{memberId} and regDate = #{regDate}
 		  ) CalendarEmotion
