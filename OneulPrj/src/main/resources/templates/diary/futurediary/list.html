@@ -5,42 +5,88 @@ xmlns:layout="http://www.ultaq.net.nz/thymeleaf/layout"
 layout:decorator="/inc/layout">
 <head>
 <meta charset="UTF-8">
+<script src="/js/infinite/infiniteScrollWith.js"></script>
+<script>
+	function getToday(){
+	    var date = new Date();
+	    var year = date.getFullYear();
+	    var month = ("0" + (1 + date.getMonth())).slice(-2);
+	    var day = ("0" + date.getDate()).slice(-2);
+	
+	    return year + "-" + month + "-" + day;
+	}
+	function dateFormat(date) {
+        let month = date.getMonth() + 1;
+        let day = date.getDate();
+        let hour = date.getHours();
+        let minute = date.getMinutes();
+        let second = date.getSeconds();
+
+        month = month >= 10 ? month : '0' + month;
+        day = day >= 10 ? day : '0' + day;
+        hour = hour >= 10 ? hour : '0' + hour;
+        minute = minute >= 10 ? minute : '0' + minute;
+        second = second >= 10 ? second : '0' + second;
+
+        return date.getFullYear() + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
+}
+	window.addEventListener("load",()=>{
+		let containerClass = ".container";
+		let query = "";
+		let requestUrl = "http://localhost:8080/api/diary/future";
+		 function returningHTML(json) {
+	        	let today = getToday();
+	        	let html = today;
+	        	for(n of json){
+	        		console.log(n);
+	        		let regDate = n.regDate;
+	        		
+	        		console.log(regDate.type);
+	        		//html += `<h1>{$regDate}</h1>`;
+	        		html += `<h1>${n.id}</h1> <a>${n.content}</a> <span>${n.regDate}</span>`;
+	        	}
+	            
+	            return html;
+	        };
+	     infiniteScrollWith(requestUrl, containerClass,returningHTML,query);
+	        
+	});
+</script>
 <title>미래일기 list</title>
 </head>
 
 <body>
 
-	<main id="main" layout:fragment="main"
-	>
+	<main id="main" layout:fragment="main">
 		<section class="">
-			<h1>미래일기</h1>
-			<h3>내가 쓴 미래일기 목록</h3>
-			<table>
-				<tr>
-					<th>번호</th>
-					<th>내용</th>				
-					<th>작성일</th>
-					<th>예약일</th>
-					
-				</tr>
-				
-					<tr th:each = "d:${list}"
-					th:with="bookingDate=${#calendars.format(d.bookingDate,'yyyy-MM-dd')},					 
-					today = ${#calendars.createToday()}">
-						<div th:with="todayFormatted=${#calendars.format(today,'yyyy-MM-dd')}">
-							<td th:text="${d.id}">01</td>
-							<td>
-							<!-- <a th:href="@{detail(id=${d.id})}" th:text="${todayFormatted>bookingDate ? d.content : bookingDate+' 이후에 볼 수 있습니다'}">내용</a>-->
-							 <a th:if = "${todayFormatted>=bookingDate}" th:href="@{detail(id=${d.id})}" th:text="${d.content}"></a>
-							 <a th:unless = "${todayFormatted>=bookingDate}"  th:text="${bookingDate} + ' 에 공개됩니다.'" onclick="alert('아직 볼 수 없습니다.');"></a>
-							</td>
-							<td th:text="${#calendars.format(d.regDate,'yyyy-MM-dd')}">2021-01-01</td>
-							<td th:text = "${bookingDate}"></td>
-					
-						</div>
+			<div class = "container">
+				<table>
+					<tr>
+						<th>번호</th>
+						<th>내용</th>				
+						<th>작성일</th>
+						<th>예약일</th>
+						
 					</tr>
-				
-			</table>
+					
+						<tr th:each = "d:${list}"
+						th:with="bookingDate=${#calendars.format(d.bookingDate,'yyyy-MM-dd')},					 
+						today = ${#calendars.createToday()}">
+							<div th:with="todayFormatted=${#calendars.format(today,'yyyy-MM-dd')}">
+								<td th:text="${d.id}">01</td>
+								<td>
+								<!-- <a th:href="@{detail(id=${d.id})}" th:text="${todayFormatted>bookingDate ? d.content : bookingDate+' 이후에 볼 수 있습니다'}">내용</a>-->
+								 <a th:if = "${todayFormatted>=bookingDate}" th:href="@{detail(id=${d.id})}" th:text="${d.content}"></a>
+								 <a th:unless = "${todayFormatted>=bookingDate}"  th:text="${bookingDate} + ' 에 공개됩니다.'" onclick="alert('아직 볼 수 없습니다.');"></a>
+								</td>
+								<td th:text="${#calendars.format(d.regDate,'yyyy-MM-dd')}">2021-01-01</td>
+								<td th:text = "${bookingDate}"></td>
+						
+							</div>
+						</tr>
+					
+				</table>
+			</div>
 			<div>
 				<a href="reg">글쓰기</a>
 			</div>

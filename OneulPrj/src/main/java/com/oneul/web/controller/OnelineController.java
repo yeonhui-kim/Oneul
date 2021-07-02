@@ -33,28 +33,37 @@ public class OnelineController {
    @Autowired
    private MemberService mservice;
 
+   
    @RequestMapping("list")
    public String list(Model model, HttpServletRequest request) {
       List<Oneline> list = service.getList();
       /* list.get(0).getContent() */
+      
       model.addAttribute("list", list);
       
       //-----------------------------------------------------
       HttpSession session = request.getSession(true);
-      String username = (String) session.getAttribute("username");    
-      Member member2 = mservice.get(username);
-     
-      Member member = new Member();
-      member.setUserId(username);
-      model.addAttribute("member", member2);
+      String username = (String) session.getAttribute("username");   
       
-      return "feed/oneline/list";
+      Member member = new Member();
+      if(username != null)
+    	  member = mservice.get(username);
+      else
+    	  member.setId(0);
+     
+          model.addAttribute("member", member);
+          
+          return "feed/oneline/list";
+    	  
+      
+      
+      
    }
 
    @GetMapping("detail")
    public String detail(Model model, int id, HttpServletRequest request) {
-      Oneline oneline = service.get(id);
-      model.addAttribute("detail", oneline);
+      Oneline detail = service.get(id); //여기서 멤버 이미지 불러오자...
+      model.addAttribute("detail", detail); 
 
       List<OnelineComment> clist = cservice.getViewList(id);
       model.addAttribute("clist", clist);
