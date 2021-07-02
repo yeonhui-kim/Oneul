@@ -7,7 +7,7 @@
 
 	<select id="get" resultType="com.oneul.web.entity.FreeDiary">
 		select * from FreeDiary where
-		id=#{id}
+		id=#{id} order by regDate desc
 	</select>
 	
 	

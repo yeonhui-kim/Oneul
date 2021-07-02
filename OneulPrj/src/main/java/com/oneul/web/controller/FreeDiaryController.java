@@ -143,7 +143,7 @@ public class FreeDiaryController {
         String username = (String) session.getAttribute("username");    
         Member member2 = memberSerivce.get(username);
         System.out.println(member2.getId());
-        model.addAttribute("member", member2);
+        model.addAttribute("58d 8", member2);
 
 		return "diary/freediary/detail";
 	}

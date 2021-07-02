@@ -46,6 +46,7 @@
 											님에게 답글남기기</span>
 									</div>
 									<div>
+										<input type="text" name="content" class="receiverInput" style="border: none;"></input>
 										<textarea class="commentBox" rows="3" cols="30" name="content"
 											placeholder="댓글을 입력하세요"></textarea>
 										<br>
@@ -92,8 +93,8 @@
 								<img class="commentImg" th:src="@{/upload/profile/basic.jpg}" th:if="${nc.image}=='basic.jpg'">
 								<div class="commentBg">
 									<span class="userId" th:text="${nc.userId}"></span>
-									<span th:text="${nc.regDate}"></span>
-									<p th:text="${nc.content}"></p> 
+									<span th:text="${nc.regDate}" class="spanTag"></span>
+									<p th:text="${nc.content}" class="subComments"></p> 
 									<a th:if="${nc.memberId == member.id}"class="edit-button">수정</a>
 									<a th:if="${nc.memberId == member.id}"id="commentDelBtn"
 									th:href="@{commentdel(id=${nc.id},freeDiaryId=${param.id})}"
