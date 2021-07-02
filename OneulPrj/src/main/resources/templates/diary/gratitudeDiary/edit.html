@@ -15,6 +15,7 @@
 	<main id="main" layout:fragment="main">
 		<form action="edit" method="post">
 			<input type="hidden" name="id" th:value="${gratitudeDiary.id}">
+			<input type="hidden" name="memberId" th:value="${gratitudeDiary.memberId}">
 			<table border="1">
 				<tr>
 					<th>오늘의 감정</th>
