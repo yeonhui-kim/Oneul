@@ -37,8 +37,9 @@ window.addEventListener("load", function(event) {
 			//부모댓글유저이름 텍스트창에넣기
 			let receiverInput = document.querySelector('.receiverInput');
 			console.log(receiverInput);
-			receiverInput.value = '@'+ openBtns[i].parentNode.parentNode.lastElementChild.firstElementChild.innerText;
-
+			//receiverInput.value = '@'+ openBtns[i].parentNode.parentNode.lastElementChild.firstElementChild.innerText;
+			let commentBox = document.querySelector('.commentBox');
+			commentBox.innerText = '@'+ openBtns[i].parentNode.parentNode.lastElementChild.firstElementChild.innerText;
 		};
 	};
 
