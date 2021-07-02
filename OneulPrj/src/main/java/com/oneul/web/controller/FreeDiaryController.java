@@ -59,7 +59,6 @@ public class FreeDiaryController {
 		//List<FreeDiary> list = service.getList();//모든 일기목록
 		List<FreeDiary> list = service.getList(id);//해당아이디 일기리스트
 		model.addAttribute("list", list);
-		System.out.println(list);
 		return "diary/freediary/list";
 	}
 
@@ -138,12 +137,11 @@ public class FreeDiaryController {
 		// 상세페이지내 댓글리스
 		List<FreeDiaryComment> commentList = commentService.getViewList(id);
 		model.addAttribute("commentList", commentList);//DTo가필요할지도, 엔티티끼리 조인이필요함->다음을 그릇이 필요하다 ->DTO
-		
+		System.out.println(commentList);
 		HttpSession session = request.getSession(true);
         String username = (String) session.getAttribute("username");    
         Member member2 = memberSerivce.get(username);
-        System.out.println(member2.getId());
-        model.addAttribute("58d 8", member2);
+        model.addAttribute("member", member2);
 
 		return "diary/freediary/detail";
 	}
