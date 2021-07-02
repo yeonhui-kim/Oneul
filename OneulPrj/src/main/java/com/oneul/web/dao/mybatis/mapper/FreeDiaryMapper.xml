@@ -7,14 +7,14 @@
 
 	<select id="get" resultType="com.oneul.web.entity.FreeDiary">
 		select * from FreeDiary where
-		id=#{id} order by regDate desc
+		id=#{id}
 	</select>
 	
 	
-	<select id="getList" resultType="com.oneul.web.entity.FreeDiary"><!-- 댓글리스트 및 댓글갯수 구하는 매퍼 -->
+	<select id="getList" resultType="com.oneul.web.entity.FreeDiary"><!-- 일기리스트 및 댓글갯수 구하는 매퍼 -->
 		select d.*,
 		(select count(id) from FreeDiaryComment where freeDiaryId = d.id) count
-		from FreeDiary d;
+		from FreeDiary d order by regDate desc;
 	</select>
 	
 
