@@ -33,7 +33,7 @@ public class DiaryController {
 	@Autowired
 	private ApiDiaryService apiDiaryService;
 	
-	
+
 	@GetMapping("/free/{p}")
 	public List<FreeDiaryView> freeDiaryList(@PathVariable(name ="p") Integer page, 
 			@RequestParam( name = "q", defaultValue = "") String query, 
