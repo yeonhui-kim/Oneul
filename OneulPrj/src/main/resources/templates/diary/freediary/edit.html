@@ -13,6 +13,7 @@
 
 	<form action="edit" method="post">
 		<input type="hidden" name="id" th:value="${freeDiary.id}">
+		<input type="hidden" name="memberId" th:value="${freeDiary.memberId}">
 		<table border="1">
 			<tr>
 				<th>감정선택</th>
@@ -40,7 +41,7 @@
 			</tr>
 			<tr>
 				<th>작성일</th>
-				<td colspan="3" th:text="${freeDiary.regDate}"></td>
+				<td colspan="3" th:text="${${#calendars.format(freeDiary.regDate, 'yyyy-MM-dd')}"></td>
 			</tr>
 			<tr th:with="pub = ${freeDiary.pub}==false?'비공개':'공개'">
 				<th>공개선택</th>

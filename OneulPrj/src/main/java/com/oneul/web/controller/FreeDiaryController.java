@@ -168,7 +168,24 @@ public class FreeDiaryController {
 
 	@RequestMapping("del")
 	public String delete(int id) {
+		
+		FreeDiary freeDiary = service.get(id);
+		freeDiary.getMemberId();
+		freeDiary.getRegDate();
+		
+		CalendarEmotion calendarEmotion = new CalendarEmotion();
+		calendarEmotion.setMemberId(freeDiary.getMemberId());
+		calendarEmotion.setRegDate(freeDiary.getRegDate());
+		
+		//1. 현재 로그인한 사용자가 해당 날짜에 감정을 등록한적 있는지 확인
+		int cnt = calendarService.selectCalEmotionCnt(calendarEmotion);
+		System.out.println(cnt);
+		if(cnt == 1) {
+			calendarService.deleteCalendar(calendarEmotion);
+		}
+		
 		service.delete(id);
+		
 		return "redirect:list";
 	}
 	//댓글삭제
@@ -190,7 +207,9 @@ public class FreeDiaryController {
 	}
 
 	@PostMapping("edit")
-	public String edit(FreeDiary freeDiary, CalendarEmotion calendarEmotion) {
+	public String edit(FreeDiary freeDiary, 
+						@DateTimeFormat(pattern = "yyyy-MM-dd")Date regDate,
+						CalendarEmotion calendarEmotion) {
 		calendarService.updateCalendar(calendarEmotion);
 		service.update(freeDiary);
 		return "redirect:detail?id=" + freeDiary.getId();

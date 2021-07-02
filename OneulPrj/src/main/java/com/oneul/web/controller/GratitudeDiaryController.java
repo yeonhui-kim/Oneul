@@ -167,8 +167,11 @@ public class GratitudeDiaryController {
 	}
 	
 	@PostMapping("edit")
-	public String edit(GratitudeDiary gratitudeDiary, CalendarEmotion calendarEmotion) {
+	public String edit(GratitudeDiary gratitudeDiary,
+						@DateTimeFormat(pattern = "yyyy-MM-dd")Date regDate,
+						CalendarEmotion calendarEmotion) {
 		calendarService.updateCalendar(calendarEmotion);
+		
 		service.updateDiary(gratitudeDiary);
 		
 		return "redirect:detail?id="+gratitudeDiary.getId();
