@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+   layout:decorator="/inc/layout">
+
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/css/feed/onelineList.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="/js/feed/oneline/list.js"></script>
+</head>
+<main id="wrapper" layout:fragment="main">
+
+
+   <div id="main">
+
+      <div class="btn-box">
+         <a href="reg"> <img class="reg-img" src="/images/oneline/addBtn.png">
+         </a>
+      </div>
+      <div th:each="n:${list}">
+         <article class="box">
+            <div class="content">
+               <div class="profile">      
+               <img class="profile-image" th:src="@{/upload/profile/basic.jpg}" th:if="${n.image}=='basic.jpg'">
+                  <img class="profile-image" th:src="@{'/upload/profile/' +${n.memberId} +'/'  +${n.image}   }" th:if="${n.image}!='basic.jpg'"> 
+                  <a class="user-name" th:text="${n.writerId}">로그인아이디</a>
+                     <a class="date" th:text="${#calendars.format(n.regDate,'yyy-MM-dd')}">날짜</a>
+                     
+                     
+                  <div class="edit" th:if="${n.memberId == member.id}">
+                
+                        <a th:href="@{edit(id=${n.id})}" href="edit?id=${n.id}">수정</a>                                           
+                        
+            
+                  </div>
+                  <div class="del" th:if="${n.memberId == member.id}">
+                        <a  th:href="@{del(id=${n.id})}"
+                        onclick="if(!confirm('삭제하시겠습니까?')) return false;">삭제</a>
+                  </div>
+               </div>
+
+               
+               <div class="content-text">
+                  <a th:href="@{detail(id=${n.id})}" th:text="${n.content}">게시글 내용</a>
+               </div>
+
+               <div class="review-attr">
+                  <span>좋아요 0</span> <span th:text="'댓글'+${n.count}">댓글 0</span>
+               </div>
+               <hr>
+               
+               <div class="onelineId">
+               <a th:text="${n.id}">게시글아이디</a>
+               </div>
+
+               <!-- ------------------댓글입력---------------------------------------------- -->
+
+               <form action="reg" method="post" class="d-none">
+                  <div class="review-btn-group">
+                     <!-- <input class="like" id="like-button" type="button" value="좋아요"> -->
+                     <a class="text">여러분의 댓글을 남겨주세요.</a>
+                  </div>
+                  <div class="comment-box">
+                     <textarea rows="3" class=txt name="comment"></textarea>
+                     <input type="submit" value="확인" id="btn">
+                  </div>
+               </form>
+               
+            </div>
+         </article>
+      </div>
+
+   </div>
+
+</main>
+
+
+
+</html>

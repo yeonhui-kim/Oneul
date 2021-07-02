@@ -129,15 +129,33 @@ public class GratitudeDiaryController {
 	
 	@RequestMapping("del")
 	public String delete(int id) {
+
+		GratitudeDiary gratitudeDiary = service.get(id);
+		gratitudeDiary.getMemberId();
+		gratitudeDiary.getRegDate();
+		
+		CalendarEmotion calendarEmotion = new CalendarEmotion();
+		calendarEmotion.setMemberId(gratitudeDiary.getMemberId());
+		calendarEmotion.setRegDate(gratitudeDiary.getRegDate());
+		
+		//1. 현재 로그인한 사용자가 해당 날짜에 감정을 등록한적 있는지 확인
+		int cnt = calendarService.selectCalEmotionCnt(calendarEmotion);
+		System.out.println(cnt);
+		if(cnt == 1) {
+			calendarService.deleteCalendar(calendarEmotion);
+		}
+			
 		service.delete(id);
+		
 		return "redirect:list";
 	}
-//	//댓글삭제
-//	@RequestMapping("commentdel")
-//	public String commentdelete(int id, int gratitudeDiaryId) {
-//		commentService.delete(id);
-//		return "redirect:detail?id=" + gratitudeDiaryId;
-//	}
+	
+	//댓글삭제
+	@RequestMapping("commentdel")
+	public String commentdelete(int id, int gratitudeDiaryId) {
+		commentService.delete(id);
+		return "redirect:detail?id=" + gratitudeDiaryId;
+	}
 	
 	@GetMapping("edit")
 	public String edit(int id, Model model) {

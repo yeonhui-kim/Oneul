@@ -44,11 +44,17 @@ public class MemberController {
 	@PostMapping("checkid")
 	public int check_id(String username) {
 		Member member = new Member();
+		int result = 2;
+		
 		member.setUserId(username);
+		if(username.equals("")) {
+			return result;			
+		}else {
+			result = service.check(member);
+			return result;
+		}
 		
-		int result = service.check(member);
-		
-		return result;
+	
 	}
 	
 	//회원정보 등록
@@ -291,6 +297,7 @@ public class MemberController {
 		return "redirect:mypagetest";
 	}
 	
+	//프로필기본사진으로 변경
 	@GetMapping("basic")
 	public String basic(HttpServletRequest request) {
 		//로그인 아이디 획득
@@ -306,6 +313,7 @@ public class MemberController {
 		return "redirect:mypagetest";		
 	}
 	
+	//회원탈퇴
 	@GetMapping("out")
 	public String out(HttpServletRequest request) {
 		//로그인 아이디 획득
