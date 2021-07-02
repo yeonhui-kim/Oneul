@@ -42,6 +42,11 @@ public class MemberServiceimp implements MemberService {
 	}
 	
 	@Override
+	public int checkid(String username) {
+		return memberdao.checkid(username);
+	}
+	
+	@Override
 	public int check(Member member) {
 		
 		return memberdao.check(member);
@@ -109,6 +114,8 @@ public class MemberServiceimp implements MemberService {
 
 		return memberdao.delete(id);
 	}
+
+
 
 
 
