@@ -42,7 +42,7 @@ window.addEventListener("load", function(event) {
 		};
 	};
 
-	for(let i=0;i<subComments.length;i++){
+/*	for(let i=0;i<subComments.length;i++){
 	//쉼표로 문자열자르기(@유저이름 + 내용 구분)
 		var array = subComments[i].innerText.split(',');
 		let userName = array[0];
@@ -51,7 +51,7 @@ window.addEventListener("load", function(event) {
 		//p태그만들어 넣기
 		let spanTag = document.querySelector('.spanTag');
 		spanTag.insertAdjacentElement("afterend",userName);
-	}
+	}*/
 	
 	//팝업창 닫기
 	for(let i=0;i<closePages.length;i++){
