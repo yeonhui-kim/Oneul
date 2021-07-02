@@ -9,6 +9,7 @@ public interface MemberService {
 	Member get(int id);
 	List<Member> getList();
 	
+	int checkid(String username);
 	int check(Member member);
 	int insert(Member member);
 	String findid(Member member);

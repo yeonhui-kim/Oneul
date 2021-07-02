@@ -27,7 +27,7 @@ public class LoginFailedHandler implements AuthenticationFailureHandler {
 			}
 			
 			// 로그인 페이지로 다시 포워딩
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/member/login");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/login");
 			dispatcher.forward(request, response);
 	}
 

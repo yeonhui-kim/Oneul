@@ -74,6 +74,12 @@ public class MyBatisMemberDao implements MemberDao {
 		return mapper.check(member);
 	}
 
+	@Override
+	public int checkid(String username) {
+
+		return mapper.checkid(username);
+	}
+
 
 
 
