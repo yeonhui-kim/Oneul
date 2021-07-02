@@ -96,7 +96,7 @@ public class GratitudeDiaryController {
 	}
 	
 	@RequestMapping("detail")
-	public String detail(int id, Model model) {
+	public String detail(int id, Model model, HttpServletRequest request) {
 		
 		GratitudeDiary gratitudeDiary = service.get(id);
 		model.addAttribute("gratitudeDiary",gratitudeDiary);
@@ -104,6 +104,11 @@ public class GratitudeDiaryController {
 		// 상세페이지내 댓글리스
 		List<GratitudeDiaryComment> commentList = commentService.getViewList(id);
 		model.addAttribute("commentList", commentList);
+		// 회원정보보내기
+		HttpSession session = request.getSession(true);
+        String username = (String) session.getAttribute("username");    
+        Member member = memberSerivce.get(username);
+        model.addAttribute("member", member);
 		
 		return "diary/gratitudeDiary/detail";
 	}
