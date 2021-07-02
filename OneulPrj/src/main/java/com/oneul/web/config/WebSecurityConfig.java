@@ -27,6 +27,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/diary/freediary/list").hasAnyRole("MEMBER")
 				.antMatchers("/diary/gratitudeDiary/reg").hasAnyRole("MEMBER")
 				.antMatchers("/diary/gratitudeDiary/list").hasAnyRole("MEMBER")
+				.antMatchers("/diary/futurediary/reg").hasAnyRole("MEMBER")
+				.antMatchers("/diary/futurediary/list").hasAnyRole("MEMBER")
 				.antMatchers("/feed/oneline/reg").hasAnyRole("MEMBER")
 				.antMatchers("/feed/oneline/detail").hasAnyRole("MEMBER")
 				.antMatchers("/feed/oneline/reg").hasAnyRole("MEMBER")

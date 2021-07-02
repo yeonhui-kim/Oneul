@@ -121,9 +121,13 @@
         let requestUrl = "http://localhost:8080/api/diary/free";
         function returningHTML(json) {
         	
-        	console.log(json);
+        	let html = "";
+        	for(n of json){
+        		console.log(n);
+        		html += `<h1>${n.id}</h1> <a>${n.content}</a> <span>${n.regDate}</span>`;
+        	}
             
-            return `<h1>${json[0].id}</h1><h1>${json[0].content}</h1><h1>${json[0].userId}</h1><h1>${json[0].id}</h1><h1>${json[0].content}</h1><h1>${json[0].userId}</h1><h1>${json[0].id}</h1><h1>${json[0].content}</h1><h1>${json[0].userId}</h1><h1>${json[0].id}</h1><h1>${json[0].content}</h1><h1>${json[0].userId}</h1><h1>${json[0].id}</h1><h1>${json[0].content}</h1><h1>${json[0].userId}</h1><h1>${json[0].id}</h1><h1>${json[0].content}</h1><h1>${json[0].userId}</h1><h1>${json[0].id}</h1><h1>${json[0].content}</h1><h1>${json[0].userId}</h1>`;
+            return html;
         };
         let containerClass = ".wow";
         

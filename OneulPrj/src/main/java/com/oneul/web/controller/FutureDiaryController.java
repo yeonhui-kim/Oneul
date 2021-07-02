@@ -101,17 +101,17 @@ public class FutureDiaryController {
 		
 		String fileName = file.getOriginalFilename();
 		
-//		HttpSession session = request.getSession(true);//세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
-//		String username = (String) session.getAttribute("username");
-//		
-//		Member member = new Member();
-//		member = memberSerivce.get(username);
-//		int memberId = member.getId();
+		HttpSession session = request.getSession(true);//세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
+		String username = (String) session.getAttribute("username");
+		
+		Member member = new Member();
+		member = memberService.get(username);
+		int memberId = member.getId();
 		
 		FutureDiary futureDiary = new FutureDiary();	
 		futureDiary.setBookingDate(bookingDate);
 		futureDiary.setContent(content);
-		futureDiary.setMemberId(6);
+		futureDiary.setMemberId(memberId);
 		futureDiary.setPub(p);
 		futureDiary.setEmotionId(emt);
 		futureDiary.setImage(fileName);
@@ -124,7 +124,7 @@ public class FutureDiaryController {
 		
 		if(!fileName.equals("")) {
 			ServletContext application = request.getServletContext();
-			String path = "/upload/diary/futureDiary/"+6+"/"+id; //회원id + 일기id
+			String path = "/upload/diary/futureDiary/"+memberId+"/"+id; //회원id + 일기id..
 			String realPath = application.getRealPath(path);
 			
 			File pathFile = new File(realPath);
@@ -176,6 +176,14 @@ public class FutureDiaryController {
 		System.out.println(originalFile);
 		
 		int id = futureDiary.getId();
+ 
+		
+		HttpSession session = request.getSession(true);//세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
+		String username = (String) session.getAttribute("username");
+		
+		Member member = new Member();
+		member = memberService.get(username);
+		int memberId = member.getId();
 	
 		
 		//파일 수정안됐을 경우 원래 파일로 저장
@@ -191,7 +199,7 @@ public class FutureDiaryController {
 			
 			ServletContext application = request.getServletContext();
 			//이전 파일 삭제
-	         String prevFilePath = "/upload/diary/futureDiary/"+"6"+"/"+id;
+	         String prevFilePath = "/upload/diary/futureDiary/"+memberId+"/"+id;
 	         String prevFilerealPath = application.getRealPath(prevFilePath);
 	         String deleteFilePath = prevFilerealPath + File.separator+originalFile;
 	         System.out.println(deleteFilePath);
@@ -203,7 +211,7 @@ public class FutureDiaryController {
 	             System.out.println("삭제완료");
 	          }
 
-			String path = "/upload/diary/futureDiary/"+"6"+"/"+id;
+			String path = "/upload/diary/futureDiary/"+memberId+"/"+id;
 			String realPath = application.getRealPath(path);
 			
 			File pathFile = new File(realPath);
@@ -231,7 +239,7 @@ public class FutureDiaryController {
 		if(fileName.equals("")&& changed == 1) {
 			ServletContext application = request.getServletContext();
 	
-	         String prevFilePath = "/upload/diary/futureDiary/"+"6"+"/"+id;
+	         String prevFilePath = "/upload/diary/futureDiary/"+memberId+"/"+id;
 	         String prevFilerealPath = application.getRealPath(prevFilePath);
 	         
 	         File folder = new File(prevFilerealPath);
