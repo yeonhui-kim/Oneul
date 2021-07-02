@@ -297,6 +297,7 @@ public class MemberController {
 		return "redirect:mypagetest";
 	}
 	
+	//프로필기본사진으로 변경
 	@GetMapping("basic")
 	public String basic(HttpServletRequest request) {
 		//로그인 아이디 획득
@@ -312,6 +313,7 @@ public class MemberController {
 		return "redirect:mypagetest";		
 	}
 	
+	//회원탈퇴
 	@GetMapping("out")
 	public String out(HttpServletRequest request) {
 		//로그인 아이디 획득
