@@ -42,5 +42,10 @@
 		  and regDate=#{regDate}
 		  
 	</update>
+	
+	<delete id="deleteCalendar" parameterType="com.oneul.web.entity.CalendarEmotion">
+   		delete from CalendarEmotion 
+   		where memberId=#{memberId} and regDate = #{regDate}	
+   	</delete>
 
 </mapper>
