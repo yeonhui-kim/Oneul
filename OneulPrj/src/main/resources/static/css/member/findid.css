@@ -167,6 +167,10 @@ main{
 
           
         }
+        
+        #date{
+        	background-color:white;
+        }
 
             .findid-form ul li legend{
                 font-weight: bold;
