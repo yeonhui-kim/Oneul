@@ -195,7 +195,11 @@ main{
             width: 20px;
             height: 20px;
           }
-
+		
+		.checkmsg{
+			color:red;
+		}
+		
         .btn{
           display: flex;
         }

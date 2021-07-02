@@ -47,10 +47,8 @@
     </update>
 	
 	<select id="check" parameterType="com.oneul.web.entity.Member" resultType="int">
-		select count(*) from Member where userId=#{userId}
-			<if test="name != null">and name = #{name} </if>
-			<if test="email != null">and email = #{email} </if>
-			<if test="birthday != null">and birthday = #{birthday}</if>
+		select count(*) from Member where name = #{name} and email = #{email} and birthday = #{birthday}
+			<if test="userId != null">and userId=#{userId}</if> 
 	</select>
 	
 	<delete id="delete" parameterType="int">
