@@ -13,7 +13,10 @@ window.addEventListener("load",function(){
 			dataType : "json",
 			data : {"username" : $('.username').val()},
 			success : function(data){
-				if(data == 1){
+				if(data==2){
+					alert("아이디를 입력해주세요")
+				}
+				else if(data == 1){
 					alert("중복된 아이디입니다.");
 				}else if(data == 0){
 					alert("사용가능한 아이디입니다.");

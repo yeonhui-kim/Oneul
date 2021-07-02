@@ -44,11 +44,17 @@ public class MemberController {
 	@PostMapping("checkid")
 	public int check_id(String username) {
 		Member member = new Member();
+		int result = 2;
+		
 		member.setUserId(username);
+		if(username.equals("")) {
+			return result;			
+		}else {
+			result = service.check(member);
+			return result;
+		}
 		
-		int result = service.check(member);
-		
-		return result;
+	
 	}
 	
 	//회원정보 등록
