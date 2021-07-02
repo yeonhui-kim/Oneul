@@ -8,6 +8,7 @@
 <title>자유일기-수정페이지</title>
 	<link href="/css/diary/modal.css" type="text/css" rel="stylesheet">
     <script src='/js/modal/modal.js'></script>
+    <script src='/js/diary/freediary/edit.js'></script>
 </head>
 <main id="main" layout:fragment="main">
 
@@ -41,6 +42,7 @@
 			</tr>
 			<tr>
 				<th>작성일</th>
+				<img class="image"></img>
 				<td colspan="3" th:text="${#calendars.format(freeDiary.regDate, 'yyyy-MM-dd')}"></td>
 			</tr>
 			<tr th:with="pub = ${freeDiary.pub}==false?'비공개':'공개'">
