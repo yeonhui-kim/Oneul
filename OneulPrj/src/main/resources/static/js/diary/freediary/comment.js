@@ -89,7 +89,7 @@ window.addEventListener("load", function(event) {
 			let selectedCommentContent = event.target.parentNode.firstElementChild.nextElementSibling.nextElementSibling;
 			//원문 보여주기
 			let editContent = document.querySelector('.editContent');
-			editContent.placeholder = selectedCommentContent.innerText;
+			editContent.innerText = selectedCommentContent.innerText;
 		};
 	}
 
