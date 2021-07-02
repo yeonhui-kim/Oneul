@@ -124,7 +124,7 @@ public class FutureDiaryController {
 		
 		if(!fileName.equals("")) {
 			ServletContext application = request.getServletContext();
-			String path = "/upload/diary/futureDiary/"+6+"/"+id; //회원id + 일기id
+			String path = "/upload/diary/futureDiary/"+6+"/"+id; //회원id + 일기id..
 			String realPath = application.getRealPath(path);
 			
 			File pathFile = new File(realPath);
