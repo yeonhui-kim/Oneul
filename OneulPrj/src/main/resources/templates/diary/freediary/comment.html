@@ -24,8 +24,8 @@
 							<span th:text="${n.regDate}"></span>
 							<p th:text="${n.content}"></p>
 							<a class="open-button">답글</a>
-							<a th:if="${n.memberId == member.id}"class="edit-button">수정</a>
-							<a th:if="${n.memberId == member.id}"id="commentDelBtn"
+							<a class="edit-button">수정</a>
+							<a id="commentDelBtn"
 								th:href="@{commentdel(id=${n.id},freeDiaryId=${param.id})}"
 								onclick="if(!confirm('댓글을 정말 삭제하시겠습니까?')) return false;">삭제</a>
 						</div>
@@ -46,6 +46,7 @@
 											님에게 답글남기기</span>
 									</div>
 									<div>
+								<!-- 		<input type="text" name="content" class="receiverInput" style="border: none;"></input> -->
 										<textarea class="commentBox" rows="3" cols="30" name="content"
 											placeholder="댓글을 입력하세요"></textarea>
 										<br>
@@ -92,8 +93,10 @@
 								<img class="commentImg" th:src="@{/upload/profile/basic.jpg}" th:if="${nc.image}=='basic.jpg'">
 								<div class="commentBg">
 									<span class="userId" th:text="${nc.userId}"></span>
-									<span th:text="${nc.regDate}"></span>
-									<p th:text="${nc.content}"></p> 
+									<span th:text="${nc.regDate}" class="spanTag"></span>
+									<p th:text="${nc.content}" class="subComments"></p> 
+									<div th:if="${nc.memberId == member.id}"></div>
+									<div th:if="${nc.memberId == member.id}"></div>
 									<a th:if="${nc.memberId == member.id}"class="edit-button">수정</a>
 									<a th:if="${nc.memberId == member.id}"id="commentDelBtn"
 									th:href="@{commentdel(id=${nc.id},freeDiaryId=${param.id})}"

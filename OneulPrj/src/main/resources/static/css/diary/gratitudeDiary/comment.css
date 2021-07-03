@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* freeDiary comments CSS*/
+/* gratitudeDiary comments CSS*/
 .modal {
 	display: none; /* Hidden by default */
 	position: fixed; /* Stay in place */
@@ -36,6 +36,40 @@
 	text-decoration: none;
 	cursor: pointer;
 }
+#reply{
+	font-size: 13px;
+}
 .open-button,.edit-button{
 	cursor: pointer;
+}
+.displayDiv{
+	display: flex;
+	margin: 10px;
+}
+.sectionClass{
+	font-size: 13px;
+}
+.commentId{
+    color: #F2F2F2;
+    font-size: 0px;
+}
+.commentImg{
+	height: 30px;
+	width: 30px; 
+	border-radius: 25%; 
+	margin-right: 10px;
+}
+.userId,.receiver{
+    color: #616161;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.commentBox{
+	width: 95%;
+}
+.commentBg{
+	background-color: white;
+    padding: 10px;
+    border-radius: 10px;
 }

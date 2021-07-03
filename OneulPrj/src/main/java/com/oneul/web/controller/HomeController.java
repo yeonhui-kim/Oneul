@@ -1,14 +1,25 @@
 package com.oneul.web.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
+@Controller("HomeController")
+@RequestMapping("/")
 public class HomeController {
 	
-	@RequestMapping("/index")
-	public String index() {
+	//로그인페이지 조회
+	@RequestMapping("/")
+	public String login(HttpServletRequest request, Model model) {
+		String errMsg;
 		
-		return "til";
+		if(request.getAttribute("loginFailMsg")!=null) {
+			errMsg = (String) request.getAttribute("loginFailMsg");
+			model.addAttribute("errMsg", errMsg);
+		}
+		
+		return "/login";
 	}
 }
