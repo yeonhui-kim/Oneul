@@ -1,104 +1,86 @@
 <!DOCTYPE html>
-<html 
-	xmlns:th="http://www.thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="/inc/layout">
 <head>
-	<meta charset="UTF-8">
-    <title>자유일기</title>
-    <style>
-        .d-none {
-            display: none;
-        }
+<meta charset="UTF-8">
+<title>자유일기</title>
+<style>
+.d-none {
+	display: none;
+}
 
-        body{
-            margin: 0px;
-        }
-
-
-
-
-
+body {
+	margin: 0px;
+}
 
 /*다른 CSS 에서 #main에 걸려있는 overflow scroll 하고 height 85% 끄면 잘됨 밑에 걸어서 뺴줌 그리고 바디의 height 100% 빼주고 */
-
-        #main{
-            margin-left: auto;
-            margin-right: auto;
-            padding-bottom: 100px;
-            max-width: 720px;
-            min-height: 720px;
-            background-color: white;
-            overflow: auto;
-            height: auto;
-        }
-
-
-
-
-
-
+#main {
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 100px;
+	max-width: 720px;
+	min-height: 720px;
+	background-color: white;
+	overflow: auto;
+	height: auto;
+}
 
 /* .container-upside */
-        .upside-container{
-            display: flex;
-            justify-content: center;
-            position: relative;
-        }
+.upside-container {
+	display: flex;
+	justify-content: center;
+	position: relative;
+}
 
-        .upside-container-alram{
-            position: absolute;
-            right: 0px;
-        }
-
-
-
+.upside-container-edit {
+	position: absolute;
+	right: 0px;
+}
 
 /* midleside - container*/
-        .midleside-container{
+.midleside-container {
+	display: flex;
+	justify-content: space-around;
+}
 
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .midleside-container-img{
-            width: 100px;
-            height: 100px;
-        }
+.midleside-container-img {
+	width: 100px;
+	height: 100px;
+}
 
 /* midledownside-container */
+.midledownside-container {
+	display: flex;
+	justify-content: space-around;
+}
 
-        .midledownside-container{
+.midledownside-container .my-diary-button {
+	cursor: pointer;
+	border-bottom: 2px solid white;
+}
 
-            display: flex;
-            justify-content: space-around;
-        }
-        
-        .midledownside-container .my-diary-button{
-        	cursor: pointer;
-        	border-bottom: 2px solid white;
-        	
+.midledownside-container .my-diary-button:hover {
+	border-bottom-color: var(- -color-basic);
+}
 
-        }
-                .midledownside-container .my-diary-button:hover{
-                	border-bottom-color: var(--color-basic);
-                }
-        
-       	.midledownside-container .my-comment-button{
-        	cursor: pointer;
-        	border-bottom: 2px solid white;
-        }
-        	    .midledownside-container .my-comment-button:hover{
-                	border-bottom-color: var(--color-basic);
-                }
-        
+.midledownside-container .my-comment-button {
+	cursor: pointer;
+	border-bottom: 2px solid white;
+}
 
-        
-    </style>
-    <script src="/js/mypage/infiniteScrollWith.js"></script>
-	<script>
+.midledownside-container .my-comment-button:hover {
+	border-bottom-color: var(- -color-basic);
+}
+</style>
+
+
+
+
+
+
+<script>
 	window.addEventListener("load", ()=>{
-		console.log("dddd");
 		let diaryMenuButton = document.querySelector(".my-diary-button");
 		let commentMenuButton = document.querySelector(".my-comment-button");
 		let diaryList = document.querySelector(".my-diary-list");
@@ -131,98 +113,330 @@
         };
         let containerClass = ".wow";
         
-        infiniteScrollWith(requestUrl, containerClass,returningHTML,query);
+        //infiniteScrollWith(requestUrl, containerClass,returningHTML,query);
         
         
 		
 	});
-	</script>
 	
+</script>
+
+
+
+
+<style>
+.d-none {
+	display: none;
+}
+
+.profile-edit {
+	position: fixed;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	top: 50%;
+	left: 50%;
+	z-index: 100;
+	width: 60%;
+	height: 40%;
+	transform: translate(-50%, -50%);
+	background-color: red;
+}
+
+.profile-edit-item1 {
+	position: relative;
+}
+
+.profile-edit-item1 .item1-text {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	size: 100px;
+}
+
+.profile-edit-item2 {
+	align-self: flex-end;
+	margin-bottom: 20px;
+}
+
+.profile-edit-item3 {
+	
+}
+
+.item1-img {
+	cursor: pointer;
+	width: 250px;
+	height: 250px;
+}
+
+.item1-link {
+	
+}
+
+.item3-textarea {
+	width: 100px;
+	height: 100px;
+}
+
+.item3-email {
+	display: block;
+}
+</style>
+
+
+
+
+<script>
+
+        function resetFileForm(fileInput){
+            var orgParent = fileInput.parentNode;
+            let tempForm = document.createElement("form");
+
+                tempForm.appendChild(fileInput);
+                tempForm.reset();
+
+                orgParent.appendChild(fileInput);
+                tempForm.remove();
+        }
+
+
+		// 프로필수정
+        window.addEventListener("load", ()=>{
+
+            let img = document.querySelector(".item1-img");
+            let text = document.querySelector(".item1-text");
+            let profileEdit = document.querySelector(".profile-edit");
+            let fileInput = document.querySelector(".profile-edit-file-input");
+			let profileEditButton = document.querySelector(".profile-edit-button");
+
+            img.onmouseenter = ()=>{
+                img.style.opacity = 0.5;
+                text.classList.remove("d-none");
+            };
+            
+            img.onmouseleave = ()=>{
+                img.style.opacity = 1;
+                text.classList.add("d-none");
+
+
+            };	
+            
+            
+            //profile edit button 누르면 팝업이 떠보자
+            profileEditButton.onclick = (e)=>{
+            	profileEdit.classList.remove("d-none");
+            	
+            	//screen 만들어서 띄워줌
+                let screen = document.createElement("div");
+                screen.style.width = "100%";
+                screen.style.height = "100%";
+                screen.style.position = "fixed";
+                screen.style.top = "0px";
+                screen.style.left = "0px"
+                screen.style.zIndex = 10;
+                screen.style.backgroundColor = "black";
+                screen.style.opacity = 0.7;
+                document.body.appendChild(screen);
+		
+                
+                //screen onclick되면 사라짐
+                screen.onclick = (e) =>{
+                	screen.remove();
+                	profileEdit.classList.add("d-none");
+                	
+                };
+                
+                
+            	
+            };
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            // 사진 클릭시 수정기능
+            img.onclick = ()=>{
+
+                var event = new MouseEvent('click', {
+                    bubbles: true,
+                    cancelable: true,
+                    view: window
+                });
+                fileInput.dispatchEvent(event);
+            };
+
+
+            /// 사진이 첨부가 됬을때
+            fileInput.oninput = function(e){
+
+                let file = fileInput.files[0];
+                if(file.type.indexOf("image/") < 0){
+                    alert("이미지 형식만 사용할 수 있습니다.");
+                    resetFileForm(fileInput);
+                    img.src= "/images/icon/unuploadablefile.png";
+                    return;
+                }
+                    
+                var reader = new FileReader();
+                reader.onload = function(evt){
+                    img.src = evt.target.result;
+                    
+                };
+                reader.readAsDataURL(file);
+
+
+                profileEdit.method = "POST";
+
+            }
+
+
+
+
+            let Link = document.querySelector(".item1-link");
+            Link.onclick = (e)=>{
+                e.preventDefault();
+                
+
+                img.src = "/upload/profile/basic.jpg";                
+
+                profileEdit.method = "GET";
+
+
+
+                // fileInput resetㄱㄱ
+                resetFileForm(fileInput);
+
+
+
+
+            };
+
+
+
+
+
+        });
+    </script>
+
+
+
+
+
 </head>
 <main class="wow" id="main" layout:fragment="main">
-	
-	
-	 <section>
-        <h1 class="d-none">main</h1>
 
 
-        <div>
-
-            <div class="upside-container">
-                <section class="upside-container-title">
-                    <h1>나의 세줄일기</h1>
-                    <div>나의 일상을 돌아 봅니다...</div>
-                </section>
-
-                <section class="upside-container-alram">
-                    <h1 class="d-none">알림페이지버튼</h1>
-                    <a href="">알람페이지버튼</a>
-                </section>
-            </div>
+	<section>
+		<h1 class="d-none">main</h1>
 
 
-            <div class="midleside-container">
+		<div>
 
-                <section>
-                    <h1 class="d-none">img</h1>
-                    <img class="midleside-container-img" th:src="@{/upload/profile/basic.jpg}" th:alt="${member.image}" th:if="${member.image}=='basic.jpg'">
-					<img class="midleside-container-img" th:src="@{'/upload/profile/'+${member.image}}" th:alt="${member.image}" th:if="${member.image}!='basic.jpg'">
-                </section>
+			<div class="upside-container">
+				<section class="upside-container-title">
+					<h1>나의 세줄일기</h1>
+					<div>나의 일상을 돌아 봅니다...</div>
+				</section>
 
-                <section>
-                    <h1 class="d-none">자기소개</h1>
-                    <ul>
-                        <li><span th:text="${member.name}">홍길동</span> 나는</li>
-                        <li th:text="${member.introduction}">자기소개 작성</li>
-                        <li><input type="button" value="회원 정보 수정"></li>
-                    </ul>
-                </section>
-
-            </div>
-
-            <div>
-                <nav class="midledownside-container" >    
-                    <h1 class="d-none">nav</h1>
-                    <div class="my-diary-button" >내 일기</div>
-                    <div class="my-comment-button" >내 댓글</div>
-                </nav>
-            </div>
+				<section class="upside-container-edit">
+					<h1 class="d-none">edit버튼</h1>
+					<input class="profile-edit-button" type="button" value="프로필 변경">
+					<a href="/member/edit">정보수정</a>
+				</section>
+			</div>
 
 
-        </div>
+			<div class="midleside-container">
 
-        <article>
-            <h1 class="d-none">내용</h1>
-            <ul>
-                <li>
-                    <p>제목이 없는 일기내용일기내용일기내용일기내용</p>
-                    <P>21년 10월 21일</P>
-                </li>
-            </ul>
+				<section>
+					<h1 class="d-none">img</h1>
+					<img class="midleside-container-img"
+						th:src="@{/upload/profile/basic.jpg}" th:alt="${member.image}"
+						th:if="${member.image}=='basic.jpg'"> 
+						<img
+						class="midleside-container-img"
+						th:src="@{'/upload/profile/'+${member.id}+'/'+${member.image}}"
+						th:alt="${member.image}" th:if="${member.image}!='basic.jpg'">
+				</section>
 
-        </article>
+				<section>
+					<h1 class="d-none">자기소개</h1>
+					<ul>
+						<li><span th:text="${member.name}">홍길동</span> 나는</li>
+						<li th:text="${member.introduction}">자기소개 작성</li>
+
+					</ul>
+				</section>
+
+			</div>
+
+			<div>
+				<nav class="midledownside-container">
+					<h1 class="d-none">nav</h1>
+					<div class="my-diary-button">내 일기</div>
+					<div class="my-comment-button">내 댓글</div>
+				</nav>
+			</div>
 
 
-    </section>
-	
-	
-	
+		</div>
+
+		<article>
+			<h1 class="d-none">내용</h1>
+			<ul>
+				<li>
+					<p>제목이 없는 일기내용일기내용일기내용일기내용</p>
+					<P>21년 10월 21일</P>
+				</li>
+			</ul>
+
+		</article>
+
+
+	</section>
+
+
+
 	<section class="my-diary-list ">
 		<h1 class="d-none">다이어리 리스트</h1>
 		다이어리
-		<div th:each="n:${myDiary}"> <div th:text="${n.content}"></div> <div th:text="${n.diary}"></div> <div th:text="${n.regDate}"></div> </div>
-				
+		<div th:each="n:${myDiary}">
+			<div th:text="${n.content}"></div>
+			<div th:text="${n.diary}"></div>
+			<div th:text="${n.regDate}"></div>
+		</div>
+
 	</section>
-	
-		
+
+
 	<section class="my-comment-list d-none">
 		<h1 class="d-none">댓글 리스트</h1>
 		댓글
-		<div th:each="n:${myComment}"> <div th:text="${n.content}"></div> <div th:text="${n.comment}"></div> <div th:text="${n.regDate}"></div></div>
-		
-				
+		<div th:each="n:${myComment}">
+			<div th:text="${n.content}"></div>
+			<div th:text="${n.comment}"></div>
+			<div th:text="${n.regDate}"></div>
+		</div>
+
+
 	</section>
-	
+
+
+
+
+
+	<form class="profile-edit d-none" action="/mypage/reg" method="POST" enctype="multipart/form-data">
+        <div class="profile-edit-item1" ><div class="item1-text d-none">수정</div><img class="item1-img" th:src="@{'/upload/profile/'+${member.id}+'/'+${member.image}}" th:if="${member.image}!='basic.jpg'" /><img class="item1-img" th:src="@{/upload/profile/basic.jpg}"  th:if="${member.image}=='basic.jpg'" /><div class="item1-link"><a href="">기본사진으로 이용하기</a></div></div>
+        <div class="profile-edit-item2"><input type="submit" value="수정"></div>
+        <div class="profile-edit-item3"><p class="item3-p" >누구누구 나는</p><textarea name="introduction" class="item3-textarea" th:text="${member.introduction}"></textarea><input class="item3-email" type="text" name="email" placeholder="이메일" th:value="${member.email}"></div>
+        <input class="profile-edit-file-input d-none" type="file" name="multiFile">
+    </form> 
 
 </main>
 </html>
