@@ -165,7 +165,7 @@ public class MemberController {
 			return "redirect:/";
 			
 		}else { //회원정보 없으면
-			model.addAttribute("msg","회원정보가 일치하지 않습니다");
+			model.addAttribute("msg","존재하지 않는 회원정보입니다");
 			return "member/findpwd";
 		}
 

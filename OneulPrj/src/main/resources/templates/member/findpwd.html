@@ -6,11 +6,31 @@
 	<meta charset="UTF-8">
 	<title>비밀번호 찾기</title>
 	<link href="../css/member/findpwd.css" type="text/css" rel="stylesheet">
+	<script>
+        function check(){
+            let username = document.getElementsByName("username")[0]
+            let name = document.getElementsByName("name")[0]
+            let email = document.getElementsByName("email")[0]
+            
+            if(username.value.length < 1){
+                alert("아이디를 입력하세요")
+                return false;
+            }
+            if(name.value.length < 1){
+                alert("이름을 입력하세요")
+                return false;
+            }
+            if(email.value.length < 1){
+                alert("이메일 입력하세요")
+                return false;
+            }
+        }        
+    </script>
 </head>
 <body>
     <main class="main" layout:fragment="main">
         <div class="findpwd-box">
-            <form class="findpwd-form" action="findpwd" method="post">
+            <form class="findpwd-form" action="findpwd" method="post" onsubmit="return check()">
                 <h1 class="findpwd-title">비밀번호 찾기</h1>
                 <ul>
                     <li class="input">
@@ -23,7 +43,7 @@
                     </li>
                     <li class="input">
                         <legend>생년월일</legend>
-                        <input class="b" type="date" name="birthday">
+                        <input class="b" type="date" name="birthday" value="2000-01-01">
                     </li>
                     <li class="input">
                         <legend>이메일</legend>
