@@ -33,6 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/feed/oneline/detail").hasAnyRole("MEMBER")
 				.antMatchers("/feed/oneline/list").hasAnyRole("MEMBER")
 				.antMatchers("/feed/publicdiary/list").hasAnyRole("MEMBER")
+				.antMatchers("/calendar/list").hasAnyRole("MEMBER")
 				
 				.and() // 경로 설정 끝냄
 			.formLogin() //권한x일때 로그인페이지로
