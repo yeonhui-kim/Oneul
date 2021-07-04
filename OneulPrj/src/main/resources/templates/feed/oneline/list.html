@@ -18,12 +18,22 @@
 	</div>
 
 	<div id="main">
-	
-	<div class="pub">
-		<a href="/feed/publicdiary/list?f=1"> <img class="pub-img"
-			src="/images/oneline/book_read_icon-icons.com_49930.png">
-		</a>
-	</div>
+
+		<div class="pub">
+			<a href="/feed/publicdiary/list?f=1"> <img class="pub-img"
+				src="/images/oneline/book_read_icon-icons.com_49930.png">
+			</a>
+		</div>
+
+		<!-- <input type="date" id="now_date"> -->
+
+		<!-- <script>
+			document.getElementById('now_date').valueAsDate = new Date();
+		</script> -->
+
+
+
+
 		<div th:each="n:${list}">
 			<article class="box">
 				<div class="content">
