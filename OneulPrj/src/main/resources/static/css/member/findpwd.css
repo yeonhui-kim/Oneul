@@ -1,0 +1,89 @@
+@charset "UTF-8";
+/* ---- main style ------------------------------------------------ */
+main{
+    height: 87%;
+    display: flex;
+    align-items: center;
+  }
+    .findpwd-box{
+        background-color: #ece7db;
+        border-radius: 10%;
+        box-shadow: 5px 5px 15px;
+    
+        margin-left: auto;
+        margin-right: auto;
+    
+        height: 65%;
+        width: 60%;
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+  
+    .findpwd-form{
+      height: 90%;
+      width: 80%;
+    }
+    
+    .findpwd-title{
+    color: rgb(114, 114, 114);
+    text-align: center;
+    font-weight: bold;
+    font-size: large;
+    margin-bottom:5%;
+    }
+
+    .findpwd-form ul{
+        height: 90%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+  
+        .findpwd-form ul .input{
+            height: 50%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+            .findpwd-form ul li legend{
+                font-weight: bold;
+                font-size: small;
+            }
+
+
+            .b{
+                height: 55%;
+                width: 100%;
+                
+                border-style: none;
+                border-radius: 8px;
+            }
+        .msg{
+            color: red;
+            font-weight: bold;
+        }
+    
+            .btn{
+                height: 25%;
+                width: 100%;
+                margin-top: 4%;
+
+                display: flex;
+            }
+            
+                .submit{
+                    color: rgba(0, 0, 0, 0.800);
+                    font-weight:bold;
+                    background-color: #f8d599;
+                }
+                .btn input{
+                    height: 100%;
+                    width: 100%;
+        
+                    border-style: none;
+                    border-radius: 8px;
+                }

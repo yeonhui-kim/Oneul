@@ -68,6 +68,11 @@ main{
             border-style: none;
             border-radius: 8px;
             }
+            
+          .msg{
+            color: red;
+            font-weight: bold;
+        }
 
             .submit{
             	color: rgba(0, 0, 0, 0.800);

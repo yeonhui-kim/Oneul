@@ -1,0 +1,67 @@
+/*freediary css*/
+.title-container{
+	margin:0 5px;
+	--position:fixed;
+	width:100%;
+	background-color:#f2f2f2;
+}
+.title{
+	margin:5px;
+}
+hr{
+	width:70%;
+	margin-left:0;
+}
+
+.container{
+	display:flex;
+	flex-direction: column;
+    align-items: center;
+}
+
+.diary-container{
+	display:grid;
+	height:120px;
+	width:80%;
+	padding:5px;
+	margin-bottom:15px;
+	background-color: white;
+	border-radius: 8px;
+  grid-template-columns: 30px 90px 1fr;/*¿­ µÎ°³*/
+  grid-template-rows: repeat(2,1fr);/*Çà 3Ãþ*/
+	grid-template-areas:
+  "date img content"
+  "date img info";
+      align-items: center;
+}
+
+.date{
+	grid-area:date;
+	text-align: center;
+}
+
+.img-container{
+	grid-area:img;
+	
+}
+
+.img-container > img {
+	width: 80px;
+  	height:80px;
+  	border-radius:15%;
+  	object-fit:cover
+}
+.content{
+	grid-area:content;
+	width:90%;
+	
+	text-overflow:ellipsis;
+	overflow:hidden;
+	
+	vertical-align:middle;
+}
+
+.comment{
+	grid-area:info;
+	text-align:end;
+}
