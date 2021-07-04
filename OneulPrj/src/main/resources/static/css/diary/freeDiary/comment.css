@@ -64,6 +64,9 @@
     font-weight: bold;
     margin-right: 10px;
 }
+.table{
+	margin-bottom: 20px;
+}
 
 .commentBox{
 	width: 95%;

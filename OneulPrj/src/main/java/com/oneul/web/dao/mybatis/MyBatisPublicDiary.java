@@ -32,12 +32,12 @@ public class MyBatisPublicDiary implements PublicDiaryDao{
 
 	@Override
 	public List<PublicDiary> getList() {
-		return getList(0,0,"","");
+		return getList(0,0,"","title");
 	}
 
 	@Override
 	public List<PublicDiary> getList(int offset, int size) {
-		return getList(offset, size, "","");
+		return getList(offset, size, "title","");
 	}
 
 	@Override

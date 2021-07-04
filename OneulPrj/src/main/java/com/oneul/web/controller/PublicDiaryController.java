@@ -13,15 +13,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.oneul.web.entity.Member;
 import com.oneul.web.entity.Oneline;
+import com.oneul.web.entity.PublicDiary;
 import com.oneul.web.service.MemberService;
 import com.oneul.web.service.OnelineCommentService;
 import com.oneul.web.service.OnelineService;
+import com.oneul.web.service.PublicDiaryService;
 
 @Controller("PublicDiaryController")
 @RequestMapping("/feed/publicdiary/")
 public class PublicDiaryController {
 	
-	@Autowired
+	   @Autowired
 	   private OnelineService service; //한줄일기 service
 
 	   @Autowired
@@ -29,13 +31,16 @@ public class PublicDiaryController {
 
 	   @Autowired
 	   private MemberService mservice; //member서비스 
-	
+	   
+	   @Autowired
+	   private PublicDiaryService pservice;
 	
 	 @RequestMapping("list")
 	   public String list(Model model, HttpServletRequest request,
+			   @RequestParam(name = "p", defaultValue = "1") Integer page,
 			   @RequestParam(name = "f", defaultValue = "FreeDiary") String field,
 				@RequestParam(name = "q", defaultValue = "") String query) {
-	      List<Oneline> list = service.getList();
+	      List<PublicDiary> list = pservice.getList(page,field,query);
 	      /* list.get(0).getContent() */
 	      
 	      model.addAttribute("list", list);
