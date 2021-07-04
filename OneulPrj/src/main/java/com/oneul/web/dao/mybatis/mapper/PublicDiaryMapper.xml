@@ -6,18 +6,28 @@
 <mapper namespace="com.oneul.web.dao.PublicDiaryDao">
 
 	<select id="get" resultType="com.oneul.web.entity.PublicDiary">
-		select * from PublicDiary where id=#{id}
+		select * from PublicDiary where
+		id=#{id}
 	</select>
 
 	<select id="getList"
 		resultType="com.oneul.web.entity.PublicDiary">
-		select id, pub, memberId, emotionId, regDate, content, image
+		select id, pub, memberId, emotionId, regDate, content,
+		image, 'futurediary' as diary,
+		(select count(id) from FutureDiaryComment where futureDiaryId =
+		FutureDiary.id) count
 		from oneul.FutureDiary where emotionId = #{field} AND pub = 1
 		UNION
-		select id, pub, memberId, emotionId, regDate, content1, null
+		select id, pub, memberId, emotionId, regDate, content1,
+		null,'gratitudeDiary' as diary,
+		(select count(id) from GratitudeDiaryComment where gratitudeDiaryId =
+		GratitudeDiary.id) count
 		from oneul.GratitudeDiary where emotionId = #{field} AND pub = 1
 		UNION
-		select id, pub, memberId, emotionId, regDate, content, image
+		select id, pub, memberId, emotionId, regDate, content, image, 'freediary' as
+		diary,
+		(select count(id) from FreeDiaryComment where freeDiaryId = FreeDiary.id)
+		count
 		from oneul.FreeDiary where emotionId = #{field} AND pub = 1
 		order by regdate desc
 		LIMIT #{size} offset #{offset};

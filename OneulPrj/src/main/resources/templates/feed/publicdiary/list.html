@@ -46,11 +46,9 @@
 							th:text="${#calendars.format(n.regDate,'yyy-MM-dd')}">날짜</a>
 
 					</div>
-
-
+					<a th:text="${n.diary}"></a>
 					<div class="content-text">
-						<a th:href="@{detail(id=${n.id})}" th:text="${n.content}">게시글
-							내용</a>
+						<a th:href="@{'/diary/' +${n.diary} +'/' +'detail?id=' +${n.id} }" th:text="${n.content}">게시글내용</a>
 					</div>
 
 					<div class="review-attr">
@@ -61,9 +59,6 @@
 					<div class="onelineId">
 						<a th:text="${n.id}">게시글아이디</a>
 					</div>
-
-
-
 				</div>
 			</article>
 		</div>
