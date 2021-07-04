@@ -19,7 +19,7 @@
                     </li>
                     <li class="input">
                         <legend>생년월일</legend>
-                        <input class="b" type="date" name="birthday">
+                        <input id="date" class="b" type="date" name="birthday">
                     </li>
                     <li class="input">
                         <legend>이메일</legend>
@@ -27,7 +27,7 @@
                     </li>
                     <li class="btn">
                         <input class="submit" type="submit">
-                        <input class="btn-cancel" type="button" value="취소" onclick="window.location.href='login'">
+                        <input class="btn-cancel" type="button" value="취소" onclick="window.location.href='/'">
                     </li>
                     <div class="msg" th:if="${msg}!=null" th:text="${msg}"></div>
                     

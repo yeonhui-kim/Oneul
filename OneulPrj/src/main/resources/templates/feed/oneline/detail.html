@@ -43,7 +43,8 @@
              <div class="line-comment"></div>
              
                <div class="profile-comment" >
-                  <img class="profile-image-comment" th:src="@{'/upload/profile/'+${c.image}}"> 
+                  <img class="profile-image" th:src="@{/upload/profile/basic.jpg}" th:if="${c.image}=='basic.jpg'">
+                  <img class="profile-image-comment" th:src="@{'/upload/profile/'+${c.memberId} +'/' +${c.image} }" th:if="${c.image}!='basic.jpg'"> 
                   <a class="user-name-c" th:text="${c.writerId}">로그인아이디</a> 
                   <a class="date-c" th:text="${#calendars.format(c.regDate,'a hh:mm')}">날짜</a>
                   

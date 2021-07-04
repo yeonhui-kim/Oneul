@@ -8,11 +8,13 @@
 <title>자유일기-수정페이지</title>
 	<link href="/css/diary/modal.css" type="text/css" rel="stylesheet">
     <script src='/js/modal/modal.js'></script>
+    <script src='/js/diary/freediary/edit.js'></script>
 </head>
 <main id="main" layout:fragment="main">
 
 	<form action="edit" method="post">
 		<input type="hidden" name="id" th:value="${freeDiary.id}">
+		<input type="hidden" name="memberId" th:value="${freeDiary.memberId}">
 		<table border="1">
 			<tr>
 				<th>감정선택</th>
@@ -36,11 +38,16 @@
 			</tr>
 			<tr>
 				<th>첨부파일</th>
+				<img class="image"></img>
 				<td colspan="3"><input type="file" name="file"></td>
 			</tr>
 			<tr>
 				<th>작성일</th>
-				<td colspan="3" th:text="${freeDiary.regDate}"></td>
+				<td colspan="3">
+						<div th:text="${#calendars.format(freeDiary.regDate, 'yyyy-MM-dd')}"></div>
+						<br>
+						<span>변경할 날짜 : </span><input type="date" name="regDate">
+				</td>
 			</tr>
 			<tr th:with="pub = ${freeDiary.pub}==false?'비공개':'공개'">
 				<th>공개선택</th>
@@ -56,7 +63,7 @@
 			<tr>
 				<td colspan="4">
 				<input type="text"value=""name="content" class="selectedQuestion" 
-				style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;
+				style="background-color: #F2F2F2; border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;
 				width:500px;
 				outline:none;"></input><br>
 				<textarea class="content" rows="20" cols="50" name="content" th:text="${freeDiary.content}"></textarea>

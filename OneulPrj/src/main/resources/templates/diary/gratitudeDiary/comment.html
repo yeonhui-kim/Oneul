@@ -4,9 +4,6 @@
 <head>
 <meta charset="UTF-8">
 <title>modal</title>
-<link href="/css/diary/gratitudeDiary/comment.css" type="text/css"
-	rel="stylesheet">
-<script src='/js/diary/gratitudeDiary/comment.js'></script>
 </head>
 <div th:fragment="comment">
 	<!-- comments list -->
@@ -15,17 +12,16 @@
 			<li th:each="n:${commentList}">
 				<div
 					th:with="pid=${n.id},pUserId=${n.userId},gratitudeDiaryId=${n.gratitudeDiaryId}">
-					<div style="display: flex; margin: 10px;" th:with="userId=${n.userId}">
-						<p th:text="${pid}">부모댓글아이디</p>
-						<img
-							style="height: 50px; width: 50px; border-radius: 25%; margin-right: 10px;"
-							src="https://randomuser.me/api/portraits/lego/1.jpg">
-						<div>
-							<span style="color: #007bff;" th:text="${userId}"></span>
+					<div class="displayDiv" th:with="userId=${n.userId}">
+						<p class="commentId"th:text="${pid}">부모댓글아이디</p>
+						<img class="commentImg" th:src="@{'/upload/profile/'+${n.memberId} +'/'+${n.image}}" th:if="${n.image}!='basic.jpg'">
+						<img class="commentImg" th:src="@{/upload/profile/basic.jpg}" th:if="${n.image}=='basic.jpg'">
+						<div class="commentBg">
+							<span class="userId" th:text="${userId}"></span>
 							<span th:text="${n.regDate}"></span>
 							<p th:text="${n.content}"></p>
-							<a class="open-button">답글</a> 
-							<a class="edit-button">수정</a> 
+							<a class="open-button">답글</a>
+							<a class="edit-button">수정</a>
 							<a id="commentDelBtn"
 								th:href="@{commentdel(id=${n.id},gratitudeDiaryId=${param.id})}"
 								onclick="if(!confirm('댓글을 정말 삭제하시겠습니까?')) return false;">삭제</a>
@@ -43,11 +39,12 @@
 									th:value="${gratitudeDiaryId}">
 								<div>
 									<div>
-										<span style="color: #007bff;" th:text="${pUserId}"><strong></strong></span><span>
+										<span class="receiver" th:text="${pUserId}"><strong></strong></span><span>
 											님에게 답글남기기</span>
 									</div>
 									<div>
-										<textarea style="width: 95%" rows="3" cols="30" name="content"
+								<!-- 		<input type="text" name="content" class="receiverInput" style="border: none;"></input> -->
+										<textarea class="commentBox" rows="3" cols="30" name="content"
 											placeholder="댓글을 입력하세요"></textarea>
 										<br>
 										<div>
@@ -69,11 +66,10 @@
 								<input type="hidden" name="gratitudeDiaryId"th:value="${gratitudeDiaryId}">
 								<div>
 									<div>
-										<span style="color: #007bff;" th:text="${pUserId}"><strong></strong></span><span>
-											님에게 답글남기기</span>
+										<span class="receiver"><strong>Editing</strong></span>
 									</div>
 									<div>
-										<textarea class="editContent"style="width: 95%" rows="3" cols="30" name="content"
+										<textarea class="editContent commentBox" rows="3" cols="30" name="content"
 											th:placeholder="${n.content}"></textarea>
 										<br>
 										<div>
@@ -88,18 +84,19 @@
 					<ul class="subComment">
 						<li style="margin-left: 40px;" th:each="nc:${n.list}">
 
-							<div style="display: flex;"th:with="id=${nc.id}">
-								<p th:text="${id}">부모댓글아이디</p>
-								<img
-									style="height: 50px; width: 50px; border-radius: 25%; margin-right: 10px;"
-									src="https://randomuser.me/api/portraits/lego/4.jpg">
-								<div>
-									<span style="color: #007bff;" th:text="${nc.userId}"></span>
-									<span th:text="${nc.regDate}"></span>
-									<p th:text="${nc.content}"></p> 
-									<a class="edit-button">수정</a>
-									<a id="commentDelBtn"
-									th:href="@{commentdel(id=${nc.id},freeDiaryId=${param.id})}"
+							<div class="displayDiv" th:with="id=${nc.id}">
+								<p class="commentId"th:text="${id}">부모댓글아이디</p>
+								<img class="commentImg" th:src="@{'/upload/profile/'+${nc.memberId} +'/'+${nc.image}}" th:if="${nc.image}!='basic.jpg'">
+								<img class="commentImg" th:src="@{/upload/profile/basic.jpg}" th:if="${nc.image}=='basic.jpg'">
+								<div class="commentBg">
+									<span class="userId" th:text="${nc.userId}"></span>
+									<span th:text="${nc.regDate}" class="spanTag"></span>
+									<p th:text="${nc.content}" class="subComments"></p> 
+									<div th:if="${nc.memberId == member.id}"></div>
+									<div th:if="${nc.memberId == member.id}"></div>
+									<a th:if="${nc.memberId == member.id}"class="edit-button">수정</a>
+									<a th:if="${nc.memberId == member.id}"id="commentDelBtn"
+									th:href="@{commentdel(id=${nc.id},gratitudeDiaryId=${param.id})}"
 									onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a>
 								</div>
 							</div>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link href="../css/member/login.css" type="text/css" rel="stylesheet">
+
+</head>
+	<header id="header" th:fragment="header">
+		
+			<a href=""><img class="logo" src="/images/logo/logo.png"></a>
+		
+		<nav class="header-menu">
+			<h1 class="d-none">헤더버튼</h1>
+		</nav>
+	</header>
+
+     <main class="main">
+        <div class="login-box">
+            <form class="login-form" method="post">
+                <h2 class="login-title">로그인</h2>
+                <ul>
+                    <li>
+                        <input type="text" name="username" placeholder="ID"/>
+                    </li>
+                    <li>
+                        <input type="password" name="password" placeholder="Password"/>
+                    </li>
+                    <div class="failMsg" th:if="${loginFailMsg}!=null" th:text="${loginFailMsg}">아이디 또는 비밀번호가 틀립니다.</div>
+                    <li>
+                        <input class="btn-submit" type="submit" value="LOGIN">
+                    </li>
+                </ul>
+            </form>
+            <ul class="login-option">
+                <a href="member/signup">회원가입</a>
+                <span>|</span>
+                <a href="member/findid">아이디 찾기</a>
+                <span>|</span>
+                <a href="member/findpwd">비밀번호 찾기</a>
+            </ul>
+        </div>
+    </main>
+
+
+</html>

@@ -8,7 +8,7 @@
 <link href="/css/diary/modal.css" type="text/css" rel="stylesheet">
 <script src='/js/modal/modal.js'></script>
 </head>
-<main id="main" layout:fragment="main">
+<main id="main" stype="height: 70%;"layout:fragment="main">
 
 	<form class="form" action="/diary/freediary/reg" method="post"
 		enctype="multipart/form-data">
@@ -40,6 +40,7 @@
 			<tr>
 
 				<th>첨부파일</th>
+				<img class="image"></img>
 				<td colspan="3"><input type="file" name="file" value="0"></td>
 			</tr>
 			<tr>
@@ -51,8 +52,8 @@
 			<tr>
 				<td colspan="4"><input type="text" value="" name="content"
 					class="selectedQuestion"
-					style="border: none; border-right: 0px; border-top: 0px; boder-left: 0px; boder-bottom: 0px; width: 500px; outline: none;"></input><br>
-					<textarea class="content" rows="20" cols="50" name="content">자유롭게 글을 써보세요</textarea>
+					style="border: none; border-right: 0px; border-top: 0px;background-color: #F2F2F2; boder-left: 0px; boder-bottom: 0px; width: 500px; outline: none;"></input><br>
+					<textarea class="content" rows="5" cols="50" name="content" placeholder="자유롭게 글을 써보세요"></textarea>
 				</td>
 			</tr>
 		</table>

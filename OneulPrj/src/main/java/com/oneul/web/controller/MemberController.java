@@ -50,7 +50,7 @@ public class MemberController {
 		if(username.equals("")) {
 			return result;			
 		}else {
-			result = service.check(member);
+			result = service.checkid(username);
 			return result;
 		}
 		
@@ -84,7 +84,7 @@ public class MemberController {
 			
 			service.insert(member);
 			
-			return "redirect:login";
+			return "redirect:/";
 		}
 	}
 	
@@ -162,7 +162,7 @@ public class MemberController {
 			String body = name+"님의 임시비밀번호는 "+pwd+" 입니다.";
 			service.sendEmail(email, title, body);
 			
-			return "redirect:login";
+			return "redirect:/";
 			
 		}else { //회원정보 없으면
 			model.addAttribute("msg","존재하지않는 회원정보입니다");
@@ -172,18 +172,18 @@ public class MemberController {
 		
 	}
 	
-	//로그인페이지 조회
-	@RequestMapping("/login")
-	public String login(HttpServletRequest request, Model model) {
-		String errMsg;
-		
-		if(request.getAttribute("loginFailMsg")!=null) {
-			errMsg = (String) request.getAttribute("loginFailMsg");
-			model.addAttribute("errMsg", errMsg);
-		}
-		
-		return "member/login";
-	}
+//	//로그인페이지 조회
+//	@RequestMapping("/login")
+//	public String login(HttpServletRequest request, Model model) {
+//		String errMsg;
+//		
+//		if(request.getAttribute("loginFailMsg")!=null) {
+//			errMsg = (String) request.getAttribute("loginFailMsg");
+//			model.addAttribute("errMsg", errMsg);
+//		}
+//		
+//		return "member/login";
+//	}
 	
 	//회원정보수정 페이지 조회
 	@RequestMapping("edit") 
@@ -326,7 +326,7 @@ public class MemberController {
 		service.delete(id);
 		
 		
-		return "redirect:login";
+		return "redirect:/";
 	}
 	
 	
