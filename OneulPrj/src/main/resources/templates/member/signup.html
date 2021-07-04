@@ -11,10 +11,35 @@
     <link href="../css/member/signup.css" type="text/css" rel="stylesheet">
 	<script src="/js/member/signup.js"></script>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+        function check(){
+            let username = document.getElementsByName("username")[0]
+            let password = document.getElementsByName("password")[0]
+            let name = document.getElementsByName("name")[0]
+            let email = document.getElementsByName("email")[0]
+            
+            if(username.value.length < 1){
+                alert("아이디를 입력하세요")
+                return false;
+            }
+            if(password.value.length < 1){
+                alert("비밀번호를 입력하세요")
+                return false;
+            }
+            if(name.value.length < 1){
+                alert("이름을 입력하세요")
+                return false;
+            }
+            if(email.value.length < 1){
+                alert("이메일 입력하세요")
+                return false;
+            }
+        }        
+    </script>
 </head>
     <main class="main" layout:fragment="main">
         <div class="signup-box">
-             <form class="signup-form" action="reg" method="post">
+             <form class="signup-form" action="reg" method="post" onsubmit="return check()">
                 <h2 class="signup-title">회원가입</h2>
                 <ul>
                     <li>
@@ -35,7 +60,7 @@
                         <input type="text" name="name" placeholder="이름"/>
                     </li>
                     <li>
-                        <input class="date" type="date" name="birthday" placeholder="생년월일"/>
+                        <input class="date" type="date" name="birthday" value="2000-01-01"/>
                     </li>
                     <li>
                         <input type="email" name="email" placeholder="sophie@example.com"/>

@@ -5,36 +5,43 @@
 <head>
 	<meta charset="UTF-8">
 	<title>회원정보 수정</title>
+	<link href="../css/member/edit.css" type="text/css" rel="stylesheet">
 </head>
 
 	<main class="main" layout:fragment="main">
-		<form class="edit-form" method="post" action="edit">
-			<fieldset>
-				<legend>회원정보수정</legend>
-				<div class="name">
-					<label>이름:</label>
-					<span th:text="${member.name}">황지산</span>
+		<div class="box edit-box">
+			<form class="box edit-form" method="post" action="edit">
+				<div class="box title-box">
+					<h1 class="edit-title">회원정보수정</h1>
 				</div>
-				<div class="email">
-					<label>이메일:</label>
-					<span th:text="${member.email}">ghkdwltks123@naver.com</span>
+				<div class="info-box">
+					<div class="info name">
+						<label>이름</label>
+						<span th:text="${member.name}">황지산</span>
+					</div>
+					<div class="info email">
+						<label>이메일</label>
+						<span th:text="${member.email}">ghkdwltks123@naver.com</span>
+					</div>
+					<div class="info birthday">
+						<label>생년월일</label>
+						<span th:text="${member.birthday}">1996-04-24</span>
+					</div>
+					<div class="info userid">
+						<label>회원아이디</label>
+						<input class="b" type="text" name="username" th:value="${member.userId}">			
+					</div>
+					<div class="info password">
+						<label>비밀번호</label>
+						<input class="b" type="password" name="password" th:value="${member.password}">			
+					</div>		
 				</div>
-				<div class="birthday">
-					<label>생년월일:</label>
-					<span th:text="${member.birthday}">1996-04-24</span>
+				<div class="btn-box">
+					<input class="submit" type="submit" value="수정">
+					<input type="button" value="취소" onclick="window.location.href='mypage'">
+					<a class="out" href="out">회원탈퇴</a>
 				</div>
-				<div class="userid">
-					<label>회원아이디:</label>
-					<input type="text" name="username" th:value="${member.userId}">			
-				</div>
-				<div class="password">
-					<label>비밀번호:</label>
-					<input type="password" name="password" th:value="${member.password}">			
-				</div>		
-				<input type="submit">
-				<input type="button" value="취소" onclick="window.location.href='mypage'">
-				<a href="out">회원탈퇴</a>
-			</fieldset>
-		</form>
+			</form>
+		</div>
 	</main>
 </html>
