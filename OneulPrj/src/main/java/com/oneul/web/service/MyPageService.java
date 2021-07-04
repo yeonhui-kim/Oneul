@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.oneul.web.dao.MyPageDao;
 import com.oneul.web.entity.MyComment;
 import com.oneul.web.entity.MyDiary;
+import com.oneul.web.entity.MyOneline;
 
 public interface MyPageService {
 
@@ -15,4 +16,6 @@ public interface MyPageService {
 
 	
 	public List<MyComment> getCommentList(int id);
+	
+	public List<MyOneline> getOnelineList(int id);
 }

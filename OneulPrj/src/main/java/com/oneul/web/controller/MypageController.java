@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.oneul.web.entity.Member;
 import com.oneul.web.entity.MyComment;
 import com.oneul.web.entity.MyDiary;
+import com.oneul.web.entity.MyOneline;
 import com.oneul.web.service.MemberService;
 import com.oneul.web.service.MyPageService;
 
@@ -44,16 +45,15 @@ public class MypageController {
 		
 		List<MyDiary> myDiary = myPageService.getDiaryList(member.getId());
 		List<MyComment> myComment = myPageService.getCommentList(member.getId());
-		
+		List<MyOneline> myOneline = myPageService.getOnelineList(member.getId());
 		
 		
 		
 		model.addAttribute("member", member);
 		model.addAttribute("myComment", myComment);
 		model.addAttribute("myDiary", myDiary);
-		
-		System.out.println(myComment);
-		System.out.println(member.getId());
+		model.addAttribute("myOneline",myOneline);
+
 	
 		
 		return "/mypage/mypage";
