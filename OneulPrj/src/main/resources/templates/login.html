@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="inc/layout">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,9 +8,16 @@
     <link href="../css/member/login.css" type="text/css" rel="stylesheet">
 
 </head>
+	<header id="header" th:fragment="header">
+		
+			<a href=""><img class="logo" src="/images/logo/logo.png"></a>
+		
+		<nav class="header-menu">
+			<h1 class="d-none">헤더버튼</h1>
+		</nav>
+	</header>
 
-
-     <main class="main" layout:fragment="main">
+     <main class="main">
         <div class="login-box">
             <form class="login-form" method="post">
                 <h2 class="login-title">로그인</h2>
