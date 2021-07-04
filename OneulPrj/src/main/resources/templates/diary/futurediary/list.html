@@ -5,9 +5,12 @@ xmlns:layout="http://www.ultaq.net.nz/thymeleaf/layout"
 layout:decorator="/inc/layout">
 <head>
 <meta charset="UTF-8">
+<link href="/css/diary/futureDiary/list.css" type="text/css" rel="stylesheet">
 <script src="/js/infinite/infiniteScrollWith.js"></script>
+<script src="/js/diary/futureDiary/list.js"></script>
+
 <script>
-	function getToday(){
+	function getToday(){ //오늘 날짜 구하는 함수
 	    var date = new Date();
 	    var year = date.getFullYear();
 	    var month = ("0" + (1 + date.getMonth())).slice(-2);
@@ -15,7 +18,7 @@ layout:decorator="/inc/layout">
 	
 	    return year + "-" + month + "-" + day;
 	}
-	function dateFormat(date) {
+	function dateFormat(date) { //date형식 yyyy-MM-dd로 포맷해주는 함수
         let month = date.getMonth() + 1;
         let day = date.getDate();
         let hour = date.getHours();
@@ -24,11 +27,11 @@ layout:decorator="/inc/layout">
 
         month = month >= 10 ? month : '0' + month;
         day = day >= 10 ? day : '0' + day;
-        hour = hour >= 10 ? hour : '0' + hour;
-        minute = minute >= 10 ? minute : '0' + minute;
-        second = second >= 10 ? second : '0' + second;
+        //hour = hour >= 10 ? hour : '0' + hour;
+        //minute = minute >= 10 ? minute : '0' + minute;
+        //second = second >= 10 ? second : '0' + second;
 
-        return date.getFullYear() + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
+        return date.getFullYear() + '-' + month + '-' + day;
 }
 	window.addEventListener("load",()=>{
 		let containerClass = ".container";
@@ -36,14 +39,34 @@ layout:decorator="/inc/layout">
 		let requestUrl = "http://localhost:8080/api/diary/future";
 		 function returningHTML(json) {
 	        	let today = getToday();
-	        	let html = today;
+	        	let html = "";
 	        	for(n of json){
-	        		console.log(n);
-	        		let regDate = n.regDate;
+	        		let bookingDate = new Date(n.bookingDate);
+	        		let formattedBookingDate = dateFormat(bookingDate);
+	        		let regDate = new Date(n.regDate);
+	        		let formattedRegDate = dateFormat(regDate);
+	        		let contentSplit = n.content.substring(0,100);
+	        		console.log(formattedBookingDate);
+	        		console.log(today);
+	        		console.log(today>=formattedBookingDate);//날짜 지남. 볼수있음
+	        		if(today>=formattedBookingDate){//날짜 지남. 볼수있음
+	        			html +=`<div class='diary-container'>
+	        						<div class='bookingDate'>to. ${formattedBookingDate}</div>
+	        						<div class="img-container">
+	        							<img src="/upload/diary/futureDiary/${n.memberId}/${n.id}/${n.image}">
+	                                </div>
+	        						<a class='content' href='detail?id=${n.id}'>${contentSplit}</a> 
+	        						<div class="regDate">from. ${formattedRegDate}</div>
+	        					</div>`;
+	        		}else{
+	        			html += `<div class='diary-container'>
+	        						<div class='bookingDate'>to. ${formattedBookingDate}</div>
+	        						<div class="img-container"></div>
+	        						<a class='content' onclick="alert('아직 볼 수 없습니다.');">${formattedBookingDate}에 공개됩니다.</a> 
+	        						<div class='regDate'>from. ${formattedRegDate}</div>
+	        					</div>`;
+	        		}
 	        		
-	        		console.log(regDate.type);
-	        		//html += `<h1>{$regDate}</h1>`;
-	        		html += `<h1>${n.id}</h1> <a>${n.content}</a> <span>${n.regDate}</span>`;
 	        	}
 	            
 	            return html;
@@ -58,7 +81,11 @@ layout:decorator="/inc/layout">
 <body>
 
 	<main id="main" layout:fragment="main">
-		<section class="">
+		<section class="wrapper">
+		<div class="title-container">
+			<h1 class="title">Future Diary</h1>
+		</div>
+			
 			<div class = "container">
 				<table>
 					<tr>

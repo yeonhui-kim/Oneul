@@ -10,6 +10,7 @@ public class FutureDiaryView {
 	private Date bookingDate;
 	private String content;
 	private Integer pub;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date regDate;
 	private Integer memberId;
 	private Integer emotionId;
