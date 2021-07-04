@@ -10,6 +10,7 @@ public class PublicDiary {
 	private String writerId;
 	private String image;
 	private Integer count;
+	private String diary;
 	
 	
 	public Integer getId() {
@@ -53,6 +54,13 @@ public class PublicDiary {
 	}
 	public void setCount(Integer count) {
 		this.count = count;
+	}
+	
+	public String getDiary() {
+		return diary;
+	}
+	public void setDiary(String diary) {
+		this.diary = diary;
 	}
 	@Override
 	public String toString() {
