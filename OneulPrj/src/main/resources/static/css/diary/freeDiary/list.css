@@ -27,7 +27,7 @@ hr{
 	margin-bottom:15px;
 	background-color: white;
 	border-radius: 8px;
-  	grid-template-columns: 30px 90px 1fr;/*열 두개*/
+  	grid-template-columns: 30px 100px 1fr;/*열 두개*/
   	grid-template-rows: repeat(2,1fr);/*행 3층*/
 	grid-template-areas:
   "date img content"
