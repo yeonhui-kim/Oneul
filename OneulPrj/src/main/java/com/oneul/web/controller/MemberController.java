@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
 import java.sql.Date;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -45,10 +46,15 @@ public class MemberController {
 	public int check_id(String username) {
 		Member member = new Member();
 		int result = 2;
+		String unexp = "^[a-z0-9]{4,12}$";
 		
 		member.setUserId(username);
 		if(username.equals("")) {
 			return result;			
+		}
+		else if(!Pattern.matches(unexp, username)){
+			result = 3;
+			return result;
 		}else {
 			result = service.checkid(username);
 			return result;

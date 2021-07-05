@@ -13,10 +13,7 @@
 
 	<select id="getMainList"
 		resultType="com.oneul.web.entity.OnelineComment">
-		select OnelineComment.id, writerId, content, regDate, memberId, m.image
-		from OnelineComment left join Member as m on m.id =
-		OnelineComment.memberid
-		where onelineId = #{param1} and commentId is null order by regDate asc
+		select * from OnelineComment left join Member as m on m.id = OnelineComment.memberid where onelineId = #{param1} and commentId is null order by regDate asc
 	</select>
 
 
@@ -36,9 +33,8 @@
 
 	<insert id="insert"
 		parameterType="com.oneul.web.entity.OnelineComment">
-		insert into OnelineComment (content, memberId, onelineId , commentId,
-		writerId, image)
-		values(#{content},#{memberId},#{onelineId},#{commentId},#{writerId},#{image});
+		insert into OnelineComment (content, memberId, onelineId , commentId)
+		values(#{content},#{memberId},#{onelineId},#{commentId});
 	</insert>
 
 

@@ -7,17 +7,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="/css/feed/onelineDetail.css" type="text/css" rel="stylesheet">
+<link href="/css/feed/comment.css" type="text/css" rel="stylesheet">
+<script src='/js/feed/oneline/comment.js'></script>
 </head>
    <main id="wrapper"  layout:fragment="main">
    
-<div class="cancel">
+   <div id="main">   
+   <div class="cancel">
 		<a href="/feed/oneline/list"> <img class="cancel-img"
 			src="/images/oneline/free-icon-left-arrow-633660.png">
 		</a>
 	</div>
-
-
-   <div id="main">   
       <div>
          <article id="wrapper">
             <div class="content">
@@ -43,8 +43,36 @@
                </div>
             
             
+            <!--------------------------------------- 댓글 출력란------------------------------- -->
+           <div th:replace="feed/oneline/comment::comment"></div>
+           
+           
+           <!--form to reg comments -->
+           <div class="container">        
+			<form id="commentForm" action="/feed/oneline/detail" method="post">
+				<input type="hidden" name="onelineId" th:value="${detail.id}">
+				<br> <br>
+				<div>
+					<div>
+						<span><strong>Leave a comment</strong></span> <span id="cCnt"></span>
+					</div>					
+					<div>
+						<table class="table">
+							<tr>
+								<td><textarea style="width: 85%" rows="3" cols="30"
+										name="content" placeholder="댓글을 입력하세요"></textarea> <br>
+									<div>
+										<input type="submit" value="저장">
+									</div></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</form>
+		</div><!-- container -->
+            
          <!--------------------------------------- 댓글 출력란------------------------------- -->
-             <div class="comment-box" th:each="c:${clist}">
+            <!--  <div class="comment-box" th:each="c:${clist}">
              
              <div class="line-comment"></div>
              
@@ -70,11 +98,11 @@
                
                 </div>
                 
-                </div>
+                </div> -->
                
                <!-- ------------------댓글입력---------------------------------------------- -->
                
-            <form action="CommentReg" method="post">
+           <!-- <form action="CommentReg" method="post">
             <input type="hidden" name="id" th:value="${detail.id}">
                <div class="review-btn-group">
                </div>
@@ -82,7 +110,7 @@
                   <textarea rows="3" class=txt  name="comment" placeholder="여러분의 댓글을 남겨주세요."></textarea>
                      <input type="submit" value="확인" id="btn">
                </div>
-               </form>
+               </form> -->
             
          </article>
       </div>
