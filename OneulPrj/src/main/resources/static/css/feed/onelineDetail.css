@@ -27,7 +27,8 @@ html, body {
 
 /* ---------------ÇÇµå------------------------------------ */	
 #wrapper{
-	margin-bottom: 30px
+	margin-bottom: 30px;
+	
 }
 
 .profile {
@@ -129,17 +130,19 @@ html, body {
 	padding: 10px
 }
 
+
 .cancel-img{
 	width: 40px;
 	height: 40px;
-	position: fixed;
-	top: 5px;
-	left: 10px;
+	position: relative;
+	left: 10px;	
+	z-index: 10;
+	
 }
 
 
 /*-----------------´ñ±Û--------------------------------*/
-
+/* 
 .line-comment{
 	border: 1px solid #f0f3ea;
     margin-top: 5px;
@@ -209,5 +212,5 @@ html, body {
 	grid-area: date;
     margin-left: 0px;
     margin-bottom: 7px;
-}
+} */
 
