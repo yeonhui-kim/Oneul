@@ -102,7 +102,11 @@ public class MemberController {
 	
 	//아이디 찾기 실행
 	@PostMapping("findid")
-	public String findid(String name, Date birthday, String email,HttpServletRequest request, Model model) {
+	public String findid(String name, 
+						 Date birthday, 
+						 String email,
+						 HttpServletRequest request, 
+						 Model model) {
 		
 		//회원정보 체크
 		Member member = new Member();
@@ -144,7 +148,12 @@ public class MemberController {
 	
 	//비밀번호 찾기 수행
 	@PostMapping("findpwd")
-	public String findpwd(String username, String name, Date birthday, String email, Model model) {
+	public String findpwd(String username, 
+						  String name, 
+						  Date birthday, 
+						  String email, 
+						  Model model,
+						  HttpServletRequest request) {
 		
 		//회원정보체크
 		Member member = new Member();
@@ -167,8 +176,7 @@ public class MemberController {
 			String title = "Oneul 임시비밀번호";
 			String body = name+"님의 임시비밀번호는 "+pwd+" 입니다.";
 			service.sendEmail(email, title, body);
-			
-			return "redirect:/";
+			return "redirect:/?r=1";
 			
 		}else { //회원정보 없으면
 			model.addAttribute("msg","존재하지 않는 회원정보입니다");
