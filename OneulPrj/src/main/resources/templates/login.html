@@ -8,25 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인</title>
     <link href="../css/member/login.css" type="text/css" rel="stylesheet">
-    <script>
-        function check(){
-            let username = document.getElementsByName("username")[0]
-            let password = document.getElementsByName("password")[0]
-            if(username.value.length < 1){
-                alert("아이디를 입력하세요")
-                return false;
-            }
-            if(password.value.length < 1){
-                alert("비밀번호를 입력하세요")
-                return false;
-            }
-        }
-    </script>
+	<script src="../js/member/login.js"></script>
 </head>
 
-     <main class="main" layout:fragment="main">
+    <main class="main" layout:fragment="main">
         <div class="login-box">
-            <form class="login-form" method="post" onsubmit="return check()">
+            <form class="login-form" method="post">
                 <h2 class="login-title">로그인</h2>
                 <ul>
                     <li>
@@ -37,7 +24,7 @@
                     </li>
                     <div class="failMsg" th:if="${loginFailMsg}!=null" th:text="${loginFailMsg}">아이디 또는 비밀번호가 틀립니다.</div>
                     <li>
-                        <input class="btn-submit" type="submit" value="LOGIN">
+                        <input class="btn-submit" type="button" onclick="check()" value="LOGIN">
                     </li>
                 </ul>
             </form>

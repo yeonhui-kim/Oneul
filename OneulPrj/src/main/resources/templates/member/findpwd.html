@@ -6,31 +6,12 @@
 	<meta charset="UTF-8">
 	<title>비밀번호 찾기</title>
 	<link href="../css/member/findpwd.css" type="text/css" rel="stylesheet">
-	<script>
-        function check(){
-            let username = document.getElementsByName("username")[0]
-            let name = document.getElementsByName("name")[0]
-            let email = document.getElementsByName("email")[0]
-            
-            if(username.value.length < 1){
-                alert("아이디를 입력하세요")
-                return false;
-            }
-            if(name.value.length < 1){
-                alert("이름을 입력하세요")
-                return false;
-            }
-            if(email.value.length < 1){
-                alert("이메일 입력하세요")
-                return false;
-            }
-        }        
-    </script>
+	<script src="/js/member/findpwd.js"></script>
 </head>
 <body>
     <main class="main" layout:fragment="main">
         <div class="findpwd-box">
-            <form class="findpwd-form" action="findpwd" method="post" onsubmit="return check()">
+            <form class="findpwd-form" action="findpwd" method="post">
                 <h1 class="findpwd-title">비밀번호 찾기</h1>
                 <ul>
                     <li class="input">
@@ -51,7 +32,7 @@
                     </li>
                     <div class="msg" th:if="${msg}!=null" th:text="${msg}">회원정보가 일치하지 않습니다</div>
                     <li class="btn">
-                        <input class="submit" type="submit">
+                        <input class="submit" type="button" onclick="check()" value="비밀번호 찾기">
                         <input class="btn-cancel" type="button" value="취소" onclick="window.location.href='/'">
                     </li>
                 </ul>
