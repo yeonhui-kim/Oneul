@@ -52,7 +52,7 @@
 		}
     </style>
     <script>
-    
+      var prevStartStr = "";
       var jsonString ="[[${jsonString}]]";
       
       if( jsonString == "" ) {
@@ -78,8 +78,34 @@
       	  events:eventList,
       	
       	  eventClick:function(event){
-      		console.log("test");
-      		diaryContainer.classList.toggle("d-none");
+      		debugger;
+      		var extendedProps = event.event.extendedProps;
+      		
+      		var startStr = event.event.startStr;
+      		
+      		if(prevStartStr == startStr) {
+	      		diaryContainer.classList.toggle("d-none");
+      		} else {
+      			diaryContainer.classList.remove("d-none");
+      		}
+      		
+      		var selectedIcon = extendedProps.selectedIcon;
+      		
+      		var param = {
+      			"startStr" : startStr
+      		}
+      		
+      		fetch('/api/diary/listDiary?startStr=' + startStr, {method: 'POST',
+      			headers : {'Content-Type': 'application/json'},
+      			  body: JSON.stringify(param)
+      		}).then((response) => response.json()).then((json) => {
+				debugger;
+				
+				
+				
+            }).catch(err => {});
+      		
+      		prevStartStr = startStr;
       	  }
       	  
         });
@@ -88,6 +114,9 @@
         
       });
       
+      function abc(param) {
+    	  
+      }
        
     </script>
   </head>

@@ -9,9 +9,21 @@
 								parameterType="com.oneul.web.entity.CalendarEmotion">
 		SELECT DATE_FORMAT(CE.regDate, '%Y-%m-%d') AS 'start'
      	     , E.name AS 'className'	
+     	     , E.name As 'selectedIcon'
           FROM oneul.CalendarEmotion CE
          INNER JOIN oneul.Emotion E ON CE.emotionId = E.id
          WHERE CE.memberId = #{memberId}
+	</select>
+	
+	 <select id="getListDiary" resultType="com.oneul.web.entity.CalendarEmotion" parameterType="com.oneul.web.entity.CalendarEmotion">
+		select emotionId, regDate, content1 as 'content', '' as 'image', 'gratitudeDiary' as 'diary', memberId
+		from oneul.GratitudeDiary where regDate = #{regDate} and memberId = #{memberId}
+		UNION
+		select emotionId, regDate, content, image, 'freeDiary' as 'diary', memberId
+		from oneul.FreeDiary where regDate = #{regDate} and memberId = #{memberId}
+		UNION
+		select emotionId, regDate, content, image, 'futureDiary' as 'diary', memberId
+		from oneul.FutureDiary where bookingDate = #{regDate} and memberId = #{memberId}
 	</select>
 	
    	<insert id="insertCalendar" parameterType="com.oneul.web.entity.CalendarEmotion">
