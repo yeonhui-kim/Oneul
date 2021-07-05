@@ -40,7 +40,7 @@ window.addEventListener("load",()=>{
 	dateInput.min = today;
 });
 
-function submit(){
+function submitBtnClick(){
 	const form = document.querySelector(".form");
 
 	const dateInput = document.querySelector("input[type='date']");

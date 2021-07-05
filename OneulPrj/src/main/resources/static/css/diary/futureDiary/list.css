@@ -52,13 +52,23 @@ hr{
 .content{
 	grid-area:content;
 	width:90%;
-	
+	white-space:no-wrap;
 	text-overflow:ellipsis;
 	overflow:hidden;
 	
 	vertical-align:middle;
 }
-
+.content-full{
+	grid-column: 1 / span 3;
+	grid-row: 2 / 3;
+	display:flex;
+    align-items: center;
+}
+.not-open{
+	display:flex;
+    align-items: center;
+    justify-content:center;
+}
 .regDate{
 	grid-area:regDate;
 	text-align:end;
