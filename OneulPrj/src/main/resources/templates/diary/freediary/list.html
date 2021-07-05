@@ -29,20 +29,38 @@
 					console.log(month);
 					console.log(date);
 					console.log(dayName);
-
+					let count = 0;
+					let open = "https://image.flaticon.com/icons/png/128/880/880779.png";
+					let close = "https://image.flaticon.com/icons/png/128/1383/1383438.png";
+					let pubIcon = document.querySelector('.pubIcon');
+					
+	        		if(n.commentCount == null? 0 :count =n.commentCount);
+	        		
+	        		let src = null;
+		        	if(n.pub == 1){
+		        		src = open;
+		        			
+		        	}else{
+		        		src = close;
+		        	}
 	        		
 	        		console.log(regDate.type);
 	        		//html += `<h1>{$regDate}</h1>`;
 	        		html += `<div class='diary-container'>
 	                    <span class="date">
+                        <span class="dayName">${dayName}</span><br>
                         <span class="day">${date}</span>
-                        <span class="dayName">${dayName}</span>
                     </span>
 						<div class="img-container">
 							<img src="/upload/${n.image}">
                         </div>
 						<a class='content' href='detail?id=${n.id}'>${n.content}</a> 
-						<div class="comment"></div>
+						<div class="comment">
+						<span>${count}</span>
+						<img style="width: 20px;" src="https://image.flaticon.com/icons/png/128/134/134819.png">
+						<img class="pubIcon"style="width: 20px;margin-left: 5px;" src=${src}>
+
+						</div>
 					</div>`;
 	        	}
 	            

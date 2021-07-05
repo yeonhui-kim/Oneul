@@ -199,7 +199,7 @@ public class FreeDiaryController {
 	public String edit(int id, Model model) {
 		List<Question> list = questionService.getList();
 		model.addAttribute("list", list);
-
+		
 		FreeDiary freeDiary = service.get(id);
 		model.addAttribute("freeDiary", freeDiary);
 
@@ -207,11 +207,50 @@ public class FreeDiaryController {
 	}
 
 	@PostMapping("edit")
-	public String edit(FreeDiary freeDiary, 
+	public String edit(FreeDiary freeDiary,
+						MultipartFile file,
 						@DateTimeFormat(pattern = "yyyy-MM-dd")Date regDate,
+						HttpServletRequest request,
 						CalendarEmotion calendarEmotion) {
-		calendarService.updateCalendar(calendarEmotion);
+		System.out.println(file);
+		HttpSession session = request.getSession(true);//세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
+		String username = (String) session.getAttribute("username");
+		
+		Member member = new Member();
+		member = memberSerivce.get(username);
+		int id = member.getId();
+		
+		freeDiary.setRegDate(regDate);
+		freeDiary.setMemberId(id);
+		
+		String fileName = file.getOriginalFilename();
+		System.out.println(fileName);
+		freeDiary.setImage(fileName);
 		service.update(freeDiary);
+		ServletContext application = request.getServletContext();
+		String path = "/upload";
+		String realPath = application.getRealPath(path);
+
+		File pathFile = new File(realPath);
+		if (!pathFile.exists())
+			pathFile.mkdirs();
+
+		String filePath = realPath + File.separator + fileName;
+
+		File saveFile = new File(filePath);
+
+		try {
+			file.transferTo(saveFile);
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		calendarService.updateCalendar(calendarEmotion);
+
 		return "redirect:detail?id=" + freeDiary.getId();
 	}
 	//댓글수정

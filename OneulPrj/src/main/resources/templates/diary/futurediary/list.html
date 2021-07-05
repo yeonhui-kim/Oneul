@@ -49,23 +49,28 @@ layout:decorator="/inc/layout">
 	        		console.log(formattedBookingDate);
 	        		console.log(today);
 	        		console.log(today>=formattedBookingDate);//날짜 지남. 볼수있음
-	        		if(today>=formattedBookingDate){//날짜 지남. 볼수있음
-	        			html +=`<div class='diary-container'>
-	        						<div class='bookingDate'>to. ${formattedBookingDate}</div>
-	        						<div class="img-container">
+	        		
+	        		html +=`<div class='diary-container'>
+						<div class='bookingDate'>to. ${formattedBookingDate}</div>`;
+	        		
+	        		if(today>=formattedBookingDate && n.image !=""){//날짜 지남. 볼수있음 && 이미지 있음
+	        			html +=`<div class="img-container">
 	        							<img src="/upload/diary/futureDiary/${n.memberId}/${n.id}/${n.image}">
-	                                </div>
-	        						<a class='content' href='detail?id=${n.id}'>${contentSplit}</a> 
-	        						<div class="regDate">from. ${formattedRegDate}</div>
+	                            </div>
+	                            <div class='content'>
+	        					<a href='detail?id=${n.id}'>${contentSplit}</a>
 	        					</div>`;
+	        		}else if(today>=formattedBookingDate && n.image ==""){ //날짜지남&&이미지 없음
+	        			html +=`<div class='content-full'><a href='detail?id=${n.id}'>${contentSplit}</a></div>`;
 	        		}else{
-	        			html += `<div class='diary-container'>
-	        						<div class='bookingDate'>to. ${formattedBookingDate}</div>
-	        						<div class="img-container"></div>
-	        						<a class='content' onclick="alert('아직 볼 수 없습니다.');">${formattedBookingDate}에 공개됩니다.</a> 
-	        						<div class='regDate'>from. ${formattedRegDate}</div>
-	        					</div>`;
+	        			html += `<div class='content-full not-open'>
+	        			<a onclick="alert('아직 볼 수 없습니다.');">${formattedBookingDate}에 공개됩니다.</a>
+	        			</div>`;
 	        		}
+	        		
+	        		html += `<div class='regDate'>from. ${formattedRegDate}</div>
+							</div>`;
+						
 	        		
 	        	}
 	            
