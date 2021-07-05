@@ -8,7 +8,8 @@
 	<select id="get" resultType="com.oneul.web.entity.Oneline">
 		select Oneline.id, writerId,
 		content, regDate, memberId, m.image from Oneline
-		left join Member as m on m.id = Oneline.memberid
+		left join Member as m
+		on m.id = Oneline.memberid
 		where Oneline.id = #{id}
 	</select>
 
@@ -26,8 +27,7 @@
 	</select>
 
 	<insert id="insert" parameterType="com.oneul.web.entity.Oneline">
-		insert into Oneline(content,
-		memberId, writerId)
+		insert into Oneline(content, memberId, writerId)
 		values(#{content},#{memberId},#{writerId})
 	</insert>
 
@@ -39,11 +39,8 @@
 	<update id="update" parameterType="com.oneul.web.entity.Oneline">
 		update Oneline
 		<set>
-			<if test="id != null">id = #{id},</if>
+			<if test="regDate != null">regDate = #{regDate},</if>
 			<if test="content != null">content = #{content},</if>
-			<if test="content != null">content = #{content},</if>
-			<if test="memberId != null">memberId = #{memberId},</if>
-			<if test="regDate != null">regDate = #{regDate}</if>
 		</set>
 		where id=#{id}
 	</update>
