@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.oneul.web.dao.MyPageDao;
 import com.oneul.web.entity.MyComment;
 import com.oneul.web.entity.MyDiary;
+import com.oneul.web.entity.MyOneline;
 
 
 @Service
@@ -27,6 +28,12 @@ public class MyPageServiceImp implements MyPageService {
 	public List<MyComment> getCommentList(int id) {
 		// TODO Auto-generated method stub
 		return dao.getCommentList(id);
+	}
+
+	@Override
+	public List<MyOneline> getOnelineList(int id) {
+		// TODO Auto-generated method stub
+		return dao.getOnelineList(id);
 	}
 
 }

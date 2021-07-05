@@ -55,12 +55,12 @@ body {
 	justify-content: space-around;
 }
 
-.midledownside-container .my-diary-button {
+.midledownside-container .my-oneline-button {
 	cursor: pointer;
 	border-bottom: 2px solid white;
 }
 
-.midledownside-container .my-diary-button:hover {
+.midledownside-container .my-oneline-button:hover {
 	border-bottom-color: var(- -color-basic);
 }
 
@@ -81,20 +81,20 @@ body {
 
 <script>
 	window.addEventListener("load", ()=>{
-		let diaryMenuButton = document.querySelector(".my-diary-button");
+		let diaryMenuButton = document.querySelector(".my-oneline-button");
 		let commentMenuButton = document.querySelector(".my-comment-button");
-		let diaryList = document.querySelector(".my-diary-list");
+		let onelineList = document.querySelector(".my-oneline-list");
 		let commentList = document.querySelector(".my-comment-list");
 
 		diaryMenuButton.onclick = () => {
 			console.log("sss");
-			diaryList.classList.remove("d-none");
+			onelineList.classList.remove("d-none");
             commentList.classList.add("d-none");
 		};
 		
 		commentMenuButton.onclick = () => {
 			console.log("sssfsfs")
-            diaryList.classList.add("d-none");
+            onelineList.classList.add("d-none");
             commentList.classList.remove("d-none");
 		};
 		
@@ -346,6 +346,7 @@ body {
 
 				<section class="upside-container-edit">
 					<h1 class="d-none">edit버튼</h1>
+					<a href="/member/???">로그아웃</a>
 					<input class="profile-edit-button" type="button" value="프로필 변경">
 					<a href="/member/edit">정보수정</a>
 				</section>
@@ -379,7 +380,7 @@ body {
 			<div>
 				<nav class="midledownside-container">
 					<h1 class="d-none">nav</h1>
-					<div class="my-diary-button">내 일기</div>
+					<div class="my-oneline-button">내 피드</div>
 					<div class="my-comment-button">내 댓글</div>
 				</nav>
 			</div>
@@ -403,13 +404,13 @@ body {
 
 
 
-	<section class="my-diary-list ">
-		<h1 class="d-none">다이어리 리스트</h1>
+	<section class="my-oneline-list ">
+		<h1 class="d-none">원라인 리스트</h1>
 		다이어리
-		<div th:each="n:${myDiary}">
+		<div th:each="n:${myOneline}">
 			<div th:text="${n.content}"></div>
-			<div th:text="${n.diary}"></div>
 			<div th:text="${n.regDate}"></div>
+			<div th:text="${n.id}"></div>
 		</div>
 
 	</section>
@@ -422,6 +423,8 @@ body {
 			<div th:text="${n.content}"></div>
 			<div th:text="${n.comment}"></div>
 			<div th:text="${n.regDate}"></div>
+			<div th:text="${n.diaryId}"></div>
+			
 		</div>
 
 

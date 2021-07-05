@@ -237,6 +237,7 @@ public class FutureDiaryController {
 		
 		//파일 삭제됐을 경우
 		if(fileName.equals("")&& changed == 1) {
+			
 			ServletContext application = request.getServletContext();
 	
 	         String prevFilePath = "/upload/diary/futureDiary/"+memberId+"/"+id;
@@ -267,7 +268,36 @@ public class FutureDiaryController {
 	}
 	
 	@RequestMapping("del")
-	public String del(int id) {
+	public String del(int id,HttpServletRequest request) {
+		HttpSession session = request.getSession(true);//세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
+		String username = (String) session.getAttribute("username");
+		
+		Member member = new Member();
+		member = memberService.get(username);
+		int memberId = member.getId();
+	
+		
+		ServletContext application = request.getServletContext();
+		
+        String prevFilePath = "/upload/diary/futureDiary/"+memberId+"/"+id;
+        String prevFilerealPath = application.getRealPath(prevFilePath);
+        
+        File folder = new File(prevFilerealPath);
+        while(folder.exists()) {
+    		File[] folder_list = folder.listFiles(); //파일리스트 얻어오기
+    				
+    		for (int j = 0; j < folder_list.length; j++) {
+    			folder_list[j].delete(); //파일 삭제 
+    			System.out.println("파일이 삭제되었습니다.");
+    					
+    		}
+    				
+    		if(folder_list.length == 0 && folder.isDirectory()){ 
+    			folder.delete(); //대상폴더 삭제
+    			System.out.println("폴더가 삭제되었습니다.");
+    		}
+                }
+       
 		
 		service.delete(id);
 		

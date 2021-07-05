@@ -10,6 +10,7 @@ import com.oneul.web.dao.FreeDiaryCommentDao;
 import com.oneul.web.dao.MyPageDao;
 import com.oneul.web.entity.MyComment;
 import com.oneul.web.entity.MyDiary;
+import com.oneul.web.entity.MyOneline;
 
 
 @Repository
@@ -37,6 +38,14 @@ public class MyBatisMyPageDao implements MyPageDao {
 	public List<MyComment> getCommentList(int id) {
 		
 		return mapper.getCommentList(id);
+	}
+
+
+
+	@Override
+	public List<MyOneline> getOnelineList(int id) {
+		// TODO Auto-generated method stub
+		return mapper.getOnelineList(id);
 	}
 
 }
