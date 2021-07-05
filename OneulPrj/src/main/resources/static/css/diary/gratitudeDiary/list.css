@@ -28,7 +28,7 @@ hr{
 	margin-bottom:15px;
 	background-color: white;
 	border-radius: 8px;
-    grid-template-columns: 90px 1fr;/*열 두개*/
+    grid-template-columns: 80px 1fr;/*열 두개*/
     grid-template-rows: 20px 1fr;/*행 3층*/
 	grid-template-areas:
 	  "date date"
@@ -47,22 +47,23 @@ hr{
 	
 }
 
-.emotion-container > img {
-	width: 80px;
-  	height:80px;
-  	border-radius:15%;
-  	object-fit:cover
+.content{
+	height: 15px;
+	width: 95%;
+	text-overflow: ellipsis !important;
+	overflow: hidden !important;
+	white-space: no-wrap !important;
+	margin-bottom: 6px;
+	margin-left: 5px;
 }
 
-.content{
+.content1{
+	width: 100%;
+	height: inherit;
 	grid-area: content;
-	width:90%;
-	text-overflow:ellipsis;
-	overflow:hidden;
 	vertical-align: middle;
 	background-color: white;
 	border-radius: 8px;
-	margin-bottom: 6px;
 }
 
 .question{

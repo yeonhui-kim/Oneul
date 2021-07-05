@@ -1,0 +1,45 @@
+/*gratitudeDiary css*/
+
+.emotion{
+	
+}
+
+.checked-emotion{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+}
+
+.content-container{
+	width:85%;
+	background-color: white;
+	border-radius: 8px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.question{
+	size: 10px;
+	color: #c4bda4;
+	margin: 20px 0px 10px 25px;
+}
+
+.date{
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 14px;
+}
+
+.content{
+	font-size: 12px;
+	margin: 15px 0px 10px 30px;
+}
+
+.button{
+	display: flex;
+	margin-top: 10px;
+	margin-right: 20px;
+	justify-content: flex-end;
+}
