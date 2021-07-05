@@ -6,19 +6,100 @@
 
 <head>
 	<meta charset="UTF-8">
-    <title>gratitudeDiary list</title>
+    <title>감사일기</title>
+    <link href="/css/diary/gratitudeDiary/list.css" type="text/css" rel="stylesheet">
+    <script src="/js/infinite/infiniteScrollWith.js"></script>
+    <link href="/css/emotion.css" type="text/css" rel="stylesheet">
+    <script>
+
+	window.addEventListener("load",()=>{
+		let containerClass = ".container";
+		let query = "";
+		let requestUrl = "http://localhost:8080/api/diary/gratitude";
+		
+		const days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+		 function returningHTML(json) {
+	        	let html = "";
+	        	for(n of json){
+	        		console.log(n);
+	        		let regDate = new Date(n.regDate);
+	        		let year = regDate.getFullYear();
+	        		let month = regDate.getMonth()+1;
+	        		let date = regDate.getDate();
+	        		let dayName = days[regDate.getDay()];
+			
+	        		let emotionId = n.emotionId;
+	        		console.log(emotionId);
+	        		
+	        		let emo = "";
+	        		if(emotionId == 1){
+	        			emo = "happy";
+	        		}else if(emotionId == 2){
+	        			emo = "proud";
+	        		}else if(emotionId == 3){
+	        			emo = "flutter";
+	        		}else if(emotionId == 4){
+	        			emo = "calm";
+	        		}else if(emotionId == 5){
+	        			emo = "sensitive";
+	        		}else if(emotionId == 6){
+	        			emo = "unstable"
+	        		}else if(emotionId == 7){
+	        			emo = "tired";
+	        		}else if(emotionId == 8){
+	        			emo = "sad";
+	        		}else{
+	        			emo = "upset";
+	        		}
+        			
+        			
+	        		html += `<div class='diary-container'>
+	                    <span class="date">
+	                        <span class="day">${date}</span>
+	                        <span class="dayName">${dayName}</span>
+	                    </span>
+						<div class="emotion-container">
+							<div class="${emo}"></div>
+                        </div>
+                        <a href='detail?id=${n.id}'>
+                        	<div class="question"> 오늘의 감사한 일 : </div>
+							<div class='content'>${n.content1}</div>
+							<div class="question"> 오늘 나에게 일어난 멋진 일 : </div>
+							<div class='content'>${n.content2}</div>
+							<div class="question"> 나를 위한 긍정의 한 줄! : </div>
+							<div class='content'>${n.content3}</div>
+						</a>
+					</div>`;
+					
+	        	}
+	            
+	            return html;
+	        };
+	     infiniteScrollWith(requestUrl, containerClass,returningHTML,query);
+	        
+	});
+</script>
+    
 </head>
 
 <!-- ----------------main부분------------------- -->
 	<main id="main" layout:fragment="main">
-		<section class="">
+		
+		<section class="open-lecture-content">
+	        <h1>일기목록</h1>
+	        <div class="container">
+	        
+	        </div>
+        </section>
+	
+		<!-- <section class="">
 			<h1>감사일기</h1>
 			<h3>내가 쓴 감사일기 목록</h3>
 			<table>
 				<tr>
-					<!-- <th>번호</th> -->
+					<th>번호</th>
 					<th>내용</th>
-					<!-- <th>작성자</th> -->
+					<th>작성자</th>
 					<th>작성일</th>
 				</tr>
 				
@@ -36,7 +117,7 @@
 			<div>
 				<a href="reg">글쓰기</a>
 			</div>
-		</section>
+		</section> -->
 	</main>
 	
 </html>
