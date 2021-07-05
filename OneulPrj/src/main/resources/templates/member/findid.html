@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="inc/layout">
+	layout:decorator="member/inc/layout">
 <head>
 	<meta charset="UTF-8">
 	<title>아이디 찾기</title>
 	<link href="../css/member/findid.css" type="text/css" rel="stylesheet">
+	<script>
+        function check(){
+            let name = document.getElementsByName("name")[0]
+            let email = document.getElementsByName("email")[0]
+            
+            if(name.value.length < 1){
+                alert("이름을 입력하세요")
+                return false;
+            }
+            if(email.value.length < 1){
+                alert("이메일 입력하세요")
+                return false;
+            }
+        }        
+    </script>
 </head>
 <body>
     <main class="main" layout:fragment="main">
         <div class="findid-box">
-            <form class="findid-form" action="findid" method="post">
+            <form class="findid-form" action="findid" method="post" onsubmit="return check()">
                 <h1 class="findid-title">아이디 찾기</h1>
                 <ul>
                     <li class="input">
@@ -19,7 +34,7 @@
                     </li>
                     <li class="input">
                         <legend>생년월일</legend>
-                        <input id="date" class="b" type="date" name="birthday">
+                        <input id="date" class="b" type="date" name="birthday" value="2000-01-01">
                     </li>
                     <li class="input">
                         <legend>이메일</legend>
