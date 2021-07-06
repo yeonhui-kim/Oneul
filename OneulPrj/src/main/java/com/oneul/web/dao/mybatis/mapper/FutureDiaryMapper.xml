@@ -21,8 +21,8 @@
     </select>
     
     <insert id="insert" parameterType="com.oneul.web.entity.FutureDiary" useGeneratedKeys="true" keyProperty="id">
-    	insert into FutureDiary(memberId,bookingDate,content,pub,emotionId,image)
-    	values(#{memberId},#{bookingDate},#{content},#{pub},#{emotionId},#{image})
+    	insert into FutureDiary(memberId,bookingDate,content,emotionId,image)
+    	values(#{memberId},#{bookingDate},#{content},#{emotionId},#{image})
     </insert>
     
     <delete id="delete">
@@ -35,7 +35,7 @@
     	<if test="emotionId != null">emotionId = #{emotionId},</if>		
     	<if test="bookingDate != null">bookingDate = #{bookingDate},</if>
     	<if test="content != null">content = #{content},</if>
-    	<if test="pub != null">pub = #{pub},</if>
+
     	<if test="image != null">image = #{image}</if>
     	</set>
     	where id=#{id}

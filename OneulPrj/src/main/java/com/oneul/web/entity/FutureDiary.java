@@ -12,7 +12,7 @@ public class FutureDiary {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date bookingDate;
 	private String content;
-	private Integer pub;
+	
 	private String image;	
 	private Date regDate;
 	private Integer memberId;
@@ -22,13 +22,13 @@ public class FutureDiary {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public FutureDiary(Integer id, Date bookingDate, String content, Integer pub, String image, Date regDate,
+	public FutureDiary(Integer id, Date bookingDate, String content, String image, Date regDate,
 			Integer memberId, Integer emotionId) {
 		super();
 		this.id = id;
 		this.bookingDate = bookingDate;
 		this.content = content;
-		this.pub = pub;
+		
 		this.image = image;
 		this.regDate = regDate;
 		this.memberId = memberId;
@@ -60,13 +60,7 @@ public class FutureDiary {
 		this.content = content;
 	}
 
-	public Integer getPub() {
-		return pub;
-	}
-
-	public void setPub(Integer pub) {
-		this.pub = pub;
-	}
+	
 
 	public String getImage() {
 		return image;
@@ -102,8 +96,7 @@ public class FutureDiary {
 
 	@Override
 	public String toString() {
-		return "FutureDiary [id=" + id + ", bookingDate=" + bookingDate + ", content=" + content + ", pub=" + pub
-				+ ", image=" + image + ", regDate=" + regDate + ", memberId=" + memberId + ", emotionId=" + emotionId
+		return "FutureDiary [id=" + id + ", bookingDate=" + bookingDate + ", content=" + content + ", image=" + image + ", regDate=" + regDate + ", memberId=" + memberId + ", emotionId=" + emotionId
 				+ "]";
 	}
 	

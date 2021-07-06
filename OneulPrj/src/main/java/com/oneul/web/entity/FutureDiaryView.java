@@ -9,7 +9,7 @@ public class FutureDiaryView {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date bookingDate;
 	private String content;
-	private Integer pub;
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date regDate;
 	private Integer memberId;
@@ -22,13 +22,13 @@ public class FutureDiaryView {
 		// TODO Auto-generated constructor stub
 	}
 
-	public FutureDiaryView(Integer id, Date bookingDate, String content, Integer pub, Date regDate, Integer memberId,
+	public FutureDiaryView(Integer id, Date bookingDate, String content, Date regDate, Integer memberId,
 			Integer emotionId, String userId, String image, Integer commentCount) {
 		super();
 		this.id = id;
 		this.bookingDate = bookingDate;
 		this.content = content;
-		this.pub = pub;
+		
 		this.regDate = regDate;
 		this.memberId = memberId;
 		this.emotionId = emotionId;
@@ -61,14 +61,7 @@ public class FutureDiaryView {
 		this.content = content;
 	}
 
-	public Integer getPub() {
-		return pub;
-	}
-
-	public void setPub(Integer pub) {
-		this.pub = pub;
-	}
-
+	
 	public Date getRegDate() {
 		return regDate;
 	}
@@ -119,7 +112,7 @@ public class FutureDiaryView {
 
 	@Override
 	public String toString() {
-		return "FutureDiaryView [id=" + id + ", bookingDate=" + bookingDate + ", content=" + content + ", pub=" + pub
+		return "FutureDiaryView [id=" + id + ", bookingDate=" + bookingDate + ", content=" + content 
 				+ ", regDate=" + regDate + ", memberId=" + memberId + ", emotionId=" + emotionId + ", userId=" + userId
 				+ ", image=" + image + ", commentCount=" + commentCount + "]";
 	}

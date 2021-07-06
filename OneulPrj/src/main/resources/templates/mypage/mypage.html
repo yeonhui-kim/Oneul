@@ -6,13 +6,75 @@
 <meta charset="UTF-8">
 <title>자유일기</title>
 <style>
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+body {
+	margin: 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* util */
 .d-none {
 	display: none;
 }
 
-body {
-	margin: 0px;
-}
+
+
 
 /*다른 CSS 에서 #main에 걸려있는 overflow scroll 하고 height 85% 끄면 잘됨 밑에 걸어서 뺴줌 그리고 바디의 height 100% 빼주고 */
 #main {
@@ -61,7 +123,7 @@ body {
 }
 
 .midledownside-container .my-oneline-button:hover {
-	border-bottom-color: var(- -color-basic);
+	border-bottom-color: var(--color-basic);
 }
 
 .midledownside-container .my-comment-button {
@@ -70,65 +132,16 @@ body {
 }
 
 .midledownside-container .my-comment-button:hover {
-	border-bottom-color: var(- -color-basic);
-}
-</style>
-
-
-
-
-
-
-<script>
-	window.addEventListener("load", ()=>{
-		let diaryMenuButton = document.querySelector(".my-oneline-button");
-		let commentMenuButton = document.querySelector(".my-comment-button");
-		let onelineList = document.querySelector(".my-oneline-list");
-		let commentList = document.querySelector(".my-comment-list");
-
-		diaryMenuButton.onclick = () => {
-			console.log("sss");
-			onelineList.classList.remove("d-none");
-            commentList.classList.add("d-none");
-		};
-		
-		commentMenuButton.onclick = () => {
-			console.log("sssfsfs")
-            onelineList.classList.add("d-none");
-            commentList.classList.remove("d-none");
-		};
-		
-		
-		let query = "";
-        let requestUrl = "http://localhost:8080/api/diary/free";
-        function returningHTML(json) {
-        	
-        	let html = "";
-        	for(n of json){
-        		console.log(n);
-        		html += `<h1>${n.id}</h1> <a>${n.content}</a> <span>${n.regDate}</span>`;
-        	}
-            
-            return html;
-        };
-        let containerClass = ".wow";
-        
-        //infiniteScrollWith(requestUrl, containerClass,returningHTML,query);
-        
-        
-		
-	});
-	
-</script>
-
-
-
-
-<style>
-.d-none {
-	display: none;
+	border-bottom-color: var(--color-basic);
 }
 
+
+
+
+
+
+
+/* 팝업 */
 .profile-edit {
 	position: fixed;
 	display: flex;
@@ -187,8 +200,54 @@ body {
 
 
 
+
+
 <script>
 
+	// 내피드 내댓글 보기
+	window.addEventListener("load", ()=>{
+		let diaryMenuButton = document.querySelector(".my-oneline-button");
+		let commentMenuButton = document.querySelector(".my-comment-button");
+		let onelineList = document.querySelector(".my-oneline-list");
+		let commentList = document.querySelector(".my-comment-list");
+
+		diaryMenuButton.onclick = () => {
+			console.log("sss");
+			onelineList.classList.remove("d-none");
+            commentList.classList.add("d-none");
+		};
+		
+		commentMenuButton.onclick = () => {
+			console.log("sssfsfs")
+            onelineList.classList.add("d-none");
+            commentList.classList.remove("d-none");
+		};
+		
+		
+		let query = "";
+        let requestUrl = "http://localhost:8080/api/diary/free";
+        function returningHTML(json) {
+        	
+        	let html = "";
+        	for(n of json){
+        		console.log(n);
+        		html += `<h1>${n.id}</h1> <a>${n.content}</a> <span>${n.regDate}</span>`;
+        	}
+            
+            return html;
+        };
+        let containerClass = ".wow";
+        
+        //infiniteScrollWith(requestUrl, containerClass,returningHTML,query);
+        
+        
+		
+	});
+	
+
+	
+	
+		// input file reset function
         function resetFileForm(fileInput){
             var orgParent = fileInput.parentNode;
             let tempForm = document.createElement("form");
@@ -329,14 +388,14 @@ body {
 
 
 </head>
-<main class="wow" id="main" layout:fragment="main">
+<main id="main" layout:fragment="main">
 
 
 	<section>
-		<h1 class="d-none">main</h1>
+		<h1 class="d-none">위에부분</h1>
 
 
-		<div>
+
 
 			<div class="upside-container">
 				<section class="upside-container-title">
@@ -346,11 +405,13 @@ body {
 
 				<section class="upside-container-edit">
 					<h1 class="d-none">edit버튼</h1>
-					<a href="/member/???">로그아웃</a>
+					<a href="/doLogout">로그아웃</a>
 					<input class="profile-edit-button" type="button" value="프로필 변경">
 					<a href="/member/edit">정보수정</a>
 				</section>
 			</div>
+
+
 
 
 			<div class="midleside-container">
@@ -377,27 +438,16 @@ body {
 
 			</div>
 
-			<div>
+
+
+			
 				<nav class="midledownside-container">
 					<h1 class="d-none">nav</h1>
 					<div class="my-oneline-button">내 피드</div>
 					<div class="my-comment-button">내 댓글</div>
 				</nav>
-			</div>
+			
 
-
-		</div>
-
-		<article>
-			<h1 class="d-none">내용</h1>
-			<ul>
-				<li>
-					<p>제목이 없는 일기내용일기내용일기내용일기내용</p>
-					<P>21년 10월 21일</P>
-				</li>
-			</ul>
-
-		</article>
 
 
 	</section>
@@ -406,7 +456,6 @@ body {
 
 	<section class="my-oneline-list ">
 		<h1 class="d-none">원라인 리스트</h1>
-		다이어리
 		<div th:each="n:${myOneline}">
 			<div th:text="${n.content}"></div>
 			<div th:text="${n.regDate}"></div>
@@ -418,7 +467,6 @@ body {
 
 	<section class="my-comment-list d-none">
 		<h1 class="d-none">댓글 리스트</h1>
-		댓글
 		<div th:each="n:${myComment}">
 			<div th:text="${n.content}"></div>
 			<div th:text="${n.comment}"></div>
@@ -433,13 +481,34 @@ body {
 
 
 
-
-	<form class="profile-edit d-none" action="/mypage/reg" method="POST" enctype="multipart/form-data">
-        <div class="profile-edit-item1" ><div class="item1-text d-none">수정</div><img class="item1-img" th:src="@{'/upload/profile/'+${member.id}+'/'+${member.image}}" th:if="${member.image}!='basic.jpg'" /><img class="item1-img" th:src="@{/upload/profile/basic.jpg}"  th:if="${member.image}=='basic.jpg'" /><div class="item1-link"><a href="">기본사진으로 이용하기</a></div></div>
-        <div class="profile-edit-item2"><input type="submit" value="수정"></div>
-        <div class="profile-edit-item3"><p class="item3-p" >누구누구 나는</p><textarea name="introduction" class="item3-textarea" th:text="${member.introduction}"></textarea><input class="item3-email" type="text" name="email" placeholder="이메일" th:value="${member.email}"></div>
-        <input class="profile-edit-file-input d-none" type="file" name="multiFile">
-    </form> 
-
+	<section>
+		<h1 class="d-none" >푸로필 수정</h1>
+		<form class="profile-edit d-none" action="/mypage/reg" method="POST" enctype="multipart/form-data">
+	        <div class="profile-edit-item1" ><div class="item1-text d-none">수정</div><img class="item1-img" th:src="@{'/upload/profile/'+${member.id}+'/'+${member.image}}" th:if="${member.image}!='basic.jpg'" /><img class="item1-img" th:src="@{/upload/profile/basic.jpg}"  th:if="${member.image}=='basic.jpg'" /><div class="item1-link"><a href="">기본사진으로 이용하기</a></div></div>
+	        <div class="profile-edit-item2"><input type="submit" value="수정"></div>
+	        <div class="profile-edit-item3"><p class="item3-p" >누구누구 나는</p><textarea name="introduction" class="item3-textarea" th:text="${member.introduction}"></textarea><input class="item3-email" type="text" name="email" placeholder="이메일" th:value="${member.email}"></div>
+	        <input class="profile-edit-file-input d-none" type="file" name="multiFile">
+	    </form> 
+    </section>
+    
+     
+    <div style="overflow:scroll; height:200px;" class = "wow scroll" >
+    	
+    
+    </div>
+	<script type="text/javascript" src="/js/infinite/documentInfiniteScrollWith.js"></script>
+	<script type="text/javascript">
+		
+	documentInfiniteScrollWith("http://localhost:8080/api/diary/free",".wow",function(json){ 
+		let div = "";
+		for(n of json){	
+			div += "<h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1>"
+			
+		}
+		return div;
+	}, "",".wow");
+	
+	
+	</script>
 </main>
 </html>
