@@ -6,12 +6,21 @@
 	box-sizing: border-box;
 }
 
-.date, .emotion-box{
+.date{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	margin-top: 15px;
 	margin-bottom: 15px;
+}
+
+.emotion-box{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 22px;
+	margin-bottom: 15px;
+	
 }
 
 .pub{

@@ -218,7 +218,7 @@ public class FreeDiaryController {
 						int changed,
 						String originalFile, 
 						CalendarEmotion calendarEmotion) {
-		System.out.println(changed);
+		System.out.println("changed"+changed);
 		System.out.println(originalFile);
 		
 		int id = freeDiary.getId();
