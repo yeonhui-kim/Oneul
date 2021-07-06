@@ -73,6 +73,7 @@ function check(){
 		alert("이메일 입력하세요")
 		return false;
 	}
-
+	
+	alert("회원가입이 완료되었습니다")
 	form.submit();
 }      
