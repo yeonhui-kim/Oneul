@@ -93,10 +93,10 @@ public class FutureDiaryController {
 	public String reg(@DateTimeFormat(pattern = "yyyy-MM-dd")Date bookingDate, 
 					  String content,
 					  MultipartFile file,
-					  String pub,
+					  
 					  String emotionId,
 					  HttpServletRequest request) {
-		int p = Integer.parseInt(pub);
+		
 		int emt = Integer.parseInt(emotionId);
 		
 		String fileName = file.getOriginalFilename();
@@ -112,7 +112,7 @@ public class FutureDiaryController {
 		futureDiary.setBookingDate(bookingDate);
 		futureDiary.setContent(content);
 		futureDiary.setMemberId(memberId);
-		futureDiary.setPub(p);
+		
 		futureDiary.setEmotionId(emt);
 		futureDiary.setImage(fileName);
 		

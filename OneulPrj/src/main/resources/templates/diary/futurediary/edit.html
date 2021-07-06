@@ -39,12 +39,7 @@ layout:decorator="/inc/layout">
 			   						<div th:replace="inc/modal::modal"></div>						
 								</td>
 							</tr>
-                            <tr>
-                              	<td colspan="4">															 
-	                              	<label>공개</label> <input type="radio" value="1" name="pub"  th:checked="${futureDiary.pub} ? 'true': 'false'"> 
-	                              	<label>비공개</label> <input type="radio" value="0" name="pub" th:checked="${futureDiary.pub} ? 'false': 'true'">
-                              	</td>
-                              </tr>  
+                             
                               <tr>
                                  <td colspan="4">
                                  <img class="image" th:if="${futureDiary.image}!=''" th:src="@{/upload/diary/futureDiary/} +${futureDiary.memberId}+@{/}+${futureDiary.id}+@{/}+ ${futureDiary.image}"

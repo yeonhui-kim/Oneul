@@ -18,3 +18,12 @@ textarea {
 	flex-direction:column;
 	align-items: center;
 }
+
+.form lable{
+	margin:15px;
+	margin-bottom:7px;
+}
+
+.form input[type=date]{
+	margin-bottom:7px;
+}

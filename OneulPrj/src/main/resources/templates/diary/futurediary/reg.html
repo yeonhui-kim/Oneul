@@ -22,18 +22,12 @@
 					<input type="date" name="bookingDate">
 					
 					
-					<lable>지금 당신의 감정을 선택하세요</lable>	
+					<lable class="lable2">지금 당신의 감정을 선택하세요</lable>	
    						<div id="emotion"></div>
    						<button id="open-button" type="button">감정 선택</button> 
    						<div th:replace="inc/modal::modal"></div>						
 					
 				
-					<tr>
-						<td colspan="4"><label>공개</label> <input type="radio"
-							value="1" name="pub"> <label>비공개</label> <input
-							type="radio" value="0" name="pub" checked></td>
-					</tr>
-					
 						<img class="image"></img>
 						<input type="file" name="file" value="0">
 							<textarea rows="20" cols="30" name="content"></textarea>
