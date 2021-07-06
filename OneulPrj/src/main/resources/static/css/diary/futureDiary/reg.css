@@ -28,26 +28,18 @@ textarea {
 	margin-bottom:7px;
 }
 
-.filebox label {
-  display: inline-block;
-  padding: .5em .75em;
-  
-  cursor: pointer;
-
- 
+#emotion{
+	margin:5px 0;
+	
+}
+.filebox{
+	margin-left:auto;
+	margin-right:20px;
+	margin-bottom:7px;
+	
 }
 
-.filebox label:active {
-  background-color: #367c36;
-}
-
-.filebox input[type="file"] {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+.image{
+	object-fit: cover;
+	margin : 7px 0;
 }

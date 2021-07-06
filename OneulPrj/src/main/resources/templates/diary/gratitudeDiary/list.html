@@ -8,7 +8,7 @@
 	<meta charset="UTF-8">
     <title>감사일기</title>
     <link href="/css/diary/gratitudeDiary/list.css" type="text/css" rel="stylesheet">
-    <script src="/js/infinite/infiniteScrollWith.js"></script>
+    <script src="/js/infinite/documentInfiniteScrollWith.js"></script>
     <link href="/css/emotion.css" type="text/css" rel="stylesheet">
     <script>
 
@@ -52,8 +52,9 @@
 	        			emo = "upset";
 	        		}
         			
-        			
-	        		html += `<div class='diary-container'>
+	        		/* <a class="content1" href='detail?id=${n.id}'> */
+	        		html += `<div class='diary-container' 
+	        						onclick="location.href='detail?id=${n.id}';">
 	                    <span class="date">
 	                        <span class="day">${date}</span>
 	                        <span class="dayName">${dayName}</span>
@@ -61,21 +62,21 @@
 						<div class="emotion-container">
 							<div class="${emo}"></div>
                         </div>
-                        <a href='detail?id=${n.id}'>
+                        <div class="content1">
                         	<div class="question"> 오늘의 감사한 일 : </div>
 							<div class='content'>${n.content1}</div>
 							<div class="question"> 오늘 나에게 일어난 멋진 일 : </div>
 							<div class='content'>${n.content2}</div>
 							<div class="question"> 나를 위한 긍정의 한 줄! : </div>
 							<div class='content'>${n.content3}</div>
-						</a>
+						</div>
 					</div>`;
 					
 	        	}
 	            
 	            return html;
 	        };
-	     infiniteScrollWith(requestUrl, containerClass,returningHTML,query);
+	        documentInfiniteScrollWith(requestUrl, containerClass,returningHTML,query,"#main");
 	        
 	});
 </script>
@@ -86,10 +87,8 @@
 	<main id="main" layout:fragment="main">
 		
 		<section class="open-lecture-content">
-	        <h1>일기목록</h1>
-	        <div class="container">
-	        
-	        </div>
+	        <br>
+	        <div class="container"></div>
         </section>
 	
 		<!-- <section class="">
