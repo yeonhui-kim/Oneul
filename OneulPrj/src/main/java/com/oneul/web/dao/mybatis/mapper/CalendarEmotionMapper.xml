@@ -16,13 +16,13 @@
 	</select>
 	
 	 <select id="getListDiary" resultType="com.oneul.web.entity.CalendarEmotion" parameterType="com.oneul.web.entity.CalendarEmotion">
-		select emotionId, regDate, content1 as 'content', '' as 'image', 'gratitudeDiary' as 'diary', memberId
+		select emotionId, regDate, content1 as 'content', 'gratitudeDiary' as 'diary', memberId
 		from oneul.GratitudeDiary where regDate = #{regDate} and memberId = #{memberId}
 		UNION
-		select emotionId, regDate, content, image, 'freeDiary' as 'diary', memberId
+		select emotionId, regDate, content, 'freeDiary' as 'diary', memberId
 		from oneul.FreeDiary where regDate = #{regDate} and memberId = #{memberId}
 		UNION
-		select emotionId, regDate, content, image, 'futureDiary' as 'diary', memberId
+		select emotionId, regDate, content, 'futureDiary' as 'diary', memberId
 		from oneul.FutureDiary where bookingDate = #{regDate} and memberId = #{memberId}
 	</select>
 	

@@ -66,7 +66,7 @@
      
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
-        var diaryContainer = document.querySelector(".diary-container"); 
+        var container = document.querySelector(".container"); 
         
         calendar = new FullCalendar.Calendar(calendarEl, {
           initialView: 'dayGridMonth',
@@ -78,60 +78,110 @@
       	  events:eventList,
       	
       	  eventClick:function(event){
-      		debugger;
+      		/* debugger; */
+      			container.innerHTML="";
       		var extendedProps = event.event.extendedProps;
       		
       		var startStr = event.event.startStr;
       		
       		if(prevStartStr == startStr) {
-	      		diaryContainer.classList.toggle("d-none");
+      			container.classList.toggle("d-none");
       		} else {
-      			diaryContainer.classList.remove("d-none");
+      			container.classList.remove("d-none");
       		}
       		
-      		var selectedIcon = extendedProps.selectedIcon;
+      		let selectedIcon = extendedProps.selectedIcon;
       		
       		var param = {
       			"startStr" : startStr
       		}
       		
+				 let html = "";
       		fetch('/api/diary/listDiary?startStr=' + startStr, {method: 'POST',
       			headers : {'Content-Type': 'application/json'},
       			  body: JSON.stringify(param)
       		}).then((response) => response.json()).then((json) => {
-				debugger;
+				/*  debugger; */
+				for(d of json){
+					console.log(d);
+					let emotionId = d.emotionId;
+	        		
+	        		let emo = "";
+	        		if(emotionId == 1){
+	        			emo = "happy";
+	        		}else if(emotionId == 2){
+	        			emo = "proud";
+	        		}else if(emotionId == 3){
+	        			emo = "flutter";
+	        		}else if(emotionId == 4){
+	        			emo = "calm";
+	        		}else if(emotionId == 5){
+	        			emo = "sensitive";
+	        		}else if(emotionId == 6){
+	        			emo = "unstable"
+	        		}else if(emotionId == 7){
+	        			emo = "tired";
+	        		}else if(emotionId == 8){
+	        			emo = "sad";
+	        		}else{
+	        			emo = "upset";
+	        		}
+	        		
+					 html += `
+					 	<div class='diary-container'>
+				    		<div class="diary">${d.diary}</div>
+				    		<div class="emotion-container">
+				    			<div class="${emo}"></div>
+				    		</div>
+				    		<div class="content">${d.content}</div>
+				    	</div>`;
 				
 				
-				
+				}return html;
+            }).then((html) => {
+            	container.insertAdjacentHTML('beforeend', html);
+				console.log(html);
             }).catch(err => {});
       		
       		prevStartStr = startStr;
+      		
       	  }
       	  
         });
         calendar.render();
         
-        
+        /* html += `<div class="date">${json.startStr}</div>
+        	<div class='d-none diary-container'>
+    		<div class="diary">${json.diary}</div>
+    		<div class="emotion-container">
+    			<div class="${selectedIcon}"></div>
+    		</div>
+    		
+    		<div class="content">${json.content}</div>
+    		
+    	</div>`; 
+    	
+    	 return html; */ 
       });
       
-      function abc(param) {
-    	  
-      }
        
     </script>
   </head>
   <main id="main" layout:fragment="main">
     <div id='calendar'></div>
-
+    
+	<div class ="d-none container"></div>
+	
+	<!-- <div class="date" th:text:"${startStr}"></div>
 	<div class='d-none diary-container'>
-		<div>감사일기</div>
+		<div class="diary">${diary}</div>
 		<div class="emotion-container">
-			<div class="happy"></div>
+			<div class="${selectedIcon}">감정아이콘</div>
 		</div>
 		
-		<div class='content'>오늘의 감사한 일 : 맛있는 음식을 먹었다</div>
+		<div class="content">콘텐츠</div>
 		
-	</div>
+	</div> -->
 
 
 </main>
