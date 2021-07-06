@@ -29,19 +29,32 @@ hr{
 	background-color: white;
 	border-radius: 8px;
     grid-template-columns: 80px 1fr;/*¿­ µÎ°³*/
-    grid-template-rows: 20px 1fr;/*Çà 3Ãþ*/
+    grid-template-rows: 40px 1fr;/*Çà 3Ãþ*/
 	grid-template-areas:
-	  "date date"
+	  "date content"
 	  "emotion content";
     align-items: center;
+    box-sizing: border-box;
 }
 
 .date{
 	grid-area: date;
-	margin: 20px 0px 10px 25px;
-	/* text-align: center; */
+	margin: 25px 25px 5px 17px;
+	text-align: center;
+	background-color: #F8F1E5;
+    border-radius: 20%;
+    padding: 5px;
 }
 
+.day{
+	font-weight: bold;
+    color: #757575;
+    font-size: 15px;
+}
+
+.dayName{
+	display: block;
+}
 .emotion-container{
 	grid-area: emotion;
 	
@@ -49,21 +62,22 @@ hr{
 
 .content{
 	height: 15px;
-	width: 95%;
-	text-overflow: ellipsis !important;
-	overflow: hidden !important;
-	white-space: no-wrap !important;
+	width: 90%;
+	text-overflow: ellipsis;
+	overflow: hidden;
 	margin-bottom: 6px;
 	margin-left: 5px;
+	
 }
 
 .content1{
 	width: 100%;
 	height: inherit;
 	grid-area: content;
-	vertical-align: middle;
-	background-color: white;
-	border-radius: 8px;
+	margin: 37px 0px 0px 10px;
+	white-space: nowrap;
+	overflow: hidden;
+	
 }
 
 .question{
