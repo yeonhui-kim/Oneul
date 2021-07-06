@@ -179,8 +179,12 @@ main{
             font-size: medium;
           }
           
-          .failMsg{
+          .failmsg{
           	color: red;
+            font-weight: bold;
+          }
+          .pwdmsg{
+            color: green;
             font-weight: bold;
           }
   

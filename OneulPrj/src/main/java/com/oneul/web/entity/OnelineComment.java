@@ -10,14 +10,13 @@ public class OnelineComment {
 	private Integer memberId;
 	private Integer onelineId;
 	private Integer commentId;
-	private String writerId;
+	private String userId;
 	private String image;
 	private List<OnelineComment> list;
 	
 	public OnelineComment() {
 		// TODO Auto-generated constructor stub
 	}
-	
 	
 	
 	
@@ -76,14 +75,6 @@ public class OnelineComment {
 	public void setList(List<OnelineComment> list) {
 		this.list = list;
 	}
-	
-	public String getWriterId() {
-		return writerId;
-	}
-
-	public void setWriterId(String writerId) {
-		this.writerId = writerId;
-	}
 
 	public String getImage() {
 		return image;
@@ -92,6 +83,15 @@ public class OnelineComment {
 	public void setImage(String image) {
 		this.image = image;
 	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+
+
 
 	@Override
 	public String toString() {

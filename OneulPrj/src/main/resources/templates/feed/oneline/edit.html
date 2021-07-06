@@ -14,10 +14,10 @@
 
 
 
-		<form action="reg" method="post" id="main">
-
+		<form action="edit" method="post" id="main">
+		<input type="hidden" name="id" th:value="${Oneline.id}">
 			<div class="content">
-				<form action="reg" method="post">
+
 					<textarea th:text="${Oneline.content}" class=txt name="content"></textarea>
 
 
@@ -25,7 +25,7 @@
 						<span>확인</span>
 					</button>
 
-				</form>
+			
 			</div>
 
 		</form>

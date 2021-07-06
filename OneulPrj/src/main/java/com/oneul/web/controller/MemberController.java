@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
 import java.sql.Date;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -45,10 +46,15 @@ public class MemberController {
 	public int check_id(String username) {
 		Member member = new Member();
 		int result = 2;
+		String unexp = "^[a-z0-9]{4,12}$";
 		
 		member.setUserId(username);
 		if(username.equals("")) {
 			return result;			
+		}
+		else if(!Pattern.matches(unexp, username)){
+			result = 3;
+			return result;
 		}else {
 			result = service.checkid(username);
 			return result;
@@ -96,7 +102,11 @@ public class MemberController {
 	
 	//아이디 찾기 실행
 	@PostMapping("findid")
-	public String findid(String name, Date birthday, String email,HttpServletRequest request, Model model) {
+	public String findid(String name, 
+						 Date birthday, 
+						 String email,
+						 HttpServletRequest request, 
+						 Model model) {
 		
 		//회원정보 체크
 		Member member = new Member();
@@ -138,7 +148,12 @@ public class MemberController {
 	
 	//비밀번호 찾기 수행
 	@PostMapping("findpwd")
-	public String findpwd(String username, String name, Date birthday, String email, Model model) {
+	public String findpwd(String username, 
+						  String name, 
+						  Date birthday, 
+						  String email, 
+						  Model model,
+						  HttpServletRequest request) {
 		
 		//회원정보체크
 		Member member = new Member();
@@ -161,8 +176,7 @@ public class MemberController {
 			String title = "Oneul 임시비밀번호";
 			String body = name+"님의 임시비밀번호는 "+pwd+" 입니다.";
 			service.sendEmail(email, title, body);
-			
-			return "redirect:/";
+			return "redirect:/?r=1";
 			
 		}else { //회원정보 없으면
 			model.addAttribute("msg","존재하지 않는 회원정보입니다");
@@ -171,19 +185,6 @@ public class MemberController {
 
 		
 	}
-	
-//	//로그인페이지 조회
-//	@RequestMapping("/login")
-//	public String login(HttpServletRequest request, Model model) {
-//		String errMsg;
-//		
-//		if(request.getAttribute("loginFailMsg")!=null) {
-//			errMsg = (String) request.getAttribute("loginFailMsg");
-//			model.addAttribute("errMsg", errMsg);
-//		}
-//		
-//		return "member/login";
-//	}
 	
 	//회원정보수정 페이지 조회
 	@RequestMapping("edit") 

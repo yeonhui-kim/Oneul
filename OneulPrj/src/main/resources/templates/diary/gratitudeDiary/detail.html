@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <title>gratitudeDiary detail</title>
     <link href="/css/emotion.css" type="text/css" rel="stylesheet">
+    <link href="/css/diary/gratitudeDiary/detail.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href='/css/diary/gratitudeDiary/comment.css' type="text/css">
 	<script src='/js/diary/gratitudeDiary/comment.js'></script>
 </head>
@@ -15,53 +16,39 @@
 <!-- ----------------main부분------------------- -->
 	<main id="main" layout:fragment="main">
 		<section class="">
-			<table border="1">
-				<tr>
-					<th>오늘의 감정</th>
-					<!-- <td id="emotion" colspan="3" th:text="${gratitudeDiary.emotionId}"> -->
-					<td colspan="3">
-						<th:block th:switch="${gratitudeDiary.emotionId}">
-							<span th:case="1"><div class="checked-emotion happy"></div></span>
-							<span th:case="2"><div class="checked-emotion proud"></div></span>
-							<span th:case="3"><div class="checked-emotion flutter"></div></span>
-							<span th:case="4"><div class="checked-emotion calm"></div></span>
-							<span th:case="5"><div class="checked-emotion sensitive"></div></span>
-							<span th:case="6"><div class="checked-emotion unstable"></div></span>
-							<span th:case="7"><div class="checked-emotion tired"></div></span>
-							<span th:case="8"><div class="checked-emotion sad"></div></span>
-							<span th:case="9"><div class="checked-emotion upset"></div></span>
-						</th:block>
-					</td>
-				</tr>
-				<tr>
-					<th>작성일</th>
-					<td colspan="3" th:text="${#calendars.format(gratitudeDiary.regDate, 'yyyy-MM-dd')}">작성일자</td>
-				</tr>
-				<tr th:with="pub = ${gratitudeDiary.pub}==false?'비공개':'공개'">
+			<div class="emotion">
+				<th:block th:switch="${gratitudeDiary.emotionId}">
+					<span th:case="1"><div class="checked-emotion happy"></div></span>
+					<span th:case="2"><div class="checked-emotion proud"></div></span>
+					<span th:case="3"><div class="checked-emotion flutter"></div></span>
+					<span th:case="4"><div class="checked-emotion calm"></div></span>
+					<span th:case="5"><div class="checked-emotion sensitive"></div></span>
+					<span th:case="6"><div class="checked-emotion unstable"></div></span>
+					<span th:case="7"><div class="checked-emotion tired"></div></span>
+					<span th:case="8"><div class="checked-emotion sad"></div></span>
+					<span th:case="9"><div class="checked-emotion upset"></div></span>
+				</th:block>
+			</div>
+			<div>
+				<div class="date" th:text="${#calendars.format(gratitudeDiary.regDate, 'yyyy-MM-dd')}">작성일자</div>
+			</div>
+				
+				<!-- <tr th:with="pub = ${gratitudeDiary.pub}==false?'비공개':'공개'">
 					<th>공개여부</th>
 					<td colspan="3"	th:text="${pub}">공개 / 비공개</td>
-				</tr>
-			</table>		
-				
-				
-			<table>	
-				
-				<th>오늘의 감사한 일 :</th>
-				<tr>
-					<td colspan="4" th:text="${gratitudeDiary.content1}"></td>		
-				</tr>
-				<th>오늘 나에게 일어난 멋진 일 :</th>
-				<tr>
-					<td colspan="4" th:text="${gratitudeDiary.content2}"></td>
-				</tr>
-				<th>나를 위한 긍정의 한 줄! :</th>
-				<tr>
-					<td colspan="4" th:text="${gratitudeDiary.content3}"></td>		
-				</tr>
+				</tr> -->
+		
+			<div class="content-container">
+				<div class="question">오늘의 감사한 일 :</div>
+				<div class="content" th:text="${gratitudeDiary.content1}"></div>		
+				<div class="question">오늘 나에게 일어난 멋진 일 :</div>
+				<div class="content" th:text="${gratitudeDiary.content2}"></div>
+				<div class="question">나를 위한 긍정의 한 줄! :</div>
+				<div class="content" th:text="${gratitudeDiary.content3}"></div>		
+			</div>		
 					
-			</table>
 			
-			<div>
+			<div class="button">
 				<a href="list">목록</a> 
 				<a th:href="@{edit(id=${gratitudeDiary.id})}">수정</a>
 				<a th:href="@{del(id=${gratitudeDiary.id})}"

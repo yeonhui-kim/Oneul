@@ -22,7 +22,8 @@
                     <li>
                         <input type="password" name="password" placeholder="Password"/>
                     </li>
-                    <div class="failMsg" th:if="${loginFailMsg}!=null" th:text="${loginFailMsg}">아이디 또는 비밀번호가 틀립니다.</div>
+                    <div class="failmsg" th:if="${loginFailMsg}!=null" th:text="${loginFailMsg}">아이디 또는 비밀번호가 틀립니다.</div>
+                    <div class="pwdmsg" th:if="${param.r}!=null">회원님의 메일로 임시 비밀번호를 발송하였습니다.</div>
                     <li>
                         <input class="btn-submit" type="button" onclick="check()" value="LOGIN">
                     </li>

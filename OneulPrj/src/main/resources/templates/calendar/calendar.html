@@ -25,11 +25,34 @@
 		    margin-right: auto;
 	    }
 	    
+	    .d-none{
+	    	display: none;
+	    }
 	    
+	    .diary-container{
+			display:grid;
+			height:70px;
+			width:90%;
+			padding:5px;
+			background-color: white;
+			border-radius: 8px;
+		    align-items: center;
+		    margin: 10px auto 10px auto;
+		    grid-template-columns: 80px 1fr;/*열 두개*/
+		    grid-template-rows: 1fr;/*행 3층*/
+			grid-template-areas:
+			  "emotion content";
+		}
+	    .emotion-container{
+			grid-area: emotion;
+		}
 	
+		.content{
+			grid-area: content;
+		}
     </style>
     <script>
-    
+      var prevStartStr = "";
       var jsonString ="[[${jsonString}]]";
       
       if( jsonString == "" ) {
@@ -43,7 +66,8 @@
      
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
-         
+        var diaryContainer = document.querySelector(".diary-container"); 
+        
         calendar = new FullCalendar.Calendar(calendarEl, {
           initialView: 'dayGridMonth',
        	  editable: true,
@@ -53,25 +77,62 @@
           	
       	  events:eventList,
       	
+      	  eventClick:function(event){
+      		debugger;
+      		var extendedProps = event.event.extendedProps;
+      		
+      		var startStr = event.event.startStr;
+      		
+      		if(prevStartStr == startStr) {
+	      		diaryContainer.classList.toggle("d-none");
+      		} else {
+      			diaryContainer.classList.remove("d-none");
+      		}
+      		
+      		var selectedIcon = extendedProps.selectedIcon;
+      		
+      		var param = {
+      			"startStr" : startStr
+      		}
+      		
+      		fetch('/api/diary/listDiary?startStr=' + startStr, {method: 'POST',
+      			headers : {'Content-Type': 'application/json'},
+      			  body: JSON.stringify(param)
+      		}).then((response) => response.json()).then((json) => {
+				debugger;
+				
+				
+				
+            }).catch(err => {});
+      		
+      		prevStartStr = startStr;
+      	  }
+      	  
         });
         calendar.render();
         
+        
       });
       
-      
-      
-      
-      function clickDate() {
-    	 
+      function abc(param) {
     	  
-      } 
-
+      }
+       
     </script>
   </head>
   <main id="main" layout:fragment="main">
     <div id='calendar'></div>
-    
-<!--     <div></div> -->
-    
-  </main>
+
+	<div class='d-none diary-container'>
+		<div>감사일기</div>
+		<div class="emotion-container">
+			<div class="happy"></div>
+		</div>
+		
+		<div class='content'>오늘의 감사한 일 : 맛있는 음식을 먹었다</div>
+		
+	</div>
+
+
+</main>
 </html>

@@ -43,9 +43,8 @@
 				<tr>
 					<th>날짜변경</th>
 					<td>
-						<div th:text="${#calendars.format(gratitudeDiary.regDate, 'yyyy-MM-dd')}"></div>
-						<br>
-						<span>변경할 날짜 : </span><input type="date" name="regDate">
+						<input type="date" name="regDate" 
+								th:value="${#calendars.format(gratitudeDiary.regDate, 'yyyy-MM-dd')}">
 					</td>
 				</tr>
 				

@@ -15,8 +15,9 @@ window.addEventListener("load",function(){
 			success : function(data){
 				if(data==2){
 					alert("아이디를 입력해주세요")
-				}
-				else if(data == 1){
+				}else if(data == 3){
+					alert("아이디는 영문 소문자와 숫자 4~12자리로 입력해야합니다!");
+				}else if(data == 1){
 					alert("중복된 아이디입니다.");
 				}else if(data == 0){
 					alert("사용가능한 아이디입니다.");
@@ -38,19 +39,37 @@ function check(){
 	let name = document.getElementsByName("name")[0]
 	let email = document.getElementsByName("email")[0]
 	
-	if(username.value.length < 1){
+	if(username.value == ''){
 		alert("아이디를 입력하세요")
 		return false;
 	}
-	if(password.value.length < 1){
+	let unexp = /^[a-z0-9]{4,12}$/
+	if(!unexp.test(username.value)){
+		alert("아이디는 영문 소문자와 숫자 4~12자리로 입력해야합니다!")
+		return false;
+	}
+	
+	if(password.value == ''){
 		alert("비밀번호를 입력하세요")
 		return false;
 	}
-	if(name.value.length < 1){
+	let pwdexp = /^[a-z0-9]{4,15}$/
+	if(!pwdexp.test(password.value)){
+		alert("비밀번호는 영문 소문자,숫자 4~15자리로 입력하세요")
+		return false;
+	}
+
+	if(name.value == ''){
 		alert("이름을 입력하세요")
 		return false;
 	}
-	if(email.value.length < 1){
+	let nexp = 	/^[가-힣]+$/
+	if(!nexp.test(name.value)){
+		alert("이름은 한글만 입력 가능합니다")
+		return false;
+	}
+
+	if(email.value == ''){
 		alert("이메일 입력하세요")
 		return false;
 	}

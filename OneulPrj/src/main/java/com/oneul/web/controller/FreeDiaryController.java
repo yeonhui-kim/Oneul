@@ -208,10 +208,10 @@ public class FreeDiaryController {
 
 	@PostMapping("edit")
 	public String edit(FreeDiary freeDiary,
-						MultipartFile file,
-						@DateTimeFormat(pattern = "yyyy-MM-dd")Date regDate,
+						MultipartFile file,			
 						HttpServletRequest request,
 						CalendarEmotion calendarEmotion) {
+		System.out.println(freeDiary);
 		System.out.println(file);
 		HttpSession session = request.getSession(true);//세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
 		String username = (String) session.getAttribute("username");
@@ -219,8 +219,9 @@ public class FreeDiaryController {
 		Member member = new Member();
 		member = memberSerivce.get(username);
 		int id = member.getId();
-		
-		freeDiary.setRegDate(regDate);
+		System.out.println(freeDiary.getEmotionId()); 
+		System.out.println(freeDiary.getRegDate());
+	
 		freeDiary.setMemberId(id);
 		
 		String fileName = file.getOriginalFilename();
@@ -249,7 +250,8 @@ public class FreeDiaryController {
 			e.printStackTrace();
 		}
 		
-		calendarService.updateCalendar(calendarEmotion);
+		if(freeDiary.getEmotionId() != null)
+			calendarService.updateCalendar(calendarEmotion);
 
 		return "redirect:detail?id=" + freeDiary.getId();
 	}
