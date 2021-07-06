@@ -28,6 +28,11 @@ public class MyBatisCalendarEmotionDao implements CalendarEmotionDao {
 	}
 	
 	@Override
+	public List<CalendarEmotion> getListDiary(CalendarEmotion param) {
+		return mapper.getListDiary(param);
+	}
+	
+	@Override
 	public int insertCalendar(CalendarEmotion calendarEmotion) {
 		return mapper.insertCalendar(calendarEmotion);
 	}
@@ -46,6 +51,8 @@ public class MyBatisCalendarEmotionDao implements CalendarEmotionDao {
 	public int deleteCalendar(CalendarEmotion calendarEmotion) {
 		return mapper.deleteCalendar(calendarEmotion);
 	}
+
+	
 
 
 

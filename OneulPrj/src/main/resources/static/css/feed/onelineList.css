@@ -115,6 +115,10 @@ html, body {
 	margin-bottom: 15px;
 }
 
+.content-box{
+	padding-bottom: 50px;
+}
+
 /*-----------------´ñ±Û--------------------------------*/
 #comment-txt {
 	margin-top: 10px;

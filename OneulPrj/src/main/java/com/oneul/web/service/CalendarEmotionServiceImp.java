@@ -22,6 +22,12 @@ public class CalendarEmotionServiceImp implements CalendarEmotionService {
 	}
 	
 	@Override
+	public List<CalendarEmotion> getListDiary(CalendarEmotion param) {
+		List<CalendarEmotion> diaryList = dao.getListDiary(param);
+		return diaryList;
+	}
+
+	@Override
 	public int insertCalendar(CalendarEmotion calendarEmotion) {
 		return dao.insertCalendar(calendarEmotion);
 	}
@@ -42,7 +48,6 @@ public class CalendarEmotionServiceImp implements CalendarEmotionService {
 		return dao.deleteCalendar(calendarEmotion);
 	}
 
-
-
+	
 	
 }
