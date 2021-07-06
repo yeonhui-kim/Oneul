@@ -63,7 +63,7 @@ public class MemberController {
 	
 	}
 	
-	//회원정보 등록
+	//회원가입 실행
 	@PostMapping("reg") 
 	public String reg(String username,
 						String password,
@@ -72,12 +72,10 @@ public class MemberController {
 						String email,
 						Model model) {
 		
-		Member member2 = new Member();
-		member2.setUserId(username);
-		int result = service.check(member2);
+		int result = service.checkid(username);
 		
 		if(result == 1) {
-			return "redirect:signup?result="+result;			
+			return "redirect:signup?result="+result;		
 		}
 		else {
 			Member member = new Member();
@@ -188,7 +186,9 @@ public class MemberController {
 	
 	//회원정보수정 페이지 조회
 	@RequestMapping("edit") 
-	public String edit(HttpServletRequest request, Model model) {
+	public String edit(HttpServletRequest request, Model model,
+						@RequestParam(name = "result", defaultValue = "0") int result) {
+		
 		HttpSession session = request.getSession(true);
 		String username = (String) session.getAttribute("username");
 		
@@ -201,6 +201,10 @@ public class MemberController {
 		member.setPassword(password);
 		
 		model.addAttribute(member);
+		
+		//실패메세지
+		if(result == 1)
+			model.addAttribute("checkmsg","중복된 아이디입니다.");
 		
 		return "member/edit";		
 	}
@@ -217,16 +221,24 @@ public class MemberController {
 		member2 = service.get(originUsername);
 		int id = member2.getId();
 		
-		//변경된 회원정보 업데이트
-		Member member = new Member();
-		member.setId(id);
-		member.setUserId(username);
-		String noopPassword = "{noop}"+password;
-		member.setPassword(noopPassword);
+		//회원아이디 중복체크
+		int result = service.checkid(username);
 		
-		service.updatebyid(member);
+		if(result == 1) {
+			return "redirect:edit?result="+result;		
+		}else {
+			//변경된 회원정보 업데이트
+			Member member = new Member();
+			member.setId(id);
+			member.setUserId(username);
+			String noopPassword = "{noop}"+password;
+			member.setPassword(noopPassword);
+			
+			service.updatebyid(member);
+			
+			return "redirect:/doLogout";			
+		}
 		
-		return "redirect:/doLogout";
 	}
 	
 	@RequestMapping("logintest")
