@@ -28,7 +28,7 @@
 	</select> -->
 
 	<insert id="insert"
-		parameterType="com.oneul.web.entity.FreeDiary">
+		parameterType="com.oneul.web.entity.FreeDiary" useGeneratedKeys="true" keyProperty="id">
 		insert into FreeDiary(content,pub,memberId,image,emotionId,regDate)
 		values(#{content},#{pub},#{memberId},#{image},#{emotionId},#{regDate})
 	</insert>

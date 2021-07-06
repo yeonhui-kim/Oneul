@@ -7,7 +7,7 @@
 	<meta charset="UTF-8">
 	<link href="/css/diary/freeDiary/list.css" type="text/css"
 	rel="stylesheet">
-	<script src="/js/infinite/infiniteScrollWith.js"></script>
+	<script src="/js/infinite/documentInfiniteScrollWith.js"></script>
 	<script>
 
 	window.addEventListener("load",()=>{
@@ -47,26 +47,25 @@
 	        		console.log(regDate.type);
 	        		//html += `<h1>{$regDate}</h1>`;
 	        		html += `<div class='diary-container'>
-	                    <span class="date">
-                        <span class="dayName">${dayName}</span><br>
-                        <span class="day">${date}</span>
-                    </span>
-						<div class="img-container">
-							<img src="/upload/${n.image}">
-                        </div>
-						<a class='content' href='detail?id=${n.id}'>${n.content}</a> 
-						<div class="comment">
-						<span>${count}</span>
-						<img style="width: 20px;margin-left: 5px;" src="https://image.flaticon.com/icons/png/128/3208/3208664.png">
-						<img class="pubIcon"style="width: 20px;margin-left: 5px;" src=${src}>
-
-						</div>
-					</div>`;
+			                    <span class="date">
+			                        <span class="dayName">${dayName}</span><br>
+			                        <span class="day">${date}</span>
+		                    	</span>
+							<div class="img-container">
+								<img src="/upload/${n.image}">
+	                        </div>
+							<a class='content' href='detail?id=${n.id}'>${n.content}</a> 
+							<div class="comment">
+								<span>${count}</span>
+								<img style="width: 20px;margin-left: 5px;" src="https://image.flaticon.com/icons/png/128/3208/3208664.png">
+								<img class="pubIcon"style="width: 20px;margin-left: 5px;" src=${src}>
+							</div>
+							</div>`;
 	        	}
 	            
 	            return html;
 	        };
-	     infiniteScrollWith(requestUrl, containerClass,returningHTML,query);
+	        documentInfiniteScrollWith(requestUrl, containerClass,returningHTML,query,"#main");
 	        
 	});
 </script>
@@ -74,7 +73,7 @@
 </head>
 <main id="main" layout:fragment="main">
 
-    <section style="overflow: scroll;" class="open-lecture-content">
+    <section class="open-lecture-content">
         <h1>일기목록</h1>
         <div class="container">
         

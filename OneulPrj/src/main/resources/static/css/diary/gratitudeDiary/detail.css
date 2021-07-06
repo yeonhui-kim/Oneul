@@ -16,12 +16,15 @@
 	border-radius: 8px;
 	margin-left: auto;
 	margin-right: auto;
+	align-items: center;
+	padding-top: 1px;
+    padding-bottom: 13px;
 }
 
 .question{
 	size: 10px;
 	color: #c4bda4;
-	margin: 20px 0px 10px 25px;
+	margin: 15px 0px 10px 20px;
 }
 
 .date{
@@ -34,12 +37,12 @@
 
 .content{
 	font-size: 12px;
-	margin: 15px 0px 10px 30px;
+	margin: 5px 20px 5px 25px;
 }
 
 .button{
 	display: flex;
-	margin-top: 10px;
-	margin-right: 20px;
-	justify-content: flex-end;
+	margin: 10px 0px 0px 240px;
+	width: 100px;
+	justify-content: space-evenly;
 }
