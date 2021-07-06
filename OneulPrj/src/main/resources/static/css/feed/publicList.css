@@ -1,0 +1,154 @@
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background-color: #F2F2F2;
+}
+
+.d-none {
+	display: none;
+}
+
+/* ---------------ÇÇµå------------------------------------ */
+.box {
+	margin-bottom: 20px
+}
+
+.profile {
+	display: grid;
+	height: 50px;
+	grid-template-columns: 60px 1fr 1fr;
+	grid-template-rows: repeat(2, 1fr);
+	grid-template-areas: "img nickname edit" "img date del";
+	margin-bottom: 5px;
+	align-items: center;
+}
+
+.profile-image {
+	grid-area: img;
+	width: 80%;
+	height: 80%;
+	border-radius: 60%;
+}
+
+.user-name {
+	grid-area: nickname;
+	font-size: 12px;
+	font-weight: bold;
+	margin-top: 5px;
+	margin-left: 5px;
+}
+
+.edit {
+	grid-area: edit;
+	justify-self: end;
+}
+
+.del {
+	grid-area: del;
+	justify-self: end;
+}
+
+.date {
+	grid-area: date;
+	font-size: 12px;
+	margin-left: 5px;
+	margin-bottom: 5px;
+}
+
+.img {
+	object-fit: cover;
+	width: 100%;
+}
+
+#wrapper {
+	width: 100%;
+	position: relative;
+	background-color: #F2F2F2;
+	height: 90%;
+}
+
+#main {
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%);
+	width: 90%;
+	height: 100%;
+	padding: 10px;
+	/* background-color: white; */
+	border-radius: 8px;
+}
+
+.txt {
+	width: 400px;
+	height: 100%;
+	line-height: 100%;
+	white-space: normal;
+	/* word-break: break-all; */
+	padding: 10px;
+}
+
+.content {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	
+	background-color: white;
+	border-radius: 8px;
+	padding: 10px;
+	width: 100%;
+	height: 100%;
+}
+
+.bold {
+	padding: 2px;
+	background: #d6d5d3;
+}
+
+.content-text {
+	margin-bottom: 15px;
+}
+
+.content-box {
+	padding-bottom: 50px;
+}
+
+/*-----------------´ñ±Û--------------------------------*/
+#comment-txt {
+	margin-top: 10px;
+	width: 100%;
+	height: 60px;
+}
+
+#btn {
+	margin-top: 5px;
+}
+
+.btn-box {
+	position: relative;
+	right: 10px;
+	display: inline;
+}
+
+.reg-img {
+	width: 100px;
+	height: 50px;
+	position: fixed;
+	z-index: 1;
+	right: 0%;
+	bottom: 10%;
+}
+
+.pub-img {
+	width: 50px;
+	height: 50px;
+}
+
+.txt {
+	width: 100%;
+}

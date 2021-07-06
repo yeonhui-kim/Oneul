@@ -10,6 +10,7 @@ import com.oneul.web.dao.FreeDiaryCommentDao;
 import com.oneul.web.entity.FreeDiaryView;
 import com.oneul.web.entity.FutureDiaryView;
 import com.oneul.web.entity.GratitudeDiaryView;
+import com.oneul.web.entity.OnelineView;
 
 @Service
 public class ApiDiaryServiceImp implements ApiDiaryService {
@@ -33,6 +34,12 @@ public class ApiDiaryServiceImp implements ApiDiaryService {
 	public List<GratitudeDiaryView> getGratitudeList(Integer memberId, String query, Integer pageOffset) {
 		// TODO Auto-generated method stub
 		return dao.getGratitudeList(memberId, query, pageOffset);
+	}
+	
+	@Override
+	public List<OnelineView> getOnelineList(Integer memberId, String query, Integer pageOffset) {
+		// TODO Auto-generated method stub
+		return dao.getOnelineList(memberId, query, pageOffset);
 	}
 	
 	
