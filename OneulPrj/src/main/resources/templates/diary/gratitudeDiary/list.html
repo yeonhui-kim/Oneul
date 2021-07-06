@@ -8,7 +8,7 @@
 	<meta charset="UTF-8">
     <title>감사일기</title>
     <link href="/css/diary/gratitudeDiary/list.css" type="text/css" rel="stylesheet">
-    <script src="/js/infinite/infiniteScrollWith.js"></script>
+    <script src="/js/infinite/documentInfiniteScrollWith.js"></script>
     <link href="/css/emotion.css" type="text/css" rel="stylesheet">
     <script>
 
@@ -76,7 +76,7 @@
 	            
 	            return html;
 	        };
-	     infiniteScrollWith(requestUrl, containerClass,returningHTML,query);
+	        documentInfiniteScrollWith(requestUrl, containerClass,returningHTML,query,"#main");
 	        
 	});
 </script>
@@ -88,9 +88,7 @@
 		
 		<section class="open-lecture-content">
 	        <br>
-	        <div class="container">
-	        
-	        </div>
+	        <div class="container"></div>
         </section>
 	
 		<!-- <section class="">
