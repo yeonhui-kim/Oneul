@@ -13,27 +13,28 @@
 
 
 	<div id="main">
+	
+	<div class="link-item">
+      <a class="oneline-link" href="/feed/oneline/list">한줄일기</a>
+      <a class="pub-link" href="/feed/publicdiary/list?f=1">공개일기</a>
+      </div>
 
-		<div class="btn-box">
-			<a href="reg"> <img class="reg-img"
-				src="/images/oneline/addBtn.png">
-			</a>
-		</div>
 
 		<form class="emotionbtn">
 			
-			<input class="" type="submit" name="f" value="1" />
-			<input class="" type="submit" name="f" value="2" />
-			<input class="" type="submit" name="f" value="3" />
-			<input class="" type="submit" name="f" value="4" />
-			<input class="" type="submit" name="f" value="5" />
-			<input class="" type="submit" name="f" value="6" />
-			<input class="" type="submit" name="f" value="7" />
-			<input class="" type="submit" name="f" value="8" />
-			<input class="" type="submit" name="f" value="9" />
+			<a href="/feed/publicdiary/list?f=1" class="happy" ></a>
+			<a href="/feed/publicdiary/list?f=2" class="proud"  ></a>
+			<a href="/feed/publicdiary/list?f=3" class="flutter"></a>
+			<a href="/feed/publicdiary/list?f=4" class="calm" ></a>
+			<a href="/feed/publicdiary/list?f=5" class="sensitive"></a>
+			<a href="/feed/publicdiary/list?f=6" class="unstable"></a>
+			<a href="/feed/publicdiary/list?f=7" class="tired" ></a>
+			<a href="/feed/publicdiary/list?f=8" class="sad" ></a>
+			<a href="/feed/publicdiary/list?f=9" class="upset"></a>
+
 			
 		</form>
-
+		<div class="content-box"> 
 		<div th:each="n:${list}">
 			<article class="box">
 				<div class="content">
@@ -48,7 +49,7 @@
 					</div>
 					<a th:text="${n.diary}"></a>
 					<div class="content-text">
-						<a th:href="@{'/diary/' +${n.diary} +'/' +'detail?id=' +${n.id} }" th:text="${n.content}">게시글내용</a>
+						<a class="text-over" th:href="@{'/diary/' +${n.diary} +'/' +'detail?id=' +${n.id} }" th:text="${n.content}">게시글내용</a>
 					</div>
 
 					<div class="review-attr">
@@ -61,6 +62,7 @@
 					</div>
 				</div>
 			</article>
+		</div>
 		</div>
 
 

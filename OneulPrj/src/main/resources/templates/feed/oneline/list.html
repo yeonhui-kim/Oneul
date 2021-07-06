@@ -46,15 +46,26 @@
 		        		src = close;
 		        	}
 		        	
-		        	let img = "";
+		        	/* -------------프로필조건-------------------------- */
+		        	let img;	    	
+		        	let basic = "/upload/profile/basic.jpg";
+		        	let profile = "/upload/profile/"+n.memberId+"/"+n.image;
 		        	
 		        	if(n.image == "basic.jpg"){
-		        		img = "/upload/profile/basic.jpg";
+		        		img = basic;
+		        	}else{
+		        		img = profile;
 		        	}
 		        	
 		        	console.log(img);
 	        		
 	        		console.log(regDate.type);
+	        		
+	        		
+	        		/* --------------------수정 삭제--------------- */
+	        	
+	        		
+	        		
 	        		
 	        		
 	        		/*---------------한줄일기-------------------*/	
@@ -67,23 +78,11 @@
 	    				<div class="content">
 	    					<div class="profile">   	    					
 	    								
-	    						<img class="profile-image" src="/upload/profile/basic.jpg" "${n.image}==basic.jpg">
-	    						
-	    						<img class="profile-image" src="/upload/profile/${n.memberId}/${n.image}" >
+	    						<img class="profile-image" src=${img}>
 	    					
 	    							<a class="user-name">${n.writerId}</a> 
-	    			
-
-	    						<div class="edit" />
-
-	    							<a href='edit?id=${n.id}'>수정</a>
-
-
-	    						</div>
-	    						<div class="del" >
-	    							<a href='del?id=${n.id}'
-	    								onclick="if(!confirm('삭제하시겠습니까?')) return false;">삭제</a>
-	    						</div>
+	    							<a class="date">${n.regDate}</a>
+	    							
 	    					</div>
 
 
@@ -122,8 +121,12 @@
 
 <div id="main">
 
+
 <section style="overflow: scroll;" class="open-lecture-content">
-        <h1>일기목록</h1>
+	<div class="link-item">
+      <a class="oneline-link" href="/feed/oneline/list">한줄일기</a>
+      <a class="pub-link" href="/feed/publicdiary/list?f=1">공개일기</a>
+      </div>
         <div class="container">
         </div>
        

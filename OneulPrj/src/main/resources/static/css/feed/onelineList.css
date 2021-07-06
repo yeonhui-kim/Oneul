@@ -120,6 +120,24 @@ html, body {
 	
 }
 
+.link-item{
+	display: flex;
+	justify-content: space-around;
+	padding-bottom: 5px;
+}
+
+.oneline-link{
+	font-size: 1.5em;
+	font-weight: bold;
+	color: #585252;
+	
+}
+
+.pub-link{
+	font-size: 1.5em;
+	
+}
+
 /*-----------------´ñ±Û--------------------------------*/
 #comment-txt {
 	margin-top: 10px;
