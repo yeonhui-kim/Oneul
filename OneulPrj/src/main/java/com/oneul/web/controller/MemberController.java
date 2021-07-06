@@ -186,19 +186,6 @@ public class MemberController {
 		
 	}
 	
-//	//로그인페이지 조회
-//	@RequestMapping("/login")
-//	public String login(HttpServletRequest request, Model model) {
-//		String errMsg;
-//		
-//		if(request.getAttribute("loginFailMsg")!=null) {
-//			errMsg = (String) request.getAttribute("loginFailMsg");
-//			model.addAttribute("errMsg", errMsg);
-//		}
-//		
-//		return "member/login";
-//	}
-	
 	//회원정보수정 페이지 조회
 	@RequestMapping("edit") 
 	public String edit(HttpServletRequest request, Model model) {
