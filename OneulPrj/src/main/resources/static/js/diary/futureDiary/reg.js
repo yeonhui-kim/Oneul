@@ -3,7 +3,7 @@
  */
  window.addEventListener("load",()=>{
 	const fileInput = document.querySelector("input[type='file']");
-	
+	const fileBox = document.querySelector(".filebox");
 	fileInput.oninput = ()=>{
 		let file = fileInput.files[0];
 		if(file.type.indexOf("image/") < 0)
@@ -16,10 +16,10 @@
 			console.log("reader load");
 			let img = document.querySelector(".image");
 			img.src = e.target.result;
-			img.style.width = "200px";
-			img.style.height = "150px";
+			img.style.width = "90%";
+			img.style.height = "200px";
 			
-			fileInput.insertAdjacentElement("beforebegin",img);
+			fileBox.insertAdjacentElement("beforebegin",img);
 		};
 		
 			
