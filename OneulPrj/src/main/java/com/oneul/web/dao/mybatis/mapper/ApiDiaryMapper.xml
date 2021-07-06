@@ -37,4 +37,17 @@
         LIMIT 10 offset ${param3}
 	</select>
 	
+	<select id="getOnelineList" resultType="com.oneul.web.entity.OnelineView">
+		select Oneline.id, writerId,content, regDate, memberId, m.image,(select count(id) from
+		OnelineComment where onelineId = Oneline.id) commentCount from Oneline left
+		join Member as m on m.id = Oneline.memberid where Oneline.id
+		order by regdate desc
+        LIMIT 10 offset ${param3}
+	</select>
+	
+	
+	
+	
+	
+	
 </mapper>
