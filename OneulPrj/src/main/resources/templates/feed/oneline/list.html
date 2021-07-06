@@ -8,6 +8,7 @@
 <title>한줄일기</title>
 <link href="/css/feed/onelineList.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="/js/infinite/infiniteScrollWith.js"></script>
+ <script src="/js/infinite/documentInfiniteScrollWith.js"></script>
 <script>
 
 	window.addEventListener("load",()=>{
@@ -45,7 +46,13 @@
 		        		src = close;
 		        	}
 		        	
-		        	let image
+		        	let img = "";
+		        	
+		        	if(n.image == "basic.jpg"){
+		        		img = "/upload/profile/basic.jpg";
+		        	}
+		        	
+		        	console.log(img);
 	        		
 	        		console.log(regDate.type);
 	        		
@@ -85,7 +92,7 @@
 	    					</div>
 
 	    					<div class="review-attr">
-	    						<span>좋아요 0</span> <span>${count}</span>
+	    						<span>댓글 ${count}</span>
 	    					</div>
 	    					<hr>
 
@@ -100,12 +107,20 @@
 	            
 	            return html;
 	        };
-	     infiniteScrollWith(requestUrl, containerClass,returningHTML,query);
+	        documentInfiniteScrollWith(requestUrl, containerClass,returningHTML,query, "#main");
 	        
 	});
 </script>
 </head>
 <main id="wrapper" layout:fragment="main">
+
+<div class="btn-box">
+      <a href="reg"> <img class="reg-img"
+         src="/images/oneline/addBtn.png">
+      </a>
+   </div>
+
+<div id="main">
 
 <section style="overflow: scroll;" class="open-lecture-content">
         <h1>일기목록</h1>
@@ -113,7 +128,7 @@
         </div>
        
         </section>
-        
+  </div>
         
         
 <!-----------------------------------한줄일기----------------------------------------------->  
