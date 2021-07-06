@@ -4,7 +4,6 @@
 	layout:decorator="/inc/layout">
 <head>
 <meta charset="UTF-8">
-<script src='/js/diary/freeDiary.js'></script>
 <title>자유일기-수정페이지</title>
 <link href="/css/diary/modal.css" type="text/css" rel="stylesheet">
 <script src='/js/modal/modal.js'></script>
@@ -47,7 +46,8 @@
 			</tr>
 			<tr>
 				<th>첨부파일</th>
-				<td colspan="4"><img class="image"
+				<td colspan="4">
+					<img class="image"
 					th:if="${freeDiary.image}!=''"
 					th:src="@{/upload/diary/freeDiary/} +${freeDiary.memberId}+@{/}+${freeDiary.id}+@{/}+ ${freeDiary.image}"
 					style="width: 200px; height: 150px;"> 
@@ -92,6 +92,5 @@
 		</div>
 	</form>
 	</section>
-	<script src='/js/diary/freediary/reg.js'></script>
 </main>
 </html>
