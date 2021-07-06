@@ -32,9 +32,10 @@
 			</tr>
 			<tr>
 				<th>첨부파일</th>
-				<td colspan="3"><img style="width: 300px;"
-					th:src="@{'/upload/'+ ${freeDiary.image}} "
-					th:if="${freeDiary.image}!=''"></td>
+				<td colspan="3">
+				  <img class="image" th:if="${freeDiary.image}!=''" 
+				  th:src="@{/upload/diary/freeDiary/} +${freeDiary.memberId}+@{/}+${freeDiary.id}+@{/}+ ${freeDiary.image}">
+				</td>
 			</tr>
 			<tr>
 				<th>작성일</th>

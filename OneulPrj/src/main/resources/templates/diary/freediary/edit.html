@@ -47,8 +47,17 @@
 			</tr>
 			<tr>
 				<th>첨부파일</th>
-				<img class="image"></img>
-				<td colspan="3"><input type="file" name="file"></td>
+				<td colspan="4"><img class="image"
+					th:if="${freeDiary.image}!=''"
+					th:src="@{/upload/diary/freeDiary/} +${freeDiary.memberId}+@{/}+${freeDiary.id}+@{/}+ ${freeDiary.image}"
+					style="width: 200px; height: 150px;"> 
+					<img class="image" th:if="${freeDiary.image}==''"> 
+					<input class="file-del-btn" type="button" value="삭제"> 
+					<input type="file" name="file"> 
+					<input class="changed" type="hidden" name="changed" value="0"> 
+					<input type="hidden" name="originalFile" th:value="${freeDiary.image}">
+
+				</td>
 			</tr>
 			<tr>
 				<th>작성일</th>
