@@ -33,13 +33,13 @@ window.addEventListener("load", function(event) {
 			console.log(openBtns[i].parentNode.parentNode.lastElementChild.firstElementChild.innerText);
 			//부모댓글유저이름
 			let receriverName = openBtns[i].parentNode.parentNode.lastElementChild.firstElementChild;
-			receiver.innerText = receriverName.innerText;
+			receiver.innerText = " "+ receriverName.innerText;
 			//부모댓글유저이름 텍스트창에넣기
 			let receiverInput = document.querySelector('.receiverInput');
 			console.log(receiverInput);
 			//receiverInput.value = '@'+ openBtns[i].parentNode.parentNode.lastElementChild.firstElementChild.innerText;
 			let commentBox = document.querySelector('.commentBox');
-			commentBox.innerText = '@'+ openBtns[i].parentNode.parentNode.lastElementChild.firstElementChild.innerText;
+			commentBox.innerText = '@'+ openBtns[i].parentNode.parentNode.lastElementChild.firstElementChild.innerText + " ";
 		};
 	};
 
