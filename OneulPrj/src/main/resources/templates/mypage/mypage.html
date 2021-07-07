@@ -6,6 +6,9 @@
 <meta charset="UTF-8">
 <title>자유일기</title>
 <style>
+@import url(//fonts.googleapis.com/earlyaccess/kopubbatang.css);
+
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -58,10 +61,7 @@ body {
 	margin: 0px;
 }
 
-
-
-
-
+a { color: inherit; text-decoration: none; outline: none}
 
 
 
@@ -76,64 +76,401 @@ body {
 
 
 
+
+body{
+	
+	background-color: #F2F2F2;
+	color: rgb(114, 114, 114);
+
+}
+
+
+
+
+
 /*다른 CSS 에서 #main에 걸려있는 overflow scroll 하고 height 85% 끄면 잘됨 밑에 걸어서 뺴줌 그리고 바디의 height 100% 빼주고 */
 #main {
+	background-color: #F2F2F2;
+	font-family: 'KoPub Batang', serif;
 	margin-left: auto;
 	margin-right: auto;
 	padding-bottom: 100px;
 	max-width: 720px;
 	min-height: 720px;
-	background-color: white;
 	overflow: auto;
 	height: auto;
 }
 
-/* .container-upside */
+
+
+
+/*upper main container */
+
+.upper-main-container {
+	margin-top: 20px;
+	background-color: white;
+	border-radius:30px 30px 0px 0px ;
+	padding: 20px 0px 15px 0px;
+
+}
+
+
+
+
+
+/* .upside-container *//**/
 .upside-container {
 	display: flex;
 	justify-content: center;
 	position: relative;
 }
 
+
+
+/* .upside-container *//*-edit*/
 .upside-container-edit {
+
 	position: absolute;
 	right: 0px;
-}
+	margin-right: 15px;
 
-/* midleside - container*/
+}
+	.upside-container-edit-img {
+		width:30px;
+		height:30px;
+		cursor: pointer;
+	}
+
+	.upside-container-edit-box{
+		color: #727272;
+		position: relative;
+		right: inherit;
+		top:-40px;
+		width: auto;
+		height: auto;
+		background-color:white;
+		border: 1px #F2F2F2 solid;
+		z-index: 10;
+		
+	}
+		.upside-container-edit-item{
+			padding: 5px 5px 5px 5px;
+			cursor: pointer;
+			
+
+
+		}
+		.upside-container-edit-box-logout{
+		}
+
+		.upside-container-edit-box-profile-edit{
+			
+
+		}
+
+
+		.upside-container-edit-box-information-edit{
+			
+		}
+
+
+
+
+/*upside-container*//*-title*/
+.upside-container-title{
+
+
+}
+	.upside-container-title-main{
+		font-size: 30px;
+	}
+
+	.upside-container-title-sub{
+		margin-top: 20px;
+		text-align: center;
+		font-size: 15px;
+	}
+
+
+
+
+
+
+/* midleside - container*//**/
 .midleside-container {
+	margin-top: 40px;
 	display: flex;
 	justify-content: space-around;
+	align-items: center;
+	
+	
 }
 
-.midleside-container-img {
-	width: 100px;
-	height: 100px;
-}
 
-/* midledownside-container */
+	/*midle-side-container*//*-item1*/
+	.midleside-container-item1 {
+		flex-basis: 288px;
+		flex-grow: 1;
+		flex-shrink: 1;
+		text-align: center;
+		
+	}
+		.midleside-container-item1-img {
+			width: 70%;
+			height: 70%;
+		}
+
+
+
+
+
+	/*midle-side-container*//*-hr*/
+	.midleside-container-hr{
+		flex-basis: 1px;
+		background-color:#F2F2F2;
+		height: 140px;
+		
+
+		
+
+	}
+
+
+
+
+
+
+
+	/*midle-side-container*//*-item2*/
+	.midleside-container-item2{
+		align-self: flex-start;
+		flex-basis: 431px;
+		flex-grow: 1.5;
+		flex-shrink: 1.5;
+		padding-left: 2%;
+	}
+
+		.midleside-container-item2-my{
+			font-size: 20px;
+		}
+
+		.midleside-container-item2-nameis{
+			margin-top: 10px;
+		}	
+
+
+
+
+
+
+
+
+
+
+
+/* midledownside-container *//**/
 .midledownside-container {
 	display: flex;
 	justify-content: space-around;
+	align-content: center;
+	height: 35px;
+	background-color: white;
+	border-radius: 0px 0px 60px 60px;
 }
 
+
+
+/*midledown-side-container*//*-my*/
 .midledownside-container .my-oneline-button {
+	line-height: 35px;
+	text-align: center;
+	flex-basis: 50px;
+	flex-grow: 1;
 	cursor: pointer;
-	border-bottom: 2px solid white;
+	border-radius: 0px 0px 15px 60px;
+	
 }
 
-.midledownside-container .my-oneline-button:hover {
-	border-bottom-color: var(--color-basic);
+.my-oneline-button-hover {
+	background-color: #677A8F;
+	color: white;
+}
+.my-oneline-button-click {
+	background-color: #677A8F;
+	color: white;
 }
 
 .midledownside-container .my-comment-button {
+	line-height: 35px;
+	text-align: center;
+	flex-basis: 50px;
+	flex-grow: 1;
 	cursor: pointer;
-	border-bottom: 2px solid white;
+	border-radius: 0px 0px 60px 15px;
+
 }
 
-.midledownside-container .my-comment-button:hover {
-	border-bottom-color: var(--color-basic);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*my-oneline-list*//**//**/
+.my-oneline-list{
+
 }
+
+
+
+/*my-oneline-list*//*-items*//**/
+.my-oneline-list-items{
+	height: 100px;
+	margin-top: 15px;
+	background-color: white;
+	border-radius: 20px 20px 20px 20px ;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+}
+
+
+
+/*my-oneline-list*//*-items*//*regdate content*/
+.my-oneline-content-regdate-container{
+	flex-grow: 1;
+	padding: 10px 20px 10px 20px;
+	overflow:hidden;
+
+	
+}
+	.my-oneline-item-content{
+		overflow:hidden;
+		white-space:nowrap;
+		text-overflow:ellipsis;
+		height: 30px;
+
+	}
+
+	.my-oneline-item-regdate{
+
+	}
+	.my-oneline-item-commentcount{
+
+	}
+
+
+
+/*my-oneline-list*//*-items*//*img*/
+
+.my-oneline-list-img{
+
+}
+
+.my-oneline-item-img{
+	height: 70px;
+	margin-right: 20px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*my-comment-list*//**//**/
+.my-comment-list{
+
+}
+
+
+
+/*my-comment-list*//*-items*//**/
+.my-comment-list-items{
+	height: 100px;
+	margin-top: 15px;
+	background-color: white;
+	border-radius: 20px 20px 20px 20px ;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+}
+
+
+
+/*my-comment-list*//*-items*//*regdate content*/
+.my-comment-content-regdate-container{
+	flex-grow: 1;
+	padding: 10px 20px 10px 20px;
+	overflow:hidden;
+
+	
+}
+	.my-comment-item-content{
+		overflow:hidden;
+		white-space:nowrap;
+		text-overflow:ellipsis;
+		height: 30px;
+
+	}
+
+	.my-comment-item-regdate{
+
+	}
+	.my-comment-item-commentcount{
+
+	}
+
+
+
+/*my-comment-list*//*-items*//*img*/
+
+.my-comment-list-img{
+
+}
+
+.my-comment-item-img{
+	height: 70px;
+	margin-right: 20px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -142,22 +479,36 @@ body {
 
 
 /* 팝업 */
-.profile-edit {
+.profile-edit-section{
 	position: fixed;
+	left: 50%;
+	top: 50%;
+	z-index: 20;
+	width: 100%;
+	height: 40%;
+	transform: translate(-50%, -50%);
+	
+	
+}
+
+.profile-edit {
+	box-shadow: 0px 0px 5px black;
+	border: 1px solid #F4F4F4;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 720px;
+	background-color: white;
+	border-radius : 30px 30px 30px 30px ;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	top: 50%;
-	left: 50%;
-	z-index: 100;
-	width: 60%;
-	height: 40%;
-	transform: translate(-50%, -50%);
-	background-color: red;
+	
 }
 
 .profile-edit-item1 {
 	position: relative;
+	text-align:center;
+	padding: 10px 10px 10px 10px;
 }
 
 .profile-edit-item1 .item1-text {
@@ -168,31 +519,36 @@ body {
 	size: 100px;
 }
 
-.profile-edit-item2 {
-	align-self: flex-end;
-	margin-bottom: 20px;
-}
 
+/*profile-edit-item3*/
 .profile-edit-item3 {
-	
+	padding : 10px 0px 10px 0px;
 }
 
 .item1-img {
+
 	cursor: pointer;
-	width: 250px;
-	height: 250px;
+	width: 120px;
+	height: 120px;
 }
+
 
 .item1-link {
 	
 }
 
 .item3-textarea {
+	border: 1px solid #F4F4F4;
+	outline:0;
+	resize:none;
 	width: 100px;
 	height: 100px;
 }
 
 .item3-email {
+	width: 110px;
+	outline:0;
+	border: 1px solid #F4F4F4;
 	display: block;
 }
 </style>
@@ -204,6 +560,7 @@ body {
 
 <script>
 
+
 	// 내피드 내댓글 보기
 	window.addEventListener("load", ()=>{
 		let diaryMenuButton = document.querySelector(".my-oneline-button");
@@ -212,17 +569,35 @@ body {
 		let commentList = document.querySelector(".my-comment-list");
 
 		diaryMenuButton.onclick = () => {
-			console.log("sss");
+			diaryMenuButton.classList.add("my-oneline-button-click");
+			commentMenuButton.classList.remove("my-oneline-button-click");
 			onelineList.classList.remove("d-none");
             commentList.classList.add("d-none");
 		};
+		diaryMenuButton.onmouseover = ()=>{
+			diaryMenuButton.classList.add("my-oneline-button-hover");
+		};
+		diaryMenuButton.onmouseleave = ()=>{
+			diaryMenuButton.classList.remove("my-oneline-button-hover");
+		};
+
+
 		
 		commentMenuButton.onclick = () => {
-			console.log("sssfsfs")
+			diaryMenuButton.classList.remove("my-oneline-button-click");
+			commentMenuButton.classList.add("my-oneline-button-click");
             onelineList.classList.add("d-none");
             commentList.classList.remove("d-none");
 		};
-		
+		commentMenuButton.onmouseover = ()=>{
+			commentMenuButton.classList.add("my-oneline-button-hover");
+		};
+		commentMenuButton.onmouseleave = ()=>{
+			commentMenuButton.classList.remove("my-oneline-button-hover");
+		};
+
+
+
 		
 		let query = "";
         let requestUrl = "http://localhost:8080/api/diary/free";
@@ -258,16 +633,26 @@ body {
                 orgParent.appendChild(fileInput);
                 tempForm.remove();
         }
+		
+		
+		
+
+		
+		
 
 
-		// 프로필수정
+		// 프로필수정 과 config icon onclick 설정
         window.addEventListener("load", ()=>{
-
+			
+        	
+        	let editBox = document.querySelector(".upside-container-edit-box");
             let img = document.querySelector(".item1-img");
             let text = document.querySelector(".item1-text");
-            let profileEdit = document.querySelector(".profile-edit");
+            let profileSection = document.querySelector(".profile-edit-section");
             let fileInput = document.querySelector(".profile-edit-file-input");
-			let profileEditButton = document.querySelector(".profile-edit-button");
+			let configButton = document.querySelector(".upside-container-edit-img");
+            let profileEditButton = document.querySelector(".upside-container-edit-box-profile-edit");
+			let profileEdit = document.querySelector(".profile-edit");
 
             img.onmouseenter = ()=>{
                 img.style.opacity = 0.5;
@@ -282,39 +667,81 @@ body {
             };	
             
             
-            //profile edit button 누르면 팝업이 떠보자
-            profileEditButton.onclick = (e)=>{
-            	profileEdit.classList.remove("d-none");
-            	
-            	//screen 만들어서 띄워줌
-                let screen = document.createElement("div");
-                screen.style.width = "100%";
-                screen.style.height = "100%";
-                screen.style.position = "fixed";
-                screen.style.top = "0px";
-                screen.style.left = "0px"
-                screen.style.zIndex = 10;
-                screen.style.backgroundColor = "black";
-                screen.style.opacity = 0.7;
-                document.body.appendChild(screen);
-		
-                
-                //screen onclick되면 사라짐
-                screen.onclick = (e) =>{
-                	screen.remove();
-                	profileEdit.classList.add("d-none");
-                	
-                };
-                
-                
-            	
+            //config button 누르면 팝업menu 떠보자
+            configButton.onclick = (e)=>{
+            	  editBox.classList.remove("d-none");
+            	//투명 screen 만들어서 띄워줌
+                  let whiteScreen = document.createElement("div");
+                  whiteScreen.style.width = "100%";
+                  whiteScreen.style.height = "100%";
+                  whiteScreen.style.position = "fixed";
+                  whiteScreen.style.top = "0px";
+                  whiteScreen.style.left = "0px"
+                  whiteScreen.style.zIndex = 5;
+                  whiteScreen.style.opacity = 0.7;
+                  document.body.appendChild(whiteScreen);
+                 
+                  //screen onclick되면 사라짐 
+                  whiteScreen.onclick = (e) =>{
+                	  
+                	whiteScreen.remove();
+                  	editBox.classList.add("d-none");
+                  };
+                  
+                  //editBox도 onclick되면 사라짐 
+                  editBox.onclick = ()=>{
+                	  
+                	 whiteScreen.remove();
+                     editBox.classList.add("d-none");  
+                	  
+                  };
+                  
+             
             };
             
             
+            profileEditButton.onclick = ()=>{
+            	
+            	profileSection.classList.remove("d-none");
+              	
+              	//screen 만들어서 띄워줌
+                  let screen = document.createElement("div");
+                  screen.style.width = "100%";
+                  screen.style.height = "100%";
+                  screen.style.position = "fixed";
+                  screen.style.top = "0px";
+                  screen.style.left = "0px"
+                  screen.style.zIndex = 10;
+                  screen.style.backdropFilter= "blur(2px)";
+                  
+                  screen.style.opacity = 0.7;
+                  document.body.appendChild(screen);
+      	
+                  
+                  //screen onclick되면 사라짐
+                  screen.onclick = (e) =>{
+                  	screen.remove();
+                  	profileSection.classList.add("d-none");
+              	
+                  };
+                  
+                  //editsection도 onclick되면 사라짐 대신아래서 stoppropaganda 해줘야지
+              	  profileSection.onclick = (e)=>{
+              		  
+              		  	if(e.target.classList.contains("profile-edit-section")){
+                    		screen.remove();
+                      		profileSection.classList.add("d-none");
+              		  	}
+              	  };
+              	  
+              	  
+              	  
+              };
+              
+
             
             
-            
-            
+      
             
             
             
@@ -391,7 +818,7 @@ body {
 <main id="main" layout:fragment="main">
 
 
-	<section>
+	<section class="upper-main-container">
 		<h1 class="d-none">위에부분</h1>
 
 
@@ -399,39 +826,45 @@ body {
 
 			<div class="upside-container">
 				<section class="upside-container-title">
-					<h1>나의 세줄일기</h1>
-					<div>나의 일상을 돌아 봅니다...</div>
+					<h1 class="d-none">나의 세줄일기</h1>
+					<div class="upside-container-title-main">나의 세줄일기</div>
+					<div class="upside-container-title-sub">나의 일상을 돌아 봅니다...</div>
 				</section>
 
 				<section class="upside-container-edit">
 					<h1 class="d-none">edit버튼</h1>
-					<a href="/doLogout">로그아웃</a>
-					<input class="profile-edit-button" type="button" value="프로필 변경">
-					<a href="/member/edit">정보수정</a>
+					<img class="upside-container-edit-img" src="/images/icon/config-icon.png" alt="config-icon">
+					<div class="upside-container-edit-box d-none">
+						<div class="upside-container-edit-box-logout upside-container-edit-item">로그아웃</div>
+						<div class="upside-container-edit-box-profile-edit upside-container-edit-item"> 프로필 변경 </div>
+						<div class="upside-container-edit-box-information-edit upside-container-edit-item">정보수정</div>
+					</div>
 				</section>
 			</div>
 
 
 
 
+
+
+
+
+
 			<div class="midleside-container">
 
-				<section>
+				<section class="midleside-container-item1">
 					<h1 class="d-none">img</h1>
-					<img class="midleside-container-img"
-						th:src="@{/upload/profile/basic.jpg}" th:alt="${member.image}"
-						th:if="${member.image}=='basic.jpg'"> 
-						<img
-						class="midleside-container-img"
-						th:src="@{'/upload/profile/'+${member.id}+'/'+${member.image}}"
-						th:alt="${member.image}" th:if="${member.image}!='basic.jpg'">
+					<img class="midleside-container-item1-img" th:src="@{/upload/profile/basic.jpg}" th:alt="${member.image}" th:if="${member.image}=='basic.jpg'"> 
+					<img class="midleside-container-item1-img" th:src="@{'/upload/profile/'+${member.id}+'/'+${member.image}}" th:alt="${member.image}" th:if="${member.image}!='basic.jpg'">
 				</section>
 
-				<section>
+				<div class="midleside-container-hr"></div>
+
+				<section class="midleside-container-item2">
 					<h1 class="d-none">자기소개</h1>
 					<ul>
-						<li><span th:text="${member.name}">홍길동</span> 나는</li>
-						<li th:text="${member.introduction}">자기소개 작성</li>
+						<li class="midleside-container-item2-my"><span th:text="${member.name}">홍길동</span> 나는</li>
+						<li class="midleside-container-item2-nameis" th:text="${member.introduction}">자기소개 작성</li>
 
 					</ul>
 				</section>
@@ -439,76 +872,80 @@ body {
 			</div>
 
 
-
+	</section>
 			
-				<nav class="midledownside-container">
-					<h1 class="d-none">nav</h1>
-					<div class="my-oneline-button">내 피드</div>
-					<div class="my-comment-button">내 댓글</div>
-				</nav>
 			
+	<section>
+		<h1 class="d-none">nav bar</h1>
 
-
+		<nav class="midledownside-container">
+			<h1 class="d-none">nav</h1>
+			<div class="my-oneline-button my-oneline-button-click">내 피드</div>
+			<div class="my-comment-button">내 댓글</div>
+		</nav>
 
 	</section>
+			
+
+
+
+
 
 
 
 	<section class="my-oneline-list ">
 		<h1 class="d-none">원라인 리스트</h1>
-		<div th:each="n:${myOneline}">
-			<div th:text="${n.content}"></div>
-			<div th:text="${n.regDate}"></div>
-			<div th:text="${n.id}"></div>
-		</div>
+		<ul class="my-oneline-list-container"> 
+			<li class="my-oneline-list-items"  th:each="n:${myOneline}">
+				<div class="my-oneline-content-regdate-container">
+					<div class="my-oneline-item-content" th:text="${n.content}">zcontentzzcontentzzcontententzzcontentzzcontentzzzcontentzzcozcontentzzcontentzzcontententzzcontentzzcontentzzzcontentzzco</div>
+					<span class="my-oneline-item-regdate" th:text="${n.regDate}">2021-07-06</span><span class="my-oneline-item-commentcount">댓글 10</span>
+				</div>
+				<div class="my-oneline-list-img"><img class="my-oneline-item-img" src="imagefile1.jpg" alt="picture"/></div>
+			</li>
+
+
+
+
+
+		</ul>
 
 	</section>
 
 
 	<section class="my-comment-list d-none">
-		<h1 class="d-none">댓글 리스트</h1>
-		<div th:each="n:${myComment}">
-			<div th:text="${n.content}"></div>
-			<div th:text="${n.comment}"></div>
-			<div th:text="${n.regDate}"></div>
-			<div th:text="${n.diaryId}"></div>
-			
-		</div>
+		<h1 class="d-none">커멘트 리스트</h1>
+		<ul class="my-comment-list-container"> 
+			<li class="my-comment-list-items" th:each="n:${myComment}">
+				<div class="my-comment-content-regdate-container">
+					<div class="my-comment-item-content" th:text="${n.content}">zcontentzzcontentzzcontententzzcontentzzcontentzzzcontentzzcozcontentzzcontentzzcontententzzcontentzzcontentzzzcontentzzco</div>
+					<span class="my-comment-item-regdate" th:text="${n.regDate}">2021-07-06</span><span class="my-comment-item-commentcount">댓글 10</span>
+				</div>
+				<div class="my-comment-list-img"><img class="my-comment-item-img" src="imagefile1.jpg" alt="picture"/></div>
+			</li>
 
+
+
+
+
+		</ul>
 
 	</section>
 
 
 
 
-	<section>
+
+	<section class="profile-edit-section  d-none">
 		<h1 class="d-none" >푸로필 수정</h1>
-		<form class="profile-edit d-none" action="/mypage/reg" method="POST" enctype="multipart/form-data">
+		<form class="profile-edit" action="/mypage/reg" method="POST" enctype="multipart/form-data">
 	        <div class="profile-edit-item1" ><div class="item1-text d-none">수정</div><img class="item1-img" th:src="@{'/upload/profile/'+${member.id}+'/'+${member.image}}" th:if="${member.image}!='basic.jpg'" /><img class="item1-img" th:src="@{/upload/profile/basic.jpg}"  th:if="${member.image}=='basic.jpg'" /><div class="item1-link"><a href="">기본사진으로 이용하기</a></div></div>
-	        <div class="profile-edit-item2"><input type="submit" value="수정"></div>
-	        <div class="profile-edit-item3"><p class="item3-p" >누구누구 나는</p><textarea name="introduction" class="item3-textarea" th:text="${member.introduction}"></textarea><input class="item3-email" type="text" name="email" placeholder="이메일" th:value="${member.email}"></div>
+	       
+	        <div class="profile-edit-item3"><p class="item3-p" >누구누구 나는</p><textarea name="introduction" class="item3-textarea" th:text="${member.introduction}"></textarea><input class="item3-email" type="text" name="email" placeholder="이메일" th:value="${member.email}"><input type="submit" value="수정"></div>
 	        <input class="profile-edit-file-input d-none" type="file" name="multiFile">
 	    </form> 
     </section>
     
-     
-    <div style="overflow:scroll; height:200px;" class = "wow scroll" >
-    	
     
-    </div>
-	<script type="text/javascript" src="/js/infinite/documentInfiniteScrollWith.js"></script>
-	<script type="text/javascript">
-		
-	documentInfiniteScrollWith("http://localhost:8080/api/diary/free",".wow",function(json){ 
-		let div = "";
-		for(n of json){	
-			div += "<h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1><h1>sssss</h1>"
-			
-		}
-		return div;
-	}, "",".wow");
-	
-	
-	</script>
 </main>
 </html>

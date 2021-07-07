@@ -35,7 +35,7 @@ import com.oneul.web.service.MemberService;
 
 @EnableScheduling
 @Controller
-@RequestMapping("/diary/futurediary/")
+@RequestMapping("/diary/futureDiary/")
 public class FutureDiaryController {
 
 	@Autowired
@@ -56,7 +56,7 @@ public class FutureDiaryController {
 		List<FutureDiary> list = service.getList(1);
 		
 		model.addAttribute("list", list);
-		return("diary/futurediary/list");
+		return("diary/futureDiary/list");
 	}
 	
 	@RequestMapping("detail")
@@ -67,7 +67,7 @@ public class FutureDiaryController {
 		
 		List<FutureDiaryComment> list = commentService.getViewList(id);
 		model.addAttribute("commentList", list);
-		return("diary/futurediary/detail");
+		return("diary/futureDiary/detail");
 	}
 	
 	@PostMapping("commentReg")
@@ -154,7 +154,7 @@ public class FutureDiaryController {
 	
 	@GetMapping("reg")
 	public String reg() {
-		return("diary/futurediary/reg");
+		return("diary/futureDiary/reg");
 	}
 	
 	@GetMapping("edit")
@@ -162,7 +162,7 @@ public class FutureDiaryController {
 		FutureDiary futureDiary = service.get(id);
 		
 		model.addAttribute("futureDiary", futureDiary);
-		return("diary/futurediary/edit");
+		return("diary/futureDiary/edit");
 	}
 	
 	@PostMapping("edit")
@@ -330,7 +330,7 @@ public class FutureDiaryController {
 				String email = member.getEmail();
 				System.out.println(email);
 				String title = "과거로부터 온 일기를 열어보아요";
-				String body = "지금 바로 읽어보세요" + "http://localhost:8080/diary/futurediary/detail?id="+fd.getId();
+				String body = "지금 바로 읽어보세요" + "http://localhost:8080/diary/futureDiary/detail?id="+fd.getId();
 				memberService.sendEmail(email,title,body);
 				System.out.println("발송완료");
 			}

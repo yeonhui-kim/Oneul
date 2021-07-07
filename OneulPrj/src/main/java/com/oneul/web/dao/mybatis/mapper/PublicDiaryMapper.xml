@@ -19,7 +19,7 @@
 		from oneul.FutureDiary where emotionId = #{field} AND pub = 1
 		UNION -->
 		
-		select id, pub, memberId, emotionId, regDate, content, image, 'freediary' as diary,
+		select id, pub, memberId, emotionId, regDate, content, image, 'freeDiary' as diary,
 		(select count(id) from FreeDiaryComment where freeDiaryId = FreeDiary.id)
 		count
 		from oneul.FreeDiary where emotionId = #{field} AND pub = 1

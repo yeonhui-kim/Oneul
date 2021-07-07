@@ -34,7 +34,7 @@ import com.oneul.web.service.MemberService;
 import com.oneul.web.service.QuestionService;
 
 @Controller
-@RequestMapping("/diary/freediary/")
+@RequestMapping("/diary/freeDiary/")
 public class FreeDiaryController {
 
 	@Autowired
@@ -59,7 +59,7 @@ public class FreeDiaryController {
 		// List<FreeDiary> list = service.getList();//모든 일기목록
 		List<FreeDiary> list = service.getList(id);// 해당아이디 일기리스트
 		model.addAttribute("list", list);
-		return "diary/freediary/list";
+		return "diary/freeDiary/list";
 	}
 
 	@GetMapping("reg")
@@ -67,7 +67,7 @@ public class FreeDiaryController {
 		List<Question> list = questionService.getList();
 		model.addAttribute("list", list);
 
-		return "diary/freediary/reg";
+		return "diary/freeDiary/reg";
 	}
 
 	@PostMapping("reg")
@@ -146,7 +146,7 @@ public class FreeDiaryController {
 		Member member2 = memberService.get(username);
 		model.addAttribute("member", member2);
 
-		return "diary/freediary/detail";
+		return "diary/freeDiary/detail";
 	}
 
 	// 답글달기
@@ -208,7 +208,7 @@ public class FreeDiaryController {
 		FreeDiary freeDiary = service.get(id);
 		model.addAttribute("freeDiary", freeDiary);
 
-		return "diary/freediary/edit";
+		return "diary/freeDiary/edit";
 	}
 
 	@PostMapping("edit")

@@ -28,7 +28,6 @@ window.addEventListener("load", function (event) {
 	}
 	
 	
-	
 });
 
 
@@ -91,3 +90,6 @@ function emotionDisplay(){
 		}
 
 }
+
+
+	

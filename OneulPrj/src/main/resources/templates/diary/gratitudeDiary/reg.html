@@ -10,6 +10,26 @@
 	<link href="/css/diary/modal.css" type="text/css" rel="stylesheet">
 	<link href="/css/diary/gratitudeDiary/reg.css" type="text/css" rel="stylesheet">
     <script src='/js/modal/modal.js'></script>
+    <script>
+    function submitBtnClick(){
+    	const form = document.querySelector(".form");
+
+    	const dateInput = document.querySelector("input[type='date']");
+    	
+    	let date = dateInput.value;
+    	let emotion = document.querySelector("#emotion").classList.value;
+    	
+    	console.log(date);
+    	console.log(emotion);
+    	if(date==""){
+    		alert("날짜를 선택해주세요.");
+    	}else if(emotion==""){
+    		alert("감정을 선택해주세요.");
+    	}else{
+    		form.submit();	
+    	}
+    }	
+    </script>
 </head>
 
 	
@@ -48,11 +68,12 @@
 					<textarea rows="5" cols="45" name="content3"></textarea>
 				</div>
 	
-				<div>
-					<input type="submit" value="저장"> 
-					<a href="list">취소</a>
-				</div>
 			</form>
+			
+				<div class="buttons">
+				    <button class="button" type="button" onclick="submitBtnClick()">저장</button>
+					<button type="button" class="button" onclick="location.href='list';">취소</button> 
+				</div>
 		</section>
 	</main>
 
