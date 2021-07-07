@@ -73,7 +73,13 @@ function check(){
 		alert("이메일 입력하세요")
 		return false;
 	}
-	
+	let emailexp = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/
+	if(!emailexp.test(email.value)){
+		alert("이메일 형식을 지켜주세요")
+		return false;
+	}
+
+
 	alert("회원가입이 완료되었습니다")
 	form.submit();
 }      
