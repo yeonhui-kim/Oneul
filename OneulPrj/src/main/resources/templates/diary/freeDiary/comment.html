@@ -42,8 +42,8 @@
 									th:value="${freeDiaryId}">
 								<div>
 									<div>
-										<span class="receiver" th:text="${pUserId}"><strong></strong></span><span>
-											님에게 답글남기기</span>
+										<span>Replying to</span>
+										<span class="receiver" th:text="${pUserId}"><strong></strong></span>
 									</div>
 									<div>
 								<!-- 		<input type="text" name="content" class="receiverInput" style="border: none;"></input> -->
@@ -51,7 +51,7 @@
 											placeholder="댓글을 입력하세요"></textarea>
 										<br>
 										<div>
-											<input type="submit" value="저장">
+											<input id="submitComment" type="submit" value="저장">
 										</div>
 									</div>
 								</div>
@@ -76,7 +76,7 @@
 											th:placeholder="${n.content}"></textarea>
 										<br>
 										<div>
-											<input type="submit" value="저장">
+											<input id="submitComment" type="submit" value="저장">
 										</div>
 									</div>
 								</div>
