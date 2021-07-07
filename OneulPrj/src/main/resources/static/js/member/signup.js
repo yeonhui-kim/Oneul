@@ -38,7 +38,8 @@ function check(){
 	let password = document.getElementsByName("password")[0]
 	let name = document.getElementsByName("name")[0]
 	let email = document.getElementsByName("email")[0]
-	
+	let v = document.querySelector("#id_check_sucess")
+
 	if(username.value == ''){
 		alert("아이디를 입력하세요")
 		return false;
@@ -79,7 +80,13 @@ function check(){
 		return false;
 	}
 
+	if(v.style.display == "none"){
+		alert("아이디 중복체크를 해주세요")
+		return false
+	}
 
 	alert("회원가입이 완료되었습니다")
 	form.submit();
-}      
+
+}
+
