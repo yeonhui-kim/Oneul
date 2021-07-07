@@ -52,7 +52,7 @@ hr{
     padding: 5px;
     
     height: 90px;
-    line-height: 30px;
+   /*  line-height: 30px; */
 }
 .dayName{
 	font-size:10px;

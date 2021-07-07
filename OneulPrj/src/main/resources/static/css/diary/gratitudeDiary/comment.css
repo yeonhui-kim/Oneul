@@ -67,6 +67,12 @@
 
 .commentBox{
 	width: 95%;
+	
+	border-radius: 0!important;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #42a5f5;
 }
 .commentBg{
 	background-color: white;
