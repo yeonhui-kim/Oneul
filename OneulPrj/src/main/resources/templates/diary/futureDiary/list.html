@@ -50,20 +50,24 @@ layout:decorator="/inc/layout">
 	        		console.log(today);
 	        		console.log(today>=formattedBookingDate);//날짜 지남. 볼수있음
 	        		
-	        		html +=`<div class='diary-container' onclick="location.href='detail?id=${n.id}';">
-						<div class='bookingDate'>to. ${formattedBookingDate}</div>`;
 	        		
 	        		if(today>=formattedBookingDate && n.image !=""){//날짜 지남. 볼수있음 && 이미지 있음
-	        			html +=`<div class="img-container">
+	        			html +=`<div class='diary-container' onclick="location.href='detail?id=${n.id}';">
+							<div class='bookingDate'>to. ${formattedBookingDate}</div>
+	        					<div class="img-container">
 	        							<img src="/upload/diary/futureDiary/${n.memberId}/${n.id}/${n.image}">
 	                            </div>
 	                            <div class='content'>
 	        					<a href='detail?id=${n.id}'>${contentSplit}</a>
 	        					</div>`;
 	        		}else if(today>=formattedBookingDate && n.image ==""){ //날짜지남&&이미지 없음
-	        			html +=`<div class='content-full'><a href='detail?id=${n.id}'>${contentSplit}</a></div>`;
+	        			html +=`<div class='diary-container' onclick="location.href='detail?id=${n.id}';">
+							<div class='bookingDate'>to. ${formattedBookingDate}</div>
+	        			<div class='content-full'><a href='detail?id=${n.id}'>${contentSplit}</a></div>`;
 	        		}else{
-	        			html += `<div class='content-full not-open'>
+	        			html += `<div class='diary-container' onclick="alert('아직 볼 수 없습니다.');" >
+							<div class='bookingDate'>to. ${formattedBookingDate}</div>
+	        			<div class='content-full not-open'>
 	        			<a onclick="alert('아직 볼 수 없습니다.');">${formattedBookingDate}에 공개됩니다.</a>
 	        			</div>`;
 	        		}

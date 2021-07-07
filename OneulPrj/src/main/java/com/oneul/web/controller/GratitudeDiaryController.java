@@ -175,7 +175,8 @@ public class GratitudeDiaryController {
 	public String edit(GratitudeDiary gratitudeDiary,
 						@DateTimeFormat(pattern = "yyyy-MM-dd")Date regDate,
 						CalendarEmotion calendarEmotion) {
-		calendarService.updateCalendar(calendarEmotion);
+		if (gratitudeDiary.getEmotionId() != null)
+			calendarService.updateCalendar(calendarEmotion);
 		
 		service.updateDiary(gratitudeDiary);
 		

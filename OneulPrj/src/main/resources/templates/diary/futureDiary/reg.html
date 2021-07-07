@@ -19,12 +19,15 @@
 			<form class="form" action="reg" method="post"
 				enctype="multipart/form-data">
 				
-					<lable>미래일기를 받고싶은 날짜를 선택하세요</lable>
-					<input type="date" name="bookingDate">
+					<div class="date-input">
+						<lable>미래일기를 받고싶은 날짜를 선택하세요</lable>
+						<input type="date" name="bookingDate">
+					</div>
 					
-					
-					<lable class="lable2">지금 당신의 감정을 알려주세요</lable>	
+					<div class="emotion-input">
+						<lable class="lable2">지금 당신의 감정을 알려주세요</lable>	
    						<div id="emotion"></div>
+   					</div>
    						<button id="open-button" type="button">감정선택</button> 
    						<div th:replace="inc/modal::modal"></div>						
 					
@@ -35,8 +38,9 @@
 						<input type="file" id="file" name="file" value="0" >
 						
 					</div>
+					<div class="text-input">
 						<textarea rows="20" cols="30" name="content"></textarea>
-					
+					</div>
 			</form>
 				<div class="buttons">
 				    <button class="button" type="button" onclick="submitBtnClick()">저장</button>
