@@ -4,7 +4,6 @@
 	layout:decorator="/inc/layout">
 <head>
 <meta charset="UTF-8">
-<script src='/js/diary/freeDiary.js'></script>
 <title>자유일기-수정페이지</title>
 <link href="/css/diary/modal.css" type="text/css" rel="stylesheet">
 <script src='/js/modal/modal.js'></script>
@@ -47,8 +46,18 @@
 			</tr>
 			<tr>
 				<th>첨부파일</th>
-				<img class="image"></img>
-				<td colspan="3"><input type="file" name="file"></td>
+				<td colspan="4">
+					<img class="image"
+					th:if="${freeDiary.image}!=''"
+					th:src="@{/upload/diary/freeDiary/} +${freeDiary.memberId}+@{/}+${freeDiary.id}+@{/}+ ${freeDiary.image}"
+					style="width: 200px; height: 150px;"> 
+					<img class="image" th:if="${freeDiary.image}==''"> 
+					<input class="file-del-btn" type="button" value="삭제"> 
+					<input type="file" name="file"> 
+					<input class="changed" type="hidden" name="changed" value="0"> 
+					<input type="hidden" name="originalFile" th:value="${freeDiary.image}">
+
+				</td>
 			</tr>
 			<tr>
 				<th>작성일</th>
@@ -83,6 +92,5 @@
 		</div>
 	</form>
 	</section>
-	<script src='/js/diary/freediary/reg.js'></script>
 </main>
 </html>

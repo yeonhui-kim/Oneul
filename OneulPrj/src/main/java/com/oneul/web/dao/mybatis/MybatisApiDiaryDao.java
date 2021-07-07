@@ -11,6 +11,7 @@ import com.oneul.web.dao.FreeDiaryCommentDao;
 import com.oneul.web.entity.FreeDiaryView;
 import com.oneul.web.entity.FutureDiaryView;
 import com.oneul.web.entity.GratitudeDiaryView;
+import com.oneul.web.entity.OnelineView;
 
 
 @Repository
@@ -46,6 +47,12 @@ public class MybatisApiDiaryDao implements ApiDiaryDao {
 	public List<GratitudeDiaryView> getGratitudeList(Integer memberId, String query, Integer pageOffset) {
 		// TODO Auto-generated method stub
 		return mapper.getGratitudeList(memberId, query, pageOffset);
+	}
+	
+	@Override
+	public List<OnelineView> getOnelineList(Integer memberId, String query, Integer pageOffset) {
+		// TODO Auto-generated method stub
+		return mapper.getOnelineList(memberId, query, pageOffset);
 	}
 
 	

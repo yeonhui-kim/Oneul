@@ -27,8 +27,15 @@
                   <img class="profile-image"th:src="@{'/upload/profile/' +${detail.memberId} +'/'  +${detail.image}   }" th:if="${detail.image}!='basic.jpg'"> 
                   <a th:text="${detail.writerId}" class="user-name">유저아이디</a> 
                      <a class="date" th:text="${#calendars.format(detail.regDate,'yyy-MM-dd')}">날짜</a>
-                     <a class="edit" th:href="@{edit(id=${detail.id})}" href="edit?id=${detail.id}"></a>
-                  <a class="del" th:href="@{del(id=${detail.id})}" onclick="if(!confirm('삭제하시겠습니까?')) return false;"></a>
+                     
+                      <div class="edit" th:if="${detail.memberId == member.id}">
+                     <a th:href="@{edit(id=${detail.id})}" href="edit?id=${detail.id}">수정</a>
+                  </div>
+                  
+                  <div class="del" th:if="${detail.memberId == member.id}">
+                     <a th:href="@{del(id=${detail.id})}"
+                       onclick="if(!confirm('삭제하시겠습니까?')) return false;">삭제</a>
+                  </div>
                </div>               
 
                <!-- <a class="onelineId" th:text="${detail.id}">게시글아이디</a> -->

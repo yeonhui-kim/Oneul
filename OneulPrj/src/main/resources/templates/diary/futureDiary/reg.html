@@ -12,6 +12,7 @@
 </head>
  
 
+	
 	<main id="main" layout:fragment="main">
 		<section class="wrapper">
 			
@@ -24,20 +25,22 @@
 					
 					<lable class="lable2">지금 당신의 감정을 알려주세요</lable>	
    						<div id="emotion"></div>
-   						<button id="open-button" type="button">선택</button> 
+   						<button id="open-button" type="button">감정선택</button> 
    						<div th:replace="inc/modal::modal"></div>						
 					
 				
 						<img class="image"></img>
 					<div class="filebox">
-						<label for="file">업로드</label>
-						<input type="file" id="file" name="file" value="0">
+						
+						<input type="file" id="file" name="file" value="0" >
+						
 					</div>
 						<textarea rows="20" cols="30" name="content"></textarea>
 					
 			</form>
-				<div>
-					<button type="button" onclick="submitBtnClick()">저장</button> <a href="list">취소</a>
+				<div class="buttons">
+				    <button class="button" type="button" onclick="submitBtnClick()">저장</button>
+					<button type="button" class="button" onclick="location.href='list';">취소</button> 
 				</div>
 
 		</section>

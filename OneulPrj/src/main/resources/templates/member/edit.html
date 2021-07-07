@@ -6,6 +6,8 @@
 	<meta charset="UTF-8">
 	<title>회원정보 수정</title>
 	<link href="../css/member/edit.css" type="text/css" rel="stylesheet">
+	<script src="/js/member/edit.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 
 	<main class="main" layout:fragment="main">
@@ -29,17 +31,22 @@
 					</div>
 					<div class="info userid">
 						<label>회원아이디</label>
-						<input class="b" type="text" name="username" th:value="${member.userId}">			
+						<div class="useridbtn">
+							<input class="b username" type="text" name="username" th:value="${member.userId}">
+							<button class="checkid" type="button">중복확인</button>
+							<img src="/images/member/check.png" id="id_check_sucess" style="display:none;">			
+						</div>						
 					</div>
+						<div class="checkmsg" th:if="${checkmsg}!=null" th:text="${checkmsg}"></div>
 					<div class="info password">
 						<label>비밀번호</label>
 						<input class="b" type="password" name="password" th:value="${member.password}">			
 					</div>		
 				</div>
 				<div class="btn-box">
-					<input class="submit" type="submit" value="수정">
+					<input class="submit" type="button" onclick="check()" value="수정">
 					<input type="button" value="취소" onclick="window.location.href='../mypage'">
-					<a class="out" href="out">회원탈퇴</a>
+					<a class="out" onclick="outcheck()">회원탈퇴</a>
 				</div>
 			</form>
 		</div>

@@ -6,7 +6,7 @@ layout:decorator="/inc/layout">
 <head>
 <meta charset="UTF-8">
 <link href="/css/diary/futureDiary/list.css" type="text/css" rel="stylesheet">
-<script src="/js/infinite/infiniteScrollWith.js"></script>
+<script src="/js/infinite/documentInfiniteScrollWith.js"></script>
 <script src="/js/diary/futureDiary/list.js"></script>
 
 <script>
@@ -50,7 +50,7 @@ layout:decorator="/inc/layout">
 	        		console.log(today);
 	        		console.log(today>=formattedBookingDate);//날짜 지남. 볼수있음
 	        		
-	        		html +=`<div class='diary-container'>
+	        		html +=`<div class='diary-container' onclick="location.href='detail?id=${n.id}';">
 						<div class='bookingDate'>to. ${formattedBookingDate}</div>`;
 	        		
 	        		if(today>=formattedBookingDate && n.image !=""){//날짜 지남. 볼수있음 && 이미지 있음
@@ -76,7 +76,8 @@ layout:decorator="/inc/layout">
 	            
 	            return html;
 	        };
-	     infiniteScrollWith(requestUrl, containerClass,returningHTML,query);
+	    
+	     documentInfiniteScrollWith(requestUrl, containerClass,returningHTML,query,"#main");
 	        
 	});
 </script>

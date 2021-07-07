@@ -10,16 +10,12 @@ html, body {
 	background-color: #F2F2F2;
 }
 
-.d-none{
-    display: none;
+.d-none {
+	display: none;
 }
-
-
 
 /* ---------------피드------------------------------------ */
-.box {
-	margin-bottom: 20px
-}
+
 
 .profile {
 	display: grid;
@@ -48,7 +44,7 @@ html, body {
 
 .edit {
 	grid-area: edit;
-	justify-self: end; 
+	justify-self: end;
 }
 
 .del {
@@ -73,7 +69,6 @@ html, body {
 	position: relative;
 	background-color: #F2F2F2;
 	height: 90%;
-	
 }
 
 #main {
@@ -96,29 +91,40 @@ html, body {
 	padding: 10px;
 }
 
-.content {
+
+.content-box{
+	padding-bottom: 50px;
+	display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.content {	
 	background-color: white;
 	border-radius: 8px;
 	padding: 10px;
-	width: 100%;
-	height: 100%;
+	width: 150px;
+	height: 170px;
+}
+.box {
+	margin-bottom: 20px;
+width: 100%;
+  padding-bottom: 32%; /* Same as width, sets height */
+  margin-bottom: 2%; /* (100-32*3)/2 */
+  position: relative;
+
 }
 
-.bold{
+.bold {
 	padding: 2px;
 	background: #d6d5d3;
 }
 
-
-
-.content-text{
+.content-text {
 	margin-bottom: 15px;
 }
 
-.container{
-	padding-bottom: 50px;
-	
-}
+
 
 .link-item{
 	display: flex;
@@ -127,16 +133,44 @@ html, body {
 }
 
 .oneline-link{
-	font-size: 1.5em;
-	font-weight: bold;
-	color: #585252;
-	
+	font-size: 1.5em;	
 }
 
 .pub-link{
 	font-size: 1.5em;
-	
+	font-weight: bold;
+	color: #585252;
 }
+
+.text-over{
+  /*   white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important; */
+}
+
+
+/*-------------감정-----------*/
+.emotionbtn{
+	display: flex;
+	flex-direction: row;
+    flex-wrap: wrap;
+    padding-bottom: 25px;
+}
+
+.happy, 
+.proud, 
+.flutter, 
+.calm, 
+.sensitive, 
+.unstable, 
+.tired, 
+.sad, 
+.upset{
+	width: 5em;
+	height: 5em;
+	margin-left: auto;
+	margin-right: auto;
+} 
 
 /*-----------------댓글--------------------------------*/
 #comment-txt {
@@ -153,23 +187,22 @@ html, body {
 	position: relative;
 	right: 10px;
 	display: inline;
-	
 }
 
-.reg-img {	
+.reg-img {
 	width: 100px;
 	height: 50px;
 	position: fixed;
 	z-index: 1;
 	right: 0%;
-    bottom: 10%;
+	bottom: 10%;
 }
 
-.pub-img {	
+.pub-img {
 	width: 50px;
 	height: 50px;
 }
 
-.txt{
-	width: 100%; 
+.txt {
+	width: 100%;
 }

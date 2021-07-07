@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>자유일기</title>
 <link href="/css/diary/modal.css" type="text/css" rel="stylesheet">
+<link href="/css/diary/freediary/reg.css" type="text/css" rel="stylesheet">
 <script src='/js/modal/modal.js'></script>
 </head>
 <main id="main" stype="height: 70%;"layout:fragment="main">
@@ -53,15 +54,16 @@
 				<td colspan="4"><input type="text" value="" name="content"
 					class="selectedQuestion"
 					style="border: none; border-right: 0px; border-top: 0px;background-color: #F2F2F2; boder-left: 0px; boder-bottom: 0px; width: 500px; outline: none;"></input><br>
-					<textarea class="content" rows="5" cols="50" name="content" placeholder="자유롭게 글을 써보세요"></textarea>
+					<textarea class="content" rows="2" cols="50" name="content" placeholder="자유롭게 글을 써보세요"></textarea>
 				</td>
 			</tr>
 		</table>
 
 
-		<div>
-			<input type="submit" value="저장"> <a href="list">취소</a>
-		</div>
+				<div class="buttons">
+				    <button class="button" type="button" onclick="submitBtnClick()">저장</button>
+					<button type="button" class="button" onclick="location.href='list';">취소</button> 
+				</div>
 	</form>
 	</section>
 	<script src='/js/diary/freediary/reg.js'></script>
