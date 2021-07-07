@@ -47,17 +47,20 @@
 		        	}
 		        	
 		        	/* -------------프로필조건-------------------------- */
-		        	let img;	    	
+		        	let img2;	    	
 		        	let basic = "/upload/profile/basic.jpg";
 		        	let profile = "/upload/profile/"+n.memberId+"/"+n.image;
 		        	
 		        	if(n.image == "basic.jpg"){
-		        		img = basic;
+		        		img2 = basic;
 		        	}else{
-		        		img = profile;
+		        		img2 = profile;
 		        	}
 		        	
-		        	console.log(img);
+		        	let img = JSON.stringify(img2);
+		       
+		        	
+		       
 	        		
 	        		console.log(regDate.type);
 	        		

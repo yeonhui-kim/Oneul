@@ -43,10 +43,22 @@ public class CalendarEmotionServiceImp implements CalendarEmotionService {
 	}
 
 	@Override
+	public int selectCalEmotionPrevCnt(CalendarEmotion calendarEmotion) {
+		
+		return dao.selectCalEmotionPrevCnt(calendarEmotion);
+	}
+	
+	@Override
 	public int deleteCalendar(CalendarEmotion calendarEmotion) {
 		
 		return dao.deleteCalendar(calendarEmotion);
 	}
+
+	@Override
+	public int deleteCalendarPrev(CalendarEmotion calendarEmotion) {
+		return dao.deleteCalendarPrev(calendarEmotion);
+	}
+
 
 	
 	

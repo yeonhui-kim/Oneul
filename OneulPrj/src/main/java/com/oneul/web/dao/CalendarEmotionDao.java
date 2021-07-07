@@ -14,6 +14,8 @@ public interface CalendarEmotionDao {
 	int updateCalendar(CalendarEmotion calendarEmotion);
 
 	int selectCalEmotionCnt(CalendarEmotion calendarEmotion);
+	int selectCalEmotionPrevCnt(CalendarEmotion calendarEmotion);
 	int deleteCalendar(CalendarEmotion calendarEmotion);
+	int deleteCalendarPrev(CalendarEmotion calendarEmotion);
 	
 }
