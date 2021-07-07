@@ -176,8 +176,8 @@ public class GratitudeDiaryController {
 			  					Integer prevEmotionId,
 						@DateTimeFormat(pattern = "yyyy-MM-dd")Date regDate,
 						@DateTimeFormat(pattern = "yyyy-MM-dd")Date prevRegDate,
-						CalendarEmotion calendarEmotion)
-	{
+						CalendarEmotion calendarEmotion){
+		
 		int cnt = calendarService.selectCalEmotionCnt(calendarEmotion);
 		int cntPrev = calendarService.selectCalEmotionPrevCnt(calendarEmotion);
 		
@@ -190,7 +190,7 @@ public class GratitudeDiaryController {
 				}else { // 등록된 일기 있을때
 					calendarService.updateCalendar(calendarEmotion); // 감정 update	
 				}
-				if(cntPrev == 0) { // 변경 전 날짜에 등록된 일기 없을 때
+				if(cntPrev == 1) { // 변경 전 날짜에 등록된 일기 없을 때
 					calendarService.deleteCalendarPrev(calendarEmotion); // 변경 전 날짜의 감정 삭제
 				}
 			}
@@ -203,7 +203,9 @@ public class GratitudeDiaryController {
 				}else { // 등록된 일기 있을때
 					calendarService.updateCalendar(calendarEmotion); // 감정 update	
 				}
-				
+				if(cntPrev == 1) { // 변경 전 날짜에 등록된 일기 없을 때
+					calendarService.deleteCalendarPrev(calendarEmotion); // 변경 전 날짜의 감정 삭제
+				}
 			} //날짜 변경 안했을 경우
 		}
 		
