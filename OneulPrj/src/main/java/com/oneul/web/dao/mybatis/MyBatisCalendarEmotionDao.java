@@ -48,9 +48,20 @@ public class MyBatisCalendarEmotionDao implements CalendarEmotionDao {
 	}
 
 	@Override
+	public int selectCalEmotionPrevCnt(CalendarEmotion calendarEmotion) {
+		return mapper.selectCalEmotionPrevCnt(calendarEmotion);
+	}
+	
+	@Override
 	public int deleteCalendar(CalendarEmotion calendarEmotion) {
 		return mapper.deleteCalendar(calendarEmotion);
 	}
+
+	@Override
+	public int deleteCalendarPrev(CalendarEmotion calendarEmotion) {
+		return mapper.deleteCalendarPrev(calendarEmotion);
+	}
+
 
 	
 
