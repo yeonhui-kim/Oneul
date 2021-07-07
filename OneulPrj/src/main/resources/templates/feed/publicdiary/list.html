@@ -43,7 +43,7 @@
 						</div>
 						
 						<div class="white-box">
-						<a th:text="${n.diary}"></a>
+						
 						<div class="content-text">
 							<a class="text-over"
 								th:href="@{'/diary/' +${n.diary} +'/' +'detail?id=' +${n.id} }"
@@ -54,11 +54,11 @@
 							 <a th:text="'댓글'+${n.count}">댓글 0</a>
 						</div>
 						<hr>
+						<a th:text="${n.diary}"></a>
 						
-						
-						<div class="onelineId">
+						<!-- <div class="onelineId">
 							<a th:text="${n.id}">게시글아이디</a>
-						</div>
+						</div> -->
 						
 						</div>
 						

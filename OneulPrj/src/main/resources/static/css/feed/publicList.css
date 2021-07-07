@@ -103,11 +103,13 @@ html, body {
 	background-color: white;
 	border-radius: 8px;
 	/* padding: 10px; */
-	width: 150px;
-	height: 170px;
+	width: 140px;
+	height: 160px;
 	background-repeat: no-repeat;
 	background-size: cover;
 /* 	background-image: url("/upload/profile/basic.jpg"); */
+	position: relative;
+	background-color: #c0c0c0;
 }
 .box {
   margin-bottom: 20px;
@@ -151,8 +153,13 @@ html, body {
 .white-box{
 	
 	background-color: #f0e4e4;
-	background: rgba(189, 189, 189, 0.8);
-	height: 70%;
+	background: rgba(255, 255, 255, 0.75);
+	/* height: 70%; */
+	position: absolute;
+	width: 100%;
+	bottom: 0;	
+	Border-bottom-left-radius: 8px;
+	Border-bottom-right-radius: 8px;
 	
 }
 
@@ -172,7 +179,7 @@ a {
 	display: flex;
 	flex-direction: row;
     flex-wrap: wrap;
-    padding-bottom: 25px;
+    padding-bottom: 15px;
 }
 
 .happy, 
