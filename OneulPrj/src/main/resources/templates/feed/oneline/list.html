@@ -5,13 +5,137 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>한줄일기</title>
 <link href="/css/feed/onelineList.css" type="text/css" rel="stylesheet">
-<script type="text/javascript" src="/js/feed/oneline/list.js"></script>
+<script type="text/javascript" src="/js/infinite/infiniteScrollWith.js"></script>
+ <script src="/js/infinite/documentInfiniteScrollWith.js"></script>
+<script>
+
+	window.addEventListener("load",()=>{
+		let containerClass = ".container";
+		let query = "";
+		let requestUrl = "/api/diary/oneline";
+		
+		const days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+		 function returningHTML(json) {
+	        	let html = "";
+	        	for(n of json){
+	        		console.log(n);
+	        		let regDate = new Date(n.regDate);
+	        		let year = regDate.getFullYear();
+	        		let month = regDate.getMonth()+1;
+	        		let date = regDate.getDate();
+	        		let dayName = days[regDate.getDay()];
+					console.log(year);
+					console.log(month);
+					console.log(date);
+					console.log(dayName);
+					let count = 0;
+					let open = "https://image.flaticon.com/icons/png/128/880/880779.png";
+					let close = "https://image.flaticon.com/icons/png/128/450/450349.png";
+					let pubIcon = document.querySelector('.pubIcon');
+					
+						
+	        		if(n.commentCount == null? 0 :count =n.commentCount);
+	        		
+	        		let src = null;
+		        	if(n.pub == 1){
+		        		src = open;
+		        			
+		        	}else{
+		        		src = close;
+		        	}
+		        	
+		        	/* -------------프로필조건-------------------------- */
+		        	let img;	    	
+		        	let basic = "/upload/profile/basic.jpg";
+		        	let profile = "/upload/profile/"+n.memberId+"/"+n.image;
+		        	
+		        	if(n.image == "basic.jpg"){
+		        		img = basic;
+		        	}else{
+		        		img = profile;
+		        	}
+		        	
+		        	console.log(img);
+	        		
+	        		console.log(regDate.type);
+	        		
+	        		
+	        		/* --------------------수정 삭제--------------- */
+	        	
+	        		
+	        		
+	        		
+	        		
+	        		/*---------------한줄일기-------------------*/	
+	        		
+	        		
+	        		
+	        		/*----------------반복문 구간------------------------------*/ 
+	        		html += `<div>
+	        			<article class="box">
+	    				<div class="content">
+	    					<div class="profile">   	    					
+	    								
+	    						<img class="profile-image" src=${img}>
+	    					
+	    							<a class="user-name">${n.writerId}</a> 
+	    							<a class="date">${n.regDate}</a>
+	    							
+	    					</div>
+
+
+	    					<div class="content-text">
+	    						<a href='detail?id=${n.id}'>${n.content}</a>
+	    					</div>
+
+	    					<div class="review-attr">
+	    						<span>댓글 ${count}</span>
+	    					</div>
+	    					<hr>
+
+	    					<div class="onelineId">
+	    						<a>${n.id}</a>
+	    					</div>
+
+	    				</div>
+	    			</article>
+	    		</div>`;
+	        	}
+	            
+	            return html;
+	        };
+	        documentInfiniteScrollWith(requestUrl, containerClass,returningHTML,query, "#main");
+	        
+	});
+</script>
 </head>
 <main id="wrapper" layout:fragment="main">
 
-	<div class="btn-box">
+<div class="btn-box">
+      <a href="reg"> <img class="reg-img"
+         src="/images/oneline/addBtn.png">
+      </a>
+   </div>
+
+<div id="main">
+
+
+<section style="overflow: scroll;" class="open-lecture-content">
+	<div class="link-item">
+      <a class="oneline-link" href="/feed/oneline/list">한줄일기</a>
+      <a class="pub-link" href="/feed/publicdiary/list?f=1">공개일기</a>
+      </div>
+        <div class="container">
+        </div>
+       
+        </section>
+  </div>
+        
+        
+<!-----------------------------------한줄일기----------------------------------------------->  
+	<!-- <div class="btn-box">
 		<a href="reg"> <img class="reg-img"
 			src="/images/oneline/addBtn.png">
 		</a>
@@ -24,13 +148,6 @@
 				src="/images/oneline/book_read_icon-icons.com_49930.png">
 			</a>
 		</div>
-
-		<!-- <input type="date" id="now_date"> -->
-
-		<!-- <script>
-			document.getElementById('now_date').valueAsDate = new Date();
-		</script> -->
-
 
 
 	<div class="content-box">
@@ -73,25 +190,13 @@
 						<a th:text="${n.id}">게시글아이디</a>
 					</div>
 
-					<!-- ------------------댓글입력---------------------------------------------- -->
-
-					<form action="reg" method="post" class="d-none">
-						<div class="review-btn-group">
-							<!-- <input class="like" id="like-button" type="button" value="좋아요"> -->
-							<a class="text">여러분의 댓글을 남겨주세요.</a>
-						</div>
-						<div class="comment-box">
-							<textarea rows="3" class=txt name="comment"></textarea>
-							<input type="submit" value="확인" id="btn">
-						</div>
-					</form>
-
 				</div>
 			</article>
 		</div>
 	</div>
 
-	</div>
+	</div> -->
+<!----------------------------------------------------------------------------------------->
 
 </main>
 

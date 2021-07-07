@@ -14,8 +14,16 @@ public class CalendarEmotion {
 	private String image;
 	private String diary;
 	private Integer emotionId;
+	private Integer diaryId;
 	
-	
+	public Integer getDiaryId() {
+		return diaryId;
+	}
+
+	public void setDiaryId(Integer diaryId) {
+		this.diaryId = diaryId;
+	}
+
 	public String getContent() {
 		return content;
 	}

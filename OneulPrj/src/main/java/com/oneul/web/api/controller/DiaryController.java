@@ -23,6 +23,7 @@ import com.oneul.web.entity.FreeDiaryView;
 import com.oneul.web.entity.FutureDiaryView;
 import com.oneul.web.entity.GratitudeDiaryView;
 import com.oneul.web.entity.Member;
+import com.oneul.web.entity.OnelineView;
 import com.oneul.web.service.ApiDiaryService;
 import com.oneul.web.service.CalendarEmotionService;
 import com.oneul.web.service.MemberService;
@@ -57,6 +58,28 @@ public class DiaryController {
 		
 		// list를 가져옴
 		List<FreeDiaryView> list = apiDiaryService.getFreeList(member.getId(), query, pageOffset);//해당아이디 일기리스트
+
+		
+
+		return list;
+	}
+	
+	@GetMapping("/oneline/{p}")
+	public List<OnelineView> onelineList(@PathVariable(name ="p") Integer page, 
+			@RequestParam( name = "q", defaultValue = "") String query, 
+			HttpServletRequest request) {
+		
+		// 로그인된 멤버를 가져옴
+		HttpSession session = request.getSession(true);//세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
+		String username = (String) session.getAttribute("username");
+		Member member = memberService.get(username);
+		
+		
+		// page로 pageOffset을 구함
+		Integer pageOffset = (page-1) * 10;
+		
+		// list를 가져옴
+		List<OnelineView> list = apiDiaryService.getOnelineList(member.getId(), query, pageOffset);//해당아이디 일기리스트
 
 		
 

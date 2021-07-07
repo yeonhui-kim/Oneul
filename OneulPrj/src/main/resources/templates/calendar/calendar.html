@@ -48,10 +48,14 @@
 		}
 	
 		.content{
+			white-space: no-wrap;
 			grid-area: content;
 			overflow: hidden;
 			text-overflow: ellipsis;
-			white-space: no-wrap;
+			height: 90%;
+			display: flex;
+   			align-items: center;
+   
 		}
     </style>
     <script>
@@ -131,7 +135,8 @@
 	        		}
 	        		
 					 html += `
-					 	<div class='diary-container'>
+					 	<div class='diary-container' 
+					 			onclick="location.href='/diary/${d.diary}/detail?id=${d.diaryId}';">
 				    		<div class="diary">${d.diary}</div>
 				    		<div class="emotion-container">
 				    			<div class="${emo}"></div>
@@ -153,18 +158,6 @@
         });
         calendar.render();
         
-        /* html += `<div class="date">${json.startStr}</div>
-        	<div class='d-none diary-container'>
-    		<div class="diary">${json.diary}</div>
-    		<div class="emotion-container">
-    			<div class="${selectedIcon}"></div>
-    		</div>
-    		
-    		<div class="content">${json.content}</div>
-    		
-    	</div>`; 
-    	
-    	 return html; */ 
       });
       
        
@@ -174,18 +167,6 @@
     <div id='calendar'></div>
     
 	<div class ="d-none container"></div>
-	
-	<!-- <div class="date" th:text:"${startStr}"></div>
-	<div class='d-none diary-container'>
-		<div class="diary">${diary}</div>
-		<div class="emotion-container">
-			<div class="${selectedIcon}">감정아이콘</div>
-		</div>
-		
-		<div class="content">콘텐츠</div>
-		
-	</div> -->
-
 
 </main>
 </html>

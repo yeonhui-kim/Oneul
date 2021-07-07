@@ -28,16 +28,14 @@ window.addEventListener("load",function(){
 			}
 		})
 	}
-	
-	
+
 })
 
+
 function check(){
-	let form = document.querySelector(".signup-form");
+	let form = document.querySelector(".edit-form");
 	let username = document.getElementsByName("username")[0]
 	let password = document.getElementsByName("password")[0]
-	let name = document.getElementsByName("name")[0]
-	let email = document.getElementsByName("email")[0]
 	
 	if(username.value == ''){
 		alert("아이디를 입력하세요")
@@ -58,22 +56,23 @@ function check(){
 		alert("비밀번호는 영문 소문자,숫자 4~15자리로 입력하세요")
 		return false;
 	}
-
-	if(name.value == ''){
-		alert("이름을 입력하세요")
-		return false;
-	}
-	let nexp = 	/^[가-힣]+$/
-	if(!nexp.test(name.value)){
-		alert("이름은 한글만 입력 가능합니다")
-		return false;
-	}
-
-	if(email.value == ''){
-		alert("이메일 입력하세요")
-		return false;
-	}
 	
-	alert("회원가입이 완료되었습니다")
-	form.submit();
-}      
+	let checkedit = confirm("회원정보를 수정하시겠습니까?")
+	if(checkedit == true){
+		form.submit();
+		alert("회원정보가 수정되었습니다. 다시 로그인해주세요")		
+	}else{
+		return window.location.href='edit'
+	}
+}
+
+
+function outcheck(){
+    let check = confirm("정말 탈퇴하시겠습니까?")
+    if(check == true){
+        alert("탈퇴 되었습니다.")
+        return window.location.href='out'
+    }else{
+        return window.location.href='edit'
+    }
+}

@@ -19,12 +19,12 @@ window.addEventListener("load", function() {
 
 
 });
-  window.addEventListener("load",()=>{
+window.addEventListener("load",()=>{
 	const fileInput = document.querySelector("input[type='file']");
 	let img = document.querySelector(".image");
 	const fileDelBtn = document.querySelector(".file-del-btn");
 	const changed = document.querySelector(".changed");
-	
+	console.log(changed);
 	
 	
 	
@@ -45,6 +45,7 @@ window.addEventListener("load", function() {
 			fileInput.insertAdjacentElement("beforebegin",img);
 		};	
 		changed.value="1"; //파일바뀜	
+		console.log(changed.value);
 	}
 	
 	//js에서 삭제버튼 onclick -> 이미지클래스 src 지우고..
