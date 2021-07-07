@@ -1,28 +1,47 @@
+
 textarea {
 	width:90%;
+	height:90%;
 	resize:none;
 }
 
 .wrapper{
 	width:100%;
 	height:100%;
-	overflow:scroll;
+	
 	padding:5px;
 	box-sizing: border-box;
-}
-
-.form{
-	width:100%;
-	height:100%;
 	display:flex;
 	flex-direction:column;
 	align-items: center;
 }
 
+.form{
+	width:100%;
+	height:90%;
+	display:flex;
+	flex-direction:column;
+	align-items: center;
+}
+.date-input{
+	height:80px;
+	display:flex;
+	flex-direction:column;
+	align-items: center;
+}
+.emotion-input{
+	max-height:200px;
+	display:flex;
+	flex-direction:column;
+	align-items: center;
+}
 .form lable{
 	height:20px;
 	margin:15px;
 	margin-bottom:7px;
+}
+.lable2{
+	margin-bottom:0;
 }
 
 .form input[type=date]{
@@ -31,8 +50,8 @@ textarea {
 }
 
 #emotion{
-	margin:5px 0;
-	height:100px;
+
+	
 	
 }
 .filebox{
@@ -47,6 +66,13 @@ textarea {
 	margin : 7px 0;
 }
 
+.text-input{
+	display:flex;
+	flex-direction:column;
+	align-items: center;
+	width:100%;
+	height:400px;
+}
 .buttons{
 	display: flex;
     justify-content: flex-end;
