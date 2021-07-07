@@ -12,6 +12,12 @@ function check(){
         alert("이름을 입력하세요")
         return false;
     }
+    let nexp = 	/^[가-힣]+$/
+	if(!nexp.test(name.value)){
+		alert("이름은 한글만 입력 가능합니다")
+		return false;
+	}
+
     if(email.value.length < 1){
         alert("이메일 입력하세요")
         return false;
