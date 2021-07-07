@@ -218,6 +218,7 @@ body{
 		.midleside-container-item1-img {
 			width: 70%;
 			height: 70%;
+			border-radius : 15px 15px 15px 15px;
 		}
 
 
@@ -287,14 +288,11 @@ body{
 	flex-basis: 50px;
 	flex-grow: 1;
 	cursor: pointer;
-	border-radius: 0px 0px 15px 60px;
+	border-radius: 10px 10px 15px 60px;
 	
 }
 
-.my-oneline-button-hover {
-	background-color: #677A8F;
-	color: white;
-}
+
 .my-oneline-button-click {
 	background-color: #677A8F;
 	color: white;
@@ -306,7 +304,7 @@ body{
 	flex-basis: 50px;
 	flex-grow: 1;
 	cursor: pointer;
-	border-radius: 0px 0px 60px 15px;
+	border-radius: 10px 10px 60px 15px;
 
 }
 
@@ -345,7 +343,12 @@ body{
 	justify-content: space-between;
 
 }
+.my-oneline-list-items:hover {
+	
+	cursor: pointer;
 
+
+}
 
 
 /*my-oneline-list*//*-items*//*regdate content*/
@@ -380,7 +383,7 @@ body{
 }
 
 .my-oneline-item-img{
-	height: 70px;
+	height: 50px;
 	margin-right: 20px;
 
 }
@@ -417,7 +420,9 @@ body{
 	justify-content: space-between;
 
 }
-
+.my-comment-list-items:hover {
+	cursor: pointer;
+}
 
 
 /*my-comment-list*//*-items*//*regdate content*/
@@ -452,7 +457,7 @@ body{
 }
 
 .my-comment-item-img{
-	height: 70px;
+	height: 50px;
 	margin-right: 20px;
 
 }
@@ -569,53 +574,138 @@ body{
 		let commentList = document.querySelector(".my-comment-list");
 
 		diaryMenuButton.onclick = () => {
-			diaryMenuButton.classList.add("my-oneline-button-click");
-			commentMenuButton.classList.remove("my-oneline-button-click");
+			diaryMenuButton.classList.add("clicked");
+			commentMenuButton.classList.remove("clicked");
 			onelineList.classList.remove("d-none");
             commentList.classList.add("d-none");
-		};
-		diaryMenuButton.onmouseover = ()=>{
-			diaryMenuButton.classList.add("my-oneline-button-hover");
-		};
-		diaryMenuButton.onmouseleave = ()=>{
-			diaryMenuButton.classList.remove("my-oneline-button-hover");
 		};
 
 
 		
 		commentMenuButton.onclick = () => {
-			diaryMenuButton.classList.remove("my-oneline-button-click");
-			commentMenuButton.classList.add("my-oneline-button-click");
+			diaryMenuButton.classList.remove("clicked");
+			commentMenuButton.classList.add("clicked");
             onelineList.classList.add("d-none");
             commentList.classList.remove("d-none");
 		};
-		commentMenuButton.onmouseover = ()=>{
-			commentMenuButton.classList.add("my-oneline-button-hover");
-		};
-		commentMenuButton.onmouseleave = ()=>{
-			commentMenuButton.classList.remove("my-oneline-button-hover");
-		};
+		
+		
+		// mouseenter event 
+		// mouseleave event 도
+		diaryMenuButton.onmouseover = ()=>{
+				commentMenuButton.classList.remove("my-oneline-button-click");
+				diaryMenuButton.classList.add("my-oneline-button-click");
+				
+				diaryMenuButton.onmouseleave = ()=>{
+					if(commentMenuButton.classList.contains("clicked")){
+						commentMenuButton.classList.add("my-oneline-button-click");
+						diaryMenuButton.classList.remove("my-oneline-button-click");
+					}			
+
+				};				
+				
+			};
+			
+			
+			commentMenuButton.onmouseover = ()=>{
+				commentMenuButton.classList.add("my-oneline-button-click");
+				diaryMenuButton.classList.remove("my-oneline-button-click");
+				
+				commentMenuButton.onmouseleave = ()=>{
+					if(diaryMenuButton.classList.contains("clicked")){
+						commentMenuButton.classList.remove("my-oneline-button-click");
+						diaryMenuButton.classList.add("my-oneline-button-click");
+					}			
+
+				};				
+				
+			};
+
+
+
 
 
 
 		
-		let query = "";
-        let requestUrl = "http://localhost:8080/api/diary/free";
-        function returningHTML(json) {
-        	
-        	let html = "";
-        	for(n of json){
-        		console.log(n);
-        		html += `<h1>${n.id}</h1> <a>${n.content}</a> <span>${n.regDate}</span>`;
-        	}
-            
-            return html;
-        };
-        let containerClass = ".wow";
+// my online list container 에다가 onclick 해줘서 a 에다가 dispatchEvent 해줌 ㅇㅇ
+	let onlineContainer = document.querySelector(".my-oneline-list-container");
+	
+	
+	
+	// 이벤트 a tag 에 dispatch 해줌
+	onlineContainer.onclick = (e)=>{
+		if(e.target.classList.contains("my-oneline-item-link"))
+			return;
+		let item = e.target;
+		
+		for(let i = 0; i < 9; i++){
+			if(item.classList.contains("my-oneline-list-container")){
+				let event = new MouseEvent("click", {
+					  bubbles: true,
+					  cancelable: true
+
+					});
+				item.querySelector(".my-oneline-item-link").dispatchEvent(event);
+				break;
+			}
+			
+			 item = item.parentNode;
+			
+		}
+		
+	};
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// my comment list container 에다가 onclick 해줘서 a 에다가 dispatchEvent 해줌 ㅇㅇ
+		let commentContainer = document.querySelector(".my-comment-list-container");
+		
+		
+		// 이벤트 a tag 에 dispatch 해줌
+		commentContainer.onclick = (e)=>{
+			if(e.target.classList.contains("my-comment-item-link"))
+				return;
+			let item = e.target;
+			
+			for(let i = 0; i < 9; i++){
+				if(item.classList.contains("my-comment-list-container")){
+					let event = new MouseEvent("click", {
+						  bubbles: true,
+						  cancelable: true
+
+						});
+					item.querySelector(".my-comment-item-link").dispatchEvent(event);
+					break;
+				}
+				
+				 item = item.parentNode;
+				
+			}
+			
+		};
+	
+	
+
         
-        //infiniteScrollWith(requestUrl, containerClass,returningHTML,query);
-        
-        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 		
 	});
 	
@@ -826,8 +916,8 @@ body{
 
 			<div class="upside-container">
 				<section class="upside-container-title">
-					<h1 class="d-none">나의 세줄일기</h1>
-					<div class="upside-container-title-main">나의 세줄일기</div>
+					<h1 class="d-none">나의 오늘일기</h1>
+					<div class="upside-container-title-main">나의 오늘일기</div>
 					<div class="upside-container-title-sub">나의 일상을 돌아 봅니다...</div>
 				</section>
 
@@ -880,7 +970,7 @@ body{
 
 		<nav class="midledownside-container">
 			<h1 class="d-none">nav</h1>
-			<div class="my-oneline-button my-oneline-button-click">내 피드</div>
+			<div class="my-oneline-button my-oneline-button-click clicked">내 피드</div>
 			<div class="my-comment-button">내 댓글</div>
 		</nav>
 
@@ -899,9 +989,10 @@ body{
 			<li class="my-oneline-list-items"  th:each="n:${myOneline}">
 				<div class="my-oneline-content-regdate-container">
 					<div class="my-oneline-item-content" th:text="${n.content}">zcontentzzcontentzzcontententzzcontentzzcontentzzzcontentzzcozcontentzzcontentzzcontententzzcontentzzcontentzzzcontentzzco</div>
-					<span class="my-oneline-item-regdate" th:text="${n.regDate}">2021-07-06</span><span class="my-oneline-item-commentcount">댓글 10</span>
+					<span class="my-oneline-item-regdate" th:text="${#calendars.format(n.regDate,'yy년 MMMM dd일 HH시mm분 ')}">2021-07-06</span><span class="my-oneline-item-commentcount" th:text="'댓글 ' + ${n.count} +'개'">댓글 10</span>
 				</div>
-				<div class="my-oneline-list-img"><img class="my-oneline-item-img" src="imagefile1.jpg" alt="picture"/></div>
+				<div class="my-oneline-list-img"><img class="my-oneline-item-img" src="https://image.flaticon.com/icons/png/128/1246/1246324.png" alt="picture"/></div>
+				<a class="my-oneline-item-link" th:href="@{/feed/oneline/detail(id=${n.id})}"></a>
 			</li>
 
 
@@ -919,9 +1010,15 @@ body{
 			<li class="my-comment-list-items" th:each="n:${myComment}">
 				<div class="my-comment-content-regdate-container">
 					<div class="my-comment-item-content" th:text="${n.content}">zcontentzzcontentzzcontententzzcontentzzcontentzzzcontentzzcozcontentzzcontentzzcontententzzcontentzzcontentzzzcontentzzco</div>
-					<span class="my-comment-item-regdate" th:text="${n.regDate}">2021-07-06</span><span class="my-comment-item-commentcount">댓글 10</span>
+					<span class="my-comment-item-regdate"  th:text="${#calendars.format(n.regDate,'yy년 MMMM dd일 HH시mm분 ')} + ${n.comment}+'에서'">2021-07-06</span>
 				</div>
-				<div class="my-comment-list-img"><img class="my-comment-item-img" src="imagefile1.jpg" alt="picture"/></div>
+				<div th:if="${n.comment == 'oneline'}"  class="my-comment-list-img"><img class="my-comment-item-img" src="/images/icon/o-toro.png" alt="picture"/></div>
+				<div th:if="${n.comment == 'freeDiary'}"  class="my-comment-list-img"><img class="my-comment-item-img" src="/images/icon/kampachi.png" alt="picture"/></div>
+				<div th:if="${n.comment == 'gratitudeDiary'}"  class="my-comment-list-img"><img class="my-comment-item-img" src="/images/icon/toro-salmon.png" alt="picture"/></div>
+				
+				<a class="my-comment-item-link" th:if="${n.comment == 'oneline'}" th:href="@{/feed/{feed}/detail(id=${n.diaryId}, feed=${n.comment})}"></a>
+				<a class="my-comment-item-link" th:if="${n.comment != 'oneline' }" th:href="@{/diary/{diary}/detail(id=${n.diaryId}, diary=${n.comment})}"></a>
+				
 			</li>
 
 
