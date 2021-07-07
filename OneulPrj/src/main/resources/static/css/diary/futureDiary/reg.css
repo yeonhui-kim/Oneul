@@ -20,16 +20,19 @@ textarea {
 }
 
 .form lable{
+	height:20px;
 	margin:15px;
 	margin-bottom:7px;
 }
 
 .form input[type=date]{
 	margin-bottom:7px;
+	height:20px;
 }
 
 #emotion{
 	margin:5px 0;
+	height:100px;
 	
 }
 .filebox{
