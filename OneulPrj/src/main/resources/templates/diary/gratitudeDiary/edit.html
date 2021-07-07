@@ -23,10 +23,13 @@
 					<label>날짜 변경</label>
 					<input type="date" name="regDate" 
 									th:value="${#calendars.format(gratitudeDiary.regDate, 'yyyy-MM-dd')}">
+					<input type="hidden" name="prevRegDate" 
+									th:value="${#calendars.format(gratitudeDiary.regDate, 'yyyy-MM-dd')}">				
 				</div>
 				
 				<div class="emotion-box">
 					<label>지금 당신의 감정을 알려주세요</label>
+					<input type="hidden" name="prevEmotionId" th:value="${gratitudeDiary.emotionId}">
 					<th:block th:switch="${gratitudeDiary.emotionId}">
 						<span th:case="1"><div class="checked-emotion happy"></div></span>
 						<span th:case="2"><div class="checked-emotion proud"></div></span>
