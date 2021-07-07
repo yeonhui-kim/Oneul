@@ -37,9 +37,7 @@
 		<div class="content-box">
 			<div th:each="n:${list}">
 				<article class="box">
-					<div class="content"  th:style="'background-image:url(/upload/diary/ ' +${n.diary} +' / '+${n.memberId}+' / );'">
-					<!-- <div class="content" style="background-image: url('/upload/diary/freeDiary/4/86/koala.jfif') "> -->
-					<div th:text="${n.image}">ss</div>
+					<div class="content"  th:style="'background-image:url(/upload/diary/'+${n.diary}+'/'+${n.memberId}+'/'+${n.id}+'/'+${n.image}+');'">
 						<div class="profile">
 							
 						</div>

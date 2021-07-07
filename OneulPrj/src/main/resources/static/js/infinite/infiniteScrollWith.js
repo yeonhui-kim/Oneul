@@ -88,7 +88,7 @@ function infiniteScrollWith(requestUrl, containerClass, returningHTML,query) {
                 imgContainer.remove();
                 
                 // 로딩이끝나면 scroll을 제일 마지막 에봤던 위치로 보내준다
-                window.scrollTo(0,scrollable-200);
+                //window.scrollTo(0,scrollable-200);
                 
                 
                 // scrollable 최신화해줌
