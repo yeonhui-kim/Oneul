@@ -43,3 +43,25 @@ window.addEventListener("load", function() {
 			
 	}
 });
+
+function submitBtnClick(){
+	const form = document.querySelector(".form");
+
+	const dateInput = document.querySelector("input[type='date']");
+	const emotionInput = document.querySelector("input[type='radio']");
+	
+	let date = dateInput.value;
+	let emotion = document.querySelector("#emotion").classList.value;
+	
+	console.log(date);
+	console.log(emotion);
+	if(date==""){
+		alert("날짜를 선택해주세요");
+	}else if(emotion==""){
+		alert("감정을 선택해주세요");
+	}else{
+		form.submit();	
+	}
+	
+	
+}
