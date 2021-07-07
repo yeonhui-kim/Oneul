@@ -1,15 +1,15 @@
 
 textarea {
 	width:90%;
-	height:90%;
+	height:95%;
 	resize:none;
 }
 
 .wrapper{
 	width:100%;
 	height:100%;
-	
-	padding:5px;
+	overflow: scroll;
+	padding:5px 0;
 	box-sizing: border-box;
 	display:flex;
 	flex-direction:column;
@@ -71,7 +71,7 @@ textarea {
 	flex-direction:column;
 	align-items: center;
 	width:100%;
-	height:400px;
+	height:300px;
 }
 .buttons{
 	display: flex;
