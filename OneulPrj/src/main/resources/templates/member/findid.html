@@ -25,12 +25,12 @@
                     <li class="input">
                         <legend>이메일</legend>
                         <input class="b" type="email" name="email" placeholder="sophie@example.com">
+                    <div class="msg" th:if="${msg}!=null" th:text="${msg}"></div>
                     </li>
                     <li class="btn">
                         <input class="submit" type="button" onclick="check()" value="아이디 찾기">
                         <input class="btn-cancel" type="button" value="취소" onclick="window.location.href='/'">
                     </li>
-                    <div class="msg" th:if="${msg}!=null" th:text="${msg}"></div>
                     
                 </ul>
             </form> 
