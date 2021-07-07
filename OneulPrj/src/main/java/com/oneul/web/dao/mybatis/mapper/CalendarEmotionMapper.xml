@@ -22,9 +22,9 @@
 		UNION
 		select id as 'diaryId', emotionId, regDate, content, 'freeDiary' as 'diary', memberId
 		from oneul.FreeDiary where regDate = #{regDate} and memberId = #{memberId}
-		UNION
+		<!-- UNION
 		select id as 'diaryId', emotionId, regDate, content, 'futureDiary' as 'diary', memberId
-		from oneul.FutureDiary where bookingDate = #{regDate} and memberId = #{memberId}
+		from oneul.FutureDiary where bookingDate = #{regDate} and memberId = #{memberId} -->
 	</select>
 	
    	<insert id="insertCalendar" parameterType="com.oneul.web.entity.CalendarEmotion">
