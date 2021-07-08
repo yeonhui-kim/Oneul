@@ -36,6 +36,7 @@ function check(){
 	let form = document.querySelector(".edit-form");
 	let username = document.getElementsByName("username")[0]
 	let password = document.getElementsByName("password")[0]
+	let v = document.querySelector("#id_check_sucess")
 	
 	if(username.value == ''){
 		alert("아이디를 입력하세요")
@@ -55,6 +56,11 @@ function check(){
 	if(!pwdexp.test(password.value)){
 		alert("비밀번호는 영문 소문자,숫자 4~15자리로 입력하세요")
 		return false;
+	}
+
+	if(v.style.display == "none"){
+		alert("아이디 중복체크를 해주세요")
+		return false
 	}
 	
 	let checkedit = confirm("회원정보를 수정하시겠습니까?")

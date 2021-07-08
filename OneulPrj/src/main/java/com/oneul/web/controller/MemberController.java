@@ -32,10 +32,7 @@ public class MemberController {
 	
 	//회원가입페이지 조회
 	@RequestMapping("signup") 
-	public String signup(@RequestParam(name = "result", defaultValue = "0") int result
-						, Model model) {
-		if(result == 1)
-			model.addAttribute("checkmsg","중복된 아이디입니다.");
+	public String signup(){
 			
 		return "member/signup";
 	}
@@ -72,24 +69,17 @@ public class MemberController {
 						String email,
 						Model model) {
 		
-		int result = service.checkid(username);
+		Member member = new Member();
+		member.setUserId(username);
+		String noopPassword = "{noop}"+password;
+		member.setPassword(noopPassword);
+		member.setName(name);
+		member.setBirthday(birthday);
+		member.setEmail(email);
 		
-		if(result == 1) {
-			return "redirect:signup?result="+result;		
-		}
-		else {
-			Member member = new Member();
-			member.setUserId(username);
-			String noopPassword = "{noop}"+password;
-			member.setPassword(noopPassword);
-			member.setName(name);
-			member.setBirthday(birthday);
-			member.setEmail(email);
-			
-			service.insert(member);
-			
-			return "redirect:/";
-		}
+		service.insert(member);
+		
+		return "redirect:/";
 	}
 	
 	//아이디찾기페이지 조회
@@ -133,7 +123,7 @@ public class MemberController {
 	
 	//아이디 찾은 후 페이지 조회
 	@RequestMapping("foundid")
-	public String foundid(Model model) {
+	public String foundid() {
 		
 		return "member/foundid";		
 	}
@@ -180,14 +170,11 @@ public class MemberController {
 			model.addAttribute("msg","존재하지 않는 회원정보입니다");
 			return "member/findpwd";
 		}
-
-		
 	}
 	
 	//회원정보수정 페이지 조회
 	@RequestMapping("edit") 
-	public String edit(HttpServletRequest request, Model model,
-						@RequestParam(name = "result", defaultValue = "0") int result) {
+	public String edit(HttpServletRequest request, Model model) {
 		
 		HttpSession session = request.getSession(true);
 		String username = (String) session.getAttribute("username");
@@ -201,10 +188,6 @@ public class MemberController {
 		member.setPassword(password);
 		
 		model.addAttribute(member);
-		
-		//실패메세지
-		if(result == 1)
-			model.addAttribute("checkmsg","중복된 아이디입니다.");
 		
 		return "member/edit";		
 	}
@@ -220,25 +203,16 @@ public class MemberController {
 		Member member2 = new Member();
 		member2 = service.get(originUsername);
 		int id = member2.getId();
+	
+		Member member = new Member();
+		member.setId(id);
+		member.setUserId(username);
+		String noopPassword = "{noop}"+password;
+		member.setPassword(noopPassword);
 		
-		//회원아이디 중복체크
-		int result = service.checkid(username);
+		service.updatebyid(member);
 		
-		if(result == 1) {
-			return "redirect:edit?result="+result;		
-		}else {
-			//변경된 회원정보 업데이트
-			Member member = new Member();
-			member.setId(id);
-			member.setUserId(username);
-			String noopPassword = "{noop}"+password;
-			member.setPassword(noopPassword);
-			
-			service.updatebyid(member);
-			
-			return "redirect:/doLogout";			
-		}
-		
+		return "redirect:/doLogout";			
 	}
 	
 	@RequestMapping("logintest")
@@ -296,8 +270,6 @@ public class MemberController {
 			e.printStackTrace();
 		}
 		
-
-		
 		Member member = new Member();
 		member.setId(id);
 		member.setUserId(username);
@@ -341,9 +313,6 @@ public class MemberController {
 		
 		return "redirect:/";
 	}
-	
-	
-
 }
 
 
