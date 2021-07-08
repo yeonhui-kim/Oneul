@@ -51,13 +51,6 @@
 					<div th:replace="inc/modal::modal"></div>
 				</div>
 				
-				<div class="pub">
-					<label>공개</label>
-					<input type="radio" value="true" name="pub">
-					<label class="pub-label">비공개</label>
-					<input type="radio" value="false" name="pub" checked>
-				</div>
-				
 				<div class="contents">
 					<label class="content-label">오늘하루 감사한 일들을 적어보세요</label>
 					<div class="question">오늘의 감사한 일 :  </div>
@@ -68,6 +61,12 @@
 					<textarea rows="5" cols="45" name="content3"></textarea>
 				</div>
 	
+				<div class="pub">
+					<label>공개</label>
+					<input type="radio" value="true" name="pub">
+					<label class="pub-label">비공개</label>
+					<input type="radio" value="false" name="pub" checked>
+				</div>
 			</form>
 			
 				<div class="buttons">
