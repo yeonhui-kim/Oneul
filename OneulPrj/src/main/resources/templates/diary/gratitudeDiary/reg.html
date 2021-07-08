@@ -29,6 +29,16 @@
     		form.submit();	
     	}
     }	
+    
+    window.addEventListener("load",()=>{
+    	const explanation = document.querySelector(".explanation");
+    	const questionMark = document.querySelector(".question-mark");
+    	
+    	questionMark.onclick=()=>{
+    		explanation.classList.toggle("d-none");
+    	}
+    	
+    })
     </script>
 </head>
 
@@ -37,6 +47,30 @@
 	<main id="main" layout:fragment="main">
 		<section class="wrapper">
 			<form class="form" action="/diary/gratitudeDiary/reg" method="post" enctype="multipart/form-data">
+				<div class="question-container">
+					<div class="question-mark"></div>
+				</div>
+				<div class="explanation d-none">
+					<p>감사일기란?
+					<br><br><br>
+					오늘 하루 있었던 감사한 일들을 기록하는 일기에요.
+					<br><br>
+					일상의 소소한 행복부터 <br>
+					특별하고 놀라운 일까지 오늘의 감사를 기록해보세요.
+					<br><br>
+					생각이 잘 안난다면 오늘 날씨, 오늘 먹은 음식 등..<br>
+					당연했던 일상을 떠올려보세요.
+					<br><br>
+					아주 소소한 일이라도 괜찮아요.
+					<br><br>
+					오늘을 잘 버텨낸 나에게 따듯한 응원을 보내주세요.
+					<br><br><br>
+					“감사일기를 쓰면서부터 내 인생은 완전히 달라졌다.<br>
+					나는 비로소 인생에서 소중한 것이 무엇인지,<br>
+					삶의 초점을 어디에 맞춰야 하는지 알게 되었다.” (_오프라 윈프리)
+					<br>
+					</p>
+				</div>
 				
 				<div class="date">
 					<label>오늘의 날짜를 선택해주세요</label>

@@ -1,5 +1,6 @@
 /*gratitudeDiary css*/
 
+/*-------------ÄÜÅÙÃ÷ ------------------------*/
 .emotion{
 	
 }
@@ -54,7 +55,7 @@
 		color: rgba(74, 74, 74, 1);
 		border-color: rgba(195, 193, 191, 0.69);
 		/* font-weight: bold; */
-		border-radius: 8px;
+		border-radius: 7px;
 		background: rgba(248, 241, 229, 1);
 		margin-right: 5px;
 	}
@@ -62,3 +63,17 @@
 	.button:hover {
 	  background: rgba(247, 232, 206, 1)
 	} 
+
+textarea {
+	width:80%;
+	height: 32px;
+	font-size: 12px;
+    }
+    	
+.comment-container{
+	display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+}	
+
+	
