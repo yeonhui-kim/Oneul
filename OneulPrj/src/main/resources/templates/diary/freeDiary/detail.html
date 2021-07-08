@@ -14,42 +14,63 @@
 <main id="main" layout:fragment="main">
 
 	<section class="sectionClass">
-		<table border="1">
-			<tr>
-				<th>오늘의 감정</th>
-				<!-- <td id="emotion" colspan="3" th:text="${gratitudeDiary.emotionId}"> -->
-				<td colspan="3"><th:block th:switch="${freeDiary.emotionId}">
-						<span th:case="1"><div class="checked-emotion happy"></div></span>
-						<span th:case="2"><div class="checked-emotion proud"></div></span>
-						<span th:case="3"><div class="checked-emotion flutter"></div></span>
-						<span th:case="4"><div class="checked-emotion calm"></div></span>
-						<span th:case="5"><div class="checked-emotion sensitive"></div></span>
-						<span th:case="6"><div class="checked-emotion unstable"></div></span>
-						<span th:case="7"><div class="checked-emotion tired"></div></span>
-						<span th:case="8"><div class="checked-emotion sad"></div></span>
-						<span th:case="9"><div class="checked-emotion upset"></div></span>
-					</th:block></td>
-			</tr>
-			<tr>
-				<th>첨부파일</th>
-				<td colspan="3"><img class="image"
-					th:if="${freeDiary.image}!=''"
-					th:src="@{/upload/diary/freeDiary/} +${freeDiary.memberId}+@{/}+${freeDiary.id}+@{/}+ ${freeDiary.image}">
-				</td>
-			</tr>
-			<tr>
-				<th>작성일</th>
-				<td colspan="3"
-					th:text="${#calendars.format(freeDiary.regDate,'yyyy-MM-dd')}"></td>
-			</tr>
-			<tr th:with="pub = ${freeDiary.pub}==false?'비공개':'공개'">
-				<th>공개선택</th>
-				<td colspan="3" th:text="${pub}">공개 / 비공개</td>
-			</tr>
-			<tr>
-				<td colspan="4" th:text="${freeDiary.content}"></td>
-			</tr>
-		</table>
+		<div class="detail-wrap">
+		
+                           
+                           
+                             
+                              
+								<th:block th:switch="${freeDiary.emotionId}"> 
+								<span th:case="1"><img class="emotion" alt="" src="/images/emotions/happy.png"></span>
+								 <span th:case="2"><img class="emotion" alt="" src="/images/emotions/proud.png"></span> 
+								 <span th:case="3"><img class="emotion" alt="" src="/images/emotions/flutter.png"></span> 
+								 <span th:case="4"><img class="emotion" alt="" src="/images/emotions/calm.png"></span> 
+								 <span th:case="5"><img class="emotion" alt="" src="/images/emotions/sensitive.png"></span> 
+								 <span th:case="6"><img class="emotion" alt="" src="/images/emotions/unstable.png"></span> 
+								 <span th:case="7"><img class="emotion" alt="" src="/images/emotions/tired.png"></span> 
+								 <span th:case="8"><img class="emotion" alt="" src="/images/emotions/sad.png"></span> 
+								 <span th:case="9"><img class="emotion" alt="" src="/images/emotions/upset.png"></span> 
+								</th:block>
+							 
+                                                    
+                              <div th:text="${#calendars.format(freeDiary.regDate,'yyyy-MM-dd')}">2021-01-01</div>
+                           
+                           
+                           <!-- <tr th:with="pub = ${futureDiary.pub==1 ? '공개':'비공개'}">
+                              <th>공개여부</th>
+                              <td th:text="${pub}">공개일기/비공개일기</td>
+                           </tr> -->
+                           
+                           
+                              
+                              <table>
+                              
+                               <img class="image" th:if="${freeDiary.image}!=''" th:src="@{/upload/diary/freeDiary/} +${freeDiary.memberId}+@{/}+${freeDiary.id}+@{/}+ ${freeDiary.image}">
+                             
+                              <textarea class="content"  rows="20" cols="30" readonly th:text = "${freeDiary.content}">                      
+                                 자유일기내용
+                              </textarea>
+                              
+                              </table>
+                          
+                      
+                  <div>
+                     <a href="list">목록</a>
+                     <a th:href="@{edit(id=${freeDiary.id})}">수정</a>
+                     <a th:href="@{del(id=${freeDiary.id})}" onclick="if(!confirm('삭제하시겠습니까?'))return false;">삭제</a>
+                   													
+                  </div>
+                  <div class="container">
+                  
+			<form id="commentForm" action="commentReg" method="post">
+				<input type="hidden" name="id" th:value="${freeDiary.id}"> 
+				 	
+			</form>
+			
+		</div>
+		
+		
+	</div>
 
 		<div>
 			<a href="list">목록</a> <a th:href="@{edit(id=${freeDiary.id})}">수정</a>
