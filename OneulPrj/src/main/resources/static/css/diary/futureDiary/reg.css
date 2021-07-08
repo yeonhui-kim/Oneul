@@ -97,4 +97,51 @@ textarea {
 
 .button:hover {
   background: rgba(247, 232, 206, 1)
-}    
+}   
+.file-buttons{
+	height:30px;
+	width:90%;
+	display:flex;
+	justify-content: flex-end;
+	margin-bottom:4px;	
+}
+.btn-sel{
+	
+	background: url("../../../images/icon/picture.png") no-repeat;
+	 background-size: cover;
+	width:35px;
+	height:30px;
+	border:0;
+	
+}
+.file-del-btn{
+	background: url("../../../images/icon/remove.png") no-repeat;
+	 background-size: cover;
+	width:20px;
+	height:20px;
+	border:0;
+} 
+.question-container{
+	height:20px;
+	width:90%;
+	display:flex;
+	justify-content: flex-end;
+	
+}
+.question-mark{
+	background: url("../../../images/icon/question-mark.png") no-repeat;
+	 background-size: cover;
+	width:20px;
+	height:20px;
+	border:0;
+} 
+
+.explanation{
+	border:1px solid #979797;
+	padding:3px 5px;
+	border-radius:3px;
+	background-color:#fff;
+}
+.d-none{
+	display:none;
+}
