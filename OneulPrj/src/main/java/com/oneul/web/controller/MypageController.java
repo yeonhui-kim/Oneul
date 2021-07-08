@@ -65,8 +65,7 @@ public class MypageController {
 	@PostMapping("/mypage/reg")
 	public String postMyPageReg(MultipartFile multiFile, HttpServletRequest request, String email, String introduction) {
 		
-		System.out.println(email);
-		System.out.println(introduction);
+
 		
 		HttpSession session = request.getSession(true);							// session으로 username 찾기		
 		String userName = (String) session.getAttribute("username");			// session으로 username 찾기
@@ -89,6 +88,12 @@ public class MypageController {
 			member.setEmail(email);
 			member.setIntroduction(introduction);
 			service.updatebyname(member);
+			
+			
+			
+			
+
+			
 			
 			
 			return "redirect:/mypage";
@@ -155,7 +160,7 @@ public class MypageController {
 		}
 		
 		
-		
+
 		
 		
 		

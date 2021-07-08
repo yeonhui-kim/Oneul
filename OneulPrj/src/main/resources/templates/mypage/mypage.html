@@ -90,7 +90,7 @@ body{
 
 /*다른 CSS 에서 #main에 걸려있는 overflow scroll 하고 height 85% 끄면 잘됨 밑에 걸어서 뺴줌 그리고 바디의 height 100% 빼주고 */
 #main {
-	background-color: #F2F2F2;
+	background-color: #F7F7F7;
 	font-family: 'KoPub Batang', serif;
 	margin-left: auto;
 	margin-right: auto;
@@ -160,17 +160,22 @@ body{
 
 
 		}
-		.upside-container-edit-box-logout{
+		.upside-container-edit-box-logout:hover{
+			background-color : gray;
+			color:white;
+		
 		}
 
-		.upside-container-edit-box-profile-edit{
-			
+		.upside-container-edit-box-profile-edit:hover{
+			background-color : gray;
+			color:white;			
 
 		}
 
 
-		.upside-container-edit-box-information-edit{
-			
+		.upside-container-edit-box-information-edit:hover{
+			background-color : gray;
+			color:white;
 		}
 
 
@@ -257,6 +262,8 @@ body{
 
 		.midleside-container-item2-nameis{
 			margin-top: 10px;
+			white-space:pre;
+			
 		}	
 
 
@@ -508,7 +515,7 @@ body{
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	
+	box-sizing: border-box;
 }
 
  .profile-edit-item1 { 
@@ -525,6 +532,7 @@ body{
 }
 
 
+
 /*profile-edit-item3*/
 .profile-edit-item3 {
 	
@@ -532,8 +540,23 @@ body{
 	flex-basis:400px;
 }
 
-.item1-img {
 
+.item3-flex{
+	display:flex;
+	align-items:center;
+	justify-content: space-between;
+}
+.item3-p{
+}
+	.item3-submit{
+		
+		width: 45px;
+		height: 30px;
+		border-radius: 10px 10px 10px 10px;
+	}
+
+.item1-img {
+	border-radius : 15px 15px 15px 15px;
 	cursor: pointer;
 	width: 120px;
 	height: 120px;
@@ -546,7 +569,11 @@ margin-top:5px;
 }
 
 .item3-textarea {
+	box-sizing:border-box;
+	padding:10px;
+	border-radius : 15px 15px 15px 15px;
 	margin-top:5px;
+	margin-right: 10px;
 	border: 1px solid #F4F4F4;
 	outline:0;
 	resize:none;
@@ -556,18 +583,20 @@ margin-top:5px;
 }
 
 
-.item3-email {
-	margin-top:5px;
-	width: 100%;
-	
-	outline:0;
-	border: 1px solid #F4F4F4;
-	display: block;
-}
 
-.item3-submit{
-	margin-top:10px;
-}
+	.item3-email {
+		display: block;
+		padding:10px;
+		margin-top:5px;
+		margin-right: 5px;
+		border-radius : 15px 15px 15px 15px;
+		outline:0;
+		border: 1px solid #F4F4F4;
+		width: 130px;
+		
+	}
+	
+
 </style>
 
 
@@ -967,7 +996,7 @@ margin-top:5px;
 					<ul>
 						<li class="midleside-container-item2-my"><span th:text="${member.name}">홍길동</span> 나는</li>
 						<li class="midleside-container-item2-nameis" th:if="${member.introduction} == ''">자기소개 작성해 주세욤 </li>
-						<li class="midleside-container-item2-nameis" th:if="${member.introduction} != ''" th:text="${member.introduction}">자기소개 작성</li>
+						<li class="midleside-container-item2-nameis" th:if="${member.introduction} != ''" th:text="${member.introduction}" >자기소개 작성</li>
 
 					</ul>
 				</section>
@@ -1055,9 +1084,13 @@ margin-top:5px;
 	<section class="profile-edit-section  d-none">
 		<h1 class="d-none" >푸로필 수정</h1>
 		<form class="profile-edit" action="/mypage/reg" method="POST" enctype="multipart/form-data">
-	        <div class="profile-edit-item1" ><div class="item1-text d-none">수정</div><img class="item1-img" th:src="@{'/upload/profile/'+${member.id}+'/'+${member.image}}" th:if="${member.image}!='basic.jpg'" /><img class="item1-img" th:src="@{/upload/profile/basic.jpg}"  th:if="${member.image}=='basic.jpg'" /><div class="item1-link"><a href="">기본사진으로 이용하기</a></div></div>
+	        <div class="profile-edit-item1" ><div class="item1-text d-none">수정</div><img class="item1-img" th:src="@{'/upload/profile/'+${member.id}+'/'+${member.image}}" th:if="${member.image}!='basic.jpg'" /><img class="item1-img" th:src="@{/upload/profile/basic.jpg}"  th:if="${member.image}=='basic.jpg'" /><div class="item1-link"><a href="">기본사진</a></div></div>
 	       
-	        <div class="profile-edit-item3"><p class="item3-p" th:text="${member.name}+ ' 나는'" >누구누구 나는</p><textarea name="introduction" class="item3-textarea" th:text="${member.introduction}"></textarea><input class="item3-email" type="text" name="email" placeholder="이메일" th:value="${member.email}"><input class="item3-submit" type="submit" value="수정"></div>
+	        <div class="profile-edit-item3">
+	        	<div class="item3-flex"><div class="item3-p" th:text="${member.name}+ ' 나는'" >누구누구 나는</div> <input class="item3-submit" type="submit" value="수정"></div>
+	        	<textarea name="introduction" class="item3-textarea" th:text="${member.introduction}" placeholder="자기소개를 작성해 주세요"></textarea>
+        		<input class="item3-email" type="text" name="email" placeholder="이메일을 입력해주세요" th:value="${member.email}">
+	        </div>
 	        <input class="profile-edit-file-input d-none" type="file" name="multiFile">
 	    </form> 
     </section>
