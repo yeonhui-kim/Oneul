@@ -68,7 +68,7 @@ layout:decorator="/inc/layout">
 	        			html += `<div class='diary-container' onclick="alert('아직 볼 수 없습니다.');" >
 							<div class='bookingDate'>to. ${formattedBookingDate}</div>
 	        			<div class='content-full not-open'>
-	        			<a onclick="alert('아직 볼 수 없습니다.');">${formattedBookingDate}에 공개됩니다.</a>
+	        			<a>${formattedBookingDate}에 공개됩니다.</a>
 	        			</div>`;
 	        		}
 	        		
@@ -92,10 +92,10 @@ layout:decorator="/inc/layout">
 
 	<main id="main" layout:fragment="main">
 		<section class="wrapper">
-		<div class="title-container">
+		<div class="title-container d-none">
 			<h1 class="title">Future Diary</h1>
 		</div>
-			
+			<br>
 			<div class = "container">
 				<table>
 					<tr>
