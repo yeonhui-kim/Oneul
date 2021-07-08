@@ -6,12 +6,36 @@
 	box-sizing: border-box;
 }
 
+.question-container{
+	height:20px;
+	width:90%;
+	display:flex;
+	justify-content: flex-end;
+	
+}
+.question-mark{
+	background: url("../../../images/icon/question-mark.png") no-repeat;
+	 background-size: cover;
+	width:20px;
+	height:20px;
+	border:0;
+}
+.explanation{
+	border:1px solid #979797;
+	padding:3px 5px;
+	border-radius:3px;
+	background-color:#fff;
+}
+.d-none{
+	display:none;
+}
+
 /*-------------³¯Â¥ ------------------------*/
 .date{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin-top: 15px;
+	margin-top: 5px;
 	margin-bottom: 15px;
 }
 	.date label{
