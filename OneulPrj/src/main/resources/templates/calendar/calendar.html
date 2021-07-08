@@ -56,7 +56,8 @@
       			"startStr" : startStr
       		}
       		
-				 let html = "";
+      		
+			let html = "";
       		fetch('/api/diary/listDiary?startStr=' + startStr, {method: 'POST',
       			headers : {'Content-Type': 'application/json'},
       			  body: JSON.stringify(param)
@@ -94,7 +95,9 @@
 				    		<div class="emotion-container">
 				    			<div class="${emo}"></div>
 				    		</div>
-				    		<div class="content">${d.content}</div>
+				    		<div class="content-container">
+				    			<div class="content">${d.content}</div>
+				    		</div>
 				    	</div>`;
 				
 				

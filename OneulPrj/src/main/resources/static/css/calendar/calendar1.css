@@ -27,21 +27,37 @@
 	border-radius: 8px;
 	align-items: center;
 	margin: 10px auto 10px auto;
-	grid-template-columns: 80px 1fr; /*¿­ µÎ°³*/
-	grid-template-rows: 1fr; /*Çà 3Ãþ*/
-	grid-template-areas: "emotion content";
+	grid-template-columns: 85px 1fr; /*¿­ µÎ°³*/
+	grid-template-rows: 15px 1fr; /*Çà 3Ãþ*/
+	grid-template-areas: 
+	"diary content"
+	"emotion content";
+}
+/*-----------´ÙÀÌ¾î¸®  ------------------------*/ 
+.diary{
+	grid-area: diary;
+	display: flex;
+	justify-content: center;
 }
 
+/*-------------°¨Á¤ ------------------------*/ 	
 .emotion-container {
 	grid-area: emotion;
 }
 
-.content {
-	white-space: no-wrap;
+/*-------------ÄÁÅÙÃ÷ ------------------------*/
+.content-container{
 	grid-area: content;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	height: 90%;
 	display: flex;
 	align-items: center;
+	margin-left: 8px;
+	height: 90%;
+	width: 95%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.content {
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
