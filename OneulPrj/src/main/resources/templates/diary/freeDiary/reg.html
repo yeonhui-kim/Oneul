@@ -38,7 +38,7 @@
 			</div>
 
 			<select id="quetionList" name="quetionList" class="quetionList">
-				<option value="" selected="selected">질문을 선택해보세요</option>
+				<option value="" selected="selected">질문을 선택해서 일기를 작성해보세요</option>
 				<div th:each="n:${list}">
 					<option th:value="${n.question}" th:text="${n.question}"
 						id="selectedQuestion"></option>
