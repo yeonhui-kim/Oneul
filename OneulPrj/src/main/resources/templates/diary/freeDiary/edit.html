@@ -6,91 +6,88 @@
 <meta charset="UTF-8">
 <title>자유일기-수정페이지</title>
 <link href="/css/diary/modal.css" type="text/css" rel="stylesheet">
+<link href="/css/diary/freediary/edit.css" type="text/css" rel="stylesheet">
 <script src='/js/modal/modal.js'></script>
 <script src='/js/diary/freediary/edit.js'></script>
 </head>
 <main id="main" layout:fragment="main">
 
-	<form action="edit" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="id" th:value="${freeDiary.id}"> <input
-			type="hidden" name="memberId" th:value="${freeDiary.memberId}">
-		<table border="1">
-			<tr>
-				<th>감정선택</th>
-				<td colspan="3">
-					<th:block th:switch="${freeDiary.emotionId}">
-						<span th:case="1"><div class="checked-emotion happy"></div></span>
-						<span th:case="2"><div class="checked-emotion proud"></div></span>
-						<span th:case="3"><div class="checked-emotion flutter"></div></span>
-						<span th:case="4"><div class="checked-emotion calm"></div></span>
-						<span th:case="5"><div class="checked-emotion sensitive"></div></span>
-						<span th:case="6"><div class="checked-emotion unstable"></div></span>
-						<span th:case="7"><div class="checked-emotion tired"></div></span>
-						<span th:case="8"><div class="checked-emotion sad"></div></span>
-						<span th:case="9"><div class="checked-emotion upset"></div></span>
-					</th:block>
-					<div id="emotion"></div>
-					<button id="open-button" type="button">감정 선택</button>
-					<div th:replace="inc/modal::modal"></div></td>
-			</tr>
-			<tr>
-				<th>질문선택</th>
-				<td colspan="3"><select id="quetionList" name="quetionList"
-					class="quetionList">
-						<option value="" selected="selected">선택</option>
-						<div th:each="n:${list}">
-							<option th:value="${n.question}" th:text="${n.question}"
-								id="selectedQuestion"></option>
-						</div>
-				</select></td>
-			</tr>
-			<tr>
-				<th>첨부파일</th>
-				<td colspan="4">
-					<img class="image"
-					th:if="${freeDiary.image}!=''"
-					th:src="@{/upload/diary/freeDiary/} +${freeDiary.memberId}+@{/}+${freeDiary.id}+@{/}+ ${freeDiary.image}"
-					style="width: 200px; height: 150px;"> 
-					<img class="image" th:if="${freeDiary.image}==''"> 
-					<input class="file-del-btn" type="button" value="삭제"> 
-					<input type="file" name="file"> 
-					<input class="changed" type="hidden" name="changed" value="0"> 
-					<input type="hidden" name="originalFile" th:value="${freeDiary.image}">
-
-				</td>
-			</tr>
-			<tr>
-				<th>작성일</th>
-				<td colspan="3">
-					<div
-						th:text="${#calendars.format(freeDiary.regDate, 'yyyy-MM-dd')}"></div>
-					<br> <span>변경할 날짜 : </span><input type="date" name="regDate"
-					th:value="${#calendars.format(freeDiary.regDate, 'yyyy-MM-dd')}">
-				</td>
-			</tr>
-			<tr th:with="pub = ${freeDiary.pub}==false?'비공개':'공개'">
-				<th>공개선택</th>
-				<td th:text="${pub}"></td>
-				<td><label>공개</label> <input type="radio" value="1" name="pub"
-					th:checked="${freeDiary.pub} ? 'true': 'false'"> <label>비공개</label>
-					<input type="radio" value="0" name="pub"
-					th:checked="${freeDiary.pub} ? 'false': 'true'"></td>
-			</tr>
-
-			<tr>
-				<td colspan="4"><input type="text" value="" name="content"
-					class="selectedQuestion"
-					style="background-color: #F2F2F2; border: none; border-right: 0px; border-top: 0px; boder-left: 0px; boder-bottom: 0px; width: 500px; outline: none;"></input><br>
-					<textarea class="content" rows="20" cols="50" name="content"
-						th:text="${freeDiary.content}"></textarea></td>
-			</tr>
-
-		</table>
-
-		<div>
-			<input type="submit" value="저장"> <a th:href="@{detail(id=${freeDiary.id})}">취소</a>
+	<form class="form" action="edit" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="id" th:value="${freeDiary.id}"> 
+		<input type="hidden" name="memberId" th:value="${freeDiary.memberId}">
+		
+		
+		<lable>날짜 변경</lable>
+		<input type="date" name="regDate"
+							th:value="${#calendars.format(freeDiary.regDate, 'yyyy-MM-dd')}">
+		<input type="hidden" name="prevRegDate"
+							th:value="${#calendars.format(freeDiary.regDate, 'yyyy-MM-dd')}">
+		
+		
+		
+		<lable class="lable2">지금 당신의 감정을 알려주세요</lable>
+		<input type="hidden" name="prevEmotionId" th:value="${freeDiary.emotionId}">
+			<th:block th:switch="${freeDiary.emotionId}">
+				<span th:case="1"><div class="checked-emotion happy"></div></span>
+				<span th:case="2"><div class="checked-emotion proud"></div></span>
+				<span th:case="3"><div class="checked-emotion flutter"></div></span>
+				<span th:case="4"><div class="checked-emotion calm"></div></span>
+				<span th:case="5"><div class="checked-emotion sensitive"></div></span>
+				<span th:case="6"><div class="checked-emotion unstable"></div></span>
+				<span th:case="7"><div class="checked-emotion tired"></div></span>
+				<span th:case="8"><div class="checked-emotion sad"></div></span>
+				<span th:case="9"><div class="checked-emotion upset"></div></span>
+			</th:block>
+		<div id="emotion"></div>
+		<button id="open-button" type="button">감정 선택</button>
+		<div th:replace="inc/modal::modal"></div></td>
+			
+		
+		<img class="image"
+			th:if="${freeDiary.image}!=''"
+			th:src="@{/upload/diary/freeDiary/} +${freeDiary.memberId}+@{/}+${freeDiary.id}+@{/}+ ${freeDiary.image}"
+			style="width: 200px; height: 150px;"> 
+		<img class="image" th:if="${freeDiary.image}==''"> 
+		<input class="file-del-btn" type="button" value="삭제"> 
+		<input type="file" name="file"> 
+		<input class="changed" type="hidden" name="changed" value="0"> 
+		<input type="hidden" name="originalFile" th:value="${freeDiary.image}">	
+			
+		
+		
+		<select id="quetionList" name="quetionList" class="quetionList">
+			<option value="" selected="selected">질문을 선택해보세요</option>
+			<div th:each="n:${list}">
+			<option th:value="${n.question}" th:text="${n.question}"
+					id="selectedQuestion"></option>
+			</div>
+		</select>
+		
+		<input type="text" value="" name="content"
+			class="selectedQuestion"
+			style="border: none; border-right: 0px; border-top: 0px;background-color: #F2F2F2; boder-left: 0px; boder-bottom: 0px; width: 100px; outline: none;">
+		</input><br>
+		<textarea class="content" rows="20" cols="50" name="content"
+						th:text="${freeDiary.content}"></textarea>
+						
+						
+		<div class="pub" th:with="pub = ${freeDiary.pub}==false?'비공개':'공개'">
+			<label>공개</label> 
+			<input type="radio" value="1" name="pub"
+				th:checked="${freeDiary.pub} ? 'true': 'false'"> 
+			<label>비공개</label>
+			<input type="radio" value="0" name="pub"
+				th:checked="${freeDiary.pub} ? 'false': 'true'">
 		</div>
+			
+		
 	</form>
+	
+		<div class="buttons">
+		    <button class="button" type="button" onclick="submitBtnClick()">저장</button>
+			<button type="button" class="button" onclick="location.href='list';">취소</button> 
+		</div>
+		
 	</section>
 </main>
 </html>
