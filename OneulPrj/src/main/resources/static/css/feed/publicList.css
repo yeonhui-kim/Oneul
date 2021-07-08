@@ -8,6 +8,7 @@ html, body {
 	margin: 0;
 	padding: 0;
 	background-color: #F2F2F2;
+	
 }
 
 .d-none {
@@ -110,7 +111,7 @@ html, body {
 	position: relative;
 	background-color: #efe9df;
 }
-.box {
+.box-e {
   margin-bottom: 20px;
   width: 100%;
   padding-bottom: 20%; /* Same as width, sets height */
@@ -178,11 +179,46 @@ html, body {
 
 /*-------------°¨Á¤-----------*/
 .emotionbtn{
-	display: flex;
+/* 	display: flex;
 	flex-direction: row;
     flex-wrap: wrap;
-    padding-bottom: 15px;
+    padding-bottom: 15px; */
 }
+
+*{
+    margin:0; 
+    padding:0;
+}
+
+ul{
+    list-style:none;
+}
+
+a{
+    text-decoration:none; 
+    color:inherit;
+}
+
+.box{
+    max-width:960px; 
+    width:100%; 
+    margin:0 auto;
+}
+
+#tab ul{
+    white-space:nowrap; 
+    overflow-x: auto; text-align:center
+}
+
+#tab ul li{
+    display:inline-block; 
+    padding: 0px 5px 5px 10px;;
+  
+}
+
+
+/*----------------------------------------  */
+
 
 .happy, 
 .proud, 
@@ -224,6 +260,23 @@ html, body {
 	right: 0%;
 	bottom: 10%;
 }
+
+.scroll-box {
+	position: relative;
+	right: 10px;
+	display: inline;
+}
+
+.scroll-img {
+	width: 100px;
+	height: 50px;
+	position: fixed;
+	z-index: 1;
+	right: 0%;
+	bottom: 10%;
+}
+
+
 
 .pub-img {
 	width: 50px;

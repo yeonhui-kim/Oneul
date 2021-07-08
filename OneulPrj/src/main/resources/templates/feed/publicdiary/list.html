@@ -19,24 +19,25 @@
 				class="pub-link" href="/feed/publicdiary/list?f=1">공개일기</a>
 		</div>
 
-
-		<form class="emotionbtn">
-
-			<a href="/feed/publicdiary/list?f=1" class="happy"></a> <a
-				href="/feed/publicdiary/list?f=2" class="proud"></a> <a
-				href="/feed/publicdiary/list?f=3" class="flutter"></a> <a
-				href="/feed/publicdiary/list?f=4" class="calm"></a> <a
-				href="/feed/publicdiary/list?f=5" class="sensitive"></a> <a
-				href="/feed/publicdiary/list?f=6" class="unstable"></a> <a
-				href="/feed/publicdiary/list?f=7" class="tired"></a> <a
-				href="/feed/publicdiary/list?f=8" class="sad"></a> <a
-				href="/feed/publicdiary/list?f=9" class="upset"></a>
-
-
+		<div class="box">
+		<form class="emotionbtn" id="tab">
+		<ul>
+			<li><a href="/feed/publicdiary/list?f=1" class="happy"></a></li>
+			<li><a href="/feed/publicdiary/list?f=2" class="proud"></a> </li>
+			<li><a href="/feed/publicdiary/list?f=3" class="flutter"></a> </li>
+			<li><a href="/feed/publicdiary/list?f=4" class="calm"></a></li>
+		   	<li><a href="/feed/publicdiary/list?f=5" class="sensitive"></a></li>
+		   	<li><a href="/feed/publicdiary/list?f=6" class="unstable"></a></li>
+			<li><a href="/feed/publicdiary/list?f=7" class="tired"></a></li> 
+			<li><a href="/feed/publicdiary/list?f=8" class="sad"></a></li> 
+			<li><a href="/feed/publicdiary/list?f=9" class="upset"></a></li>
+		</ul>	
 		</form>
+		</div>
+		
 		<div class="content-box">
 			<div th:each="n:${list}">
-				<article class="box">
+				<article class="box-e">
 					<div class="content"  th:style="'background-image:url(/upload/diary/'+${n.diary}+'/'+${n.memberId}+'/'+${n.id}+'/'+${n.image}+');'"
 					>
 						<div class="profile">
