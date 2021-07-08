@@ -34,6 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			.logout()
 				.logoutUrl("/doLogout")
 				.logoutSuccessUrl("/")
+				.invalidateHttpSession(true) //로그아웃 후 Session값 지움
 				.and()
 			.csrf() //csrf설정
 				.disable(); //끄겠다
