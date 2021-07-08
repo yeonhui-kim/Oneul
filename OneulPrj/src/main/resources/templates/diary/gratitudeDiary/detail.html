@@ -33,11 +33,6 @@
 				<div class="date" th:text="${#calendars.format(gratitudeDiary.regDate, 'yyyy-MM-dd')}">작성일자</div>
 			</div>
 				
-				<!-- <tr th:with="pub = ${gratitudeDiary.pub}==false?'비공개':'공개'">
-					<th>공개여부</th>
-					<td colspan="3"	th:text="${pub}">공개 / 비공개</td>
-				</tr> -->
-		
 			<div class="content-container">
 				<div class="question">오늘의 감사한 일 :</div>
 				<div class="content" th:text="${gratitudeDiary.content1}"></div>		
@@ -47,12 +42,18 @@
 				<div class="content" th:text="${gratitudeDiary.content3}"></div>		
 			</div>		
 					
+				<!-- <tr th:with="pub = ${gratitudeDiary.pub}==false?'비공개':'공개'">
+					<th>공개여부</th>
+					<td colspan="3"	th:text="${pub}">공개 / 비공개</td>
+				</tr> -->
 			
-			<div class="button">
-				<a href="list">목록</a> 
-				<a th:href="@{edit(id=${gratitudeDiary.id})}">수정</a>
-				<a th:href="@{del(id=${gratitudeDiary.id})}"
-					onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a>
+			<div class="buttons">
+				<button class="button" type=button><a href="list">목록</a></button>
+				<button class="button" type=button>
+					<a th:href="@{edit(id=${gratitudeDiary.id})}">수정</a></button>
+				<button class="button" type=button>
+					<a th:href="@{del(id=${gratitudeDiary.id})}" onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a>
+				</button>
 			</div>
 			
 			<!-- comment -->
@@ -73,7 +74,7 @@
 									<td><textarea style="width: 85%" rows="3" cols="30"
 											name="content" placeholder="댓글을 입력하세요"></textarea> <br>
 										<div>
-											<input type="submit" value="저장">
+											<input class="button" type="submit" value="저장">
 										</div></td>
 								</tr>
 							</table>

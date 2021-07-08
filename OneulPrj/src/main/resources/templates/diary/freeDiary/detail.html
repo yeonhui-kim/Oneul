@@ -46,7 +46,7 @@
                               
                                <img class="image" th:if="${freeDiary.image}!=''" th:src="@{/upload/diary/freeDiary/} +${freeDiary.memberId}+@{/}+${freeDiary.id}+@{/}+ ${freeDiary.image}">
                              
-                              <textarea class="content"  rows="20" cols="30" readonly th:text = "${freeDiary.content}">                      
+                              <textarea class="content"  rows="10" cols="30" readonly th:text = "${freeDiary.content}">                      
                                  자유일기내용
                               </textarea>
                               
@@ -71,11 +71,6 @@
 		
 	</div>
 
-		<div>
-			<a href="list">목록</a> <a th:href="@{edit(id=${freeDiary.id})}">수정</a>
-			<a th:href="@{del(id=${freeDiary.id})}"
-				onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a>
-		</div>
 
 		<!-- comment -->
 		<div th:replace="diary/freediary/comment::comment"></div>

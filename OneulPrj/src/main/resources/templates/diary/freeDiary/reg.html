@@ -6,67 +6,63 @@
 <meta charset="UTF-8">
 <title>자유일기</title>
 <link href="/css/diary/modal.css" type="text/css" rel="stylesheet">
-<link href="/css/diary/freediary/reg.css" type="text/css" rel="stylesheet">
+<link href="/css/diary/freediary/reg.css" type="text/css"
+	rel="stylesheet">
 <script src='/js/modal/modal.js'></script>
 <script src='/js/diary/freediary/reg.js'></script>
 </head>
-	<main id="main" layout:fragment="main">
+<main id="main" layout:fragment="main">
 	<section class="wrapper">
-			
-			<form class="form" action="reg" method="post"
-				enctype="multipart/form-data">
-				
-					<div class="date-input">
-						<lable>자유일기 날짜를 선택하세요</lable>
-						<input type="date" name="regDate">
-					</div>
-					
-					<div class="emotion-input">
-						<lable class="lable2">지금 당신의 감정을 알려주세요</lable>	
-   						<div id="emotion"></div>
-   					</div>
-   						<button id="open-button" type="button">감정선택</button> 
-   						<div th:replace="inc/modal::modal"></div>						
-					
-				
-						<img class="image"></img>
-					<div class="filebox">
-						
-						<input type="file" id="file" name="file" value="0" >
-						
-					</div>
-					
-										<select id="quetionList" name="quetionList"
-					class="quetionList">
-						<option value="" selected="selected">질문을 선택해보세요</option>
-						<div th:each="n:${list}">
-							<option th:value="${n.question}" th:text="${n.question}"
-								id="selectedQuestion"></option>
-						</div>
-				</select>
-				
-				
-				<input type="hidden" value="" name="content"
-					class="selectedQuestion"
-					style="border: none; border-right: 0px; border-top: 0px;background-color: #F2F2F2; boder-left: 0px; boder-bottom: 0px; width: 100px; outline: none;"></input><br>
-					
-					<div class="text-input">
-						<textarea rows="20" cols="30" name="content"></textarea>
-					</div>
-					
-				<div class="pub">
-					<label>공개</label>
-					<input type="radio" value="true" name="pub">
-					<label class="pub-label">비공개</label>
-					<input type="radio" value="false" name="pub" checked>
-				</div>
-					
-			</form>
-				<div class="buttons">
-				    <button class="button" type="button" onclick="submitBtnClick()">저장</button>
-					<button type="button" class="button" onclick="location.href='list';">취소</button> 
-				</div>
 
-		</section>
-	</main>
+		<form class="form" action="reg" method="post"
+			enctype="multipart/form-data">
+
+			<div class="date-input">
+				<lable>자유일기 날짜를 선택하세요</lable>
+				<input type="date" name="regDate">
+			</div>
+
+			<div class="emotion-input">
+				<lable class="lable2">지금 당신의 감정을 알려주세요</lable>
+				<div id="emotion"></div>
+			</div>
+			<button id="open-button" type="button">감정선택</button>
+			<div th:replace="inc/modal::modal"></div>
+
+
+			<img class="image"></img>
+			<div class="filebox">
+
+				<input type="file" id="file" name="file" value="0">
+
+			</div>
+
+			<select id="quetionList" name="quetionList" class="quetionList">
+				<option value="" selected="selected">질문을 선택해서 일기를 작성해보세요</option>
+				<div th:each="n:${list}">
+					<option th:value="${n.question}" th:text="${n.question}"
+						id="selectedQuestion"></option>
+				</div>
+			</select> <input type="hidden" value="" name="content"
+				class="selectedQuestion"
+				style="border: none; border-right: 0px; border-top: 0px; background-color: #F2F2F2; boder-left: 0px; boder-bottom: 0px; width: 100px; outline: none;"></input><br>
+
+			<div class="text-input">
+				<textarea rows="20" cols="30" name="content"></textarea>
+			</div>
+
+			<div class="pub">
+				<label>공개</label> <input type="radio" value="true" name="pub">
+				<label class="pub-label">비공개</label> <input type="radio"
+					value="false" name="pub" checked>
+			</div>
+
+		</form>
+		<div class="buttons">
+			<button class="button" type="button" onclick="submitBtnClick()">저장</button>
+			<button type="button" class="button" onclick="location.href='list';">취소</button>
+		</div>
+
+	</section>
+</main>
 </html>
