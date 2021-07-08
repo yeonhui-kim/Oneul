@@ -6,23 +6,23 @@ layout:decorator="/inc/layout">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="/css/diary/modal.css" type="text/css" rel="stylesheet">
+<link href="/css/diary/futureDiary/edit.css" type="text/css" rel="stylesheet">
+	
 <script src='/js/modal/modal.js'></script>
 <script src='/js/diary/futureDiary/edit.js'></script>
 </head>
 <body>
 
 <main id="main" layout:fragment="main">
-	<section class="">
-		<h1>Feed section</h1>
-		<h3>Test table</h3>
+	<section class="wrapper">
+		
 		<form class="form" action="edit" method="post" enctype="multipart/form-data">
-                           <table border="1">  
-                           <lable>예약날짜</lable>                      
+                          <div class="date-input">
+                           <lable>받은 날짜</lable>                      
                             <div th:text="${#calendars.format(futureDiary.bookingDate,'yyyy-MM-dd')}"></div>
-                            <tr>
-								<th>감정선택</th>
-								<td colspan="3">
-								
+                            	</div>
+					
+								<div class="emotion-input">
 									<th:block th:switch="${futureDiary.emotionId}"> 
 			                         <span th:case="1"><div class="checked-emotion happy"></div></span>
 			                         <span th:case="2"><div class="checked-emotion proud"></div></span> 
@@ -35,34 +35,37 @@ layout:decorator="/inc/layout">
 			                         <span th:case="9"><div class="checked-emotion upset"></div></span> 
 			                        </th:block>
 			   						<div id="emotion"></div>
+			   						</div>
 			   						<button id="open-button" type="button">감정 선택</button> 
 			   						<div th:replace="inc/modal::modal"></div>						
-								</td>
-							</tr>
-                             
-                              <tr>
-                                 <td colspan="4">
+								
+                              
+                                 
                                  <img class="image" th:if="${futureDiary.image}!=''" th:src="@{/upload/diary/futureDiary/} +${futureDiary.memberId}+@{/}+${futureDiary.id}+@{/}+ ${futureDiary.image}"
-                                 style="width:200px; height:150px;">
+                                 style="width:90%; height:200px;">
                                  <img class="image" th:if="${futureDiary.image}==''" >
-                                 <input class="file-del-btn" type="button" value="삭제">
-                               	<input type="file" name="file">
+                                 <div class="del-btn-container">
+									<input class="file-del-btn" type="button" >
+								</div>
+                                
+	                               <input type="file" style="display:none;" name="file">
+                                 <div class="file-buttons">
+	                               	<button class="btn-sel"></button>  
+           						  </div>
+           						  
                                	<input class="changed" type="hidden" name="changed" value="0">
                                	<input type="hidden" name="originalFile" th:value="${futureDiary.image}">
-                                    
-                                 </td>
-                              <tr>
-                                 <td colspan="4">
+                                 
+                                <div class="text-input">
                                  <textarea rows="20" cols="80" name="content" th:text="${futureDiary.content}">일기내용</textarea>
-                                    
-                                 </td>
-                              </tr>
-                           </table>
+                                </div>
                            
-                     <div>
+                     
                      <input type="hidden" name="id" th:value="${futureDiary.id}" >
-                        <input type="submit" value="저장">
-                        <a href="list">취소</a>
+                     
+                     <div class="buttons">	    	
+                        <input class="button" type="submit" value="저장">
+                        <button type="button" class="button" onclick="location.href='list';">취소</button>
                      </div>
                   </form>
 
