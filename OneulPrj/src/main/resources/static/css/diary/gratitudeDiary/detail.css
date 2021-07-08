@@ -3,13 +3,13 @@
 .emotion{
 	
 }
+	.checked-emotion{
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 10px;
+	}
 
-.checked-emotion{
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 10px;
-}
-
+/*-------------ÄÜÅÙÃ÷ ------------------------*/
 .content-container{
 	width:85%;
 	background-color: white;
@@ -20,13 +20,17 @@
 	padding-top: 1px;
     padding-bottom: 13px;
 }
+	.content{
+		font-size: 12px;
+		margin: 5px 20px 5px 25px;
+	}
+	.question{
+		size: 10px;
+		color: #c4bda4;
+		margin: 15px 0px 10px 20px;
+	}
 
-.question{
-	size: 10px;
-	color: #c4bda4;
-	margin: 15px 0px 10px 20px;
-}
-
+/*-------------³¯Â¥ ------------------------*/
 .date{
 	display: flex;
 	justify-content: center;
@@ -35,14 +39,26 @@
 	font-size: 14px;
 }
 
-.content{
-	font-size: 12px;
-	margin: 5px 20px 5px 25px;
-}
-
-.button{
+/*-------------¹öÆ° ------------------------*/    
+.buttons{
 	display: flex;
-	margin: 10px 0px 0px 240px;
-	width: 100px;
-	justify-content: space-evenly;
+    justify-content: flex-end;
+    margin: 10px 30px 10px 0px
 }
+	.button {
+		font-size: 11px;
+		font-family: Arial;
+		width: 45px;
+		height: 20px;
+		border-width: 1px;
+		color: rgba(74, 74, 74, 1);
+		border-color: rgba(195, 193, 191, 0.69);
+		/* font-weight: bold; */
+		border-radius: 8px;
+		background: rgba(248, 241, 229, 1);
+		margin-right: 5px;
+	}
+
+	.button:hover {
+	  background: rgba(247, 232, 206, 1)
+	} 

@@ -6,6 +6,7 @@
 	box-sizing: border-box;
 }
 
+/*-------------날짜 ------------------------*/
 .date{
 	display: flex;
 	flex-direction: column;
@@ -13,16 +14,23 @@
 	margin-top: 15px;
 	margin-bottom: 15px;
 }
+	.date label{
+		margin-bottom: 7px;
+	}
 
+/*-------------감정 ------------------------*/ 
 .emotion-box{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	margin-top: 22px;
 	margin-bottom: 15px;
-	
 }
+	#open-button{
+		margin-top: 7px;	
+	}
 
+/*-------------공개여부 ------------------------*/
 .pub{
 	display: flex;
     align-items: center;
@@ -34,14 +42,8 @@
 		margin-left: 8px;
 	}
 
-.date label{
-	margin-bottom: 7px;
-}
 
-	#open-button{
-		margin-top: 7px;	
-	}
-	
+/*-------------컨텐츠 ------------------------*/	
 .contents{
 	width: 90%;
 	margin-left: auto;
@@ -68,6 +70,7 @@
 	margin-right: auto;
     }
     
+/*-------------버튼 ------------------------*/    
 .buttons{
 	display: flex;
     justify-content: center;
