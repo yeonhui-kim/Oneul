@@ -46,7 +46,7 @@ textarea {
 
 .form input[type=date]{
 	margin-bottom: 5px;
-    height: 35px;;
+    height: 35px;
 }
 
 #emotion{
@@ -74,9 +74,6 @@ textarea {
 	height:400px;
 }
 .buttons{
-	display: flex;
-    justify-content: flex-end;
-    margin-right: 30px;
     margin-top: 10px;
 }
 .button{
