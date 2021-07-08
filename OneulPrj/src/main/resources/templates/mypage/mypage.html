@@ -497,6 +497,7 @@ body{
 }
 
 .profile-edit {
+	padding:10px 10px 10px 10px;
 	box-shadow: 0px 0px 5px black;
 	border: 1px solid #F4F4F4;
 	margin-left: auto;
@@ -510,24 +511,25 @@ body{
 	
 }
 
-.profile-edit-item1 {
+ .profile-edit-item1 { 
 	position: relative;
 	text-align:center;
 	padding: 10px 10px 10px 10px;
 }
 
 .profile-edit-item1 .item1-text {
-	position: absolute;
+ 	position: absolute; 
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	size: 100px;
 }
 
 
 /*profile-edit-item3*/
 .profile-edit-item3 {
-	padding : 10px 0px 10px 0px;
+	
+	padding : 10px 10px 10px 0px;
+	flex-basis:400px;
 }
 
 .item1-img {
@@ -539,22 +541,32 @@ body{
 
 
 .item1-link {
+margin-top:5px;
 	
 }
 
 .item3-textarea {
+	margin-top:5px;
 	border: 1px solid #F4F4F4;
 	outline:0;
 	resize:none;
-	width: 100px;
+	width: 100%;
 	height: 100px;
+	scrollbar-width: thin;
 }
 
+
 .item3-email {
-	width: 110px;
+	margin-top:5px;
+	width: 100%;
+	
 	outline:0;
 	border: 1px solid #F4F4F4;
 	display: block;
+}
+
+.item3-submit{
+	margin-top:10px;
 }
 </style>
 
@@ -639,7 +651,7 @@ body{
 		let item = e.target;
 		
 		for(let i = 0; i < 9; i++){
-			if(item.classList.contains("my-oneline-list-container")){
+			if(item.classList.contains("my-oneline-list-items")){
 				let event = new MouseEvent("click", {
 					  bubbles: true,
 					  cancelable: true
@@ -675,7 +687,7 @@ body{
 			let item = e.target;
 			
 			for(let i = 0; i < 9; i++){
-				if(item.classList.contains("my-comment-list-container")){
+				if(item.classList.contains("my-comment-list-items")){
 					let event = new MouseEvent("click", {
 						  bubbles: true,
 						  cancelable: true
@@ -954,7 +966,8 @@ body{
 					<h1 class="d-none">자기소개</h1>
 					<ul>
 						<li class="midleside-container-item2-my"><span th:text="${member.name}">홍길동</span> 나는</li>
-						<li class="midleside-container-item2-nameis" th:text="${member.introduction}">자기소개 작성</li>
+						<li class="midleside-container-item2-nameis" th:if="${member.introduction} == ''">자기소개 작성해 주세욤 </li>
+						<li class="midleside-container-item2-nameis" th:if="${member.introduction} != ''" th:text="${member.introduction}">자기소개 작성</li>
 
 					</ul>
 				</section>
@@ -986,6 +999,9 @@ body{
 	<section class="my-oneline-list ">
 		<h1 class="d-none">원라인 리스트</h1>
 		<ul class="my-oneline-list-container"> 
+			<li class="my-oneline-list-items"  th:if="${#lists.isEmpty(myOneline)}">
+				<div style=" flex-grow: 1; text-align:center;">내용이 없습니다</div>
+			</li>
 			<li class="my-oneline-list-items"  th:each="n:${myOneline}">
 				<div class="my-oneline-content-regdate-container">
 					<div class="my-oneline-item-content" th:text="${n.content}">zcontentzzcontentzzcontententzzcontentzzcontentzzzcontentzzcozcontentzzcontentzzcontententzzcontentzzcontentzzzcontentzzco</div>
@@ -1007,6 +1023,9 @@ body{
 	<section class="my-comment-list d-none">
 		<h1 class="d-none">커멘트 리스트</h1>
 		<ul class="my-comment-list-container"> 
+			<li class="my-comment-list-items"  th:if="${#lists.isEmpty(myComment)}">
+				<div style=" flex-grow: 1; text-align:center;">내용이 없습니다</div>
+			</li>
 			<li class="my-comment-list-items" th:each="n:${myComment}">
 				<div class="my-comment-content-regdate-container">
 					<div class="my-comment-item-content" th:text="${n.content}">zcontentzzcontentzzcontententzzcontentzzcontentzzzcontentzzcozcontentzzcontentzzcontententzzcontentzzcontentzzzcontentzzco</div>
@@ -1038,7 +1057,7 @@ body{
 		<form class="profile-edit" action="/mypage/reg" method="POST" enctype="multipart/form-data">
 	        <div class="profile-edit-item1" ><div class="item1-text d-none">수정</div><img class="item1-img" th:src="@{'/upload/profile/'+${member.id}+'/'+${member.image}}" th:if="${member.image}!='basic.jpg'" /><img class="item1-img" th:src="@{/upload/profile/basic.jpg}"  th:if="${member.image}=='basic.jpg'" /><div class="item1-link"><a href="">기본사진으로 이용하기</a></div></div>
 	       
-	        <div class="profile-edit-item3"><p class="item3-p" >누구누구 나는</p><textarea name="introduction" class="item3-textarea" th:text="${member.introduction}"></textarea><input class="item3-email" type="text" name="email" placeholder="이메일" th:value="${member.email}"><input type="submit" value="수정"></div>
+	        <div class="profile-edit-item3"><p class="item3-p" th:text="${member.name}+ ' 나는'" >누구누구 나는</p><textarea name="introduction" class="item3-textarea" th:text="${member.introduction}"></textarea><input class="item3-email" type="text" name="email" placeholder="이메일" th:value="${member.email}"><input class="item3-submit" type="submit" value="수정"></div>
 	        <input class="profile-edit-file-input d-none" type="file" name="multiFile">
 	    </form> 
     </section>
