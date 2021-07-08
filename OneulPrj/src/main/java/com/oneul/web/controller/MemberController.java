@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,13 +42,21 @@ public class MemberController {
 	//아이디 중복체크버튼
 	@ResponseBody
 	@PostMapping("checkid")
-	public int check_id(String username) {
+	public int check_id(String username, Principal principal) {
+		
+		String prevname = principal.getName();
+		
 		Member member = new Member();
 		int result = 2;
 		String unexp = "^[a-z0-9]{4,12}$";
 		
 		member.setUserId(username);
-		if(username.equals("")) {
+		
+		if(username.equals(prevname)) {
+			result = 4;
+			return result;
+		}
+		else if(username.equals("")) {
 			return result;			
 		}
 		else if(!Pattern.matches(unexp, username)){
@@ -56,8 +66,6 @@ public class MemberController {
 			result = service.checkid(username);
 			return result;
 		}
-		
-	
 	}
 	
 	//회원가입 실행
@@ -69,10 +77,17 @@ public class MemberController {
 						String email,
 						Model model) {
 		
+		System.out.printf("origin pwd : %s\n", password);
+		//암호화 도구
+		PasswordEncoder encoder = new BCryptPasswordEncoder();
+		//암호화 하고 변수에 담음
+		String encodedpwd = encoder.encode(password);
+		System.out.printf("encoded pwd: %s\n", encodedpwd);
+		
+		
 		Member member = new Member();
 		member.setUserId(username);
-		String noopPassword = "{noop}"+password;
-		member.setPassword(noopPassword);
+		member.setPassword(encodedpwd);
 		member.setName(name);
 		member.setBirthday(birthday);
 		member.setEmail(email);
@@ -155,9 +170,13 @@ public class MemberController {
 		if(result==1) { //회원정보 있으면
 			//임시비밀번호생성
 			String pwd = service.makePwd(10);
-			String realpwd = "{noop}"+pwd;
+			
+			//비밀번호 암호화
+			PasswordEncoder encoder = new BCryptPasswordEncoder();
+			String encodedpwd = encoder.encode(pwd);
+			
 			//임시비밀번호로 변경
-			member.setPassword(realpwd);
+			member.setPassword(encodedpwd);
 			service.updatebyname(member);
 			
 			//비밀번호 이메일 발송
@@ -182,11 +201,6 @@ public class MemberController {
 		Member member = new Member();
 		member = service.get(username);
 		
-		//{noop} 없애기
-		String password_ = member.getPassword();
-		String password = password_.substring(6);
-		member.setPassword(password);
-		
 		model.addAttribute(member);
 		
 		return "member/edit";		
@@ -203,12 +217,15 @@ public class MemberController {
 		Member member2 = new Member();
 		member2 = service.get(originUsername);
 		int id = member2.getId();
+		
+		//비밀번호 암호화
+		PasswordEncoder encoder = new BCryptPasswordEncoder();
+		String encodedpwd = encoder.encode(password);
 	
 		Member member = new Member();
 		member.setId(id);
 		member.setUserId(username);
-		String noopPassword = "{noop}"+password;
-		member.setPassword(noopPassword);
+		member.setPassword(encodedpwd);
 		
 		service.updatebyid(member);
 		
