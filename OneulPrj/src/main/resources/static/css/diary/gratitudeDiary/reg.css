@@ -70,8 +70,8 @@
     
 .buttons{
 	display: flex;
-    justify-content: flex-end;
-    margin: 10px 30px 10px 0px;
+    justify-content: center;
+    margin: 10px 0px 10px 0px
 }
 .button{
   font-size:12px;
