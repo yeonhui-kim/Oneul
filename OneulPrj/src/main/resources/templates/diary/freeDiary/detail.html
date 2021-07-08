@@ -7,7 +7,7 @@
 <title>자유일기-상세페이지</title>
 <link href="/css/diary/freeDiary/comment.css" type="text/css"
 	rel="stylesheet">
-	<link href="/css/diary/freeDiary/detail.css" type="text/css"
+<link href="/css/diary/freeDiary/detail.css" type="text/css"
 	rel="stylesheet">
 <script src='/js/diary/freediary/comment.js'></script>
 </head>
@@ -18,8 +18,7 @@
 			<tr>
 				<th>오늘의 감정</th>
 				<!-- <td id="emotion" colspan="3" th:text="${gratitudeDiary.emotionId}"> -->
-				<td colspan="3">
-					<th:block th:switch="${freeDiary.emotionId}">
+				<td colspan="3"><th:block th:switch="${freeDiary.emotionId}">
 						<span th:case="1"><div class="checked-emotion happy"></div></span>
 						<span th:case="2"><div class="checked-emotion proud"></div></span>
 						<span th:case="3"><div class="checked-emotion flutter"></div></span>
@@ -29,19 +28,19 @@
 						<span th:case="7"><div class="checked-emotion tired"></div></span>
 						<span th:case="8"><div class="checked-emotion sad"></div></span>
 						<span th:case="9"><div class="checked-emotion upset"></div></span>
-					</th:block>
-				</td>
+					</th:block></td>
 			</tr>
 			<tr>
 				<th>첨부파일</th>
-				<td colspan="3">
-				  <img class="image" th:if="${freeDiary.image}!=''" 
-				  th:src="@{/upload/diary/freeDiary/} +${freeDiary.memberId}+@{/}+${freeDiary.id}+@{/}+ ${freeDiary.image}">
+				<td colspan="3"><img class="image"
+					th:if="${freeDiary.image}!=''"
+					th:src="@{/upload/diary/freeDiary/} +${freeDiary.memberId}+@{/}+${freeDiary.id}+@{/}+ ${freeDiary.image}">
 				</td>
 			</tr>
 			<tr>
 				<th>작성일</th>
-				<td colspan="3" th:text="${#calendars.format(freeDiary.regDate,'yyyy-MM-dd')}"></td>
+				<td colspan="3"
+					th:text="${#calendars.format(freeDiary.regDate,'yyyy-MM-dd')}"></td>
 			</tr>
 			<tr th:with="pub = ${freeDiary.pub}==false?'비공개':'공개'">
 				<th>공개선택</th>
@@ -62,7 +61,8 @@
 		<div th:replace="diary/freediary/comment::comment"></div>
 
 
-		<div class="container"><!--form to reg comments -->
+		<div class="container">
+			<!--form to reg comments -->
 			<form id="commentForm" action="/diary/freeDiary/detail" method="post">
 				<input type="hidden" name="freeDiaryId" th:value="${freeDiary.id}">
 				<br> <br>
@@ -71,15 +71,17 @@
 						<span><strong>Leave a comment</strong></span> <span id="cCnt"></span>
 					</div>
 					<div>
-								<textarea id="commentBox" style="width: 85%" rows="3" cols="30"
-										name="content" placeholder="댓글을 입력하세요"></textarea> <br>
-									<div>
-										<input type="submit" value="저장">
-									</div>
+						<textarea id="commentBox" style="width: 85%" rows="2" cols="30"
+							name="content" placeholder="댓글을 입력하세요"></textarea>
+			
+						<div>
+							<input id="submitComment" type="submit" src="https://image.flaticon.com/icons/png/128/340/340913.png" value="저장">
+						</div>
 					</div>
 				</div>
 			</form>
-		</div><!-- container -->
+		</div>
+		<!-- container -->
 
 	</section>
 </main>
