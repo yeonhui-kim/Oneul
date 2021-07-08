@@ -44,8 +44,10 @@ layout:decorator="/inc/layout">
                                  <img class="image" th:if="${futureDiary.image}!=''" th:src="@{/upload/diary/futureDiary/} +${futureDiary.memberId}+@{/}+${futureDiary.id}+@{/}+ ${futureDiary.image}"
                                  style="width:90%; height:200px;">
                                  <img class="image" th:if="${futureDiary.image}==''" >
-                                 
-                                 <input class="file-del-btn"   type="button" >
+                                 <div class="del-btn-container">
+									<input class="file-del-btn" type="button" >
+								</div>
+                                
 	                               <input type="file" style="display:none;" name="file">
                                  <div class="file-buttons">
 	                               	<button class="btn-sel"></button>  

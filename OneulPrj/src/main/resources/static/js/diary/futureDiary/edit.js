@@ -7,6 +7,8 @@
 	const fileDelBtn = document.querySelector(".file-del-btn");
 	const changed = document.querySelector(".changed");
 	const selButton = document.querySelector(".btn-sel");
+	const fileDelBtnContainer = document.querySelector(".del-btn-container");
+	
 	
 	selButton.onclick = function(e) {
 		e.preventDefault();
@@ -39,7 +41,7 @@
 			img.style.width = "90%";
 			img.style.height = "200px";
 			
-			fileDelBtn.insertAdjacentElement("beforebegin",img);
+			fileDelBtnContainer.insertAdjacentElement("beforebegin",img);
 			fileDelBtn.style.display = '';
 		};	
 		changed.value="1"; //파일바뀜	

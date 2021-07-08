@@ -6,6 +6,7 @@
 	const fileBox = document.querySelector(".filebox");
 	const selButton = document.querySelector(".btn-sel");
 	const fileDelBtn = document.querySelector(".file-del-btn");
+	const fileDelBtnContainer = document.querySelector(".del-btn-container");
 	let img = document.querySelector(".image");
 	selButton.onclick = function(e) {
 		e.preventDefault();
@@ -35,7 +36,7 @@
 			img.style.width = "90%";
 			img.style.height = "200px";
 			
-			fileDelBtn.insertAdjacentElement("beforebegin",img);
+			fileDelBtnContainer.insertAdjacentElement("beforebegin",img);
 			fileDelBtn.style.display = '';
 		};
 		
