@@ -18,7 +18,7 @@
 	background-color: #fefefe;
 	padding: 20px;
 	border: 1px solid #fefefe;
-	width: 90%; /* Could be more or less, depending on screen size */
+	width: 100%; /* Could be more or less, depending on screen size */
 	position: absolute;
     top: 50%;
 }
@@ -70,15 +70,34 @@
 
 .commentBox{
 	width: 95%;
+	
+	border-radius: 0!important;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #42a5f5;
 }
 .commentBg{
 	background-color: white;
     padding: 10px;
     border-radius: 10px;
 }
-
-/*---------------피드 담당---------------------- */
-
-.container{
-
+textarea{
+	    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+#submitComment{
+	background: #fff;
+    display: flex;
+    border: 1px solid transparent;
+    box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+    width: 80px;
+    height: 25px;
+    color: #464646;
+    font-size: 13px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 20px;
 }

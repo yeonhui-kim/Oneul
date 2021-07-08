@@ -30,8 +30,11 @@ window.addEventListener("load",()=>{
 	
 	fileInput.oninput = ()=>{
 		let file = fileInput.files[0];
-		if(file.type.indexOf("image/") < 0)
+		if(file.type.indexOf("image/") < 0){
 			alert("이미지 형식만 사용할 수 있습니다.");
+			fileInput.value="";
+			return;
+		}
 			
 		let reader = new FileReader();
 		
