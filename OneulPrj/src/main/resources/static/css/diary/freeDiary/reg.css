@@ -15,7 +15,7 @@ textarea {
 	flex-direction:column;
 	align-items: center;
 	
-	margin-bottom: 17px;
+	margin-bottom: 25px;
 }
 
 .form{
@@ -73,7 +73,7 @@ textarea {
 	flex-direction:column;
 	align-items: center;
 	width:100%;
-	height:40%;
+	height:60%;
 }
 .pub{
 	margin-right: auto;
