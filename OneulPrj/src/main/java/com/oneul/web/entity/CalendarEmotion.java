@@ -9,12 +9,22 @@ public class CalendarEmotion {
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date regDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date prevRegDate;
 	private Integer memberId;
 	private String content;
 	private String image;
 	private String diary;
 	private Integer emotionId;
 	private Integer diaryId;
+	
+	public Date getPrevRegDate() {
+		return prevRegDate;
+	}
+
+	public void setPrevRegDate(Date prevRegDate) {
+		this.prevRegDate = prevRegDate;
+	}
 	
 	public Integer getDiaryId() {
 		return diaryId;

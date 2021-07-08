@@ -15,8 +15,8 @@
     </select>
     
     <select id="getCommentList" resultType="com.oneul.web.entity.MyComment">
-        select id , content ,regDate , freeDiaryId as diaryId, 'freediary' as "comment" from FreeDiaryComment where memberId = #{param1} 
-		union all select id , content ,regDate, futureDiaryId as diaryId, 'futurediary' as "comment" from FutureDiaryComment where memberId = #{param1} 
+        select id , content ,regDate , freeDiaryId as diaryId, 'freeDiary' as "comment" from FreeDiaryComment where memberId = #{param1} 
+		union all select id , content ,regDate, futureDiaryId as diaryId, 'futureDiary' as "comment" from FutureDiaryComment where memberId = #{param1} 
 		union all select id , content ,regDate, gratitudeDiaryId as diaryId, 'gratitudeDiary' as "comment" from GratitudeDiaryComment where memberId = #{param1}
 		union all select id , content ,regDate ,onelineId as diaryId , 'oneline' as "comment" from OnelineComment where memberId = #{param1} 
 		order by regDate DESC

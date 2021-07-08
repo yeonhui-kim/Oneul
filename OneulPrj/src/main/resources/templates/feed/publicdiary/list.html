@@ -13,57 +13,61 @@
 
 
 	<div id="main">
-	
-	<div class="link-item">
-      <a class="oneline-link" href="/feed/oneline/list">한줄일기</a>
-      <a class="pub-link" href="/feed/publicdiary/list?f=1">공개일기</a>
-      </div>
+
+		<div class="link-item">
+			<a class="oneline-link" href="/feed/oneline/list">한줄일기</a> <a
+				class="pub-link" href="/feed/publicdiary/list?f=1">공개일기</a>
+		</div>
 
 
 		<form class="emotionbtn">
-			
-			<a href="/feed/publicdiary/list?f=1" class="happy" ></a>
-			<a href="/feed/publicdiary/list?f=2" class="proud"  ></a>
-			<a href="/feed/publicdiary/list?f=3" class="flutter"></a>
-			<a href="/feed/publicdiary/list?f=4" class="calm" ></a>
-			<a href="/feed/publicdiary/list?f=5" class="sensitive"></a>
-			<a href="/feed/publicdiary/list?f=6" class="unstable"></a>
-			<a href="/feed/publicdiary/list?f=7" class="tired" ></a>
-			<a href="/feed/publicdiary/list?f=8" class="sad" ></a>
-			<a href="/feed/publicdiary/list?f=9" class="upset"></a>
 
-			
+			<a href="/feed/publicdiary/list?f=1" class="happy"></a> <a
+				href="/feed/publicdiary/list?f=2" class="proud"></a> <a
+				href="/feed/publicdiary/list?f=3" class="flutter"></a> <a
+				href="/feed/publicdiary/list?f=4" class="calm"></a> <a
+				href="/feed/publicdiary/list?f=5" class="sensitive"></a> <a
+				href="/feed/publicdiary/list?f=6" class="unstable"></a> <a
+				href="/feed/publicdiary/list?f=7" class="tired"></a> <a
+				href="/feed/publicdiary/list?f=8" class="sad"></a> <a
+				href="/feed/publicdiary/list?f=9" class="upset"></a>
+
+
 		</form>
-		<div class="content-box"> 
-		<div th:each="n:${list}">
-			<article class="box">
-				<div class="content">
-					<div class="profile">
-						<img class="profile-image" th:src="@{/upload/profile/basic.jpg}"
-							th:if="${n.image}=='basic.jpg'"> <img class="profile-image"
-							th:src="@{'/upload/profile/' +${n.memberId} +'/'  +${n.image}   }"
-							th:if="${n.image}!='basic.jpg'"> <a class="user-name"
-							th:text="${n.writerId}">로그인아이디</a> <a class="date"
-							th:text="${#calendars.format(n.regDate,'yyy-MM-dd')}">날짜</a>
+		<div class="content-box">
+			<div th:each="n:${list}">
+				<article class="box">
+					<div class="content"  th:style="'background-image:url(/upload/diary/'+${n.diary}+'/'+${n.memberId}+'/'+${n.id}+'/'+${n.image}+');'">
+						<div class="profile">
+							
+						</div>
+						
+						<div class="white-box">
+						
+						<div class="content-text">
+							<a class="text-over"
+								th:href="@{'/diary/' +${n.diary} +'/' +'detail?id=' +${n.id} }"
+								th:text="${n.content}">게시글내용</a>
+						</div>
 
+						<div class="review-attr">
+							 <a th:text="'댓글'+${n.count}">댓글 0</a>
+						</div>
+						<hr>
+						<a th:text="${n.diary}"></a>
+						
+						<!-- <div class="onelineId">
+							<a th:text="${n.id}">게시글아이디</a>
+						</div> -->
+						
+						</div>
+						
 					</div>
-					<a th:text="${n.diary}"></a>
-					<div class="content-text">
-						<a class="text-over" th:href="@{'/diary/' +${n.diary} +'/' +'detail?id=' +${n.id} }" th:text="${n.content}">게시글내용</a>
-					</div>
-
-					<div class="review-attr">
-						<span>좋아요 0</span> <span th:text="'댓글'+${n.count}">댓글 0</span>
-					</div>
-					<hr>
-
-					<div class="onelineId">
-						<a th:text="${n.id}">게시글아이디</a>
-					</div>
-				</div>
-			</article>
+				</article>
+			</div>
 		</div>
-		</div>
+
+
 
 
 

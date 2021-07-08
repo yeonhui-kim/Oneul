@@ -22,9 +22,9 @@
 		UNION
 		select id as 'diaryId', emotionId, regDate, content, 'freeDiary' as 'diary', memberId
 		from oneul.FreeDiary where regDate = #{regDate} and memberId = #{memberId}
-		UNION
+		<!-- UNION
 		select id as 'diaryId', emotionId, regDate, content, 'futureDiary' as 'diary', memberId
-		from oneul.FutureDiary where bookingDate = #{regDate} and memberId = #{memberId}
+		from oneul.FutureDiary where bookingDate = #{regDate} and memberId = #{memberId} -->
 	</select>
 	
    	<insert id="insertCalendar" parameterType="com.oneul.web.entity.CalendarEmotion">
@@ -45,6 +45,19 @@
 		  ) CalendarEmotion
 	</select>
 	
+	<select id="selectCalEmotionPrevCnt" resultType="int">
+		select count(*) CalendarEmotion
+		  from (
+		  		select memberId, regDate 
+		  		from FreeDiary
+		  		where memberId = #{memberId} and regDate = #{prevRegDate}
+		  	union all
+		  		select memberId, regDate 
+		  		from GratitudeDiary
+		  		where memberId = #{memberId} and regDate = #{prevRegDate}
+		  ) CalendarEmotion
+	</select>
+	
 	<update id="updateCalendar" parameterType="com.oneul.web.entity.CalendarEmotion">
 		update CalendarEmotion
 		<set>
@@ -59,6 +72,11 @@
 	<delete id="deleteCalendar" parameterType="com.oneul.web.entity.CalendarEmotion">
    		delete from CalendarEmotion 
    		where memberId=#{memberId} and regDate = #{regDate}	
+   	</delete>
+   	
+   	<delete id="deleteCalendarPrev" parameterType="com.oneul.web.entity.CalendarEmotion">
+   		delete from CalendarEmotion 
+   		where memberId=#{memberId} and regDate = #{prevRegDate}	
    	</delete>
 
 </mapper>

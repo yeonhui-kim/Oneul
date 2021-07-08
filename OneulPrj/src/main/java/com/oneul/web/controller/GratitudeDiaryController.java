@@ -176,30 +176,36 @@ public class GratitudeDiaryController {
 			  					Integer prevEmotionId,
 						@DateTimeFormat(pattern = "yyyy-MM-dd")Date regDate,
 						@DateTimeFormat(pattern = "yyyy-MM-dd")Date prevRegDate,
-						CalendarEmotion calendarEmotion)
-	{
+						CalendarEmotion calendarEmotion){
+		
 		int cnt = calendarService.selectCalEmotionCnt(calendarEmotion);
+		int cntPrev = calendarService.selectCalEmotionPrevCnt(calendarEmotion);
 		
 		if(gratitudeDiary.getEmotionId() != null) { //감정 변경했을 경우
 			if(prevRegDate == regDate) { // 날짜 변경 안했을 경우
 				calendarService.updateCalendar(calendarEmotion); // 감정 update				
 			}else { // 날짜 변경했을 경우
-				if(cnt == 0) { // 등록된 감정 없을때
+				if(cnt == 0) { // 등록된 일기 없을때
 					calendarService.insertCalendar(calendarEmotion); // 감정 insert
-				}else { // 등록된 감정 있을때
+				}else { // 등록된 일기 있을때
 					calendarService.updateCalendar(calendarEmotion); // 감정 update	
+				}
+				if(cntPrev == 1) { // 변경 전 날짜에 등록된 일기 없을 때
+					calendarService.deleteCalendarPrev(calendarEmotion); // 변경 전 날짜의 감정 삭제
 				}
 			}
 		}else { // 감정 변경 안했을 경우
 			if(prevRegDate != regDate) { // 날짜 변경 했을 경우
 				int prevEmotion = prevEmotionId; 
 				calendarEmotion.setEmotionId(prevEmotion); // 전에 등록했던 감정을 캘린더에 set
-				if(cnt == 0) { // 등록된 감정 없을때
+				if(cnt == 0) { // 등록된 일기 없을때
 					calendarService.insertCalendar(calendarEmotion); // 감정 insert
-				}else { // 등록된 감정 있을때
+				}else { // 등록된 일기 있을때
 					calendarService.updateCalendar(calendarEmotion); // 감정 update	
 				}
-				
+				if(cntPrev == 1) { // 변경 전 날짜에 등록된 일기 없을 때
+					calendarService.deleteCalendarPrev(calendarEmotion); // 변경 전 날짜의 감정 삭제
+				}
 			} //날짜 변경 안했을 경우
 		}
 		

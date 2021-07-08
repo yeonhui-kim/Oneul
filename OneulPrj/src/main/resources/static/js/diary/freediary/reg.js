@@ -52,9 +52,12 @@ function submitBtnClick(){
 
 	const dateInput = document.querySelector("input[type='date']");
 	const emotionInput = document.querySelector("input[type='radio']");
+	const textareaTag = document.querySelector("textarea[name='content']");
+	console.log(textareaTag);
 	
 	let date = dateInput.value;
 	let emotion = document.querySelector("#emotion").classList.value;
+	let content = textareaTag.innerText;
 	
 	console.log(date);
 	console.log(emotion);
@@ -62,6 +65,8 @@ function submitBtnClick(){
 		alert("날짜를 선택해주세요");
 	}else if(emotion==""){
 		alert("감정을 선택해주세요");
+	}else if(content==""&&content==null){
+		alert("일기쓰기가 어렵다면 질문을 선택해서 작성해보세요");
 	}else{
 		form.submit();	
 	}
