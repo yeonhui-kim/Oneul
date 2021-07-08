@@ -2,8 +2,8 @@ window.addEventListener("load",function(){
 	let checkid = document.querySelector(".checkid");
 	
 	$('.username').change(()=>{
-		$('.checkid').show();
 		$('#id_check_sucess').hide();
+		$('.checkid').show();
 	})
 	
 	checkid.onclick=function(){
@@ -13,7 +13,12 @@ window.addEventListener("load",function(){
 			dataType : "json",
 			data : {"username" : $('.username').val()},
 			success : function(data){
-				if(data==2){
+				if(data==4){
+					alert("현재 회원님의 아이디입니다")
+					$('#id_check_sucess').show();
+					$('.checkid').hide();
+				}
+				else if(data==2){
 					alert("아이디를 입력해주세요")
 				}else if(data == 3){
 					alert("아이디는 영문 소문자와 숫자 4~12자리로 입력해야합니다!");

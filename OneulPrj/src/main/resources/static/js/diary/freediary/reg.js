@@ -65,8 +65,6 @@ function submitBtnClick(){
 		alert("날짜를 선택해주세요");
 	}else if(emotion==""){
 		alert("감정을 선택해주세요");
-	}else if(content==""&&content==null){
-		alert("일기쓰기가 어렵다면 질문을 선택해서 작성해보세요");
 	}else{
 		form.submit();	
 	}

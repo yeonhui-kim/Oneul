@@ -18,7 +18,33 @@
 			
 			<form class="form" action="reg" method="post"
 				enctype="multipart/form-data">
-				
+				<div class="question-container">
+					<div class="question-mark"></div>
+				</div>
+				<div class="explanation d-none">
+					<p>미래일기란?
+					<br>
+					<br><br>
+					미래의 나에게 쓰는 일기에요.
+					<br>
+					<br>
+					<br>
+					지금의 감정과 미래의 자신에게 하고픈 말을 기록해보세요.
+					<br><br>
+					<br>
+					미래일기는 당신이 예약한 날짜에 도착하여 열람할 수 있어요.
+					<br>
+					예약한 날이 오기 전에는 수정, 삭제할 수 없어요.
+					<br>
+					차분히 기다려 보아요
+					<br>
+					<br><br>
+					미래일기는 나 자신만 볼 수 있는 비공개 일기입니다.
+					<br><br>
+					<br>
+					지금 나에게 쓰는 미래일기를 써보세요.
+					</p>
+				</div>
 					<div class="date-input">
 						<lable>미래일기를 받고싶은 날짜를 선택하세요</lable>
 						<input type="date" name="bookingDate">
@@ -33,11 +59,13 @@
 					
 				
 						<img class="image"></img>
-					<div class="filebox">
 						
-						<input type="file" id="file" name="file" value="0" >
-						
-					</div>
+						<input class="file-del-btn" type="button" >
+	                    <input type="file" style="display:none;" name="file">
+                        <div class="file-buttons">
+	                    	<button class="btn-sel"></button>  
+           				</div>
+					
 					<div class="text-input">
 						<textarea rows="20" cols="30" name="content"></textarea>
 					</div>
