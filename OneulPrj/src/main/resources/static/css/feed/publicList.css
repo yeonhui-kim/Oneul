@@ -100,7 +100,6 @@ html, body {
 }
 
 .content {	
-	background-color: white;
 	border-radius: 8px;
 	/* padding: 10px; */
 	width: 140px;
@@ -109,7 +108,7 @@ html, body {
 	background-size: cover;
 /* 	background-image: url("/upload/profile/basic.jpg"); */
 	position: relative;
-	background-color: #c0c0c0;
+	background-color: #efe9df;
 }
 .box {
   margin-bottom: 20px;
@@ -142,6 +141,7 @@ html, body {
 
 .oneline-link{
 	font-size: 1.5em;	
+	color: var(--color-basic);
 }
 
 .pub-link{
@@ -161,11 +161,13 @@ html, body {
 	Border-bottom-left-radius: 8px;
 	Border-bottom-right-radius: 8px;
 	
+    font-weight: bold;
+	
 }
 
-a {
+ a {
 	color:black;
-    font-weight: bold;
+    
 }
 
 .diary-img{

@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
@@ -34,6 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			.logout()
 				.logoutUrl("/doLogout")
 				.logoutSuccessUrl("/")
+				.invalidateHttpSession(true) //로그아웃 후 Session값 지움
 				.and()
 			.csrf() //csrf설정
 				.disable(); //끄겠다
@@ -49,7 +51,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			//사용자 정보를 가져오기
 			.usersByUsernameQuery("select userId id,password, 1 enabled from Member where userId=?")
 			//그 사용자의 역할 정보를 가져오기
-			.authoritiesByUsernameQuery("select userId id, 'ROLE_MEMBER' roleId from Member where userId =?");
+			.authoritiesByUsernameQuery("select userId id, 'ROLE_MEMBER' roleId from Member where userId =?")
+			.passwordEncoder(new BCryptPasswordEncoder());
 			
 	}
 }

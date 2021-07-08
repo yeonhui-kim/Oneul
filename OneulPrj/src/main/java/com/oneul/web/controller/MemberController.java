@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,10 +34,7 @@ public class MemberController {
 	
 	//회원가입페이지 조회
 	@RequestMapping("signup") 
-	public String signup(@RequestParam(name = "result", defaultValue = "0") int result
-						, Model model) {
-		if(result == 1)
-			model.addAttribute("checkmsg","중복된 아이디입니다.");
+	public String signup(){
 			
 		return "member/signup";
 	}
@@ -43,13 +42,21 @@ public class MemberController {
 	//아이디 중복체크버튼
 	@ResponseBody
 	@PostMapping("checkid")
-	public int check_id(String username) {
+	public int check_id(String username, Principal principal) {
+		
+		String prevname = principal.getName();
+		
 		Member member = new Member();
 		int result = 2;
 		String unexp = "^[a-z0-9]{4,12}$";
 		
 		member.setUserId(username);
-		if(username.equals("")) {
+		
+		if(username.equals(prevname)) {
+			result = 4;
+			return result;
+		}
+		else if(username.equals("")) {
 			return result;			
 		}
 		else if(!Pattern.matches(unexp, username)){
@@ -59,8 +66,6 @@ public class MemberController {
 			result = service.checkid(username);
 			return result;
 		}
-		
-	
 	}
 	
 	//회원가입 실행
@@ -72,24 +77,24 @@ public class MemberController {
 						String email,
 						Model model) {
 		
-		int result = service.checkid(username);
+		System.out.printf("origin pwd : %s\n", password);
+		//암호화 도구
+		PasswordEncoder encoder = new BCryptPasswordEncoder();
+		//암호화 하고 변수에 담음
+		String encodedpwd = encoder.encode(password);
+		System.out.printf("encoded pwd: %s\n", encodedpwd);
 		
-		if(result == 1) {
-			return "redirect:signup?result="+result;		
-		}
-		else {
-			Member member = new Member();
-			member.setUserId(username);
-			String noopPassword = "{noop}"+password;
-			member.setPassword(noopPassword);
-			member.setName(name);
-			member.setBirthday(birthday);
-			member.setEmail(email);
-			
-			service.insert(member);
-			
-			return "redirect:/";
-		}
+		
+		Member member = new Member();
+		member.setUserId(username);
+		member.setPassword(encodedpwd);
+		member.setName(name);
+		member.setBirthday(birthday);
+		member.setEmail(email);
+		
+		service.insert(member);
+		
+		return "redirect:/";
 	}
 	
 	//아이디찾기페이지 조회
@@ -133,7 +138,7 @@ public class MemberController {
 	
 	//아이디 찾은 후 페이지 조회
 	@RequestMapping("foundid")
-	public String foundid(Model model) {
+	public String foundid() {
 		
 		return "member/foundid";		
 	}
@@ -165,9 +170,13 @@ public class MemberController {
 		if(result==1) { //회원정보 있으면
 			//임시비밀번호생성
 			String pwd = service.makePwd(10);
-			String realpwd = "{noop}"+pwd;
+			
+			//비밀번호 암호화
+			PasswordEncoder encoder = new BCryptPasswordEncoder();
+			String encodedpwd = encoder.encode(pwd);
+			
 			//임시비밀번호로 변경
-			member.setPassword(realpwd);
+			member.setPassword(encodedpwd);
 			service.updatebyname(member);
 			
 			//비밀번호 이메일 발송
@@ -180,14 +189,11 @@ public class MemberController {
 			model.addAttribute("msg","존재하지 않는 회원정보입니다");
 			return "member/findpwd";
 		}
-
-		
 	}
 	
 	//회원정보수정 페이지 조회
 	@RequestMapping("edit") 
-	public String edit(HttpServletRequest request, Model model,
-						@RequestParam(name = "result", defaultValue = "0") int result) {
+	public String edit(HttpServletRequest request, Model model) {
 		
 		HttpSession session = request.getSession(true);
 		String username = (String) session.getAttribute("username");
@@ -195,16 +201,7 @@ public class MemberController {
 		Member member = new Member();
 		member = service.get(username);
 		
-		//{noop} 없애기
-		String password_ = member.getPassword();
-		String password = password_.substring(6);
-		member.setPassword(password);
-		
 		model.addAttribute(member);
-		
-		//실패메세지
-		if(result == 1)
-			model.addAttribute("checkmsg","중복된 아이디입니다.");
 		
 		return "member/edit";		
 	}
@@ -221,24 +218,18 @@ public class MemberController {
 		member2 = service.get(originUsername);
 		int id = member2.getId();
 		
-		//회원아이디 중복체크
-		int result = service.checkid(username);
+		//비밀번호 암호화
+		PasswordEncoder encoder = new BCryptPasswordEncoder();
+		String encodedpwd = encoder.encode(password);
+	
+		Member member = new Member();
+		member.setId(id);
+		member.setUserId(username);
+		member.setPassword(encodedpwd);
 		
-		if(result == 1) {
-			return "redirect:edit?result="+result;		
-		}else {
-			//변경된 회원정보 업데이트
-			Member member = new Member();
-			member.setId(id);
-			member.setUserId(username);
-			String noopPassword = "{noop}"+password;
-			member.setPassword(noopPassword);
-			
-			service.updatebyid(member);
-			
-			return "redirect:/doLogout";			
-		}
+		service.updatebyid(member);
 		
+		return "redirect:/doLogout";			
 	}
 	
 	@RequestMapping("logintest")
@@ -296,8 +287,6 @@ public class MemberController {
 			e.printStackTrace();
 		}
 		
-
-		
 		Member member = new Member();
 		member.setId(id);
 		member.setUserId(username);
@@ -341,9 +330,6 @@ public class MemberController {
 		
 		return "redirect:/";
 	}
-	
-	
-
 }
 
 
