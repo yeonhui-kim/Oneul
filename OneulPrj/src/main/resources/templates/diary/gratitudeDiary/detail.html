@@ -11,11 +11,20 @@
     <link href="/css/diary/gratitudeDiary/detail.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href='/css/diary/gratitudeDiary/comment.css' type="text/css">
 	<script src='/js/diary/gratitudeDiary/comment.js'></script>
+	<script src='/js/diary/futureDiary/dotMenu.js'></script>
 </head>
 
 <!-- ----------------main부분------------------- -->
 	<main id="main" layout:fragment="main">
 		<section class="">
+		<section class="upside-container-edit">
+			<h1 class="d-none">edit버튼</h1>
+			<img class="upside-container-edit-img" src="/images/icon/dots.png" alt="config-icon">
+			<div class="upside-container-edit-box d-none">
+				<div class="upside-container-edit-item"><a th:href="@{edit(id=${gratitudeDiary.id})}">수정</a></div>
+				<div class="upside-container-edit-item"><a th:href="@{del(id=${gratitudeDiary.id})}" onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a></div>
+			</div>
+		</section>
 			<div class="emotion">
 				<th:block th:switch="${gratitudeDiary.emotionId}">
 					<span th:case="1"><div class="checked-emotion happy"></div></span>
@@ -49,11 +58,7 @@
 			
 			<div class="buttons">
 				<button class="button" type=button><a href="list">목록</a></button>
-				<button class="button" type=button>
-					<a th:href="@{edit(id=${gratitudeDiary.id})}">수정</a></button>
-				<button class="button" type=button>
-					<a th:href="@{del(id=${gratitudeDiary.id})}" onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a>
-				</button>
+				
 			</div>
 			
 			<!-- comment -->
