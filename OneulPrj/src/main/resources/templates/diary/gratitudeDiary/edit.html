@@ -21,10 +21,10 @@
 				
 				<div class="date">
 					<label>날짜 변경</label>
-					<input type="date" name="regDate" 
-									th:value="${#calendars.format(gratitudeDiary.regDate, 'yyyy-MM-dd')}">
 					<input type="hidden" name="prevRegDate" 
 									th:value="${#calendars.format(gratitudeDiary.regDate, 'yyyy-MM-dd')}">				
+					<input type="date" name="regDate" 
+									th:value="${#calendars.format(gratitudeDiary.regDate, 'yyyy-MM-dd')}">
 				</div>
 				
 				<div class="emotion-box">

@@ -6,6 +6,8 @@
 	box-sizing: border-box;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Serif+KR:wght@200;400;600&display=swap');
+
 .question-container{
 	height:20px;
 	width:90%;
@@ -15,7 +17,7 @@
 }
 .question-mark{
 	background: url("../../../images/icon/question-mark.png") no-repeat;
-	 background-size: cover;
+	background-size: cover;
 	width:20px;
 	height:20px;
 	border:0;
@@ -25,6 +27,8 @@
 	padding:3px 5px;
 	border-radius:3px;
 	background-color:#fff;
+	font-family: 'Noto Serif KR', serif;
+	font-size: 12px;
 }
 .d-none{
 	display:none;
@@ -37,11 +41,16 @@
 	align-items: center;
 	margin-top: 5px;
 	margin-bottom: 15px;
+	
 }
 	.date label{
 		margin-bottom: 7px;
 	}
 
+	.form input[type=date]{
+	
+		font-family: 'S-CoreDream-3Light';
+	}
 /*-------------감정 ------------------------*/ 
 .emotion-box{
 	display: flex;
@@ -92,8 +101,15 @@
 	height: 60px;
 	margin-left: auto;
 	margin-right: auto;
+	font-family: 'S-CoreDream-3Light';
     }
     
+ @font-face {
+     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-family: 'S-CoreDream-3Light';
+     font-weight: normal;
+     font-style: normal;
+}	   
 /*-------------버튼 ------------------------*/    
 .buttons{
 	display: flex;
@@ -102,7 +118,7 @@
 }
 .button{
   font-size:12px;
-  font-family:Arial;
+  font-family: 'S-CoreDream-3Light';
   width:60px;
   height:25px;
   border-width:1px;

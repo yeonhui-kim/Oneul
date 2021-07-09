@@ -14,6 +14,7 @@ textarea {
 	display:flex;
 	flex-direction:column;
 	align-items: center;
+	margin-bottom: 17px;
 	
 }
 
@@ -29,7 +30,7 @@ textarea {
 	display:flex;
 	flex-direction:column;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-around;
 }
 .emotion-input{
 	max-height:200px;
@@ -49,6 +50,7 @@ textarea {
 .form input[type=date]{
 	margin-bottom:7px;
 	height:20px;
+	font-family: 'S-CoreDream-3Light';
 }
 
 #emotion{
@@ -83,16 +85,22 @@ textarea {
     padding-right: 20px;
     box-sizing: border-box;
 }
+@font-face {
+     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-family: 'S-CoreDream-3Light';
+     font-weight: normal;
+     font-style: normal;
+}
 .button{
   font-size:12px;
-  font-family:Arial;
+  font-family: 'S-CoreDream-3Light';
   width:60px;
   height:25px;
   border-width:1px;
   color:rgba(74, 74, 74, 1);
   border-color:rgba(195, 193, 191, 0.69);
   font-weight:bold;
-  border-radius:10px;
+  border-radius:8px;
   text-shadow: 1px 1px 0px rgba(248, 241, 229, 1);
   background:rgba(248, 241, 229, 1);
   margin-right: 5px;
@@ -142,12 +150,14 @@ textarea {
 	height:20px;
 	border:0;
 } 
-
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Serif+KR:wght@200;400;600&display=swap');
 .explanation{
 	border:1px solid #979797;
 	padding:3px 5px;
 	border-radius:3px;
 	background-color:#fff;
+	font-family: 'Noto Serif KR', serif;
+	font-size: 12px;
 }
 .d-none{
 	display:none;

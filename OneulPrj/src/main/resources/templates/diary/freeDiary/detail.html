@@ -10,10 +10,19 @@
 <link href="/css/diary/freeDiary/detail.css" type="text/css"
 	rel="stylesheet">
 <script src='/js/diary/freediary/comment.js'></script>
+<script src='/js/diary/futureDiary/dotMenu.js'></script>
 </head>
 <main id="main" layout:fragment="main">
 
 	<section class="sectionClass">
+	<section class="upside-container-edit">
+			<h1 class="d-none">edit버튼</h1>
+			<img class="upside-container-edit-img" src="/images/icon/dots.png" alt="config-icon">
+			<div class="upside-container-edit-box d-none">
+				<div class="upside-container-edit-item"><a th:href="@{edit(id=${freeDiary.id})}">수정</a></div>
+				<div class="upside-container-edit-item"><a th:href="@{del(id=${freeDiary.id})}" onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a></div>
+			</div>
+		</section>
 		<div class="detail-wrap">
 		
                            
@@ -36,8 +45,9 @@
                               <div th:text="${#calendars.format(freeDiary.regDate,'yyyy-MM-dd')}">2021-01-01</div>
                            
                            
-	                         <div th:with="pub = ${freeDiary.pub==1 ? '공개':'비공개'}">
-	                            <p th:text="${pub}">공개일기/비공개일기</p>
+	                         <div>
+	                            <p th:text="${freeDiary.pub}==true?'공개':'비공개'">공개일기/비공개일기</p>
+	                            
 	                         </div>
                            
                            
@@ -53,12 +63,11 @@
                               </table>
                           
                       
-                  <div>
-                     <a href="list">목록</a>
-                     <a th:href="@{edit(id=${freeDiary.id})}">수정</a>
-                     <a th:href="@{del(id=${freeDiary.id})}" onclick="if(!confirm('삭제하시겠습니까?'))return false;">삭제</a>
-                   													
-                  </div>
+                  <div class="buttons">
+					<button class="button" type=button><a href="list">목록</a></button>
+					
+				</div>
+                  
                   <div class="container">
                   
 			<form id="commentForm" action="commentReg" method="post">

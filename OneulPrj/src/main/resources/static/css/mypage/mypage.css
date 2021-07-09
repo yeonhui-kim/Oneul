@@ -181,6 +181,7 @@ body {
    v2.0 | 20110126
    License: none (public domain)
 */
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
 	em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
@@ -241,6 +242,13 @@ a {
 body {
 	color: rgb(114, 114, 114);
 }
+@font-face {
+     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-family: 'S-CoreDream-3Light';
+     font-weight: normal;
+     font-style: normal;
+}
+
 
 /*다른 CSS 에서 #main에 걸려있는 overflow scroll 하고 height 85% 끄면 잘됨 밑에 걸어서 뺴줌 그리고 바디의 height 100% 빼주고 */
 #main {
@@ -253,6 +261,7 @@ body {
 	overflow: auto;
 	height: auto;
 	width: 95%;
+	font-family: 'S-CoreDream-3Light';
 }
 
 /*upper main container */
@@ -511,7 +520,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    height: 90%;
+    height: 85%;
 }
 
 .my-comment-item-content {

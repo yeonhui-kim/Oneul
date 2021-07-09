@@ -5,17 +5,22 @@ layout:decorator="/inc/layout">
 <head>
 <meta charset="UTF-8">
 <link href="/css/diary/futureDiary/detail.css" type="text/css" rel="stylesheet">
+<script src='/js/diary/futureDiary/dotMenu.js'></script>
 <title>Insert title here</title>
 </head>
 
 
 <main id="main" layout:fragment="main">
-	<div class="detail-wrap">
-		
-                           
-                           
+	<div class="wrapper">
+		<section class="upside-container-edit">
+			<h1 class="d-none">edit버튼</h1>
+			<img class="upside-container-edit-img" src="/images/icon/dots.png" alt="config-icon">
+			<div class="upside-container-edit-box d-none">
+				<div class="upside-container-edit-item"><a th:href="@{edit(id=${futureDiary.id})}">수정</a></div>
+				<div class="upside-container-edit-item"><a th:href="@{del(id=${futureDiary.id})}" onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a></div>
+			</div>
+		</section>
                              
-                              
 								<th:block th:switch="${futureDiary.emotionId}"> 
 								<span th:case="1"><img class="emotion" alt="" src="/images/emotions/happy.png"></span>
 								 <span th:case="2"><img class="emotion" alt="" src="/images/emotions/proud.png"></span> 
@@ -39,47 +44,24 @@ layout:decorator="/inc/layout">
                            
                            
                               
-                              <table>
-                              
                                <img class="image" th:if="${futureDiary.image}!=''" th:src="@{/upload/diary/futureDiary/} +${futureDiary.memberId}+@{/}+${futureDiary.id}+@{/}+ ${futureDiary.image}">
-                             
-                              <textarea class="content"  rows="20" cols="30" readonly th:text = "${futureDiary.content}">                      
-                                 미래일기내용
-                              </textarea>
-                              
-                              </table>
+                             <div class="content-container">
+	                              <textarea class="content" rows="20" cols="30"  readonly th:text = "${futureDiary.content}">                      
+	                                 미래일기내용
+	                              </textarea>
+                              </div>
                           
                       
-                  <div>
-                     <a href="list">목록</a>
-                     <a th:href="@{edit(id=${futureDiary.id})}">수정</a>
-                     <a th:href="@{del(id=${futureDiary.id})}" onclick="if(!confirm('삭제하시겟슺니가?'))return false;">삭제</a>
-                   													
-                  </div>
-                  <div class="container">
                   
-			<form id="commentForm" action="commentReg" method="post">
-				<input type="hidden" name="id" th:value="${futureDiary.id}"> 
-				 	
-			</form>
-			
-		</div>
+                  <div class="buttons">
+					<button class="button" type=button><a href="list">목록</a></button>
+					
+				</div>
+                  
 		
 		
 	</div>
-	<!-- container -->
-	<!-- 댓글목록 -->
-	 <div id="reply">
-		<ol th:each="n:${commentList}">
-			<p th:text="${n.memberId}"></p>
-			<p th:text="${n.regDate}"></p>
-			<p th:text="${n.content}"></p>
-			<a th:href="@{edit(id=${n.id})}">수정</a>
-			<a id ="commentDelBtn" 
-				th:href="@{commentDel(id=${n.id},futureDiaryId=${param.id})}"
-				onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a>
-		</ol>
-	</div>
+	
 </main>
 
 
