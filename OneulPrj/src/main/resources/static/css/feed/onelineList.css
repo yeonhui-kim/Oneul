@@ -40,7 +40,7 @@ html, body {
 
 .user-name {
 	grid-area: nickname;
-	font-size: 12px;
+	font-size: 14px;
 	font-weight: bold;
 	margin-top: 5px;
 	margin-left: 5px;
@@ -124,6 +124,7 @@ html, body {
 	display: flex;
 	justify-content: space-around;
 	padding-bottom: 5px;
+	font-size: 12px;
 }
 
 .oneline-link{

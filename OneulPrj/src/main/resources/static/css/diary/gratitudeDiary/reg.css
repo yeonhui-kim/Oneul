@@ -28,7 +28,7 @@
 	border-radius:3px;
 	background-color:#fff;
 	font-family: 'Noto Serif KR', serif;
-
+	font-size: 12px;
 }
 .d-none{
 	display:none;
@@ -41,11 +41,16 @@
 	align-items: center;
 	margin-top: 5px;
 	margin-bottom: 15px;
+	
 }
 	.date label{
 		margin-bottom: 7px;
 	}
 
+	.form input[type=date]{
+	
+		font-family: 'S-CoreDream-3Light';
+	}
 /*-------------감정 ------------------------*/ 
 .emotion-box{
 	display: flex;
@@ -96,8 +101,15 @@
 	height: 60px;
 	margin-left: auto;
 	margin-right: auto;
+	font-family: 'S-CoreDream-3Light';
     }
     
+ @font-face {
+     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-family: 'S-CoreDream-3Light';
+     font-weight: normal;
+     font-style: normal;
+}	   
 /*-------------버튼 ------------------------*/    
 .buttons{
 	display: flex;
@@ -106,7 +118,7 @@
 }
 .button{
   font-size:12px;
-  font-family:Arial;
+  font-family: 'S-CoreDream-3Light';
   width:60px;
   height:25px;
   border-width:1px;

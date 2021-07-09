@@ -74,6 +74,7 @@
 	margin-bottom: 20px;
 }
 
+
 .commentBox{
 	width: 95%;
 	
@@ -88,10 +89,13 @@
     padding: 10px;
     border-radius: 10px;
 }
+
+
 textarea{
 	border-top: none;
     border-left: none;
     border-right: none;
+    
 }
 #submitComment{
 	background: #fff;

@@ -26,7 +26,7 @@
 		margin: 5px 20px 5px 25px;
 	}
 	.question{
-		size: 10px;
+		size: 13px;
 		color: #c4bda4;
 		margin: 15px 0px 10px 20px;
 	}
@@ -47,15 +47,15 @@
     margin: 10px 30px 10px 0px
 }
 	.button {
-		font-size: 11px;
-		font-family: Arial;
-		width: 45px;
-		height: 20px;
+		font-size: 12px;
+		font-family: 'S-CoreDream-3Light';
+		width: 47px;
+		height: 22px;
 		border-width: 1px;
 		color: rgba(74, 74, 74, 1);
 		border-color: rgba(195, 193, 191, 0.69);
 		/* font-weight: bold; */
-		border-radius: 7px;
+		border-radius: 5px;
 		background: rgba(248, 241, 229, 1);
 		margin-right: 5px;
 	}
@@ -76,6 +76,7 @@ textarea {
     align-items: flex-end;
 }	
 
+<<<<<<< HEAD
 /* .upside-container */ /*-edit*/
 .upside-container-edit {
 	position: absolute;
@@ -107,3 +108,11 @@ textarea {
 }
 
 	
+=======
+@font-face {
+     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-family: 'S-CoreDream-3Light';
+     font-weight: normal;
+     font-style: normal;
+}	
+>>>>>>> branch 'main' of https://github.com/OneulDiary/Oneul.git

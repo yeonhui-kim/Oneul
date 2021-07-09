@@ -24,7 +24,14 @@
 	display: inline-block;
 }
 
+@font-face {
+     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-family: 'S-CoreDream-3Light';
+     font-weight: normal;
+     font-style: normal;
+}
 #open-button{
+	font-family: 'S-CoreDream-3Light';
 	background: #fff;
     display: flex;
     border: 1px solid transparent;
