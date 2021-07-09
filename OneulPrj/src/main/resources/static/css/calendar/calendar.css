@@ -798,7 +798,7 @@ A HORIZONTAL event
 }
 .fc .fc-daygrid-event {
     z-index: 6;
-    margin-top: 1px;
+    /* margin-top: 1px; */
   }
 .fc .fc-daygrid-event.fc-event-mirror {
     z-index: 7;
