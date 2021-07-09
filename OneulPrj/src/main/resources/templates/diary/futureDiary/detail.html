@@ -10,7 +10,7 @@ layout:decorator="/inc/layout">
 
 
 <main id="main" layout:fragment="main">
-	<div class="detail-wrap">
+	<div class="wrapper">
 		
                            
                            
@@ -39,15 +39,12 @@ layout:decorator="/inc/layout">
                            
                            
                               
-                              <table>
-                              
                                <img class="image" th:if="${futureDiary.image}!=''" th:src="@{/upload/diary/futureDiary/} +${futureDiary.memberId}+@{/}+${futureDiary.id}+@{/}+ ${futureDiary.image}">
-                             
-                              <textarea class="content"  rows="20" cols="30" readonly th:text = "${futureDiary.content}">                      
-                                 미래일기내용
-                              </textarea>
-                              
-                              </table>
+                             <div class="content-container">
+	                              <textarea class="content" rows="20" cols="30"  readonly th:text = "${futureDiary.content}">                      
+	                                 미래일기내용
+	                              </textarea>
+                              </div>
                           
                       
                   <div>
@@ -67,19 +64,7 @@ layout:decorator="/inc/layout">
 		
 		
 	</div>
-	<!-- container -->
-	<!-- 댓글목록 -->
-	 <div id="reply">
-		<ol th:each="n:${commentList}">
-			<p th:text="${n.memberId}"></p>
-			<p th:text="${n.regDate}"></p>
-			<p th:text="${n.content}"></p>
-			<a th:href="@{edit(id=${n.id})}">수정</a>
-			<a id ="commentDelBtn" 
-				th:href="@{commentDel(id=${n.id},futureDiaryId=${param.id})}"
-				onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;">삭제</a>
-		</ol>
-	</div>
+	
 </main>
 
 
