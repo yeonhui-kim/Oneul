@@ -41,7 +41,7 @@ public class MemberController {
 	
 	//아이디 중복체크버튼
 	@ResponseBody
-	@PostMapping("checkid")
+	@PostMapping("checkId")
 	public int check_id(String username) {
 		
 		//아이디 제약
