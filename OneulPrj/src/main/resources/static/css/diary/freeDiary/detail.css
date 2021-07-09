@@ -57,3 +57,36 @@
     display: inline-block;
     border-radius: 20px;
 }
+
+/* .upside-container */ /*-edit*/
+.upside-container-edit {
+	position: absolute;
+	right: 0px;
+	margin-right: 15px;
+	top: 20px;
+}
+
+.upside-container-edit-img {
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}
+
+.upside-container-edit-box {
+	color: #727272;
+	position: relative;
+	right: inherit;
+	top: -35px;
+	
+	width: auto;
+	height: auto;
+	background-color: white;
+	border: 1px #F2F2F2 solid;
+	z-index: 10;
+}
+
+.upside-container-edit-item {
+	padding: 5px 5px 5px 5px;
+	cursor: pointer;
+}
+	
