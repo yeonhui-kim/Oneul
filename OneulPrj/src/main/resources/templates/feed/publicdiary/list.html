@@ -13,13 +13,12 @@
 
 
 	<div id="main">
-
 		<div class="link-item">
 			<a class="oneline-link" href="/feed/oneline/list">한줄일기</a> <a
 				class="pub-link" href="/feed/publicdiary/list?f=1">공개일기</a>
 		</div>
 
-		<div class="box">
+		<div id="box">
 		<form class="emotionbtn" id="tab">
 		<ul>
 			<li><a href="/feed/publicdiary/list?f=1" class="happy"></a></li>
@@ -36,13 +35,11 @@
 		</div>
 		
 		<div class="content-box">
-			<div th:each="n:${list}">
-				<article class="box-e">
-					<div class="content"  th:style="'background-image:url(/upload/diary/'+${n.diary}+'/'+${n.memberId}+'/'+${n.id}+'/'+${n.image}+');'"
-					>
-						<div class="profile">
+			<div th:each="n:${list}">		
+				<article class="box-e" th:onclick="'location.href=\'/'+'diary'+'/'+ @{${n.diary}}+'/'+'detail?id='+@{${n.id}}+'\' '">
+					<div class="content"  th:style="'background-image:url(/upload/diary/'+${n.diary}+'/'+${n.memberId}+'/'+${n.id}+'/'+${n.image}+');'">
 							
-						</div>
+						<div class="profile"></div>
 						
 						<div class="white-box">
 						
