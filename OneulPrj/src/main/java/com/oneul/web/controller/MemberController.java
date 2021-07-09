@@ -42,21 +42,16 @@ public class MemberController {
 	//아이디 중복체크버튼
 	@ResponseBody
 	@PostMapping("checkid")
-	public int check_id(String username, Principal principal) {
+	public int check_id(String username) {
 		
-		String prevname = principal.getName();
-		
-		Member member = new Member();
-		int result = 2;
+		//아이디 제약
 		String unexp = "^[a-z0-9]{4,12}$";
 		
+		Member member = new Member();
 		member.setUserId(username);
 		
-		if(username.equals(prevname)) {
-			result = 4;
-			return result;
-		}
-		else if(username.equals("")) {
+		int result = 2;
+		if(username.equals("")) {
 			return result;			
 		}
 		else if(!Pattern.matches(unexp, username)){
@@ -234,6 +229,37 @@ public class MemberController {
 		service.updatebyid(member);
 		
 		return "redirect:/doLogout";			
+	}
+	
+	//아이디 중복체크버튼
+	@ResponseBody
+	@PostMapping("editCheckId")
+	public int edit_check_id(String username, Principal principal) {
+		
+		//원래 아이디
+		String prevname = principal.getName();
+		
+		//아이디 제약
+		String unexp = "^[a-z0-9]{4,12}$";
+		
+		Member member = new Member();
+		member.setUserId(username);
+		
+		int result = 2;
+		if(username.equals(prevname)) {
+			result = 4;
+			return result;
+		}
+		else if(username.equals("")) {
+			return result;			
+		}
+		else if(!Pattern.matches(unexp, username)){
+			result = 3;
+			return result;
+		}else {
+			result = service.checkid(username);
+			return result;
+		}
 	}
 	
 	@RequestMapping("logintest")

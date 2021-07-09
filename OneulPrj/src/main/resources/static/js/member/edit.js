@@ -8,7 +8,7 @@ window.addEventListener("load",function(){
 	
 	checkid.onclick=function(){
 		$.ajax({
-			url : "/member/checkid",
+			url : "/member/editCheckId",
 			type : "post",
 			dataType : "json",
 			data : {"username" : $('.username').val()},
