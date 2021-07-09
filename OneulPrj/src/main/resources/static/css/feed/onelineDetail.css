@@ -101,6 +101,7 @@ textarea:focus {
 	font-weight: bold;
 	margin-top: 5px;
 	margin-left: 5px;
+	font-size: 14px;
 }
 
 .edit {

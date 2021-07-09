@@ -520,7 +520,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    height: 90%;
+    height: 85%;
 }
 
 .my-comment-item-content {
