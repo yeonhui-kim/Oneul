@@ -317,7 +317,7 @@ public class FreeDiaryController {
 		int cntPrev = calendarService.selectCalEmotionPrevCnt(calendarEmotion);
 		
 		if(freeDiary.getEmotionId() != null) { //감정 변경했을 경우
-			if(prevRegDate == regDate) { // 날짜 변경 안했을 경우
+			if(prevRegDate.equals(regDate)) { // 날짜 변경 안했을 경우
 				calendarService.updateCalendar(calendarEmotion); // 감정 update				
 			}else { // 날짜 변경했을 경우
 				if(cnt == 0) { // 등록된 일기 없을때
@@ -329,7 +329,7 @@ public class FreeDiaryController {
 					calendarService.deleteCalendarPrev(calendarEmotion); // 변경 전 날짜의 감정 삭제
 			}
 		}else { // 감정 변경 안했을 경우
-			if(prevRegDate != regDate) { // 날짜 변경 했을 경우
+			if(!prevRegDate.equals(regDate)) { // 날짜 변경 했을 경우
 				int prevEmotion = prevEmotionId; 
 				calendarEmotion.setEmotionId(prevEmotion); // 전에 등록했던 감정을 캘린더에 set
 				if(cnt == 0) { // 등록된 일기 없을때
