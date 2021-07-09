@@ -42,3 +42,27 @@
 	border : 0;
 	padding:5px;
 }
+
+/*-------------¹öÆ° ------------------------*/    
+.buttons{
+	display: flex;
+    justify-content: flex-end;
+    margin: 10px 30px 10px 0px
+}
+	.button {
+		font-size: 11px;
+		font-family: Arial;
+		width: 45px;
+		height: 20px;
+		border-width: 1px;
+		color: rgba(74, 74, 74, 1);
+		border-color: rgba(195, 193, 191, 0.69);
+		/* font-weight: bold; */
+		border-radius: 7px;
+		background: rgba(248, 241, 229, 1);
+		margin-right: 5px;
+	}
+
+	.button:hover {
+	  background: rgba(247, 232, 206, 1)
+	} 
