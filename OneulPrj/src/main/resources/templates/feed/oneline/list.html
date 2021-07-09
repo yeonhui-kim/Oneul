@@ -77,7 +77,7 @@
 	        		
 	        		/*----------------반복문 구간------------------------------*/ 
 	        		html += `<div>
-	        			<article class="box">
+	        			<article class='box' onclick="location.href='detail?id=${n.id}';">
 	    				<div class="content">
 	    					<div class="profile">   	    					
 	    								
@@ -116,14 +116,19 @@
 </head>
 <main id="wrapper" layout:fragment="main">
 
-	
 
-
-	<div class="btn-box">
       <a href="reg"> <img class="reg-img"
          src="/images/oneline/addBtn.png">
       </a>
-   </div>
+
+       <a href="#up"> <img class="up-img"
+        	 src="/images/oneline/pngwingUp.png">
+        </a>
+        
+		<a href="#down"> <img class="down-img"
+        	 src="/images/oneline/pngwingDown.png">
+        </a>
+        
 
 <div id="main">
 
@@ -133,10 +138,15 @@
       <a class="oneline-link" href="/feed/oneline/list">한줄일기</a>
       <a class="pub-link" href="/feed/publicdiary/list?f=1">공개일기</a>
       </div>
+      <div id="up"></div>
         <div class="container">
+       
         </div>
         </section>
+         <div id="down"></div>
   </div>
+  
+         
         
         
 <!-----------------------------------한줄일기----------------------------------------------->  

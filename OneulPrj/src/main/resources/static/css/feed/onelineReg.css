@@ -47,7 +47,13 @@ html,body{
 	border: none;
 }
 
+textarea:focus {  
+     outline: none;
+}
 
+.button{
+  font-size:12px;
+  font-family:Arial;
   width:60px;
   height:25px;
   border-width:1px;
