@@ -12425,7 +12425,7 @@ var FullCalendar = (function (exports) {
                     todo: in print view, for multi-day events, don't display title within non-start/end segs
                     */
                     nodes.push(createElement("div", { className: 'fc-daygrid-event-harness' + (isAbsolute ? ' fc-daygrid-event-harness-abs' : ''), key: key, ref: isMirror ? null : this.segHarnessRefs.createRef(key), style: {
-                            visibility: isVisible ? '' : 'hidden',
+                            /*visibility: isVisible ? '' : 'hidden',*/
                             marginTop: isAbsolute ? '' : placement.marginTop,
                             top: isAbsolute ? placement.absoluteTop : '',
                             left: left,
