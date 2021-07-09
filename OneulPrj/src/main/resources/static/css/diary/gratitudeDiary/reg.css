@@ -6,6 +6,8 @@
 	box-sizing: border-box;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Serif+KR:wght@200;400;600&display=swap');
+
 .question-container{
 	height:20px;
 	width:90%;
@@ -15,7 +17,7 @@
 }
 .question-mark{
 	background: url("../../../images/icon/question-mark.png") no-repeat;
-	 background-size: cover;
+	background-size: cover;
 	width:20px;
 	height:20px;
 	border:0;
@@ -25,6 +27,8 @@
 	padding:3px 5px;
 	border-radius:3px;
 	background-color:#fff;
+	font-family: 'Noto Serif KR', serif;
+
 }
 .d-none{
 	display:none;

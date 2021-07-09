@@ -41,11 +41,11 @@ hr{
 /*-------------날짜 ------------------------*/ 
 .date{
 	grid-area: date;
-	margin: 20px 20px 10px 15px;
-	text-align: center;
-	background-color: #F8F1E5;
+    margin: 35px 20px 20px 15px;
+    text-align: center;
+    background-color: #F8F1E5;
     border-radius: 20%;
-    padding: 5px;
+    padding: 2px;
 }
 	.day{
 		font-weight: bold;
@@ -55,7 +55,7 @@ hr{
 	
 	.dayName{
 		display: block;
-		font-size: 10px;
+		font-size: 11px;
 	}
 	
 	
@@ -77,18 +77,18 @@ hr{
 	
 }
 	.content{
-		height: 15px;
+		height: 17px;
 		width: 90%;
 		text-overflow: ellipsis;
 		overflow: hidden;
-		margin-bottom: 6px;
+		margin-bottom: 5px;
 		margin-left: 5px;
-		font-size: 11.5px;
+		font-size: 13px;
 	}
 	
 .question{
 	font-size: 11px;
-	color: #c4bda4;
+	color: #afa685;
 }
 
 /*-------------댓글 & 공개 ------------------------*/ 

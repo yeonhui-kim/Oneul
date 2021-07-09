@@ -143,12 +143,14 @@ textarea {
 	height:20px;
 	border:0;
 } 
-
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Serif+KR:wght@200;400;600&display=swap');
 .explanation{
 	border:1px solid #979797;
 	padding:3px 5px;
 	border-radius:3px;
 	background-color:#fff;
+	font-family: 'Noto Serif KR', serif;
+	font-size: 12px;
 }
 .d-none{
 	display:none;
