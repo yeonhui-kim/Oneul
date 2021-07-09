@@ -1,3 +1,6 @@
+#main{
+		overflow:scroll;
+}
 .title-container{
 	
 	--position:fixed;
@@ -16,6 +19,7 @@ hr{
 	display:flex;
 	flex-direction: column;
     align-items: center;
+    padding-bottom:50px;
 }
 
 .diary-container{
