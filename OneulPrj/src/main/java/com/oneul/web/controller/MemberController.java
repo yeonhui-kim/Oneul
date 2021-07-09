@@ -207,7 +207,10 @@ public class MemberController {
 	}
 	
 	@PostMapping("edit")
-	public String edit(HttpServletRequest request,String username, String password) {
+	public String edit(HttpServletRequest request,
+						String username,
+						String password,
+						String email) {
 		
 		//변경전 회원아이디
 		HttpSession session = request.getSession(true); 
@@ -226,6 +229,7 @@ public class MemberController {
 		member.setId(id);
 		member.setUserId(username);
 		member.setPassword(encodedpwd);
+		member.setEmail(email);
 		
 		service.updatebyid(member);
 		

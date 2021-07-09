@@ -63,12 +63,11 @@
                               </table>
                           
                       
-                  <div>
-                     <a href="list">목록</a>
-                     <a th:if="${freeDiary.memberId == member.id}" th:href="@{edit(id=${freeDiary.id})}">수정</a>
-                     <a th:if="${freeDiary.memberId == member.id}" th:href="@{del(id=${freeDiary.id})}" onclick="if(!confirm('삭제하시겠습니까?'))return false;">삭제</a>
-                   													
-                  </div>
+                  <div class="buttons">
+					<button class="button" type=button><a href="list">목록</a></button>
+					
+				</div>
+                  
                   <div class="container">
                   
 			<form id="commentForm" action="commentReg" method="post">

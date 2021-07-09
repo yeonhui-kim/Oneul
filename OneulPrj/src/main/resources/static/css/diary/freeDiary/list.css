@@ -1,4 +1,7 @@
 /*freediary css*/
+#main{
+		overflow:scroll;
+}
 .title-container{
 	margin:0 5px;
 	--position:fixed;
@@ -23,6 +26,7 @@ hr{
 	flex-direction: column;
     align-items: center;
     height:100%;
+    padding-bottom:50px;
 }
 
 .diary-container{

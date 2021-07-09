@@ -43,8 +43,8 @@
 /*-------------¹öÆ° ------------------------*/    
 .buttons{
 	display: flex;
-    justify-content: flex-end;
-    margin: 10px 30px 10px 0px
+    justify-content: center;
+     margin-top: 10px;
 }
 	.button {
 		font-size: 12px;
@@ -76,17 +76,18 @@ textarea {
     align-items: flex-end;
 }	
 
-<<<<<<< HEAD
+
 /* .upside-container */ /*-edit*/
 .upside-container-edit {
 	position: absolute;
 	right: 0px;
 	margin-right: 15px;
+	top: 20px;
 }
 
 .upside-container-edit-img {
-	width: 30px;
-	height: 30px;
+	width: 20px;
+	height: 20px;
 	cursor: pointer;
 }
 
@@ -94,7 +95,8 @@ textarea {
 	color: #727272;
 	position: relative;
 	right: inherit;
-	top: -40px;
+	top: -35px;
+	
 	width: auto;
 	height: auto;
 	background-color: white;
@@ -106,13 +108,10 @@ textarea {
 	padding: 5px 5px 5px 5px;
 	cursor: pointer;
 }
-
-	
-=======
 @font-face {
      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
      font-family: 'S-CoreDream-3Light';
      font-weight: normal;
      font-style: normal;
 }	
->>>>>>> branch 'main' of https://github.com/OneulDiary/Oneul.git
+

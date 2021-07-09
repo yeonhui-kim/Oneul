@@ -75,3 +75,8 @@
 	text-decoration: none;
 	cursor: pointer;
 }
+label{
+	display: flex;
+    justify-content: center;
+    margin-right: 12px;
+}
