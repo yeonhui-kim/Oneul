@@ -87,6 +87,7 @@ textarea {
 .pub{
 	margin-right: auto;
     margin-left: 5%;
+        display: flex;
 }
 
 .buttons{
@@ -95,6 +96,7 @@ textarea {
     justify-content: flex-end;
     padding-right: 20px;
     box-sizing: border-box;
+    margin-bottom: 15px;
 }
 .button{
   font-family: 'S-CoreDream-3Light';
