@@ -150,8 +150,7 @@ public class MemberController {
 						  String name, 
 						  Date birthday, 
 						  String email, 
-						  Model model,
-						  HttpServletRequest request) {
+						  Model model) {
 		
 		//회원정보체크
 		Member member = new Member();
@@ -188,10 +187,10 @@ public class MemberController {
 	
 	//회원정보수정 페이지 조회
 	@RequestMapping("edit") 
-	public String edit(HttpServletRequest request, Model model) {
+	public String edit(Principal principal, Model model) {
 		
-		HttpSession session = request.getSession(true);
-		String username = (String) session.getAttribute("username");
+		//회원아이디 얻기
+		String username = principal.getName();
 		
 		Member member = new Member();
 		member = service.get(username);
@@ -202,14 +201,13 @@ public class MemberController {
 	}
 	
 	@PostMapping("edit")
-	public String edit(HttpServletRequest request,
+	public String edit(Principal principal,
 						String username,
 						String password,
 						String email) {
 		
 		//변경전 회원아이디
-		HttpSession session = request.getSession(true); 
-		String originUsername = (String) session.getAttribute("username");
+		String originUsername = principal.getName();
 		
 		//회원 식별 아이디
 		Member member2 = new Member();
@@ -268,9 +266,10 @@ public class MemberController {
 	}
 		
 	@RequestMapping("mypagetest")
-	public String mypage(HttpServletRequest request, Model model) {
-		HttpSession session = request.getSession(true);
-		String username = (String) session.getAttribute("username");
+	public String mypage(Principal principal, Model model) {
+		
+		//회원아이디
+		String username = principal.getName();
 		
 		Member member2 = service.get(username);
 		String fileName = member2.getImage();
@@ -288,8 +287,7 @@ public class MemberController {
 	@PostMapping("upload") 
 	public String upload(MultipartFile file, HttpServletRequest request, Model model, Principal principal) {
 		//로그인 아이디 획득
-		HttpSession session = request.getSession(true);
-		String username = (String) session.getAttribute("username");
+		String username = principal.getName();
 		
 		//식별변호 획득
 		Member member2 = service.get(username);
@@ -331,10 +329,9 @@ public class MemberController {
 	
 	//프로필기본사진으로 변경
 	@GetMapping("basic")
-	public String basic(HttpServletRequest request) {
+	public String basic(Principal principal) {
 		//로그인 아이디 획득
-		HttpSession session = request.getSession(true);
-		String username = (String) session.getAttribute("username");
+		String username = principal.getName();
 		
 		Member member = new Member();
 		member.setUserId(username);
@@ -347,10 +344,9 @@ public class MemberController {
 	
 	//회원탈퇴
 	@GetMapping("out")
-	public String out(HttpServletRequest request) {
+	public String out(Principal principal) {
 		//로그인 아이디 획득
-		HttpSession session = request.getSession(true);
-		String username = (String) session.getAttribute("username");
+		String username = principal.getName();
 		
 		//식별변호 획득
 		Member member = service.get(username);
