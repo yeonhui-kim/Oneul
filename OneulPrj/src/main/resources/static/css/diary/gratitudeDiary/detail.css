@@ -1,5 +1,7 @@
 /*gratitudeDiary css*/
-
+#main{
+	overflow: scroll;
+}
 /*-------------ÄÜÅÙÃ÷ ------------------------*/
 .emotion{
 	
