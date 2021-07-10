@@ -20,7 +20,7 @@
 
 .diary-container {
 	display: grid;
-	height: 70px;
+	height: 80px;;
 	width: 90%;
 	padding: 5px;
 	background-color: white;
@@ -38,6 +38,7 @@
 	grid-area: diary;
 	display: flex;
 	justify-content: center;
+	font-size: 12px;
 }
 
 /*-------------°¨Á¤ ------------------------*/ 	

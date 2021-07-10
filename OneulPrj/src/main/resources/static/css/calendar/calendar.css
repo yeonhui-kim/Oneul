@@ -39,6 +39,7 @@
   .fc td {
     vertical-align: top;
     padding: 0;
+    background-color: white;
   }
 .fc a[data-navlink] {
     cursor: pointer;

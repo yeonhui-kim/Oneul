@@ -47,6 +47,12 @@ textarea {
 	object-fit: cover;
 	margin : 7px 0;
 }
+.pub{
+	margin-right: auto;
+    margin-left: 5%;
+    display: flex;
+
+}
 
 .buttons{
 	display: flex;
