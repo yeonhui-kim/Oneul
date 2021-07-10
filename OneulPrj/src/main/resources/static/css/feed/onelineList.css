@@ -89,6 +89,8 @@ html, body {
 	padding: 10px;
 	/* background-color: white; */
 	border-radius: 8px;
+	overflow:scroll;
+	-webkit-overflow-scrolling: touch;
 }
 
 .txt {
