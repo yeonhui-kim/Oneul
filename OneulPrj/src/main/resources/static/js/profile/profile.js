@@ -38,7 +38,7 @@ window.addEventListener("load", ()=>{
                     let profilePopUp = document.createElement("div");
                     profilePopUp.insertAdjacentHTML("beforeend",`
                             
-                        <div style=" font-family: 'S-CoreDream-3Light'; font-weight: normal; font-style: normal;padding: 20px; max-width: 720px; color:#727272; box-shadow:0px 0px 5px black;  width: 80%;  border-radius: 30px; background-color: white; position:fixed; top:50%; left:50%; transform: translate(-50%, -50%); z-index: 11000;">
+                        <div style=" font-family: 'S-CoreDream-3Light'; font-weight: normal; font-style: normal;padding: 20px; max-width: 720px; color:#727272; box-shadow:0px 0px 5px black;  width: 85%;  border-radius: 30px; background-color: white; position:fixed; top:50%; left:50%; transform: translate(-50%, -50%); z-index: 11000;">
                             <p style="font-size: 20px; margin-top: 0px; margin-bottom:5px; text-align: center;">나의 오늘일기</p>
                             <P style="font-size: 13px; text-align: center; margin-top:0px;">나의 일상을 돌아 봅니다 ...</P>
                             <div style=" display: flex; align-items: center; justify-content: space-around; margin-top: 15px;">
