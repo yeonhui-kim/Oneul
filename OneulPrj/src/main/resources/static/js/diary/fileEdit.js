@@ -3,14 +3,15 @@
  */
   window.addEventListener("load",()=>{
 	const fileInput = document.querySelector("input[type='file']");
-	let img = document.querySelector(".image");
+	
 	const fileDelBtn = document.querySelector(".file-del-btn");
 	const changed = document.querySelector(".changed");
-	const selButton = document.querySelector(".btn-sel");
+	
 	const fileDelBtnContainer = document.querySelector(".del-btn-container");
 	
+	const img = document.querySelector(".image");
 	
-	selButton.onclick = function(e) {
+	img.onclick = function(e) {
 		e.preventDefault();
 		var event = new MouseEvent("click", { //이벤트 위임
 			'view': window,
@@ -37,11 +38,11 @@
 		reader.readAsDataURL(file);
 		reader.onload = (e)=>{
 			console.log("reader load");
-			img.src = e.target.result;
-			img.style.width = "90%";
-			img.style.height = "200px";
 			
-			fileDelBtnContainer.insertAdjacentElement("beforebegin",img);
+			img.classList.remove("basic");
+			img.src = e.target.result;
+			
+			//fileDelBtnContainer.insertAdjacentElement("beforebegin",img);
 			fileDelBtn.style.display = '';
 		};	
 		changed.value="1"; //파일바뀜	
@@ -50,8 +51,8 @@
 	//js에서 삭제버튼 onclick -> 이미지클래스 src 지우고..
 	//원본파일은 컨트롤러에서 조건처리(만약에 파일이 ''이면 원래파일삭제..원래파일은? 히든으로 전달할가..
 	fileDelBtn.onclick = ()=>{
-		img.removeAttribute("src");
-		img.removeAttribute("style");
+		img.src = "/images/icon/picture.png"
+		img.classList.add("basic");
 		fileInput.value="";
 		changed.value="1";
 		fileDelBtn.style.display = 'none';
@@ -71,7 +72,7 @@ window.addEventListener("load", ()=>{
 	
 	let img = document.querySelector(".image");
 	
-	if(img.src == ''){
+	if(img.classList.contains("basic")){ //기본사진일때
 		console.log("dd");
 		fileDelBtn.style.display = 'none';
 		

@@ -47,7 +47,18 @@ textarea {
 .image{
 	object-fit: cover;
 	margin : 7px 0;
+	width : 90%;
+	height : 200px;
+	border-radius:2px;
 }
+.image:active{
+	opacity : 0.5;
+
+	}
+	.basic{
+		border:1px #979797 solid;
+	 	
+	 }
 
 .buttons{
 	display: flex;
@@ -78,15 +89,7 @@ textarea {
 	justify-content: flex-end;
 	margin-bottom:4px;	
 }
-.btn-sel{
-	
-	background: url("../../../images/icon/picture.png") no-repeat;
-	 background-size: cover;
-	width:35px;
-	height:30px;
-	border:0;
-	
-}
+
 .del-btn-container{
 	height:20px;
 	display:flex;

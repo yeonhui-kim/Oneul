@@ -10,6 +10,7 @@
 	rel="stylesheet">
 <script src='/js/modal/modal.js'></script>
 <script src='/js/diary/freediary/edit.js'></script>
+<script src='/js/diary/fileEdit.js'></script>
 </head>
 <main id="main" layout:fragment="main">
 	<section class="wrapper">
@@ -41,18 +42,15 @@
 
 
 			<img class="image" th:if="${freeDiary.image}!=''"
-				th:src="@{/upload/diary/freeDiary/} +${freeDiary.memberId}+@{/}+${freeDiary.id}+@{/}+ ${freeDiary.image}"
-				style="width: 90%; height: 200px;"> <img class="image"
-				th:if="${freeDiary.image}==''">
+				th:src="@{/upload/diary/freeDiary/} +${freeDiary.memberId}+@{/}+${freeDiary.id}+@{/}+ ${freeDiary.image}">
+			<img class="image basic" th:if="${freeDiary.image}==''"
+				th:src="@{/images/icon/picture.png}">
 			<div class="del-btn-container">
 				<input class="file-del-btn" type="button">
 			</div>
 
 			<input type="file" style="display: none;" name="file">
-			<div class="file-buttons">
-				<button class="btn-sel"></button>
-			</div>
-
+			
 			<select id="quetionList" name="quetionList" class="quetionList">
 				<option value="" selected="selected">질문을 선택해서 일기를 작성해보세요</option>
 				<div th:each="n:${list}">

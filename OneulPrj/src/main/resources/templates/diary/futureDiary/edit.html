@@ -9,7 +9,8 @@ layout:decorator="/inc/layout">
 <link href="/css/diary/futureDiary/edit.css" type="text/css" rel="stylesheet">
 	
 <script src='/js/modal/modal.js'></script>
-<script src='/js/diary/futureDiary/edit.js'></script>
+
+<script src='/js/diary/fileEdit.js'></script>
 </head>
 <body>
 
@@ -41,17 +42,16 @@ layout:decorator="/inc/layout">
 								
                               
                                  
-                                 <img class="image" th:if="${futureDiary.image}!=''" th:src="@{/upload/diary/futureDiary/} +${futureDiary.memberId}+@{/}+${futureDiary.id}+@{/}+ ${futureDiary.image}"
-                                 style="width:90%; height:200px;">
-                                 <img class="image" th:if="${futureDiary.image}==''" >
+                                 <img class="image" th:if="${futureDiary.image}!=''" 
+                                 	th:src="@{/upload/diary/futureDiary/} +${futureDiary.memberId}+@{/}+${futureDiary.id}+@{/}+ ${futureDiary.image}">
+                                 <img class="image basic" th:if="${futureDiary.image}==''"  
+                                 	th:src="@{/images/icon/picture.png}">
                                  <div class="del-btn-container">
 									<input class="file-del-btn" type="button" >
 								</div>
                                 
-	                               <input type="file" style="display:none;" name="file">
-                                 <div class="file-buttons">
-	                               	<button class="btn-sel"></button>  
-           						  </div>
+	                             <input type="file" style="display:none;" name="file">
+                                
            						  
                                	<input class="changed" type="hidden" name="changed" value="0">
                                	<input type="hidden" name="originalFile" th:value="${futureDiary.image}">
