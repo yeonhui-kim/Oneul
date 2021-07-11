@@ -63,10 +63,12 @@
 }
 
 #commentForm-two{
-	border: 5px white solid;
+	border-left:5px white solid;
+	border-right: 5px white solid;
 	box-sizing: content-box;
 	width:93%;
 	border-radius: 0px 0px 10px 10px;
+	margin-bottom : 10px;
 }
 .save-button-div{
 	line-height: 30px;
