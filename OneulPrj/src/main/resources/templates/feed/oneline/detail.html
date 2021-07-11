@@ -23,8 +23,8 @@
             <div class="content">
 
                <div class="profile">
-               <img class="profile-image" th:src="@{/upload/profile/basic.jpg}" th:if="${detail.image}=='basic.jpg'">
-                  <img class="profile-image"th:src="@{'/upload/profile/' +${detail.memberId} +'/'  +${detail.image}   }" th:if="${detail.image}!='basic.jpg'"> 
+               <img class="profile-image profile-popup" th:alt="${detail.writerId}" th:src="@{/upload/profile/basic.jpg}" th:if="${detail.image}=='basic.jpg'">
+               <img class="profile-image profile-popup" th:alt="${detail.writerId}" th:src="@{'/upload/profile/' +${detail.memberId} +'/'  +${detail.image}   }" th:if="${detail.image}!='basic.jpg'"> 
                   <a th:text="${detail.writerId}" class="user-name">유저아이디</a> 
                      <a class="date" th:text="${#calendars.format(detail.regDate,'yyy-MM-dd')}">날짜</a>
                      
