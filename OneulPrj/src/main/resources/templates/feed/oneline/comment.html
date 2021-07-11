@@ -86,8 +86,8 @@
 
 							<div class="displayDiv" th:with="id=${nc.id}">
 								<p class="commentId"th:text="${id}">부모댓글아이디</p>
-								<img class="commentImg profile-popup" th:alt="${n.userId}" th:src="@{'/upload/profile/'+${nc.memberId} +'/'+${nc.image}}" th:if="${nc.image}!='basic.jpg'">
-								<img class="commentImg profile-popup" th:alt="${n.userId}" th:src="@{/upload/profile/basic.jpg}" th:if="${nc.image}=='basic.jpg'">
+								<img class="commentImg profile-popup" th:alt="${nc.userId}" th:src="@{'/upload/profile/'+${nc.memberId} +'/'+${nc.image}}" th:if="${nc.image}!='basic.jpg'">
+								<img class="commentImg profile-popup" th:alt="${nc.userId}" th:src="@{/upload/profile/basic.jpg}" th:if="${nc.image}=='basic.jpg'">
 								<div class="commentBg">
 									<span class="userId" th:text="${nc.userId}"></span>
 									<span th:text="${nc.regDate}" class="spanTag"></span>
