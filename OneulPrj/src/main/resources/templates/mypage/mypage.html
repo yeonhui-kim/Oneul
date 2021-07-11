@@ -445,7 +445,7 @@
 						<span class="my-oneline-item-commentcount" th:text="'댓글 ' + ${n.count} +'개'">댓글 10</span>
 					</div>
 				</div>
-				<div class="my-oneline-list-img"><img class="my-oneline-item-img" src="https://image.flaticon.com/icons/png/128/1246/1246324.png" alt="picture"/></div>
+				<div class="my-oneline-list-img"><img class="my-oneline-item-img" src="/images/icon/my-feed-icon.png" alt="picture" style="filter: grayscale(20%);"/></div>
 				<a class="my-oneline-item-link" th:href="@{/feed/oneline/detail(id=${n.id})}"></a>
 			</li>
 
@@ -469,9 +469,9 @@
 					<div class="my-comment-item-content" th:text="${n.content}">zcontentzzcontentzzcontententzzcontentzzcontentzzzcontentzzcozcontentzzcontentzzcontententzzcontentzzcontentzzzcontentzzco</div>
 					<span class="my-comment-item-regdate"  th:text="${#calendars.format(n.regDate,'yyyy-MM-dd  /  HH:mm ')} + ${n.comment}+'에서'">2021-07-06</span>
 				</div>
-				<div th:if="${n.comment == 'oneline'}"  class="my-comment-list-img"><img class="my-comment-item-img" src="/images/icon/o-toro.png" alt="picture"/></div>
-				<div th:if="${n.comment == 'freeDiary'}"  class="my-comment-list-img"><img class="my-comment-item-img" src="/images/icon/kampachi.png" alt="picture"/></div>
-				<div th:if="${n.comment == 'gratitudeDiary'}"  class="my-comment-list-img"><img class="my-comment-item-img" src="/images/icon/toro-salmon.png" alt="picture"/></div>
+				<div th:if="${n.comment == 'oneline'}"  class="my-comment-list-img"><img class="my-comment-item-img" src="/images/icon/my-feed-icon.png" alt="picture" style="filter: grayscale(20%);"/></div>
+				<div th:if="${n.comment == 'freeDiary'}"  class="my-comment-list-img"><img class="my-comment-item-img" src="/images/icon/my-free-icon.png" alt="picture"/></div>
+				<div th:if="${n.comment == 'gratitudeDiary'}"  class="my-comment-list-img"><img class="my-comment-item-img" src="/images/icon/my-gratitude-icon.png" alt="picture"/></div>
 				
 				<a class="my-comment-item-link" th:if="${n.comment == 'oneline'}" th:href="@{/feed/{feed}/detail(id=${n.diaryId}, feed=${n.comment})}"></a>
 				<a class="my-comment-item-link" th:if="${n.comment != 'oneline' }" th:href="@{/diary/{diary}/detail(id=${n.diaryId}, diary=${n.comment})}"></a>
