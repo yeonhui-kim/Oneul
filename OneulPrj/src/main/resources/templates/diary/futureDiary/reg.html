@@ -9,10 +9,9 @@
 	<link href="/css/diary/futureDiary/reg.css" type="text/css" rel="stylesheet">
 	<script src='/js/modal/modal.js'></script>
 	<script src='/js/diary/futureDiary/reg.js'></script>
+	<script src='/js/diary/fileInput.js'></script>
 </head>
  
-
-	
 	<main id="main" layout:fragment="main">
 		<section class="wrapper">
 			
@@ -58,14 +57,12 @@
    						<div th:replace="inc/modal::modal"></div>						
 					
 				
-						<img class="image"></img>
+						<img class="image basic" src="../../../images/icon/picture.png"></img>
 						<div class="del-btn-container">
 							<input class="file-del-btn" type="button" >
 						</div>
 	                    <input type="file" style="display:none;" name="file">
-                        <div class="file-buttons">
-	                    	<button class="btn-sel"></button>  
-           				</div>
+                        
 					<div class="text-input">
 						<textarea rows="20" cols="30" name="content"></textarea>
 					</div>

@@ -246,7 +246,7 @@
                   screen.style.position = "fixed";
                   screen.style.top = "0px";
                   screen.style.left = "0px"
-                  screen.style.zIndex = 10;
+                  screen.style.zIndex = 100;
                   screen.style.backdropFilter= "blur(2px)";
                   
                   screen.style.opacity = 0.7;
@@ -343,9 +343,16 @@
 
 
         });
+		
+		
+		
+		
+		
+
     </script>
 
-
+<script src="/js/profile/profile.js">
+</script>
 
 
 
@@ -368,7 +375,7 @@
 
 				<section class="upside-container-edit">
 					<h1 class="d-none">edit버튼</h1>
-					<img class="upside-container-edit-img" src="/images/icon/config-icon.png" alt="config-icon">
+					<img class="upside-container-edit-img" src="/images/icon/config-icon.png">
 					<div class="upside-container-edit-box d-none">
 						<div class="upside-container-edit-box-logout upside-container-edit-item"><a href="/doLogout">로그아웃</a></div>
 						<div class="upside-container-edit-box-profile-edit upside-container-edit-item"> 프로필 변경 </div>
@@ -380,17 +387,12 @@
 
 
 
-
-
-
-
-
 			<div class="midleside-container">
 
 				<section class="midleside-container-item1">
 					<h1 class="d-none">img</h1>
-					<img class="midleside-container-item1-img" th:src="@{/upload/profile/basic.jpg}" th:alt="${member.image}" th:if="${member.image}=='basic.jpg'"> 
-					<img class="midleside-container-item1-img" th:src="@{'/upload/profile/'+${member.id}+'/'+${member.image}}" th:alt="${member.image}" th:if="${member.image}!='basic.jpg'">
+					<img class="midleside-container-item1-img profile-popup pointer" th:src="@{/upload/profile/basic.jpg}" th:alt="${member.userId}"  th:if="${member.image}=='basic.jpg'"> 
+					<img class="midleside-container-item1-img profile-popup pointer" th:src="@{'/upload/profile/'+${member.id}+'/'+${member.image}}" th:alt="${member.userId}"  th:if="${member.image}!='basic.jpg'">
 				</section>
 
 				<div class="midleside-container-hr"></div>
@@ -399,7 +401,7 @@
 					<h1 class="d-none">자기소개</h1>
 					<ul>
 						<li class="midleside-container-item2-my"><span style="" th:text="${member.name}">홍길동</span> 나는</li>
-						<li class="midleside-container-item2-nameis" th:if="${member.introduction} == ''">자기소개 작성해 주세욤 </li>
+						<li class="midleside-container-item2-nameis" th:if="${member.introduction} == ''">자기소개를 작성해 주세요 </li>
 						<li class="midleside-container-item2-nameis" th:if="${member.introduction} != ''" th:text="${member.introduction}" >자기소개 작성</li>
 
 					</ul>
@@ -443,7 +445,7 @@
 						<span class="my-oneline-item-commentcount" th:text="'댓글 ' + ${n.count} +'개'">댓글 10</span>
 					</div>
 				</div>
-				<div class="my-oneline-list-img"><img class="my-oneline-item-img" src="https://image.flaticon.com/icons/png/128/1246/1246324.png" alt="picture"/></div>
+				<div class="my-oneline-list-img"><img class="my-oneline-item-img" src="/images/icon/my-feed-icon.png" alt="picture" style="filter: grayscale(20%);"/></div>
 				<a class="my-oneline-item-link" th:href="@{/feed/oneline/detail(id=${n.id})}"></a>
 			</li>
 
@@ -467,9 +469,9 @@
 					<div class="my-comment-item-content" th:text="${n.content}">zcontentzzcontentzzcontententzzcontentzzcontentzzzcontentzzcozcontentzzcontentzzcontententzzcontentzzcontentzzzcontentzzco</div>
 					<span class="my-comment-item-regdate"  th:text="${#calendars.format(n.regDate,'yyyy-MM-dd  /  HH:mm ')} + ${n.comment}+'에서'">2021-07-06</span>
 				</div>
-				<div th:if="${n.comment == 'oneline'}"  class="my-comment-list-img"><img class="my-comment-item-img" src="/images/icon/o-toro.png" alt="picture"/></div>
-				<div th:if="${n.comment == 'freeDiary'}"  class="my-comment-list-img"><img class="my-comment-item-img" src="/images/icon/kampachi.png" alt="picture"/></div>
-				<div th:if="${n.comment == 'gratitudeDiary'}"  class="my-comment-list-img"><img class="my-comment-item-img" src="/images/icon/toro-salmon.png" alt="picture"/></div>
+				<div th:if="${n.comment == 'oneline'}"  class="my-comment-list-img"><img class="my-comment-item-img" src="/images/icon/my-feed-icon.png" alt="picture" style="filter: grayscale(20%);"/></div>
+				<div th:if="${n.comment == 'freeDiary'}"  class="my-comment-list-img"><img class="my-comment-item-img" src="/images/icon/my-free-icon.png" alt="picture"/></div>
+				<div th:if="${n.comment == 'gratitudeDiary'}"  class="my-comment-list-img"><img class="my-comment-item-img" src="/images/icon/my-gratitude-icon.png" alt="picture"/></div>
 				
 				<a class="my-comment-item-link" th:if="${n.comment == 'oneline'}" th:href="@{/feed/{feed}/detail(id=${n.diaryId}, feed=${n.comment})}"></a>
 				<a class="my-comment-item-link" th:if="${n.comment != 'oneline' }" th:href="@{/diary/{diary}/detail(id=${n.diaryId}, diary=${n.comment})}"></a>
@@ -496,7 +498,7 @@
 	        <div class="profile-edit-item3">
 	        	<div class="item3-flex"><div class="item3-p" th:text="${member.name}+ ' 나는'" >누구누구 나는</div> <input class="item3-submit" type="submit" value="수정"></div>
 	        	<textarea name="introduction" class="item3-textarea" th:text="${member.introduction}" placeholder="자기소개를 작성해 주세요"></textarea>
-        		<input class="item3-email" type="text" name="email" placeholder="이메일을 입력해주세요" th:value="${member.email}">
+        		<!-- <input class="item3-email" type="text" name="email" placeholder="이메일을 입력해주세요" th:value="${member.email}"> -->
 	        </div>
 	        <input class="profile-edit-file-input d-none" type="file" name="multiFile">
 	    </form> 

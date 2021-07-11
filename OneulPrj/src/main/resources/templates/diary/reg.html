@@ -4,20 +4,32 @@
 	layout:decorator="/inc/layout">
 <head>
 <meta charset="UTF-8">
+<link href="/css/diary/reg.css" type="text/css" rel="stylesheet">
 <title>일기선택</title>
 </head>
 <main id="main" layout:fragment="main">
+ 
+     <section class="section">
 
-    <section class="section">
-
-        <h1>작성할 일기를 선택해주세요!</h1>
+        
        <div class="select-diary">
-           <div onclick="location.href='/diary/freeDiary/reg'"><img src="https://image.flaticon.com/icons/png/128/3237/3237849.png"><br>
-           <a href="/diary/freeDiary/reg">자유일기</a></div>
-           <div onclick="location.href='/diary/gratitudeDiary/reg'"><img src="https://image.flaticon.com/icons/png/128/3237/3237849.png"><br>
-           <a href="/diary/gratitudeDiary/reg">감사일기</a></div>
-           <div onclick="location.href='/diary/futureDiary/reg'"><img src="https://image.flaticon.com/icons/png/128/3237/3237849.png"><br>
-           <a href="/diary/futureDiary/reg">미래일기</a></div>
+           <div class = "menu" onclick="location.href='/diary/freeDiary/reg'">
+	           <div class="explain">속마음을 기록해요,</div>
+	           <a class="title" href="/diary/freeDiary/reg">자유일기</a>       
+	           <img class="arrow-right" src="/images/icon/arrow-right.png">
+           </div>
+           
+           <div class = "menu" onclick="location.href='/diary/gratitudeDiary/reg'">
+          	   <div class="explain">일상을 감사로,</div>
+	       		<a class="title" href="/diary/gratitudeDiary/reg">감사일기</a>
+	           <img class="arrow-right" src="/images/icon/arrow-right.png">
+           </div>
+           
+           <div class = "menu" onclick="location.href='/diary/futureDiary/reg'">
+           		<div class="explain">나에게 쓰는 느린 편지,</div>
+	           <a class="title" href="/diary/futureDiary/reg">미래일기</a>
+	           <img class="arrow-right" src="/images/icon/arrow-right.png">
+           </div>
         </div>
 
 

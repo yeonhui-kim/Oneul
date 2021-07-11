@@ -111,11 +111,7 @@ a{
     text-decoration: none;
   }
 
-.select-diary div {
-	margin: 10px;
-	text-align: center;
-	font-size: 15px;
-}
+
 
 /* Change background on mouse-over */
 #navbar a:hover {
