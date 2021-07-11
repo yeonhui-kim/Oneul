@@ -87,6 +87,7 @@
     justify-content: flex-end;
     padding-right: 20px;
     box-sizing: border-box;
+    margin: 10px 0px 10px 0px;
 }
 @font-face {
      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
