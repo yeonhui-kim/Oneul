@@ -260,28 +260,28 @@ public class MemberController {
 		}
 	}
 	
-	@RequestMapping("logintest")
-	public String logintest() {
-		return "member/logintest";		
-	}
+//	@RequestMapping("logintest")
+//	public String logintest() {
+//		return "member/logintest";		
+//	}
 		
-	@RequestMapping("mypagetest")
-	public String mypage(Principal principal, Model model) {
-		
-		//회원아이디
-		String username = principal.getName();
-		
-		Member member2 = service.get(username);
-		String fileName = member2.getImage();
-		
-		
-		Member member = new Member();
-		member.setUserId(username);
-		member.setImage(fileName);
-		model.addAttribute("member", member2);
-		
-		return "member/mypagetest";
-	}
+//	@RequestMapping("mypagetest")
+//	public String mypage(Principal principal, Model model) {
+//		
+//		//회원아이디
+//		String username = principal.getName();
+//		
+//		Member member2 = service.get(username);
+//		String fileName = member2.getImage();
+//		
+//		
+//		Member member = new Member();
+//		member.setUserId(username);
+//		member.setImage(fileName);
+//		model.addAttribute("member", member2);
+//		
+//		return "member/mypagetest";
+//	}
 	
 	//프로필사진 업로드
 	@PostMapping("upload") 
