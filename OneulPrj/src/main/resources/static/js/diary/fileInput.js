@@ -7,7 +7,7 @@
 	
 	const fileDelBtn = document.querySelector(".file-del-btn");
 	
-	let img = document.querySelector(".image");
+	const img = document.querySelector(".image");
 	
 	img.onclick = (e)=> {//이벤트 위임
 		e.preventDefault();
