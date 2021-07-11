@@ -31,7 +31,7 @@
 	padding:5px;
 	border-radius: 10px;
 	resize: none;
-	margin-bottom: 25px;
+	margin-bottom: 30px;
 }
 
 #commentBox{
@@ -133,7 +133,7 @@
   font-weight:bold;
   border-radius:10px;
   text-shadow: 1px 1px 0px rgba(248, 241, 229, 1);
-  background:#fdf7f7;
+  background:white;
   margin-right: 5px;
 }
 .button-comment{
