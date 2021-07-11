@@ -39,7 +39,7 @@ html, body {
 	grid-area: img;
 	width: 80%;
 	height: 80%;
-	border-radius: 60%;
+	border-radius: 25%;
 }
 
 .user-name {
