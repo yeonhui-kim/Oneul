@@ -1,8 +1,24 @@
 /*gratitudeDiary css*/
 #main{
 	overflow: scroll;
-	height: 70%;
+	height: 81%;
 }
+
+
+
+/*---------------- comment form ----------------*/
+.container{
+	width: 85%;
+	background-color: white;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top:5px;
+	border-radius: 0px 0px 10px 10px;
+	margin-bottom: 10px;
+}
+
+
+
 /*-------------ÄÜÅÙÃ÷ ------------------------*/
 .emotion{
 	
@@ -61,6 +77,7 @@
 		border-radius: 5px;
 		background: rgba(248, 241, 229, 1);
 		margin-right: 5px;
+		margin-bottom: 10px;
 	}
 
 	.button:hover {
@@ -124,7 +141,6 @@ textarea {
     padding: 10px 10px 10px 14px; 
     background-color: white;
     border-radius: 8px;
-    margin: 10px;
 }
 
 .txt{ 
@@ -161,3 +177,6 @@ textarea {
 textarea:focus { 
      outline: none;
 }
+
+
+
