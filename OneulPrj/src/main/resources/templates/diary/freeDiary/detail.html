@@ -84,22 +84,20 @@
 		<!-- comment -->
 		<div th:replace="diary/freediary/comment::comment"></div>
 
-
+		<div class="comment-hr"></div>
 		<div class="container">
 			<!--form to reg comments -->
-			<form id="commentForm" action="/diary/freeDiary/detail" method="post">
+			<form id="commentForm-two" action="/diary/freeDiary/detail" method="post">
 				<input type="hidden" name="freeDiaryId" th:value="${freeDiary.id}">
-				<br> <br>
+				
 				<div>
-					<div>
-						<span><strong>Leave a comment</strong></span> <span id="cCnt"></span>
-					</div>
+
 					<div>	
                 <span class="box">
 					<textarea id="commentBox" class="txt" style="width: 100%" rows="3" cols="30"
 							name="content" placeholder="댓글을 입력하세요"></textarea>
                     <div>
-						<input type="submit" class="button" value="저장">
+						<input type="submit" class="button-comment" value="저장">
 					</div>
                 </span>
         	</div>

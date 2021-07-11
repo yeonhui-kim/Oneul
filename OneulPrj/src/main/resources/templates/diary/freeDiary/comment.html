@@ -8,7 +8,7 @@
 	rel="stylesheet">
 <script src='/js/diary/freediary/comment.js'></script>
 </head>
-<div th:fragment="comment">
+<div class="comment-root-container" th:fragment="comment">
 	<!-- comments list -->
 	<div id="reply">
 		<ol>
@@ -50,7 +50,7 @@
 										<textarea class="commentBox" rows="3" cols="30" name="content"
 											placeholder="댓글을 입력하세요"></textarea>
 										<br>
-										<div>
+										<div class="save-button-div">
 											<input id="submitComment" type="submit" value="저장">
 										</div>
 									</div>
@@ -109,6 +109,9 @@
 				</div>
 			</li>
 		</ol>
+	<div>
+		<span><strong>Leave a comment</strong></span> <span id="cCnt"></span>
+	</div>
 	</div>
 
 </div>
