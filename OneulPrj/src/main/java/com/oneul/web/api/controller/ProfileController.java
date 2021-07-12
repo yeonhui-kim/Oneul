@@ -15,7 +15,7 @@ public class ProfileController {
 	private MemberServiceimp service;
 	
 	
-	@CrossOrigin("http://127.0.0.1:5500/")
+
 	@RequestMapping("/api/profile/{username}")
 	public Member profile(@PathVariable(name ="username") String userName) {
 		
