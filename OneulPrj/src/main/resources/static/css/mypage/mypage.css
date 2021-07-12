@@ -474,7 +474,7 @@ body {
     white-space: nowrap;
     text-overflow: ellipsis;
     height: 30px;
-    line-height: 40px;
+    line-height: 30px;
     margin-bottom: 15px;
     font-size: 14px;
 }
@@ -542,7 +542,7 @@ body {
     white-space: nowrap;
     text-overflow: ellipsis;
     height: 30px;
-    line-height: 40px;
+    line-height: 30px;
     margin-bottom: 15px;
     font-size: 14px;
 }
