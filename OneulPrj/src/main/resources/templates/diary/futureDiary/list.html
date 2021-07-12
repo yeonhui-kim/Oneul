@@ -97,7 +97,7 @@ layout:decorator="/inc/layout">
 		</div>
 			<br>
 			<div class = "container">
-				<table>
+			<!-- 	<table>
 					<tr>
 						<th>번호</th>
 						<th>내용</th>				
@@ -112,7 +112,7 @@ layout:decorator="/inc/layout">
 							<div th:with="todayFormatted=${#calendars.format(today,'yyyy-MM-dd')}">
 								<td th:text="${d.id}">01</td>
 								<td>
-								<!-- <a th:href="@{detail(id=${d.id})}" th:text="${todayFormatted>bookingDate ? d.content : bookingDate+' 이후에 볼 수 있습니다'}">내용</a>-->
+								<a th:href="@{detail(id=${d.id})}" th:text="${todayFormatted>bookingDate ? d.content : bookingDate+' 이후에 볼 수 있습니다'}">내용</a>
 								 <a th:if = "${todayFormatted>=bookingDate}" th:href="@{detail(id=${d.id})}" th:text="${d.content}"></a>
 								 <a th:unless = "${todayFormatted>=bookingDate}"  th:text="${bookingDate} + ' 에 공개됩니다.'" onclick="alert('아직 볼 수 없습니다.');"></a>
 								</td>
@@ -122,11 +122,11 @@ layout:decorator="/inc/layout">
 							</div>
 						</tr>
 					
-				</table>
+				</table> -->
 			</div>
-			<div>
+			<!-- <div>
 				<a href="reg">글쓰기</a>
-			</div>
+			</div> -->
 		</section>
 	</main>
 
