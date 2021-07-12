@@ -21,7 +21,10 @@
 	width:80px;
 	height: auto;
 }
+.date{
 
+	font-size: 14px;
+}
 .image{
     
     max-width:90%;
@@ -39,10 +42,11 @@
 }
 
 .content{
-	width:90%;
+	box-sizing: border-box;
+	width:85%;
 	height:95%;
 	resize:none;
-	
+	border-radius: 8px;
 	border : 0;
 	padding:5px;
 }
@@ -53,19 +57,20 @@
     justify-content: flex-end;
     margin-top: 10px;
 }
-	.button {
-		font-size: 11px;
-		font-family: Arial;
-		width: 45px;
-		height: 20px;
-		border-width: 1px;
-		color: rgba(74, 74, 74, 1);
-		border-color: rgba(195, 193, 191, 0.69);
-		/* font-weight: bold; */
-		border-radius: 7px;
-		background: rgba(248, 241, 229, 1);
-		
-	}
+	.button{
+  font-size:12px;
+  font-family: 'S-CoreDream-3Light';
+  width:60px;
+  height:25px;
+  border-width:1px;
+  color:rgba(74, 74, 74, 1);
+  border-color:rgba(195, 193, 191, 0.69);
+  font-weight:bold;
+  border-radius:10px;
+  text-shadow: 1px 1px 0px rgba(248, 241, 229, 1);
+  background:white;
+  margin-right: 5px;
+}
 
 	.button:hover {
 	  background: rgba(247, 232, 206, 1)

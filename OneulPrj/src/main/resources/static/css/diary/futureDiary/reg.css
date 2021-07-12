@@ -124,6 +124,7 @@
 .del-btn-container{
 	height:20px;
 	display:flex;
+	margin: 0 0 4px 0;
 }
 	.file-del-btn{
 		background: url("../../../images/icon/remove.png") no-repeat;
