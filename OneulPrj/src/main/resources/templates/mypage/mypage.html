@@ -400,6 +400,7 @@
 					<ul>
 						<li class="midleside-container-item2-my"><span style="" th:text="${member.name}">홍길동</span> 나는</li>
 						<li class="midleside-container-item2-nameis" th:if="${member.introduction} == ''">자기소개를 작성해 주세요 </li>
+						<li class="midleside-container-item2-nameis" th:if="${member.introduction} == null">자기소개를 작성해 주세요 </li>
 						<li class="midleside-container-item2-nameis" th:if="${member.introduction} != ''" th:text="${member.introduction}" >자기소개 작성</li>
 
 					</ul>

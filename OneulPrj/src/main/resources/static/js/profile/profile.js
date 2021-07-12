@@ -59,7 +59,7 @@ window.addEventListener("load", ()=>{
 
                     if(json.image == "basic.jpg")
                         profilePopUp.querySelector("img").src = "/upload/profile/basic.jpg";
-                    if(json.introduction == "")
+                    if(json.introduction == "" || json.introduction == null)
                         profilePopUp.querySelector(".intro").innerHTML = "작성된 자기소개가 없습니다..."
                    
                      document.body.append(profilePopUp);
