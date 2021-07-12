@@ -72,7 +72,7 @@ public class FreeDiaryController {
 
 	@PostMapping("reg")
 	public String reg(@DateTimeFormat(pattern = "yyyy-MM-dd") Date regDate, FreeDiary freeDiary, MultipartFile file,
-			HttpServletRequest request, CalendarEmotion calendarEmotion) {
+			HttpServletRequest request, CalendarEmotion calendarEmotion,String question) {
 		HttpSession session = request.getSession(true);// 세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
 		String username = (String) session.getAttribute("username");
 
@@ -80,9 +80,13 @@ public class FreeDiaryController {
 		member = memberService.get(username);
 		int id = member.getId();
 
+		String wholeContent = question + "\n"+freeDiary.getContent();
+		System.out.println(wholeContent);
+		
 		freeDiary.setRegDate(regDate);
 		freeDiary.setMemberId(id);
-
+		freeDiary.setContent(wholeContent);
+		
 		// --------------------달력 서비스----------------------------
 		calendarEmotion.setMemberId(freeDiary.getMemberId());
 		calendarEmotion.setRegDate(freeDiary.getRegDate());
