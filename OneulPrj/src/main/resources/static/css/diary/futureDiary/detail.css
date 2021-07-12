@@ -30,6 +30,7 @@
     max-width:90%;
     height:auto;
     object-fit: cover;
+    border-radius: 15px;
 }
 
 .content-container{
@@ -56,6 +57,7 @@
 	display: flex;
     justify-content: flex-end;
     margin-top: 10px;
+
 }
 	.button{
   font-size:12px;
@@ -70,6 +72,7 @@
   text-shadow: 1px 1px 0px rgba(248, 241, 229, 1);
   background:white;
   margin-right: 5px;
+  margin-bottom: 40px;
 }
 
 	.button:hover {
