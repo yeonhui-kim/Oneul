@@ -443,7 +443,7 @@ body {
 
 /*my-oneline-list*/ /*-items*/ /**/
 .my-oneline-list-items {
-	height: 90px;
+	height: 95px;
 	margin-top: 15px;
 	background-color: white;
 	border-radius: 20px 20px 20px 20px;
@@ -466,7 +466,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    height: 90%;
+    height: 100%;
 }
 
 .my-oneline-item-content {
@@ -475,7 +475,7 @@ body {
     text-overflow: ellipsis;
     height: 30px;
     margin-bottom: 10px;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .my-oneline-item-regdate {
@@ -509,7 +509,7 @@ body {
 
 /*my-comment-list*/ /*-items*/ /**/
 .my-comment-list-items {
-	height: 90px;
+	height: 95px;
 	margin-top: 15px;
 	background-color: white;
 	border-radius: 20px 20px 20px 20px;
@@ -533,7 +533,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    height: 90%;
+    height: 100%;
 }
 
 .my-comment-item-content {
@@ -542,7 +542,7 @@ body {
     text-overflow: ellipsis;
     height: 30px;
     margin-bottom: 10px;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .my-comment-item-regdate {
