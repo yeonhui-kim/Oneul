@@ -16,6 +16,7 @@ public interface FutureDiaryDao {
 	int update(FutureDiary futureDiary);
 	int delete(int id);
 	List<FutureDiary> getListAll();
+	List<FutureDiary> getListToday();
 	
 	
 }

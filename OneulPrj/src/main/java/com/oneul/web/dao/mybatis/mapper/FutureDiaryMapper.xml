@@ -15,6 +15,10 @@
     	select * from FutureDiary
     </select>
     
+     <select id="getListToday" resultType="com.oneul.web.entity.FutureDiary">
+    	select * from FutureDiary where bookingDate = CURRENT_DATE( );
+    </select>
+    
     <select id="get" resultType="com.oneul.web.entity.FutureDiary">
     	select * from FutureDiary
     	where id = #{id}
