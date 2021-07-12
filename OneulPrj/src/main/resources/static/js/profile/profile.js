@@ -32,7 +32,7 @@ window.addEventListener("load", ()=>{
 
 
 
-            fetch(`http://localhost:8080/api/profile/${e.target.alt}`).then((response) => response.json()).then((json) => {
+            fetch(`/api/profile/${e.target.alt}`).then((response) => response.json()).then((json) => {
 
                     
                     let profilePopUp = document.createElement("div");
