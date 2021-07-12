@@ -18,4 +18,6 @@ public interface FutureDiaryService {
 
 	int update(FutureDiary futureDiary);
 
+	List<FutureDiary> getListToday();
+
 }

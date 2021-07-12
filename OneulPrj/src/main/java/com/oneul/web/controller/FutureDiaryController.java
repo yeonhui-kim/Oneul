@@ -312,29 +312,41 @@ public class FutureDiaryController {
 	
 	//cron(0 10 * * ? *) 16시 (0 0 0 * * *)
 	
-	@Scheduled(cron="0 0 0 * * *")
+	@Scheduled(cron="0 1 0 * * *")
 	public void printHi() {
 		
-		List<FutureDiary> list = service.getListAll();
+		List<FutureDiary> list = service.getListToday();
 		
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		Date time = new Date();
-		
-		String today = format.format(time); //현재날짜
+//		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+//		Date time = new Date();
+//		
+//		String today = format.format(time); //현재날짜
 
+//		for(FutureDiary fd : list) {
+//			String bookingDate = format.format(fd.getBookingDate()); //예약날짜
+//			if(today.equals(bookingDate)) {
+//				int memberId = fd.getMemberId();
+//				Member member = memberService.get(memberId);
+//				String email = member.getEmail();
+//				System.out.println(email);
+//				String title = "과거로부터 온 일기를 열어보아요";
+//				String body = "지금 바로 읽어보세요" + "http://localhost:8080/diary/futureDiary/detail?id="+fd.getId();
+//				memberService.sendEmail(email,title,body);
+//				System.out.println("발송완료");
+//			}
+//			
+//		}
+		
 		for(FutureDiary fd : list) {
-			String bookingDate = format.format(fd.getBookingDate()); //예약날짜
-			if(today.equals(bookingDate)) {
-				int memberId = fd.getMemberId();
-				Member member = memberService.get(memberId);
-				String email = member.getEmail();
-				System.out.println(email);
-				String title = "과거로부터 온 일기를 열어보아요";
-				String body = "지금 바로 읽어보세요" + "http://localhost:8080/diary/futureDiary/detail?id="+fd.getId();
-				memberService.sendEmail(email,title,body);
-				System.out.println("발송완료");
-			}
-			
+			int memberId = fd.getMemberId();
+			Member member = memberService.get(memberId);
+			String email = member.getEmail();
+			System.out.println(email);
+			String title = "과거로부터 온 일기를 열어보아요";
+			String body = "지금 바로 읽어보세요" + "http://localhost:8080/diary/futureDiary/detail?id="+fd.getId();
+			memberService.sendEmail(email,title,body);
+			System.out.println("발송완료");
+		
 		}
 		
 		

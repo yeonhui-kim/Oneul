@@ -48,4 +48,12 @@ public class FutureDiaryServiceImp implements FutureDiaryService{
 		// TODO Auto-generated method stub
 		return dao.getListAll();
 	}
+
+	@Override
+	public List<FutureDiary> getListToday() {
+		// TODO Auto-generated method stub
+		return dao.getListToday();
+	}
+	
+	
 }
