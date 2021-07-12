@@ -113,3 +113,17 @@
     display: inline-block;
     border-radius: 20px;
 }
+.button-comment{
+	    font-size: 12px;
+    font-family: 'S-CoreDream-3Light';
+    width: 60px;
+    height: 25px;
+    border-width: 1px;
+    color: rgba(74, 74, 74, 1);
+    border-color: rgba(195, 193, 191, 0.69);
+    font-weight: bold;
+    border-radius: 10px;
+    text-shadow: 1px 1px 0px rgb(248 241 229);
+    background: white;
+    margin-right: 5px;
+}

@@ -73,7 +73,7 @@ textarea:focus {
 	/* position: relative; */
 	background-color: #F2F2F2;
 	/* padding-bottom: 50px; */
-	height: 90%;
+	height: auto;
 }
 
 .profile {
@@ -131,7 +131,7 @@ textarea:focus {
 	left: 50%;
 	transform: translate(-50%);
 	width: 90%;
-	height: 70%;
+	height: 85%;
 	padding-top: 10px;
 	/* background-color: white; */
 	border-radius: 8px;
@@ -264,3 +264,9 @@ textarea:focus {
     margin-bottom: 7px;
 } */
 
+
+
+.leave-message{
+margin:10px;
+	
+}

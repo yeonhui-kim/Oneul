@@ -13,7 +13,7 @@ main{
     margin-left: auto;
     margin-right: auto;
   
-    height: 60%;
+    height: 331px;
     width: 60%;
       
     display: flex;
@@ -24,7 +24,7 @@ main{
   }
   
     .findid-form{
-      height: 90%;
+      min-height: 90%;
       width: 80%;
     }
     
