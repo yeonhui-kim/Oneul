@@ -79,14 +79,15 @@
 .pub{
 	display: flex;
     align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-	margin-bottom: 10px;
+    justify-content: flex-start;
+    margin: 10px 0px 10px 20px;
 }
 	.pub-label{
 		margin-left: 8px;
+		margin-right: 3px;
 	}
-
+	
+	
 
 /*-------------ÄÁÅÙÃ÷ ------------------------*/	
 .contents{
@@ -120,8 +121,8 @@
 /*-------------¹öÆ° ------------------------*/    
 .buttons{
 	display: flex;
-    justify-content: center;
-    margin: 10px 0px 10px 0px
+    justify-content: flex-end;
+    margin: 0px 20px 10px 0px
 }
 .button{
   font-size:12px;
@@ -134,7 +135,7 @@
   font-weight:bold;
   border-radius:10px;
   text-shadow: 1px 1px 0px rgba(248, 241, 229, 1);
-  background:rgba(248, 241, 229, 1);
+  background: white;
   margin-right: 5px;
 }
 
