@@ -67,3 +67,13 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
+
+
+
+/*일기 목록 container*/
+
+.container{
+	
+	
+	    margin-bottom: 25px;
+}

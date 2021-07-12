@@ -137,6 +137,7 @@
   text-shadow: 1px 1px 0px rgba(248, 241, 229, 1);
   background: white;
   margin-right: 5px;
+  margin-bottom: 25px;
 }
 
 .button:hover {
