@@ -16,6 +16,9 @@ window.addEventListener("load", function() {
 
 		selectedQuestion.value=value;
 	};
+	
+	/*--------------------현재날짜로 기본설정-----------------------------*/
+	document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);;
 
 
 });
