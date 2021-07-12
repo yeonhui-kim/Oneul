@@ -8,9 +8,13 @@
 <title>Insert title here</title>
 <link href="/css/feed/publicList.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="/js/feed/oneline/list.js"></script>
-</head>
-<main id="wrapper" layout:fragment="main">
+<script type="text/javascript" src="/js/feed/public/list.js"></script>
 
+</head>
+
+<main id="wrapper" layout:fragment="main">
+	<input class="emotion-type" type="hidden" name="f"
+		th:value="${param.f}">
 
 	<div id="main">
 		<div class="link-item">
@@ -19,48 +23,50 @@
 		</div>
 
 		<div id="box">
-		<form class="emotionbtn" id="tab">
-		<ul>
-			<li><a href="/feed/publicdiary/list?f=1" class="happy"></a></li>
-			<li><a href="/feed/publicdiary/list?f=2" class="proud"></a> </li>
-			<li><a href="/feed/publicdiary/list?f=3" class="flutter"></a> </li>
-			<li><a href="/feed/publicdiary/list?f=4" class="calm"></a></li>
-		   	<li><a href="/feed/publicdiary/list?f=5" class="sensitive"></a></li>
-		   	<li><a href="/feed/publicdiary/list?f=6" class="unstable"></a></li>
-			<li><a href="/feed/publicdiary/list?f=7" class="tired"></a></li> 
-			<li><a href="/feed/publicdiary/list?f=8" class="sad"></a></li> 
-			<li><a href="/feed/publicdiary/list?f=9" class="upset"></a></li>
-		</ul>	
-		</form>
+			<form class="emotionbtn" id="tab">
+				<ul>
+					<li><a href="/feed/publicdiary/list?f=1" class="happy"></a></li>
+					<li><a href="/feed/publicdiary/list?f=2" class="proud"></a></li>
+					<li><a href="/feed/publicdiary/list?f=3" class="flutter"></a></li>
+					<li><a href="/feed/publicdiary/list?f=4" class="calm"></a></li>
+					<li><a href="/feed/publicdiary/list?f=5" class="sensitive"></a></li>
+					<li><a href="/feed/publicdiary/list?f=6" class="unstable"></a></li>
+					<li><a href="/feed/publicdiary/list?f=7" class="tired"></a></li>
+					<li><a href="/feed/publicdiary/list?f=8" class="sad"></a></li>
+					<li><a href="/feed/publicdiary/list?f=9" class="upset"></a></li>
+				</ul>
+			</form>
 		</div>
-		
-		<div class="content-box">
-			<div th:each="n:${list}">		
-				<article class="box-e" th:onclick="'location.href=\'/'+'diary'+'/'+ @{${n.diary}}+'/'+'detail?id='+@{${n.id}}+'\' '">
-					<div class="content"  th:style="'background-image:url(/upload/diary/'+${n.diary}+'/'+${n.memberId}+'/'+${n.id}+'/'+${n.image}+');'">
-							
-						<div class="profile"></div>
-						
-						<div class="white-box">
-						
-						<div class="content-text">
-							<a class="text-over"
-								th:href="@{'/diary/' +${n.diary} +'/' +'detail?id=' +${n.id} }"
-								th:text="${n.content}">게시글내용</a>
-						</div>
 
-						<div class="review-attr">
-							 <a th:text="'댓글'+${n.count}">댓글 0</a>
-						</div>
-						<hr>
-						<a th:text="${n.diary}"></a>
-						
-						<!-- <div class="onelineId">
+		<div class="content-box">
+			<div th:each="n:${list}">
+				<article class="box-e"
+					th:onclick="'location.href=\'/'+'diary'+'/'+ @{${n.diary}}+'/'+'detail?id='+@{${n.id}}+'\' '">
+					<div class="content"
+						th:style="'background-image:url(/upload/diary/'+${n.diary}+'/'+${n.memberId}+'/'+${n.id}+'/'+${n.image}+');'">
+
+						<div class="profile"></div>
+
+						<div class="white-box">
+
+							<div class="content-text">
+								<a class="text-over"
+									th:href="@{'/diary/' +${n.diary} +'/' +'detail?id=' +${n.id} }"
+									th:text="${n.content}">게시글내용</a>
+							</div>
+
+							<div class="review-attr">
+								<a th:text="'댓글'+${n.count}">댓글 0</a>
+							</div>
+							<hr>
+							<a th:text="${n.diary}"></a>
+
+							<!-- <div class="onelineId">
 							<a th:text="${n.id}">게시글아이디</a>
 						</div> -->
-						
+
 						</div>
-						
+
 					</div>
 				</article>
 			</div>
