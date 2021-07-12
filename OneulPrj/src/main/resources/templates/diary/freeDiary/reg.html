@@ -20,7 +20,7 @@
 
 			<div class="date-input">
 				<lable>자유일기 날짜를 선택하세요</lable>
-				<input type="date" name="regDate">
+				<input type="date" name="regDate" id="currentDate">
 			</div>
 
 			<div class="emotion-input">
@@ -45,9 +45,8 @@
 					<option th:value="${n.question}" th:text="${n.question}"
 						id="selectedQuestion"></option>
 				</div>
-			</select> <input type="hidden" value="" name="content"
-				class="selectedQuestion"
-				style="border: none; border-right: 0px; border-top: 0px; background-color: #F2F2F2; boder-left: 0px; boder-bottom: 0px; width: 100px; outline: none;"></input><br>
+			</select> 
+			<input type="hidden" value="" name="question" class="selectedQuestion"></input><br>
 
 			<div class="text-input">
 				<textarea rows="20" cols="30" name="content"></textarea>
