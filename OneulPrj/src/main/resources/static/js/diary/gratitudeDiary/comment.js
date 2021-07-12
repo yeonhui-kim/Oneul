@@ -100,7 +100,7 @@ window.addEventListener("load", function(event) {
 
 function submitBtnClick(){
 	
-	const form = document.querySelector('#commentForm-two');
+	const form = document.querySelector('#commentForm');
 
 	// 빈 댓글 경고
 	let submitBtn = document.querySelector('.button-comment');
