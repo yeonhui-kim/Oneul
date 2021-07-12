@@ -68,14 +68,25 @@
 			<div class="container"><!--form to reg comments -->
 				<form id="commentForm" action="/diary/gratitudeDiary/detail" method="post">
 					<input type="hidden" name="gratitudeDiaryId" th:value="${gratitudeDiary.id}">
-					<br> <br>
+					
 					<div>
 						<div>
-							<span><strong>Leave a comment</strong></span> 
+<!-- 							<span><strong>Leave a comment</strong></span>  -->
 							<span id="cCnt"></span>
 						</div>
+						
 						<div>
-							<table class="table">
+						<!-- 댓글창 -->
+							<span class="box">
+								<textarea id="commentBox" class="txt" style="width: 100%" rows="3" cols="30"
+								name="content" placeholder="댓글을 입력하세요"></textarea>
+                   		<div>
+							<input type="submit" class="button" value="저장">
+						</div>
+               				 </span>
+						
+						
+							<!-- <table class="table">
 								<tr>
 									<td class="comment-container">
 									<textarea name="content" placeholder="댓글을 입력하세요"></textarea> <br>
@@ -84,7 +95,7 @@
 										</div>
 									</td>
 								</tr>
-							</table>
+							</table> -->
 						</div>
 					</div>
 				</form>

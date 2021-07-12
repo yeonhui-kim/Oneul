@@ -80,17 +80,17 @@ hr{
 	
 }
 	.content{
-		height: 17px;
-		width: 90%;
-		text-overflow: ellipsis;
-		overflow: hidden;
-		margin-bottom: 5px;
-		margin-left: 5px;
-		font-size: 13px;
+		height: 16px;
+	    width: 90%;
+	    text-overflow: ellipsis;
+	    overflow: hidden;
+	    margin-bottom: 5px;
+	    margin-left: 3px;
+	    font-size: 12px;
 	}
 	
 .question{
-	font-size: 12px;
+	font-size: 11px;
 	color: #afa685;
 }
 

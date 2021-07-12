@@ -1,4 +1,19 @@
 @charset "UTF-8";
+
+
+/*------------------ 댓글 컨테이너 부분 ----------------------------*/
+.comment-root-container{
+	width:85%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: white;
+	border-radius: 10px 10px 0px 0px;
+	padding:10px;
+	box-sizing: border-box;
+	
+}
+
+
 /* gratitudeDiary comments CSS*/
 .modal {
 	display: none; /* Hidden by default */

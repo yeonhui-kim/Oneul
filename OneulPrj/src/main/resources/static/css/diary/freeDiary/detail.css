@@ -21,12 +21,17 @@
     max-width:95%;
     height:auto;
     object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
 }
 
 .content{
 	width:93%;
 	border : 0;
 	padding:5px;
+	border-radius: 10px;
+	resize: none;
+	margin-bottom: 10px;
 }
 
 #commentBox{
@@ -98,8 +103,7 @@
     display: flex;
     padding: 10px 10px 10px 14px; 
     background-color: white;
-    border-radius: 8px;
-    margin: 10px;
+    align-content: center;
 }
 
 .txt{ 
@@ -132,20 +136,34 @@
   background:white;
   margin-right: 5px;
 }
+.button-comment{
+  font-size:12px;
+  font-family:Arial;
+  width:60px;
+  height:25px;
+  border-width:1px;
+  color:rgba(74, 74, 74, 1);
+  border-color:rgba(195, 193, 191, 0.69);
+  font-weight:bold;
+  border-radius:10px;
+  text-shadow: 1px 1px 0px rgba(248, 241, 229, 1);
+  background:white;
+  margin-right: 5px;
+}
 
 textarea:focus { 
      outline: none;
 }
 
 #main{
-	height: 70%;
+	height: 81%;
 	overflow: scroll;
 }
 
 
 	
 /*-------------¹öÆ° ------------------------*/    
-.buttons{
+/* .buttons{
 	display: flex;
     justify-content: flex-end;
     margin-top: 10px;
@@ -153,19 +171,33 @@ textarea:focus {
 	.button {
 		font-size: 11px;
 		font-family: Arial;
-		width: 45px;
-		height: 20px;
+		width: 60px;
+		height: 25px;
 		border-width: 1px;
 		color: rgba(74, 74, 74, 1);
 		border-color: rgba(195, 193, 191, 0.69);
-		/* font-weight: bold; */
+		font-weight: bold;
 		border-radius: 7px;
-		background: rgba(248, 241, 229, 1);
+		background: #F8F1E5;
 		
 	}
+	.button-comment {
+		font-size: 11px;
+		font-family: Arial;
+		width: 60px;
+		height: 25px;
+		border-width: 1px;
+		color: rgba(74, 74, 74, 1);
+		border-color: rgba(195, 193, 191, 0.69);
+		font-weight: bold;
+		border-radius: 7px;
+		background: white;
+		
+	} 
 
 	.button:hover {
 	  background: rgba(247, 232, 206, 1)
 	} 
 	
 
+	

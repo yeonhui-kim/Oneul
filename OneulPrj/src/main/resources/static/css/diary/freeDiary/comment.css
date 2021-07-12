@@ -42,8 +42,36 @@
 	text-decoration: none;
 	cursor: pointer;
 }
+.comment-root-container{
+	width: 95%;
+	margin:10px;
+	display:flex;
+	justify-content: center;
+}
 #reply{
 	font-size: 13px;
+	background-color : white;
+	width:93%;
+	padding:5px;
+	border-radius: 10px 10px 0px 0px;
+}
+.container{
+	margin:10px;
+	width: 95%;
+	display:flex;
+	justify-content: center;
+}
+
+#commentForm-two{
+	border-left:5px white solid;
+	border-right: 5px white solid;
+	box-sizing: content-box;
+	width:93%;
+	border-radius: 0px 0px 10px 10px;
+	margin-bottom : 10px;
+}
+.save-button-div{
+	line-height: 30px;
 }
 .open-button,.edit-button{
 	cursor: pointer;

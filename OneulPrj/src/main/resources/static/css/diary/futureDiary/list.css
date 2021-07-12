@@ -1,5 +1,6 @@
 #main{
 		overflow:scroll;
+		height: 80%;
 }
 .title-container{
 	
@@ -67,6 +68,7 @@ hr{
 	grid-row: 2 / 3;
 	display:flex;
     align-items: center;
+    overflow: hidden !important;
 }
 .not-open{
 	display:flex;

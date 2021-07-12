@@ -18,6 +18,11 @@
 	display: none;
 }
 
+#main{
+	height: 82%;
+}
+
+
 .diary-container {
 	display: grid;
 	height: 80px;;

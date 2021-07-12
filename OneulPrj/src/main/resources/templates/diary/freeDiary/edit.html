@@ -17,12 +17,18 @@
 
 		<form class="form" action="edit" method="post"
 			enctype="multipart/form-data">
-			<div class="date-input">
-				<lable>자유 날짜</lable>
-				<div th:text="${#calendars.format(freeDiary.regDate,'yyyy-MM-dd')}"></div>
-			</div>
+				<input type="hidden" name="id" th:value="${freeDiary.id}">
+				<input type="hidden" name="memberId" th:value="${freeDiary.memberId}">
+			<div class="date">
+					<label>자유일기 날짜 변경</label>
+					<input type="hidden" name="prevRegDate" 
+									th:value="${#calendars.format(freeDiary.regDate, 'yyyy-MM-dd')}">				
+					<input type="date" name="regDate" 
+									th:value="${#calendars.format(freeDiary.regDate, 'yyyy-MM-dd')}">
+				</div>
 
 			<div class="emotion-input">
+			<input type="hidden" name="prevEmotionId" th:value="${freeDiary.emotionId}">
 				<th:block th:switch="${freeDiary.emotionId}">
 					<span th:case="1"><div class="checked-emotion happy"></div></span>
 					<span th:case="2"><div class="checked-emotion proud"></div></span>
