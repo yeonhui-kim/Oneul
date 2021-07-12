@@ -128,9 +128,9 @@ textarea:focus {
 
 #main {
 	position: absolute;
+	width: 100%;
 	/* left: 50%;
 	transform: translate(-50%);
-	width: 90%;
 	height: 85%; */
 	padding-left: 20px;
 	padding-right: 20px;
