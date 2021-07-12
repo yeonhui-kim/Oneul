@@ -30,20 +30,20 @@ hr{
 }
 
 .diary-container{
-	display:grid;
-	height:100px;
-	width:80%;
-	padding:15px;
-	margin-bottom:15px;
-	background-color: white;
-	border-radius: 8px;
-  	grid-template-columns: 30px 80px 1fr;/*¿­ µÎ°³*/
-  	grid-template-rows: repeat(2,1fr);/*Çà 3Ãþ*/
-	grid-template-areas:
-  "date img content"
-  "date img info";
-      align-items: center;
-	box-sizing: border-box;
+	display: grid;
+    height: 100px;
+    width: 80%;
+    padding: 0px 10px 0px 15px;
+    margin-bottom: 15px;
+    background-color: white;
+    border-radius: 8px;
+    grid-template-columns: 30px 80px 1fr;
+    grid-template-rows: repeat(2,1fr);
+    grid-template-areas:
+        "date img content"
+        "date img info";
+    align-items: center;
+    box-sizing: border-box;
 }
 
 .date{
@@ -95,7 +95,7 @@ hr{
   	
     display: inline-block;
     margin-top: 35px;
-  	
+  	margin-left: 5px;
 }
 .content-full{
 	grid-column: 2 / span 3;
@@ -108,6 +108,7 @@ hr{
 }
 
 .comment{
-	grid-area:info;
-	text-align:end;
+	grid-area: info;
+    text-align: end;
+    margin-top: 20px;
 }
