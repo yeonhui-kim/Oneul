@@ -16,6 +16,9 @@ window.addEventListener("load", function() {
 
 		selectedQuestion.value=value;
 	};
+	
+	/*--------------------현재날짜로 기본설정-----------------------------*/
+	document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);;
 
 
 });
@@ -60,7 +63,7 @@ function submitBtnClick(){
 	let content = textareaTag.innerText;
 	
 	console.log(date);
-	console.log(emotion);
+	console.log(emotion)
 	if(date==""){
 		alert("날짜를 선택해주세요");
 	}else if(emotion==""){

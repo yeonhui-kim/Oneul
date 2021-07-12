@@ -24,11 +24,7 @@
 			</div>
 		</section>
 		<div class="detail-wrap">
-		
-                           
-                           
-                             
-                              
+	                       
 								<th:block th:switch="${freeDiary.emotionId}"> 
 								<span th:case="1"><img class="emotion" alt="" src="/images/emotions/happy.png"></span>
 								 <span th:case="2"><img class="emotion" alt="" src="/images/emotions/proud.png"></span> 
@@ -42,7 +38,7 @@
 								</th:block>
 							 
                                                     
-                              <div th:text="${#calendars.format(freeDiary.regDate,'yyyy-MM-dd')}">2021-01-01</div>
+                              <div class="date" th:text="${#calendars.format(freeDiary.regDate,'yyyy-MM-dd')}">2021-01-01</div>
                            
                            
 	                         <div>
@@ -96,7 +92,7 @@
 					<textarea id="commentBox" class="txt" style="width: 100%" rows="3" cols="30"
 							name="content" placeholder="댓글을 입력하세요"></textarea>
                     <div>
-						<input type="submit" class="button-comment" value="저장">
+						<button type="button" class="button-comment" onclick="submitBtnClick()">저장</button>
 					</div>
                 </span>
         	</div>
