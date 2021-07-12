@@ -343,7 +343,8 @@ public class FutureDiaryController {
 			String email = member.getEmail();
 			System.out.println(email);
 			String title = "과거로부터 온 일기를 열어보아요";
-			String body = "지금 바로 읽어보세요" + "http://localhost:8080/diary/futureDiary/detail?id="+fd.getId();
+			//String body = "지금 바로 읽어보세요\n" + "http://localhost:8080/diary/futureDiary/detail?id="+fd.getId();
+			String body = "지금 바로 읽어보세요" + "http://oneul.gonetis.com:8080/diary/futureDiary/detail?id="+fd.getId();
 			memberService.sendEmail(email,title,body);
 			System.out.println("발송완료");
 		
