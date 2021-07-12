@@ -20,6 +20,8 @@ window.addEventListener("load", function(event) {
 	
 	let subComments = document.querySelectorAll('.subComments');
 
+	let commentBox = document.querySelector('.commentBox');
+	
 	for (let i = 0; i < openBtns.length; i++) {
 		openBtns[i].onclick = function(event) {
 			//popup to reply
@@ -38,7 +40,6 @@ window.addEventListener("load", function(event) {
 			let receiverInput = document.querySelector('.receiverInput');
 			console.log(receiverInput);
 			//receiverInput.value = '@'+ openBtns[i].parentNode.parentNode.lastElementChild.firstElementChild.innerText;
-			let commentBox = document.querySelector('.commentBox');
 			commentBox.innerText = '@'+ openBtns[i].parentNode.parentNode.lastElementChild.firstElementChild.innerText + " ";
 		};
 	};
@@ -93,7 +94,38 @@ window.addEventListener("load", function(event) {
 		};
 	}
 
+	//빈 대댓글 경고
+	let submitComment = document.querySelector('#submitComment');
+	
+	submitComment.onclick = function(event){
+		event.preventDefault();
+		if(commentBox.value==""){
+			alert("대댓글을 입력해주세요");
+		}
+		
+	}
 
-
+	
 });
+
+function submitBtnClick(){
+	
+	const form = document.querySelector('#commentForm-two');
+
+	// 빈 댓글 경고
+	let submitBtn = document.querySelector('.button-comment');
+	console.log(submitBtn);
+	let txt = document.querySelector('.txt');
+	console.log(txt);
+		
+		if(txt.value==""){
+			alert("댓글을 입력해주세요");
+			
+		}else{
+			form.submit();
+		}
+
+	
+}
+ 
 

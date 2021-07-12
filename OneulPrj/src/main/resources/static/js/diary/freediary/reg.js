@@ -63,7 +63,7 @@ function submitBtnClick(){
 	let content = textareaTag.innerText;
 	
 	console.log(date);
-	console.log(emotion);
+	console.log(emotion)
 	if(date==""){
 		alert("날짜를 선택해주세요");
 	}else if(emotion==""){
