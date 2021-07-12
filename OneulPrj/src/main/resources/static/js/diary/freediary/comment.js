@@ -94,7 +94,7 @@ window.addEventListener("load", function(event) {
 		};
 	}
 
-	//빈 대댓글 경고
+/*	//빈 대댓글 경고
 	let submitComment = document.querySelector('#submitComment');
 	
 	submitComment.onclick = function(event){
@@ -103,7 +103,7 @@ window.addEventListener("load", function(event) {
 			alert("대댓글을 입력해주세요");
 		}
 		
-	}
+	}*/
 
 	
 });
