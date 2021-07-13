@@ -36,7 +36,7 @@ main{
     }
 
     .findpwd-form ul{
-        height: 90%;
+        height: 291px; /*90%*/
         width: 100%;
         display: flex;
         flex-direction: column;
