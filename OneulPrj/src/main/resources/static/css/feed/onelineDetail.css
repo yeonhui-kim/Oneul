@@ -176,6 +176,7 @@ textarea:focus {
 	height:100%;
 	resize:none;
 	border: none;
+	font-size: 15px;
 	
 }
 
