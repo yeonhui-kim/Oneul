@@ -18,8 +18,7 @@ window.addEventListener("load", function() {
 	};
 	
 	/*--------------------현재날짜로 기본설정-----------------------------*/
-	document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);;
-
+	document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);
 
 });
  window.addEventListener("load",()=>{

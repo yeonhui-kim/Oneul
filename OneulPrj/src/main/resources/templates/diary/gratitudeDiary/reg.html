@@ -38,6 +38,9 @@
     		explanation.classList.toggle("d-none");
     	}
     	
+    	/*--------------------현재날짜로 기본설정-----------------------------*/
+    	document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);
+    	
     })
     </script>
 </head>
@@ -74,7 +77,7 @@
 				
 				<div class="date">
 					<label>오늘의 날짜를 선택해주세요</label>
-					<input type="date" name="regDate">
+					<input id="currentDate" type="date" name="regDate">
 				</div>
 				
 				
