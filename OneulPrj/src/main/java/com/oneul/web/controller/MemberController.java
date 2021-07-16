@@ -187,7 +187,8 @@ public class MemberController {
 	
 	//회원정보수정 페이지 조회
 	@RequestMapping("edit") 
-	public String edit(Principal principal, Model model) {
+	public String edit(Principal principal,
+						Model model) {
 		
 		//회원아이디 얻기
 		String username = principal.getName();
@@ -233,7 +234,8 @@ public class MemberController {
 	//아이디 중복체크버튼
 	@ResponseBody
 	@PostMapping("editCheckId")
-	public int edit_check_id(String username, Principal principal) {
+	public int edit_check_id(String username,
+							Principal principal) {
 		
 		//원래 아이디
 		String prevname = principal.getName();
@@ -264,7 +266,10 @@ public class MemberController {
 	
 	//프로필사진 업로드
 	@PostMapping("upload") 
-	public String upload(MultipartFile file, HttpServletRequest request, Model model, Principal principal) {
+	public String upload(MultipartFile file, 
+						HttpServletRequest request, 
+						Model model, 
+						Principal principal) {
 		//로그인 아이디 획득
 		String username = principal.getName();
 		
