@@ -3,7 +3,6 @@ package com.oneul.web.dao;
 import java.util.List;
 
 import com.oneul.web.entity.FreeDiary;
-import com.oneul.web.entity.FutureDiary;
 
 
 public interface FreeDiaryDao {
