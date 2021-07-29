@@ -4,8 +4,12 @@
 	height: 81%;
 }
 
-
-
+textarea {
+	width:80%;
+	height: 32px;
+	font-size: 12px;
+}
+    
 /*---------------- comment form ----------------*/
 .container{
 	width: 85%;
@@ -84,11 +88,7 @@
 	  background: rgba(247, 232, 206, 1)
 	} 
 
-textarea {
-	width:80%;
-	height: 32px;
-	font-size: 12px;
-    }
+
     	
 .comment-container{
 	display: flex;

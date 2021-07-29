@@ -1,3 +1,7 @@
+.d-none {
+	display: none;
+}
+
 #calendar {
 	padding: 0px;
 	max-width: 450px;
@@ -6,22 +10,9 @@
 	margin-top: 10px;
 }
 
-.happy, .proud, .flutter, .calm, .sensitive, .unstable, .tired, .sad,
-	.upset {
-	width: 5em;
-	height: 5em;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.d-none {
-	display: none;
-}
-
 #main{
 	height: 82%;
 }
-
 
 .diary-container {
 	display: grid;
@@ -38,6 +29,7 @@
 	"diary content"
 	"emotion content";
 }
+
 /*-----------다이어리  ------------------------*/ 
 .diary{
 	grid-area: diary;
@@ -49,6 +41,15 @@
 /*-------------감정 ------------------------*/ 	
 .emotion-container {
 	grid-area: emotion;
+}
+
+
+.happy, .proud, .flutter, .calm, .sensitive, .unstable, .tired, .sad,
+	.upset {
+	width: 5em;
+	height: 5em;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 /*-------------컨텐츠 ------------------------*/
@@ -68,12 +69,8 @@
 	text-overflow: ellipsis;
 }
 
-
-
-/*일기 목록 container*/
+/*-----------일기 목록 container-----------------*/
 
 .container{
-	
-	
-	    margin-bottom: 25px;
+	margin-bottom: 25px;
 }

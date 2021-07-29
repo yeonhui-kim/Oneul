@@ -1,21 +1,20 @@
 @charset "UTF-8";
+
 /* ---- main style ------------------------------------------------ */
 main{
     height: 87%;
     display: flex;
     align-items: center;
   }
+    
     .findpwd-box{
         background-color: #ece7db;
         border-radius: 10%;
         box-shadow: 5px 5px 15px;
-    
         margin-left: auto;
         margin-right: auto;
-    
         height: 359px;
         width: 60%;
-        
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -54,14 +53,13 @@ main{
                 font-size: small;
             }
 
-
             .b{
                 height: 55%;
                 width: 100%;
-                
                 border-style: none;
                 border-radius: 8px;
             }
+            
         .msg{
             color: red;
             font-weight: bold;
@@ -71,7 +69,6 @@ main{
                 height: 25%;
                 width: 100%;
                 margin-top: 4%;
-
                 display: flex;
             }
             
@@ -80,10 +77,10 @@ main{
                     font-weight:bold;
                     background-color: #f8d599;
                 }
+                
                 .btn input{
                     height: 100%;
                     width: 100%;
-        
                     border-style: none;
                     border-radius: 8px;
                 }

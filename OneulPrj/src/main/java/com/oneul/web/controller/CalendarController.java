@@ -31,16 +31,16 @@ public class CalendarController {
 	
 	@RequestMapping("list")
 	public String list(HttpServletRequest request, 
-						@RequestParam(name="currentMonth", required = false) String currentMonth,
-						Model model) {
+					   @RequestParam(name="currentMonth", required = false) String currentMonth,
+					   Model model) {
 		
-		HttpSession session = request.getSession(true);//세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
+		HttpSession session = request.getSession(true); //세션에 유저네임을 넣어놨다->해당유저네임을꺼내기
 		String username = (String) session.getAttribute("username");
 		Member member = memberSerivce.get(username);
 		int id = member.getId();
 		
 		CalendarEmotion param = new CalendarEmotion();
-		param.setMemberId(id);
+		param.setMemberId(id); // 유저의 감정아이콘 set
 		List<Map<String, Object>> emotionList = calendarService.getListCalendar(param);
 		
 		ObjectMapper mapper = new ObjectMapper();
@@ -50,6 +50,7 @@ public class CalendarController {
 			json = mapper.writeValueAsString(emotionList);
 		} catch(Exception e) {
 		}
+		
 		model.addAttribute("jsonString", json);
 		
 		return "calendar/calendar";

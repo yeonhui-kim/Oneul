@@ -13,8 +13,8 @@
     <script src='/js/calendar/calendar.js'></script>
 
     <script>
-      var prevStartStr = "";
-      var jsonString ="[[${jsonString}]]";
+      var prevStartStr = ""; // 클릭한 날짜 전에 눌렸던 날짜
+      var jsonString ="[[${jsonString}]]"; // 달력데이터
       
       if( jsonString == "" ) {
     	  jsonString = "[]";
@@ -38,16 +38,16 @@
           	
       	  events:eventList,
       	
-      	  eventClick:function(event){
+      	  eventClick:function(event){ // 날짜 클릭시
       		/* debugger; */
       			container.innerHTML="";
       		var extendedProps = event.event.extendedProps;
       		
-      		var startStr = event.event.startStr;
+      		var startStr = event.event.startStr; // 클릭된 날짜
       		
-      		if(prevStartStr == startStr) {
-      			container.classList.toggle("d-none");
-      		} else {
+      		if(prevStartStr == startStr) { // 기본적으로 d-none인 상태
+      			container.classList.toggle("d-none"); 
+      		} else { // 전에 선택된 날짜가 현재선택한 날짜랑 같지 않을 경우에 아이콘 보여짐
       			container.classList.remove("d-none");
       		}
       		

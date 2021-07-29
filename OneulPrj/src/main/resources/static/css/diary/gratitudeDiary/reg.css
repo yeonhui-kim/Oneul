@@ -124,22 +124,22 @@
     justify-content: flex-end;
     margin: 0px 20px 10px 0px
 }
-.button{
-  font-size:12px;
-  font-family: 'S-CoreDream-3Light';
-  width:60px;
-  height:25px;
-  border-width:1px;
-  color:rgba(74, 74, 74, 1);
-  border-color:rgba(195, 193, 191, 0.69);
-  font-weight:bold;
-  border-radius:10px;
-  text-shadow: 1px 1px 0px rgba(248, 241, 229, 1);
-  background: white;
-  margin-right: 5px;
-  margin-bottom: 25px;
-}
+	.button{
+	  font-size:12px;
+	  font-family: 'S-CoreDream-3Light';
+	  width:60px;
+	  height:25px;
+	  border-width:1px;
+	  color:rgba(74, 74, 74, 1);
+	  border-color:rgba(195, 193, 191, 0.69);
+	  font-weight:bold;
+	  border-radius:10px;
+	  text-shadow: 1px 1px 0px rgba(248, 241, 229, 1);
+	  background: white;
+	  margin-right: 5px;
+	  margin-bottom: 25px;
+	}
 
-.button:hover {
-  background: rgba(247, 232, 206, 1)
-}    
+	.button:hover {
+	  background: rgba(247, 232, 206, 1)
+	}    
