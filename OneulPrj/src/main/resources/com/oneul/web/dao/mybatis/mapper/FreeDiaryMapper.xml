@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oneul.web.dao.FreeDiaryDao">
+
+	<select id="get" resultType="com.oneul.web.entity.FreeDiary">
+		select * from FreeDiary where
+		id=#{id}
+	</select>
+	
+	
+	<select id="getList" resultType="com.oneul.web.entity.FreeDiary"><!-- 일기리스트 및 댓글갯수 구하는 매퍼 -->
+		select d.*,
+		(select count(id) from FreeDiaryComment where freeDiaryId = d.id) count
+		from FreeDiary d order by regDate desc;
+	</select>
+	
+
+<!-- 	<select id="getList" resultType="com.oneul.web.entity.FreeDiary">
+		select * from FreeDiary
+	</select> -->
+	
+<!-- 	<select id="getList" parameterType="int" resultType="com.oneul.web.entity.FreeDiary">
+		select * from FreeDiary 
+		<if test="id != null">where memberId = #{memberId}</if>
+	</select> -->
+
+	<insert id="insert"
+		parameterType="com.oneul.web.entity.FreeDiary" useGeneratedKeys="true" keyProperty="id">
+		insert into FreeDiary(content,pub,memberId,image,emotionId,regDate)
+		values(#{content},#{pub},#{memberId},#{image},#{emotionId},#{regDate})
+	</insert>
+
+	<delete id="delete" parameterType="int">
+		delete from FreeDiary where id=#{id}
+	</delete>
+
+	<update id="update"
+		parameterType="com.oneul.web.entity.FreeDiary">
+		update FreeDiary
+		<set>
+			<if test="regDate != null">regDate = #{regDate},</if>
+			<if test="emotionId != null">emotionId = #{emotionId},</if>
+			<if test="content != null">content = #{content},</if>
+			<if test="image != null">image = #{image},</if>
+			<if test="pub != null">pub = #{pub}</if>
+		</set>
+		where id=#{id}
+	</update>
+
+</mapper>

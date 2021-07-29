@@ -56,7 +56,7 @@ public class MypageController {
 
 	
 		
-		return "/mypage/mypage";
+		return "mypage/mypage";
 	}
 	
 	

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.oneul.web.dao.MemberDao">
+	<insert id="insert" parameterType="com.oneul.web.entity.Member">
+		insert into Member (userId, password, name, email, birthday)
+		 VALUES (#{userId}, #{password}, #{name}, #{email}, #{birthday})
+	</insert>
+	
+	<select id="getbyname" resultType="com.oneul.web.entity.Member">
+		select * from Member where userId=#{userId}
+	</select>
+	
+	<select id="getbyid" resultType="com.oneul.web.entity.Member">
+		select * from Member where id=#{id}
+	</select>
+	
+	<update id="updatebyname" parameterType="com.oneul.web.entity.Member">
+    	update Member
+    	<set>
+			<if test="password != null">password = #{password},</if>
+			<if test="name != null">name = #{name},</if>
+			<if test="email != null">email = #{email},</if>
+			<if test="birthday != null">birthday = #{birthday},</if>
+			<if test="image != null">image = #{image},</if>
+			<if test="introduction != null">introduction = #{introduction}</if>
+    	</set>
+	   	where userId = #{userId}
+    </update>
+    
+    <select id="findid" parameterType="com.oneul.web.entity.Member" resultType="String">
+		select userId from Member where name = #{name} and email = #{email} and birthday = #{birthday}
+	</select>
+    
+    <update id="updatebyid" parameterType="com.oneul.web.entity.Member">
+    	update Member
+    	<set>
+    		<if test="userId != null">userId = #{userId},</if>
+			<if test="password != null">password = #{password},</if>
+			<if test="name != null">name = #{name},</if>
+			<if test="email != null">email = #{email},</if>
+			<if test="birthday != null">birthday = #{birthday},</if>
+			<if test="image != null">image = #{image},</if>
+			<if test="introduction != null">introduction = #{introduction}</if>
+			
+    	</set>
+	   	where id = #{id}
+    </update>
+	
+	<select id="check" parameterType="com.oneul.web.entity.Member" resultType="int">
+		select count(*) from Member where name = #{name} and email = #{email} and birthday = #{birthday}
+			<if test="userId != null">and userId=#{userId}</if>
+	</select>
+	
+	<select id="checkid" parameterType="com.oneul.web.entity.Member" resultType="int">
+		select count(*) from Member where userId=#{userId}
+	</select>
+	
+	
+	<delete id="delete" parameterType="int">
+		delete from Member where id=#{id}
+	</delete>
+</mapper>    

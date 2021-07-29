@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="/inc/layout">
+	layout:decorator="./inc/layout">
 <head>
 <meta charset="UTF-8">
 <title>Oneul-자유일기</title>
@@ -9,7 +9,7 @@
 	rel="stylesheet">
 <link href="/css/diary/freeDiary/detail.css" type="text/css"
 	rel="stylesheet">
-<script src='/js/diary/freediary/comment.js'></script>
+<script src='/js/diary/freeDiary/comment.js'></script>
 <script src='/js/diary/dotMenu.js'></script>
 </head>
 <main id="main" layout:fragment="main">
@@ -78,7 +78,7 @@
 
 
 		<!-- comment -->
-		<div th:replace="diary/freediary/comment::comment"></div>
+		<div th:replace="./diary/freeDiary/comment::comment"></div>
 
 		<div class="container">
 			<!--form to reg comments -->

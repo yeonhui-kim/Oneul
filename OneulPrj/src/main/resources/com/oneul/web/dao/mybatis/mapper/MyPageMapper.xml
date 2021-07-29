@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oneul.web.dao.MyPageDao">
+
+    
+    <select id="getDiaryList" resultType="com.oneul.web.entity.MyDiary">
+        select id , content ,regDate , 'FreeDiary' as diary from FreeDiary where memberId = #{param1} 
+        union all select id , content ,regDate, 'FutureDiary' as diary from FutureDiary where memberId = #{param1} 
+        union all select id , content1 ,regDate, 'GratitudeDiary' as diary from GratitudeDiary where memberId = #{param1} 
+        union all select id , content ,regDate, 'Oneline' as diary from Oneline where memberId = #{param1}
+        order by regDate DESC
+    </select>
+    
+    <select id="getCommentList" resultType="com.oneul.web.entity.MyComment">
+        select id , content ,regDate , freeDiaryId as diaryId, 'freeDiary' as "comment" from FreeDiaryComment where memberId = #{param1} 
+		union all select id , content ,regDate, futureDiaryId as diaryId, 'futureDiary' as "comment" from FutureDiaryComment where memberId = #{param1} 
+		union all select id , content ,regDate, gratitudeDiaryId as diaryId, 'gratitudeDiary' as "comment" from GratitudeDiaryComment where memberId = #{param1}
+		union all select id , content ,regDate ,onelineId as diaryId , 'oneline' as "comment" from OnelineComment where memberId = #{param1} 
+		order by regDate DESC
+    </select>
+    
+    <select id="getOnelineList" resultType="com.oneul.web.entity.MyOneline">
+    	select Oneline.id as id, writerId, content, regDate, memberId, m.image as image, (select count(id) from OnelineComment where onelineId = Oneline.id) count
+		from Oneline 
+        left join Member as m on m.id = Oneline.memberid 
+        where Oneline.memberId = #{param1}
+		order by regdate desc
+    </select>
+    
+ 
+    
+</mapper>

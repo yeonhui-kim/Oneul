@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oneul.web.dao.OnelineCommentDao">
+
+
+	<select id="get"
+		resultType="com.oneul.web.entity.OnelineComment">
+		select * from OnelineComment where id=#{param1}
+	</select>
+
+	<select id="getMainList"
+		resultType="com.oneul.web.entity.OnelineComment">
+		select * from OnelineComment left join Member as m on m.id = OnelineComment.memberid where onelineId = #{param1} and commentId is null order by regDate asc
+	</select>
+
+
+	<select id="getSubList"
+		resultType="com.oneul.web.entity.OnelineComment">
+		select * from OnelineComment left join Member as m on m.id
+		= OnelineComment.memberid where commentId = #{param1} order by regDate
+		asc
+	</select>
+
+
+	<select id="getCount" resultType="int">
+		select count(id) from
+		OnelineComment where futureDiaryId = #{param1}
+	</select>
+
+
+	<insert id="insert"
+		parameterType="com.oneul.web.entity.OnelineComment">
+		insert into OnelineComment (content, memberId, onelineId , commentId)
+		values(#{content},#{memberId},#{onelineId},#{commentId});
+	</insert>
+
+
+	<delete id="delete" parameterType="int">
+		delete from OnelineComment
+		where id= #{id};
+	</delete>
+
+	<update id="update"
+		parameterType="com.oneul.web.entity.OnelineComment">
+		update OnelineComment set content = #{content} where id=#{id}
+	</update>
+
+
+
+
+
+</mapper>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oneul.web.dao.ApiDiaryDao">
+
+	
+	
+	<select id="getFreeList" resultType="com.oneul.web.entity.FreeDiaryView">
+		select f.*, c.commentCount , m.userId from FreeDiary f 
+        left join (select freeDiaryId, count(*) commentCount from FreeDiaryComment group by freeDiaryId) c on f.id = c.freeDiaryId
+        left join Member m on f.memberId = m.id
+		where f.memberId = #{param1} and content Like '%${param2}%'
+        order by regDate desc
+        LIMIT 10 offset ${param3}
+	</select>
+	
+	
+	
+	<select id="getFutureList" resultType="com.oneul.web.entity.FutureDiaryView">
+		select f.*, c.commentCount , m.userId from FutureDiary f 
+        left join (select futureDiaryId, count(*) commentCount from FutureDiaryComment group by futureDiaryId) c on f.id = c.futureDiaryId
+        left join Member m on f.memberId = m.id
+		where f.memberId = #{param1} and content Like '%${param2}%'
+        order by regDate desc
+        LIMIT 10 offset ${param3}
+	</select>
+	
+	
+	<select id="getGratitudeList" resultType="com.oneul.web.entity.GratitudeDiaryView">
+		select f.*, c.commentCount , m.userId from GratitudeDiary f 
+        left join (select gratitudeDiaryId, count(*) commentCount from GratitudeDiaryComment group by gratitudeDiaryId) c on f.id = c.gratitudeDiaryId
+        left join Member m on f.memberId = m.id
+		where f.memberId = #{param1} and (content1 Like '%${param2}%' OR content2 Like '%${param2}%' OR content3 Like '%${param2}%')
+        order by regDate desc
+        LIMIT 10 offset ${param3}
+	</select>
+	
+	<select id="getOnelineList" resultType="com.oneul.web.entity.OnelineView">
+		select Oneline.id, writerId,content, regDate, memberId, m.image,(select count(id) from
+		OnelineComment where onelineId = Oneline.id) commentCount from Oneline left
+		join Member as m on m.id = Oneline.memberid where Oneline.id
+		order by regdate desc
+        LIMIT 10 offset ${param3}
+	</select>
+	
+	
+	
+	
+	
+	
+</mapper>

@@ -19,8 +19,8 @@ public class MyBatisFreeDiaryCommentDao implements FreeDiaryCommentDao {
 	
 	@Autowired
 	public MyBatisFreeDiaryCommentDao(SqlSession sqlSession) {
+		this.mapper = sqlSession.getMapper(FreeDiaryCommentDao.class);
 		this.sqlSession = sqlSession;
-		mapper = sqlSession.getMapper(FreeDiaryCommentDao.class);
 	}
 	
 	

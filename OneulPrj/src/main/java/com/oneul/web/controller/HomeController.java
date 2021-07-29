@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller("HomeController")
-@RequestMapping("/")
+//@RequestMapping("/")
 public class HomeController {
 	
 	//로그인페이지 조회
@@ -20,6 +20,6 @@ public class HomeController {
 			model.addAttribute("errMsg", errMsg);
 		}
 		
-		return "/login";
+		return "login";
 	}
 }
