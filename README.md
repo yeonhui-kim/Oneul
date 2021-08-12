@@ -30,3 +30,5 @@ This is an mobile website for a diary platform in which people can share diary a
 
 <img src="https://user-images.githubusercontent.com/76443750/128149322-8b1dbf40-41db-491a-89f1-635c3bb39894.png" width="520" height="470">
 
+
+https://working-manager-65a.notion.site/Oneul-e3f8e0aef77a422ab8dfda99d2d78186
