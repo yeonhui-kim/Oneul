@@ -8,6 +8,10 @@ This is an mobile website for a diary platform in which people can share diary a
 - Mybatis
 - ES6
 
+## ERD
+
+<img src="https://user-images.githubusercontent.com/76443750/129435693-87bb8b07-b1b2-4870-bb2b-5ea44f7df747.png" width="650" height="390">
+
 ---
 ### Oneul 에서는 
 
